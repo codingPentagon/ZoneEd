@@ -1,2 +1,2 @@
 # SchoolManagementSystem
-with zonal extension
+with zonal coordination
