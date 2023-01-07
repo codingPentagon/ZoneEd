@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
 import { BaseComponent } from "./shared/base/base.component";
+import { MailComponent } from "./mail/mail.component";
 
 const routes: Routes = [
-  { path: 'base', component: BaseComponent }
+  { path: 'base', component: BaseComponent },
+  { path: 'mail', component: MailComponent }
 ]
 
 @NgModule({

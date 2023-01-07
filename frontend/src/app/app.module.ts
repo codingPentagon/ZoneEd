@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MailComponent } from './mail/mail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MailComponent
   ],
   imports: [
     BrowserModule,
