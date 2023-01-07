@@ -18,7 +18,8 @@ import { NavComponent } from './nav/nav.component';
     MatInputModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    
   ],
   exports: [
     NavComponent

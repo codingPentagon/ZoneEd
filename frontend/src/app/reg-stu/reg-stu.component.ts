@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-reg-stu',
   templateUrl: './reg-stu.component.html',
-  styleUrls: ['./reg-stu.component.css']
+  styleUrls: ['./reg-stu.component.css'],
+
+
+
+
+
 })
 export class RegStuComponent {
-
+  
 }
