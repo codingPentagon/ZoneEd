@@ -15,31 +15,32 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
     RegStuComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
 
-    MatRadioModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatSelectModule,
-    MatSidenavModule
-    
-    
-    
-  ],
+        MatRadioModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatButtonModule
+
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

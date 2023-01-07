@@ -1,11 +1,8 @@
 <app-nav></app-nav>
 <div>
-  <mat-sidenav-container>
-    
-    <mat-sidenav-content>
       <h3>New Student Registration Form</h3>
     <form class="form_container">
-    
+
     <div>
         <label class="required" for="fullName">Full Name</label>
           <mat-form-field class="fullName" appearance="outline">
@@ -25,7 +22,7 @@
            <mat-label>Enter address line 1</mat-label>
               <input matInput placeholder="">
          </mat-form-field>
-      
+
       <mat-form-field appearance="outline">
         <mat-label>Enter address line 2</mat-label>
            <input matInput placeholder="">
@@ -37,7 +34,7 @@
                  <mat-label>Enter email</mat-label>
                    <input matInput placeholder="">
                </mat-form-field><br>
-      
+
       <label class="required" for="initName">Date of Birth</label>
           <mat-form-field class="size-02" appearance="outline">
              <mat-label>Select data of birth</mat-label>
@@ -45,32 +42,32 @@
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
          </mat-form-field><br>
-     
+
       <label class="required" for="initName">Index No</label>
          <mat-form-field class="size-02" appearance="outline">
           <mat-label>Enter index No</mat-label>
             <input matInput placeholder="">
          </mat-form-field><br>
-  
+
       <label class="required" for="initName">Gender</label>
          <mat-radio-group aria-label="Select an option">
                <mat-radio-button value="1">male</mat-radio-button>
                <mat-radio-button value="2">female</mat-radio-button>
          </mat-radio-group><br>
-  
+
      <label class="required" for="initName">Class</label>
         <mat-form-field  class="size-02" appearance="outline">
            <mat-label>Enter class</mat-label>
              <input matInput placeholder="">
         </mat-form-field><br>
-      
-     
+
+
       <label class="required" for="initName">StudentID</label>
          <mat-form-field  class="size-02" appearance="outline">
            <mat-label>Enter address line 1</mat-label>
              <input matInput placeholder="">
         </mat-form-field><br>
-  
+
       <label class="required" for="initName">Admit Date</label>
          <mat-form-field  class="size-02" appearance="outline">
            <mat-label>Choose a date</mat-label>
@@ -78,14 +75,14 @@
                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                  <mat-datepicker #picker startView="year" ></mat-datepicker>
         </mat-form-field><br>
-      
+
      <label class="required"  for="myfile">Picture</label>
         <input type="file" id="myfile" name="myfile"><br>
     </div>
-  
+
     <div class="sec-01" id="v1"></div>
       <div class="sec-01">
-      
+
         <div class="sec-02-container">
          <p>Details of steward</p>
            <label class="required"  id="fatherName" for="fatherName">Father's Name</label>
@@ -93,7 +90,7 @@
                   <mat-label>Enter father's name</mat-label>
                     <input matInput placeholder="">
                </mat-form-field><br>
-      
+
                 <label class="required" for="initName">Address</label>
                   <mat-form-field class="address-02" appearance="outline">
                     <mat-label>Enter address line 1</mat-label>
@@ -108,8 +105,8 @@
                     <mat-label>Enter father's NIC</mat-label>
                        <input matInput placeholder="">
                   </mat-form-field><br>
-      
-            
+
+
             <label class="required" for="initName">Occupation</label>
               <mat-form-field  class="size-02" appearance="outline">
                  <mat-label>Enter occupation</mat-label>
@@ -120,19 +117,17 @@
                          <mat-label>Enter contact number</mat-label>
                             <input matInput placeholder="">
                       </mat-form-field><br>
-  
+
               <label class="required" for="initName">FatherID</label>
                  <mat-form-field  class="size-02" appearance="outline">
                     <mat-label></mat-label>
                        <input matInput placeholder="">
                 </mat-form-field><br>
-  
+
                   <button class="btton" mat-raised-button color="primary">Save and Submit</button>
         </div>
       </div>
-      
+
     </div>
     </form>
-  </mat-sidenav-content>
-  </mat-sidenav-container>
 </div>

@@ -28,8 +28,16 @@ $frontend-theme: mat.define-light-theme((
   )
 ));
 
+/*$frontend-nav-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$pink-palette),
+    accent: mat.define-palette(mat.$blue-grey-palette),
+    warn: $frontend-warn,
+  )
+));*/
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($frontend-theme);
-
+//@include mat.list-theme($frontend-nav-theme);
