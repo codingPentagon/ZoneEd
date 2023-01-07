@@ -6,6 +6,11 @@ import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MailComponent } from './mail/mail.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { MailComponent } from './mail/mail.component';
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
