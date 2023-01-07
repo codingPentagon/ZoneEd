@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-  background-color: rgba(104, 104, 104, 0.15);
+  background-color: rgb(255, 255, 255);
+  font-size: 20px;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+input[type="text"], textarea {
+
+  background-color : #d1d1d1; 
+
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
