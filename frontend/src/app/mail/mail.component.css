@@ -1,20 +1,19 @@
+:host{
+  display: flex;
+}
+
+
+
 #Body1{
 color: #87878b;
 }
 #All{
   color: #87878b;
+  flex: 1;
+  margin: 20px;
 }
-#Send1{
-  text-align: right;
 
-}
-#Discard{
-  text-align: right;
 
-}
-#fro{
-
-}
 *{
   box-sizing: border-box;
   margin: 0;
@@ -36,7 +35,6 @@ body{
 }
 #form input,textarea{
   margin: 20px;
-  width: 50%;
   border: 1px solid #3F4E4F;
 }
 #form input{
@@ -46,15 +44,19 @@ body{
 }
 .btn{
   padding: 10px;
+  margin: 5px;
   border-radius: 10px;
-  width: 10%;
+  width: 70px;
   background-color: gray;
 }
 #att{
-  position: absolute;
   top: 250px;
   right: 0;
   width: 500px;
   height: 300px;
   border: 1px solid gray;
+}
+
+#att-section{
+  flex: 1;
 }
