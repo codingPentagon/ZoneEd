@@ -5,28 +5,18 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MailComponent } from './mail/mail.component';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatListModule} from "@angular/material/list";
-import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
+import { RegStuComponent } from './reg-stu/reg-stu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MailComponent
+    RegStuComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    NoopAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

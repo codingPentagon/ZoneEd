@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseComponent } from './base/base.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 
+import { NavComponent } from './nav/nav.component';
+
 @NgModule({
   declarations: [
-    BaseComponent
+    NavComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +21,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatButtonModule
   ],
   exports: [
-    BaseComponent
+    NavComponent
   ]
 })
 export class SharedModule { }

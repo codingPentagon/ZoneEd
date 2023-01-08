@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
-import { BaseComponent } from "./shared/base/base.component";
-import { MailComponent } from "./mail/mail.component";
+import { RegStuComponent } from "./reg-stu/reg-stu.component";
+import {NavComponent} from "./shared/nav/nav.component";
 
 const routes: Routes = [
-  { path: 'base', component: BaseComponent },
-  { path: 'mail', component: MailComponent }
+  { path: '', component: NavComponent },
+  { path: 'studentreg', component: RegStuComponent }
 ]
 
 @NgModule({
