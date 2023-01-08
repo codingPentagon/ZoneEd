@@ -1,10 +1,6 @@
 mat-sidenav-container{
   height: 100vh;
-  width: 100vw;
-}
-
-mat-sidenav-content{
-  background-color: rgb(232,232,232);
+  width: 300px;
 }
 
 mat-sidenav{
