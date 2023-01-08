@@ -16,6 +16,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+
+   <div id="All">
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Fill form field</mat-label>
@@ -30,5 +32,61 @@
         <mat-hint></mat-hint>
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+    </p>
+     <div id="Send1">
+       <button type="submit" class="btn">Send</button>
+     </div>
+
+<hr> <div class="vl"></div>
+      <div >
+        From
+
+    <mat-form-field id="fro" appearance="outline" color="accent">
+      <input matInput placeholder="Enter your email">
+       <mat-hint></mat-hint>
+       </mat-form-field>
+    </div>
+    <div >
+      To
+
+      <mat-form-field appearance="outline" color="accent">
+        <input matInput placeholder="Enter receiver email">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+    </div>
+    <div >
+      Subject
+
+      <mat-form-field appearance="outline" color="accent">
+        <input matInput placeholder="">
+
+      </mat-form-field>
+    </div>
+    <div id="Body1">
+
+    Body
+      <div>
+        <textarea name="msg" id="1" cols="30" rows="20" placeholder="Enter the message"></textarea>
+      </div>
+      <div >
+        Attachment
+        <div id="att">
+          <label for="myfile">Select files:</label>
+          <input type="file" id="myfile" name="myfile" multiple><br><br>
+        </div>
+
+      </div>
+
+
+  </div>
+   </div>
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,55 @@
+#Body1{
+color: #87878b;
+}
+#All{
+  color: #87878b;
+}
+#Send1{
+  text-align: right;
+}
+#fro{
+
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+
+  background-color: #ffffff;
+}
+
+
+.box{
+
+  border: 1px solid gray;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 600;
+
+}
+#form input,textarea{
+  margin: 20px;
+  width: 50%;
+  border: 1px solid #3F4E4F;
+}
+#form input{
+  border: 1px solid #3F4E4F;
+  height: 30px;
+  padding: 10px;
+}
+.btn{
+  padding: 10px;
+  border-radius: 10px;
+  width: 10%;
+  background-color: gray;
+}
+#att{
+  position: absolute;
+  top: 300px;
+  right: 0;
+  width: 500px;
+  height: 300px;
+  border: 1px solid gray;
+}
