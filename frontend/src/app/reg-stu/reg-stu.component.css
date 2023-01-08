@@ -1,9 +1,7 @@
-
-
 :host{
   display: flex;
 }
 
-div{
+.content{
   flex: 1;
 }
