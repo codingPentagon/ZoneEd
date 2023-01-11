@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
 import {NavComponent} from "./shared/nav/nav.component";
-import {ClsAllocateComponent} from "./cls-allocate/cls-allocate.component";
+import {AcsGrantPrinComponent} from "./acs-grant-prin/acs-grant-prin.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'clsallocate', component: ClsAllocateComponent }
+  { path: 'accessgrant', component: AcsGrantPrinComponent }
 ]
 
 @NgModule({

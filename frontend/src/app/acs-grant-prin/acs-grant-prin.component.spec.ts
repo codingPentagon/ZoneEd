@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClsAllocateComponent } from './cls-allocate.component';
+import { AcsGrantPrinComponent } from './acs-grant-prin.component';
 
-describe('ClsAllocateComponent', () => {
-  let component: ClsAllocateComponent;
-  let fixture: ComponentFixture<ClsAllocateComponent>;
+describe('AcsGrantPrinComponent', () => {
+  let component: AcsGrantPrinComponent;
+  let fixture: ComponentFixture<AcsGrantPrinComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClsAllocateComponent ]
+      declarations: [ AcsGrantPrinComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ClsAllocateComponent);
+    fixture = TestBed.createComponent(AcsGrantPrinComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

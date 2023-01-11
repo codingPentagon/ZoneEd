@@ -6,12 +6,12 @@ import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
-import { ClsAllocateComponent } from './cls-allocate/cls-allocate.component';
+import { AcsGrantPrinComponent } from './acs-grant-prin/acs-grant-prin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClsAllocateComponent,
+    AcsGrantPrinComponent
   ],
   imports: [
     BrowserModule,
