@@ -1,40 +1,46 @@
 <app-nav></app-nav>
 <div id="All">
+  <br><br><br>
 
 <hr> <div class="vl"></div>
       <div >
         From
-
     <mat-form-field id="fro" appearance="outline" color="accent">
       <input matInput placeholder="Enter your email">
        <mat-hint></mat-hint>
        </mat-form-field>
     </div>
+
     <div >
       To
-
       <mat-form-field appearance="outline" color="accent">
         <input matInput placeholder="Enter receiver email">
         <mat-hint></mat-hint>
       </mat-form-field>
     </div>
+
     <div >
       Subject
-
       <mat-form-field appearance="outline" color="accent">
         <input matInput placeholder="">
-
       </mat-form-field>
     </div>
-    <div id="Body1">
 
-    Body
+    <div id="Body1">
+      Body
       <div>
-        <textarea name="msg" id="1" cols="50" rows="20" placeholder="Enter the message"></textarea>
+        <textarea name="msg" id="1" cols="60" rows="20" placeholder="Enter the message"></textarea>
       </div>
     </div>
 </div>
+
+
       <div id="att-section">
+        <br><br><br>
+        <div id="img" ><img src="https://cdn-icons-png.flaticon.com/512/1250/1250925.png" width="25"  ></div>
+
+        <hr>
+
         Attachment
         <div id="att">
           <label for="myfile">Select files:</label>
@@ -42,10 +48,8 @@
         </div>
 
 <br>
-      <div >
+      <div id="send">
         <button id="Send1" type="submit" class="btn">Send</button>
         <button id="Discard" type="submit" class="btn">Discard</button>
       </div>
-
-
   </div>

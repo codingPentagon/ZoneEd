@@ -52,11 +52,19 @@ body{
 #att{
   top: 250px;
   right: 0;
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 550px;
   border: 1px solid gray;
 }
 
 #att-section{
   flex: 1;
+  color: #87878b;
+
+}
+#send{
+  text-align: right;
+}
+#img{
+  text-align: right;
 }
