@@ -22,3 +22,12 @@ mat-card{
   flex: 1 1 auto;
 }
 
+.creation{
+  height: 250px;
+}
+
+.details{
+  height: 375px;
+}
+
+

@@ -3,7 +3,7 @@
   <app-header></app-header>
   <div class="workspace">
    <div class="left">
-     <mat-card>
+     <mat-card class="creation">
        <mat-card-header>
          Class Creation
        </mat-card-header>
@@ -18,17 +18,13 @@
          <button mat-raised-button>Create</button>
        </mat-card-actions>
      </mat-card><br>
-     <mat-card>
+     <mat-card class="details">
        <mat-card-header>
          Class Details
          <span class="spacer"></span>
          <mat-form-field appearance="outline">
            <mat-select placeholder="Class">
-             <mat-option>6 A</mat-option>
-             <mat-option>6 B</mat-option>
-             <mat-option>7 A</mat-option>
-             <mat-option>7 B</mat-option>
-             <mat-option>8 A</mat-option>
+             <mat-option *ngFor="let class of classes" [value]="class.value">{{class.viewValue}}</mat-option>
            </mat-select>
          </mat-form-field>
        </mat-card-header>
@@ -69,10 +65,7 @@
              <td>6 A</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Select a Teacher">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -80,10 +73,7 @@
              <td>6 B</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Select a Teacher">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -91,10 +81,7 @@
              <td>7 A</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mrs. Maheshi Gunasekara">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -102,10 +89,7 @@
              <td>7 B</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mr. Nimal Silva">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -113,10 +97,7 @@
              <td>8 A</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mr. Roshan Ranaweera">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -124,10 +105,7 @@
              <td>8 B</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mrs. Sandani Perera">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -135,10 +113,7 @@
              <td>9 A</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Ms. Uthpala Gunasekara">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -146,10 +121,7 @@
              <td>9 B</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mr. Kasun Bandara">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -157,10 +129,7 @@
              <td>10 A</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mr. Chathura Perera">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
@@ -168,10 +137,7 @@
              <td>10 B</td>
              <td><mat-form-field appearance="outline">
                <mat-select placeholder="Mrs. Sachini Bandara">
-                 <mat-option>Ms. Saduni Perera</mat-option>
-                 <mat-option>Ms. Sachini Silva</mat-option>
-                 <mat-option>Ms. Tharuka Bandara</mat-option>
-                 <mat-option>Mrs. Panchali Herath</mat-option>
+                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
                </mat-select>
              </mat-form-field></td>
            </tr>
