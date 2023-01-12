@@ -1,55 +1,77 @@
 <app-nav></app-nav>
 <div id="All">
-  <br><br><br>
 
-<hr> <div class="vl"></div>
-      <div >
-        From
+
+
+  <div class="content">
+  <div class="left" >
+    <mat-card>
+    <mat-card-header>
+
+      <div id="img" >
+
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <br>
+      <hr>
+      <br>
+      <div class="table-row" >
+        <span>From</span>
     <mat-form-field id="fro" appearance="outline" color="accent">
       <input matInput placeholder="Enter your email">
        <mat-hint></mat-hint>
        </mat-form-field>
     </div>
 
-    <div >
-      To
+<br>
+    <div class="table-row" >
+      <span>To</span>
       <mat-form-field appearance="outline" color="accent">
         <input matInput placeholder="Enter receiver email">
         <mat-hint></mat-hint>
       </mat-form-field>
     </div>
-
-    <div >
-      Subject
+<br>
+    <div class="table-row" >
+      <span>Subject</span>
       <mat-form-field appearance="outline" color="accent">
         <input matInput placeholder="">
       </mat-form-field>
     </div>
-
+<br>
     <div id="Body1">
       Body
       <div>
-        <textarea name="msg" id="1" cols="60" rows="20" placeholder="Enter the message"></textarea>
+        <textarea name="msg" id="1" cols="60" rows="16" placeholder="Enter the message"></textarea>
       </div>
     </div>
-</div>
-
-
-      <div id="att-section">
-        <br><br><br>
-        <div id="img" ><img src="https://cdn-icons-png.flaticon.com/512/1250/1250925.png" width="25"  ></div>
-
-        <hr>
-
-        Attachment
-        <div id="att">
-          <label for="myfile">Select files:</label>
-          <input type="file" id="myfile" name="myfile" multiple><br><br>
-        </div>
-
 <br>
-      <div id="send">
-        <button id="Send1" type="submit" class="btn">Send</button>
-        <button id="Discard" type="submit" class="btn">Discard</button>
-      </div>
+
+
+      </mat-card-content>
+    </mat-card>
   </div>
+
+<div class="right">
+<mat-card>
+  <mat-card-header>Attachment</mat-card-header>
+  <mat-card-content>
+    <hr>
+<br>
+    <div id="att">
+      <label for="myfile">Select files:</label>
+      <input type="file" id="myfile" name="myfile" multiple><br><br>
+    </div>
+
+    <br>
+    <div id="send">
+      <button id="Send1" type="submit" class="btn">Send</button>
+      <button id="Discard" type="submit" class="btn">Discard</button>
+    </div>
+
+  </mat-card-content>
+  </mat-card>
+</div>
+  </div>
+</div>

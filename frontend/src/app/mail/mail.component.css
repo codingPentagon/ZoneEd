@@ -1,7 +1,12 @@
-:host{
+:host,.content{
   display: flex;
 }
-
+.left{
+  flex: 2;
+}
+.right{
+  flex: 1;
+}
 
 
 #Body1{
@@ -11,6 +16,7 @@ color: #87878b;
   color: #87878b;
   flex: 1;
   margin: 20px;
+
 }
 
 
@@ -66,5 +72,15 @@ body{
   text-align: right;
 }
 #img{
-  text-align: right;
+  float: right;
+}
+#mat-card{
+  margin: 15px;
+}
+.table-row{
+  display: table-row;
+}
+.table-row>span{
+  display: table-cell;
+  width: 100px;
 }

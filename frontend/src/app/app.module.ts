@@ -7,6 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MailComponent } from './mail/mail.component';
 import { MatInputModule } from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatInputModule } from "@angular/material/input";
         SharedModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatInputModule
+        MatInputModule,
+        MatCardModule
     ],
   providers: [],
   bootstrap: [AppComponent]
