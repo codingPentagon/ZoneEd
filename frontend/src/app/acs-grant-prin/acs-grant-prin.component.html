@@ -2,6 +2,74 @@
 <div class="content">
   <app-header></app-header>
   <div class="workspace">
+    <div class="left">
+      <mat-card>
+        <mat-card-header>
+          Hand over Principal Dashboard
+        </mat-card-header>
 
+        <mat-card-content>
+
+         <hr>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Select name">
+              <mat-option>Mr.Thilina Karunarathne</mat-option>
+              <mat-option>Mr. Ranasinghe R.J.K</mat-option>
+            </mat-select>
+          </mat-form-field><br>
+
+         <mat-form-field appearance="outline">
+           <mat-label>Enter notice</mat-label>
+           <input matInput placeholder="I grant access to you">
+         </mat-form-field>
+       </mat-card-content>
+
+        <mat-card-content>
+          <!--<hr>-->
+          <mat-form-field appearance="outline">
+            <mat-label>Add notice</mat-label>
+            <input matInput placeholder="I can't accept">
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button>Submit</button>
+        </mat-card-actions>
+
+        <mat-card-actions>
+          <button mat-raised-button>Discard</button>
+        </mat-card-actions>
+
+      </mat-card><br>
+    </div>
+
+    <div class="right">
+      <style>
+        table, th, td {
+        <!--border: 1px solid black;-->
+        border-collapse: collapse;
+      }</style>
+      <mat-card>
+        <mat-card-header>
+          Access grant request
+        </mat-card-header>
+        <mat-card-content>
+          <hr>
+
+          <table style="width:100%">
+            <tr>
+              <td style="border-bottom:1pt solid black">from: Mr. R.T. Meetiyagoda (Principal)<br><p style="color:limegreen">Accepted</p></td>
+              <td style="border-bottom:1pt solid black">30 December,2022<br>10.00</td>
+            </tr>
+
+
+            <tr>
+              <td >From: Mr. R.T. Meetiyagoda (Principal)<br><p style="color:red">Rejected</p></td>
+              <td>01 October,2022<br>05 min ago</td>
+            </tr>
+
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

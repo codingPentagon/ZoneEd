@@ -7,6 +7,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import { AcsGrantPrinComponent } from './acs-grant-prin/acs-grant-prin.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { AcsGrantPrinComponent } from './acs-grant-prin/acs-grant-prin.component
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
