@@ -1,0 +1,86 @@
+:host,.content{
+  display: flex;
+}
+.left{
+  flex: 2;
+}
+.right{
+  flex: 1;
+}
+
+
+#Body1{
+  color: #87878b;
+}
+#All{
+  color: #87878b;
+  flex: 1;
+  margin: 20px;
+
+}
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+
+  background-color: #ffffff;
+}
+
+
+.box{
+
+  border: 1px solid gray;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 600;
+
+}
+#form input,textarea{
+  margin: 20px;
+  border: 1px solid #3F4E4F;
+}
+#form input{
+  border: 1px solid #3F4E4F;
+  height: 30px;
+  padding: 10px;
+}
+.btn{
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  width: 70px;
+  background-color: gray;
+}
+#att{
+  top: 250px;
+  right: 0;
+  width: 400px;
+  height: 550px;
+  border: 1px solid gray;
+}
+
+#att-section{
+  flex: 1;
+  color: #87878b;
+
+}
+#send{
+  text-align: right;
+}
+#img{
+  float: right;
+}
+#mat-card{
+  margin: 15px;
+}
+.table-row{
+  display: table-row;
+}
+.table-row>span{
+  display: table-cell;
+  width: 100px;
+}

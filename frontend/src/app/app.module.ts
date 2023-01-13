@@ -17,11 +17,18 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
+import { ClsAllocateComponent } from './cls-allocate/cls-allocate.component';
+import {MatCardModule} from "@angular/material/card";
+import { MailComponent } from './mail/mail.component';
+import { AcsGrantPrinComponent } from './acs-grant-prin/acs-grant-prin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegStuComponent,
+    ClsAllocateComponent,
+    MailComponent,
+    AcsGrantPrinComponent,
   ],
     imports: [
         BrowserModule,
@@ -38,7 +45,8 @@ import {HttpClientModule} from "@angular/common/http";
         FormsModule,
         MatSelectModule,
         MatSidenavModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule
 
 
     ],

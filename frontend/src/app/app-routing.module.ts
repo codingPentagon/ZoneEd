@@ -4,10 +4,16 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { RegStuComponent } from "./reg-stu/reg-stu.component";
 import {NavComponent} from "./shared/nav/nav.component";
+import {MailComponent} from "./mail/mail.component";
+import {ClsAllocateComponent} from "./cls-allocate/cls-allocate.component";
+import {AcsGrantPrinComponent} from "./acs-grant-prin/acs-grant-prin.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'studentreg', component: RegStuComponent }
+  { path: 'studentreg', component: RegStuComponent },
+  { path: 'mail', component: MailComponent },
+  { path: 'clsallocate', component: ClsAllocateComponent },
+  { path: 'acsgrant', component: AcsGrantPrinComponent }
 ]
 
 @NgModule({
