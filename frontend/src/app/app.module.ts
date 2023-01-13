@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
         BrowserModule,
         SharedModule,
         AppRoutingModule,
-
+        HttpClientModule,
         MatRadioModule,
         MatDatepickerModule,
         MatNativeDateModule,

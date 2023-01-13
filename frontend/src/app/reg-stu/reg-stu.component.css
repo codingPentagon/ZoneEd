@@ -7,10 +7,10 @@ div{
 }
 mat-sidenav{
   background-color: rgb(15, 55, 199);
-   
+
 }
 mat-sidenav-content{
-  background-color: rgb(242, 241, 241); 
+  background-color: rgb(242, 241, 241);
 }
 
 label{
@@ -27,7 +27,7 @@ mat-form-field{
   line-height: 24px;
   padding-right: 24px;
 
-  
+
 }
 mat-form-field.fullName{
   width: 70%;
@@ -41,90 +41,91 @@ label {
   width: 150px;
 }
 input{
-font-size: 12px;
-padding: 1px;
+  font-size: 12px;
+  padding: 1px;
 
 }
 .size-02{
-width: 200px;
+  width: 200px;
 
 }
 .required:after {
-content:" *";
-color: red;
+  content:" *";
+  color: red;
 }
 .sec-01{
-float:left;
+  float:left;
 
 
 }
 
 .btton{
-margin-right: 100px;
-float:right;
+  margin-right: 100px;
+  float:right;
 }
 #v1{
-border: 0.5px solid #616161;
-height: 500px;
-margin: 15px 5px 0 5px;
-background-color: #616161;
+  border: 0.5px solid #616161;
+  height: 500px;
+  margin: 15px 5px 0 5px;
+  background-color: #616161;
 
 
 
 }
 .main:after{
-content: " ";
-clear: both;
-display: table;
+  content: " ";
+  clear: both;
+  display: table;
 }
 .sec-02-container{
-margin-left: 30px;
-margin-top: 20px;
+  margin-left: 30px;
+  margin-top: 20px;
 }
 p{
-text-align: left;
-color: #616161;
+  text-align: left;
+  color: #616161;
 
 }
 mat-form-field.size-03{
-width: 410px;
+  width: 410px;
 }
 mat-form-field.address-02{
-   width:195px;
+  width:195px;
 }
 .regTitle{
-text-align: center;
-font-size: 20px;
-margin-left: 40px;
-margin-right: 40px;
-margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
 }
 .regButton{
-margin-top: 120%;
-margin-left: 65px;
-padding: 20px;
-padding-left: 30px;
-padding-right: 30px;
+  margin-top: 120%;
+  margin-left: 65px;
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 
 
 }
 .regButton:hover{
-background-color: rgb(66, 143, 151);
-color: white;
+  background-color: rgb(66, 143, 151);
+  color: white;
 }
 .form_container{
 
-margin: 15px;
-background-color: rgb(255, 255, 255);
-padding: 20px;
-height: 760px;
-margin-top: 40px;
-border-radius: 15px;
-font-family:sans-serif;
+  margin: 15px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  height: 760px;
+  margin-top: 40px;
+  border-radius: 15px;
+  font-family:sans-serif;
 
 
 }
 h3{
-margin-left: 15px;
-margin-top: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
 }
+
