@@ -8,7 +8,10 @@ import {RegStuService} from "./reg-stu.service";
   styleUrls: ['./reg-stu.component.css']
 })
 export class RegStuComponent {
-
+  navLinks:any[] = [
+    {path: '/', value: 'Dashboard', icon:'space_dashboard'},
+    {path: '/studentreg', value: 'Student Registration', icon:'person_add'}
+  ]
   gender:any;
   maxDate = new Date(2018,1,1);
   maxDate2 = new Date();
