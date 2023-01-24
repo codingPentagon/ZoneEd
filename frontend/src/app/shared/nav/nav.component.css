@@ -7,3 +7,7 @@ mat-sidenav{
   background-color: darkblue;
   width: 275px;
 }
+
+a,mat-icon{
+  color: white;
+}

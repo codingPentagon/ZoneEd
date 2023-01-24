@@ -5,13 +5,6 @@
 div{
   flex: 1;
 }
-mat-sidenav{
-  background-color: rgb(15, 55, 199);
-
-}
-mat-sidenav-content{
-  background-color: rgb(242, 241, 241);
-}
 
 label{
   font-size: 15px;
