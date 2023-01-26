@@ -7,5 +7,8 @@ import {Component, Input} from '@angular/core';
 })
 export class NavComponent {
 
-  @Input() links: any[] = [];
+  links = [
+    {path: '', value:'Dashboard', icon:'space_dashboard'},
+    {path:'/notice', value:'Notice', icon:'notice'}
+  ];
 }

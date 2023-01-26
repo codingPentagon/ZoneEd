@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+<div class="content">
+  <app-header></app-header>
+  <mat-card>
+    <mat-card-header>
+      Notice Board
+      <span class="spacer"></span>
+        <div class="header-actions">
+          <mat-chip-listbox>
+            <mat-chip-option selected>All</mat-chip-option>
+            <mat-chip-option>Posted</mat-chip-option>
+          </mat-chip-listbox>
+          <mat-chip-listbox>
+            <mat-chip-option>
+              <img matChipAvatar src="https://cdn-icons-png.flaticon.com/128/565/565491.png">
+            </mat-chip-option>
+            <mat-chip-option>
+              <img matChipAvatar src="https://cdn-icons-png.flaticon.com/128/8173/8173351.png">
+            </mat-chip-option>
+          </mat-chip-listbox>
+
+        </div>
+
+    </mat-card-header>
+    <mat-card-content>
+      <hr>
+      <form>
+        <mat-form-field>
+          <mat-label>Select category</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let category of categories" [value]="category.value">
+              {{category.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+           Subject
+          </mat-label>
+          <input matInput >
+        </mat-form-field>
+        <mat-form-field class="body">
+          <mat-label>
+            Body
+          </mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </form>
+
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-raised-button>Discard</button>
+      <button mat-raised-button>Post</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>
