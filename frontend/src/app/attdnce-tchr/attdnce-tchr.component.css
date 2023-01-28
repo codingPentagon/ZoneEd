@@ -43,4 +43,8 @@ mat-card-content{
   height: 85vh;
 }
 
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
 
