@@ -34,4 +34,9 @@ button{
   margin: 5px;
 }
 
+mat-card-content{
+  overflow: auto;
+  height: 75vh;
+}
+
 

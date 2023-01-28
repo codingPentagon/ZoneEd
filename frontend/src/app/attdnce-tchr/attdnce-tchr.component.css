@@ -36,5 +36,11 @@ button{
 
 mat-card-content{
   overflow: auto;
-  height: 90%;
+  height: 70vh;
 }
+
+.attensummary{
+  height: 85vh;
+}
+
+

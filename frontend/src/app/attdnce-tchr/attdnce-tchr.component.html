@@ -14,13 +14,10 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content class="attend-sheet">
          <div *ngFor="let student of students" class="attend-entry">
            {{ student.name }}
-
              <mat-checkbox></mat-checkbox>
-
-
            <mat-divider></mat-divider>
          </div>
         </mat-card-content>
@@ -29,6 +26,15 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <mat-card class="attensummary">
+        <mat-card-header>
+          Attendance Summary
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
