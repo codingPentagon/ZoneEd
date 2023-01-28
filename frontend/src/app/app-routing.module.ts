@@ -5,11 +5,13 @@ import { RouterModule, Routes } from "@angular/router";
 import {NavComponent} from "./shared/nav/nav.component";
 import {ClsAllocateComponent} from "./cls-allocate/cls-allocate.component";
 import {AttdnceTchrComponent} from "./attdnce-tchr/attdnce-tchr.component";
+import {GradesTchrComponent} from "./grades-tchr/grades-tchr.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
   { path: 'clsallocate', component: ClsAllocateComponent },
-  { path: 'attndncetchr', component: AttdnceTchrComponent }
+  { path: 'attndncetchr', component: AttdnceTchrComponent },
+  { path: 'gradestchr', component: GradesTchrComponent }
 ]
 
 @NgModule({

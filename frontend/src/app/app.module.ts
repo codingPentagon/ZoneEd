@@ -17,29 +17,35 @@ import {MatTableModule} from "@angular/material/table";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDividerModule} from "@angular/material/divider";
+import { GradesTchrComponent } from './grades-tchr/grades-tchr.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
     AppComponent,
     ClsAllocateComponent,
     AttdnceTchrComponent,
+    GradesTchrComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    FormsModule,
-    MatTableModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDividerModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatTableModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDividerModule,
+        MatGridListModule,
+        MatTabsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
