@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
 
-export interface AttendanceSheet {
-  name: string;
-  present: boolean;
-}
-
-
 
 @Component({
   selector: 'app-attdnce-tchr',
@@ -13,16 +7,26 @@ export interface AttendanceSheet {
   styleUrls: ['./attdnce-tchr.component.css']
 })
 export class AttdnceTchrComponent {
-  STUDENTS: AttendanceSheet[] = [
+  students = [
     {name: 'Bhagya Nethmini', present: false},
     {name: 'Rishmi Tharuka', present: false},
     {name: 'Maleesha Kawsarani', present: false},
     {name: 'Sachini Perera', present: false},
     {name: 'GayanI Herath', present: false},
     {name: 'Samadhi Fernando', present: false},
+    {name: 'Maneesha Bulner', present: false},
+    {name: 'Dulashi Sewmini', present: false},
+    {name: 'Kavindu Sankalpa', present: false},
+    {name: 'Maneth Lorance', present: false},
+    {name: 'Asitha Silva', present: false},
+    {name: 'Malindu Deshan', present: false},
+    {name: 'Thisal Gunasena', present: false},
+    {name: 'Nimesh Deshan', present: false},
 
   ];
+  maxDate = new Date();
 
 }
+
 
 

@@ -14,6 +14,9 @@ import { AttdnceTchrComponent } from './attdnce-tchr/attdnce-tchr.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -21,19 +24,22 @@ import {MatTableModule} from "@angular/material/table";
     ClsAllocateComponent,
     AttdnceTchrComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        FormsModule,
-        MatTableModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

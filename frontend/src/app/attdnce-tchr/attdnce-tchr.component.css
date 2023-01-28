@@ -11,11 +11,11 @@ mat-card{
 }
 
 .left{
-  flex: 2;
+  flex: 1;
 }
 
 .right{
-  flex: 3;
+  flex: 1;
 }
 
 .spacer{
@@ -23,7 +23,18 @@ mat-card{
 }
 
 .attendance{
-  height: 250px;
+  height: 85vh;
 }
 
+mat-checkbox{
+ float-displace: block;
+}
 
+button{
+  margin: 5px;
+}
+
+mat-card-content{
+  overflow: auto;
+  height: 90%;
+}
