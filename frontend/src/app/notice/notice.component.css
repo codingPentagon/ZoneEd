@@ -31,4 +31,29 @@ textarea{
 }
 button{
   margin: 5px;
+  float: right;
+}
+
+form{
+  display:none ;
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+mat-panel-description{
+  justify-content: right;
+  text-align: right;
+}
+
+mat-panel-title {
+  white-space: nowrap;
+}
+
+mat-card-content{
+  overflow: auto;
+}
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+
 }

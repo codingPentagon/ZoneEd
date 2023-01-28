@@ -12,11 +12,11 @@
           </mat-tab-group>
 
           <mat-chip-listbox>
-            <mat-chip-option>
-              <img matChipAvatar src="https://cdn-icons-png.flaticon.com/128/565/565491.png">
+            <mat-chip-option >
+              <mat-icon >delete</mat-icon>
             </mat-chip-option>
             <mat-chip-option>
-              <img matChipAvatar src="https://cdn-icons-png.flaticon.com/128/8173/8173351.png">
+              <mat-icon>post_add</mat-icon>
             </mat-chip-option>
           </mat-chip-listbox>
 
@@ -24,7 +24,6 @@
 
     </mat-card-header>
     <mat-card-content>
-      <hr>
       <form>
         <mat-form-field>
           <mat-label>Select category</mat-label>
@@ -46,14 +45,39 @@
           </mat-label>
           <textarea matInput></textarea>
         </mat-form-field>
+        <button mat-raised-button>Discard</button>
+        <button mat-raised-button>Post</button>
       </form>
+
+      <div class="notices" *ngFor="let notice of notices" >
+        <mat-accordion>
+          <mat-expansion-panel >
+            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+              <mat-panel-title >
+                {{notice.sender}}
+                <br>
+                {{notice.subject}}
+              </mat-panel-title>
+              <mat-panel-description>
+               {{notice.date}}
+                <br>
+                {{notice.time}}
+                <br>
+                <mat-action-row>
+                  <mat-checkbox ></mat-checkbox>
+                </mat-action-row>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{notice.content}}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </div>
 
     </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-raised-button>Discard</button>
-      <button mat-raised-button>Post</button>
-    </mat-card-actions>
-
   </mat-card>
 </div>
+
+

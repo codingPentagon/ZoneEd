@@ -12,24 +12,34 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
     NoticeComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatChipsModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatTabsModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
