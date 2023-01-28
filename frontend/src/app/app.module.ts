@@ -11,11 +11,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
+import { SchedulePrinComponent } from './schedule-prin/schedule-prin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScheduleTchrComponent
+    ScheduleTchrComponent,
+    SchedulePrinComponent
   ],
   imports: [
     BrowserModule,

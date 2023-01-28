@@ -4,10 +4,12 @@ import { RouterModule, Routes } from "@angular/router";
 
 import {NavComponent} from "./shared/nav/nav.component";
 import {ScheduleTchrComponent} from "./schedule-tchr/schedule-tchr.component";
+import {SchedulePrinComponent} from "./schedule-prin/schedule-prin.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'scheduletchr', component: ScheduleTchrComponent }
+  { path: 'scheduletchr', component: ScheduleTchrComponent },
+  { path: 'scheduleprin', component: SchedulePrinComponent }
 ]
 
 @NgModule({

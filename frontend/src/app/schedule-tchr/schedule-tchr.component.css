@@ -19,7 +19,6 @@ table{
 
 td,th{
   text-align: center;
-  font-weight: bold;
 }
 
 th{
@@ -33,6 +32,7 @@ th{
   border: none;
   font-size: 20pt;
   color: grey;
+  font-weight: 500;
 }
 
 td:not(.mat-column-period){

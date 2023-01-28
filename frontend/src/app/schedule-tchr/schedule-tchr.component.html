@@ -14,27 +14,27 @@
 
           <ng-container matColumnDef="mon">
             <th mat-header-cell *matHeaderCellDef> Monday </th>
-            <td mat-cell *matCellDef="let element"> {{element.mon}} </td>
+            <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.mon == '---' ? 'cyan' : element.color}"> {{element.mon}} </td>
           </ng-container>
 
           <ng-container matColumnDef="tue">
             <th mat-header-cell *matHeaderCellDef> Tuesday </th>
-            <td mat-cell *matCellDef="let element"> {{element.tue}} </td>
+            <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.tue == '---' ? 'cyan' : element.color}"> {{element.tue}} </td>
           </ng-container>
 
           <ng-container matColumnDef="wed">
             <th mat-header-cell *matHeaderCellDef> Wednesday </th>
-            <td mat-cell *matCellDef="let element"> {{element.wed}} </td>
+            <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.wed == '---' ? 'cyan' : element.color}"> {{element.wed}} </td>
           </ng-container>
 
           <ng-container matColumnDef="thu">
             <th mat-header-cell *matHeaderCellDef> Thursday </th>
-            <td mat-cell *matCellDef="let element"> {{element.thu}} </td>
+            <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.thu == '---' ? 'cyan' : element.color}"> {{element.thu}} </td>
           </ng-container>
 
           <ng-container matColumnDef="fri">
             <th mat-header-cell *matHeaderCellDef> Friday </th>
-            <td mat-cell *matCellDef="let element"> {{element.fri}} </td>
+            <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.fri == '---' ? 'cyan' : element.color}"> {{element.fri}} </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
