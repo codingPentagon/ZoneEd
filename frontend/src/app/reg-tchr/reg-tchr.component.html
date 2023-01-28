@@ -1,0 +1,119 @@
+<app-nav></app-nav>
+<div>
+  
+  <app-header></app-header>
+  <form class="form_container" #userForm="ngForm" >
+
+    <div>
+      <label class="required" for="fullName">Full Name</label>
+      <mat-form-field class="fullName" appearance="outline">
+        <mat-label>Enter full name</mat-label>
+        <input matInput id="fullName" name="fullName" ngModel required>
+      </mat-form-field><br>
+    </div>
+    <div>
+      <label class="required" for="initName">Name with Initials</label>
+      <mat-form-field class="fullName" appearance="outline">
+        <mat-label>Enter name with initials</mat-label>
+        <input matInput placeholder="" id="initName" name="initName" ngModel required>
+      </mat-form-field><br>
+    </div>
+    <div>
+      <label class="required" for="initName">Title</label>
+      <mat-radio-group aria-label="Select an option" >
+        <mat-radio-button value="1" class="titileRadio">Mr</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Mrs</mat-radio-button>
+        <mat-radio-button value="1" class="titileRadio">Ms</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Miss</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Dr</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <label class="required" for="address1">Address</label>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter address line 1</mat-label>
+      <input matInput placeholder="" id="address1" name="address1" ngModel required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter address line 2</mat-label>
+      <input matInput placeholder="" id="address2" name="address2" ngModel>
+    </mat-form-field><br>
+    <div class="main-sec">
+      <div class="sec-01">
+        <label class="required" for="email">Email</label>
+        <mat-form-field class="email" appearance="outline">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="" id="email" name="email" ngModel required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+        </mat-form-field><br>
+        <label class="required" for="contNo">Contact No</label>
+        <mat-form-field  class="size-02" appearance="outline">
+          <mat-label>Enter contact number</mat-label>
+          <input matInput placeholder="" id="contNo" name="contNo" ngModel required>
+        </mat-form-field><br>
+        <label class="required" for="nic"> NIC No</label>
+          <mat-form-field  class="size-02" appearance="outline">
+            <mat-label>Enter father's NIC</mat-label>
+            <input matInput placeholder=""  id="nic" name="nic" ngModel required>
+          </mat-form-field><br>
+
+        <label class="required" for="dob">Date of Birth</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Select date of birth</mat-label>
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" ngModel required [max]="">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field><br>
+        <label class="required" for="datee">Admission Date</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker2" [max]=" " id="datee" name="datee" ngModel required>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field><br>
+
+        <label class="required" for="indexNo">Teacher ID</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Enter index No</mat-label>
+          <input matInput placeholder="" type="number" id="indexNo" name="indexNo" ngModel required>
+        </mat-form-field><br>
+
+        <label class="required" for="gender">Gender</label>
+        <mat-radio-group aria-label="Select an option" id="gender" name="gender" required>
+          <mat-radio-button value="m">male</mat-radio-button>
+          <mat-radio-button value="f">female</mat-radio-button>
+        </mat-radio-group><br>
+
+      
+
+
+        <!--  <label class="required" for="initName">StudentID</label>
+          <mat-form-field  class="size-02" appearance="outline">
+            <mat-label>Enter address line 1</mat-label>
+            <input matInput placeholder="">
+          </mat-form-field><br>-->
+
+     
+
+        <label  for="myfile">Picture</label>
+        <input type="file" id="myfile" name="myfile"><br>
+      </div>
+
+      <div class="sec-01" id="v1"></div>
+      <div class="sec-01">
+
+        <div class="sec-02-container">
+          <p>Experiences Section</p>
+          <label class="required"  id="fatherName" for="fatherName1">Subjects</label>
+          <mat-form-field  class="size-03" appearance="outline">
+            <mat-label>What are the subjects you can teach,separate with comma</mat-label>
+            <input matInput placeholder="" id="fatherName1" name="fatherName1" ngModel required>
+          </mat-form-field><br>
+          <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+</div>
+

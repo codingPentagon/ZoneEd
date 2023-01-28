@@ -4,10 +4,14 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { RegStuComponent } from "./reg-stu/reg-stu.component";
 import {NavComponent} from "./shared/nav/nav.component";
+import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
+import { TchDashboardComponent } from './tch-dashboard/tch-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'studentreg', component: RegStuComponent }
+  { path: 'studentreg', component: RegStuComponent },
+  {path:'teacherreg',component:RegTchrComponent },
+  {path:'dashboard',component:TchDashboardComponent}
 ]
 
 @NgModule({

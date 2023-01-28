@@ -17,11 +17,16 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
+import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
+import { TchDashboardComponent } from './tch-dashboard/tch-dashboard.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegStuComponent,
+    RegTchrComponent,
+    TchDashboardComponent
   ],
     imports: [
         BrowserModule,
