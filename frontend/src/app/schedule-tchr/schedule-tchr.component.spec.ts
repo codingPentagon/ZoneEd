@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegStuComponent } from './reg-stu.component';
+import { ScheduleTchrComponent } from './schedule-tchr.component';
 
-describe('RegStuComponent', () => {
-  let component: RegStuComponent;
-  let fixture: ComponentFixture<RegStuComponent>;
+describe('ScheduleTchrComponent', () => {
+  let component: ScheduleTchrComponent;
+  let fixture: ComponentFixture<ScheduleTchrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegStuComponent ]
+      declarations: [ ScheduleTchrComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegStuComponent);
+    fixture = TestBed.createComponent(ScheduleTchrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
