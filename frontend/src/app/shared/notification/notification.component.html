@@ -1,4 +1,4 @@
 <mat-drawer-container >
-  <mat-drawer #drawer position="end" opened>
+  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false">
   </mat-drawer>
 </mat-drawer-container>

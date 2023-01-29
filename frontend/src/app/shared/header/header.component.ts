@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {NotificationToggleService} from "../notification/notification-toggle.service";
 
 
 @Component({
@@ -8,10 +9,10 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
-
+  constructor(private notifToggleService:NotificationToggleService) {
+  }
 
   notifToggle(){
-
-    console.log("ebuna");
+    this.notifToggleService.toggle();
   }
 }

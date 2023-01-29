@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-
+import {Component, HostBinding} from '@angular/core';
+import {NotificationToggleService} from "./notification-toggle.service";
 
 @Component({
   selector: 'app-notification',
@@ -7,8 +7,16 @@ import {Component} from '@angular/core';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent {
-  toggleState = false;
 
+  @HostBinding('class.is-open')
+  isOpen:boolean = false;
 
+  constructor(private notifToggleService:NotificationToggleService) {
+  }
 
+  ngOnInit() {
+    this.notifToggleService.change.subscribe(isOpen => {
+      this.isOpen = isOpen;
+    });
+  }
 }

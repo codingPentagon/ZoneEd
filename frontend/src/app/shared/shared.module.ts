@@ -10,7 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { NotificationComponent } from './notification/notification.component';
+import {NotificationComponent} from "./notification/notification.component";
+import {NotificationToggleService} from "./notification/notification-toggle.service";
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { NotificationComponent } from './notification/notification.component';
   ],
 
   providers: [
-
+    NotificationToggleService
   ]
 })
 export class SharedModule { }
