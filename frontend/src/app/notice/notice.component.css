@@ -19,8 +19,8 @@ mat-card{
   flex: 1 1 auto;
 }
 
-mat-chip-listbox{
-  display: block;
+mat-chip-listbox,mat-tab-group{
+  display: inline;
 }
 mat-form-field{
   display: block;
