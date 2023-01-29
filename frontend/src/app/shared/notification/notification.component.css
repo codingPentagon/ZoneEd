@@ -1,0 +1,19 @@
+mat-drawer{
+  background: lightgrey;
+  width: 275px;
+  height: 100vh;
+}
+
+mat-drawer-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+}
+
+:host{
+  position: absolute;
+}
+
+mat-drawer-container:not(:has(.mat-drawer-opened))  {
+  width: 100%;
+}

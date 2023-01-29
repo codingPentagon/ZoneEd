@@ -10,11 +10,15 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { NotificationComponent } from './notification/notification.component';
+
 
 @NgModule({
   declarations: [
     NavComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotificationComponent,
+
   ],
   imports: [
     CommonModule,
@@ -24,11 +28,17 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatIconModule,
     MatButtonModule,
     RouterLink,
-    MatToolbarModule
+    MatToolbarModule,
   ],
+
   exports: [
     NavComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotificationComponent,
+  ],
+
+  providers: [
+
   ]
 })
 export class SharedModule { }

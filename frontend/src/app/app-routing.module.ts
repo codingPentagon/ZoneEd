@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
-import {NavComponent} from "./shared/nav/nav.component";
-import {NoticeComponent} from "./notice/notice.component";
+import {AppComponent} from "./app.component";
 
 const routes: Routes = [
-  { path: '', component: NavComponent },
-  { path: 'notice', component: NoticeComponent }
+
 ]
 
 @NgModule({

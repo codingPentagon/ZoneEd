@@ -9,6 +9,5 @@ export class NavComponent {
 
   links = [
     {path: '', value:'Dashboard', icon:'space_dashboard'},
-    {path:'/notice', value:'Notice', icon:'notice'}
   ];
 }
