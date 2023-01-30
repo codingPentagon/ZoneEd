@@ -7,11 +7,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegStuComponent } from './reg-stu/reg-stu.component';
 import {MatInputModule} from "@angular/material/input";
+import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegStuComponent,
+    StuDashboardComponent,
   ],
   imports: [
     BrowserModule,
