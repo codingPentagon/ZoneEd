@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NotificationToggleService} from "../notification/notification-toggle.service";
+import {CalendarToggleService} from "../calendar/calendar-toggle.service";
 
 
 @Component({
@@ -9,10 +9,10 @@ import {NotificationToggleService} from "../notification/notification-toggle.ser
 })
 export class HeaderComponent {
 
-  constructor(private notifToggleService:NotificationToggleService) {
+  constructor(private calToggleService:CalendarToggleService) {
   }
 
-  notifToggle(){
-    this.notifToggleService.toggle();
+  calendarToggle(){
+    this.calToggleService.toggle();
   }
 }
