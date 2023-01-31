@@ -2,6 +2,7 @@ mat-drawer{
   background: lightgrey;
   width: 350px;
   height: 100vh;
+  overflow: auto;
 }
 
 mat-drawer-container{
@@ -35,3 +36,6 @@ mat-checkbox{
   flex: 1 1 auto;
 }
 
+mat-card{
+  margin: 4px;
+}
