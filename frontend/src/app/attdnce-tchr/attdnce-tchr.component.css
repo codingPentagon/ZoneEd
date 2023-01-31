@@ -47,7 +47,7 @@ mat-card-header{
   border-bottom: 1.5px solid gray;
 }
 
-mat-checkbox{
-
+.attend-entry{
+  display: flex;
 }
 
