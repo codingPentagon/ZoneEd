@@ -15,5 +15,6 @@ mat-drawer-container{
 }
 
 mat-drawer-container:not(:has(.mat-drawer-opened))  {
-  width: 100%;
+  width: 0;
+  transition-delay: 300ms;
 }

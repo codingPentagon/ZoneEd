@@ -1,4 +1,9 @@
-<mat-drawer-container >
+<mat-drawer-container (backdropClick)="isOpen=false" autosize>
   <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false">
+    <mbsc-eventcalendar [data]="myEvents" [options]="eventSettings" [clickToCreate]="true"
+                        [dragToCreate]="true"
+                        [dragToMove]="true"
+                        [dragToResize]="true"
+                        [eventDelete]="true"></mbsc-eventcalendar>
   </mat-drawer>
 </mat-drawer-container>

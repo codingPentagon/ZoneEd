@@ -10,16 +10,18 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {NotificationComponent} from "./calendar/calendar.component";
+import {CalendarComponent} from "./calendar/calendar.component";
 import {CalendarToggleService} from "./calendar/calendar-toggle.service";
+import {CalendarConnectorService} from "./calendar/calendar-connector.service";
+import {MbscEventcalendarModule, Notifications} from "@mobiscroll/angular";
+import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     NavComponent,
     HeaderComponent,
-    NotificationComponent,
-
+    CalendarComponent,
   ],
   imports: [
     CommonModule,
@@ -30,16 +32,21 @@ import {CalendarToggleService} from "./calendar/calendar-toggle.service";
     MatButtonModule,
     RouterLink,
     MatToolbarModule,
+    MbscEventcalendarModule,
+    HttpClientModule,
+
   ],
 
   exports: [
     NavComponent,
     HeaderComponent,
-    NotificationComponent,
+    CalendarComponent
   ],
 
   providers: [
-    CalendarToggleService
+    CalendarToggleService,
+    CalendarConnectorService,
+    Notifications
   ]
 })
 export class SharedModule { }
