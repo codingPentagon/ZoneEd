@@ -1,4 +1,22 @@
 <mat-drawer-container >
   <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false">
+    <div class="notifhed">
+      <h1>Notification</h1>
+      <span class="spacer"></span>
+      <button mat-button>Back</button>
+    </div>
+    <mat-card>
+      <mat-card-content>
+        Mr Prasad(Zonal Director) have select your school to zonal sportmeet.
+        <div class="date">
+          31/01/2023
+          <br>
+          5 min ago
+          <br>
+          <mat-checkbox></mat-checkbox>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
   </mat-drawer>
 </mat-drawer-container>

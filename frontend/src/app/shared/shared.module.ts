@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {NotificationComponent} from "./notification/notification.component";
 import {NotificationToggleService} from "./notification/notification-toggle.service";
+import {MatCardModule} from "@angular/material/card";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import {NotificationToggleService} from "./notification/notification-toggle.serv
     MatButtonModule,
     RouterLink,
     MatToolbarModule,
+    MatCardModule,
+    MatCheckboxModule,
   ],
 
   exports: [
