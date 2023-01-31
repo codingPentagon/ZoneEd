@@ -3,7 +3,9 @@
     <div class="notifhed">
       <h1>Notification</h1>
       <span class="spacer"></span>
-      <button mat-button (click)="drawer.close()">Back</button>
+      <button mat-icon-button (click)="drawer.close()">
+      <mat-icon>arrow_forward</mat-icon>
+      </button>
     </div>
     <mat-card *ngFor="let notif of notifs">
       <mat-card-content (click)="notif.read=true" [ngStyle]="{'font-weight': notif.read == false ? 'bold' : 'normal'}">

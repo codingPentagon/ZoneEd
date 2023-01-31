@@ -31,6 +31,7 @@ mat-checkbox{
 }
 .notifhed{
   display: flex;
+
 }
 .spacer{
   flex: 1 1 auto;
@@ -38,4 +39,10 @@ mat-checkbox{
 
 mat-card{
   margin: 4px;
+}
+h1{
+  margin: 15px;
+}
+button{
+  margin: 10px;
 }
