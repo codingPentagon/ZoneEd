@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
-import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
+
 import {NavComponent} from "./shared/nav/nav.component";
+import { TchrProfileComponent } from './tchr-profile/tchr-profile.component';
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  {path:'stuDash',component:StuDashboardComponent}
+  {path:'tchProfile',component:TchrProfileComponent }
+
 
 ]
 

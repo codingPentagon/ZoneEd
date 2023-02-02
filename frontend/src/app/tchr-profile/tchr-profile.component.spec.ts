@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StuDashboardComponent } from './stu-dashboard.component';
+import { TchrProfileComponent } from './tchr-profile.component';
 
-describe('StuDashboardComponent', () => {
-  let component: StuDashboardComponent;
-  let fixture: ComponentFixture<StuDashboardComponent>;
+describe('TchrProfileComponent', () => {
+  let component: TchrProfileComponent;
+  let fixture: ComponentFixture<TchrProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StuDashboardComponent ]
+      declarations: [ TchrProfileComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StuDashboardComponent);
+    fixture = TestBed.createComponent(TchrProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
