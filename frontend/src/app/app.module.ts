@@ -12,7 +12,6 @@ import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
-  
     StuDashboardComponent,
   ],
   imports: [
