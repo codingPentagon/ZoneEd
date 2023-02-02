@@ -13,7 +13,6 @@ import { TchrProfileComponent } from './tchr-profile/tchr-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
-
     TchrProfileComponent,
   ],
   imports: [

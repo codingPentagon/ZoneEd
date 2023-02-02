@@ -1,13 +1,23 @@
 
 <app-nav></app-nav>
 <div id="body-contains"><app-header></app-header>
-   <mat-card>
-       <mat-card-content class="first_card">
-          <h3>Attendance Overview</h3>
+  
+ <mat-card>
+    <div class="container01">
+        <button mat-button (click)="toggleDetails()" id="showDetailsButton">My Profile</button>
+        <button mat-button>Change Password</button>
+        <button mat-button>Photo</button>
 
-       </mat-card-content>
-     </mat-card>
+        <ul *ngIf="showDetails">
+            <li>Detail 1</li>
+            <li>Detail 2</li>
+            <li>Detail 3</li>
+          </ul>
+    </div>
 
 
+  
+ </mat-card>
+ 
 </div>
  
