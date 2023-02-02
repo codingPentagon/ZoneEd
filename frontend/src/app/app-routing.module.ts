@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
-import { RegStuComponent } from "./reg-stu/reg-stu.component";
+import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import {NavComponent} from "./shared/nav/nav.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'studentreg', component: RegStuComponent }
+  {path:'stuDash',component:StuDashboardComponent}
+
 ]
 
 @NgModule({
