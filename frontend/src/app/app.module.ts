@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from "@angular/material/input";
 import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 
@@ -20,7 +20,8 @@ import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

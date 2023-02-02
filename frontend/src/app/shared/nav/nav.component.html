@@ -1,10 +1,22 @@
 <mat-sidenav-container>
   <mat-sidenav opened disableClose mode="side">
     <mat-nav-list>
-      <mat-list-item *ngFor="let link of links" routerLink="link.path">
-        <a matListItemTitle>{{link.value}}</a>
-        <button matListItemMeta mat-icon-button>
-          <mat-icon>{{link.icon}}</mat-icon>
+      <mat-list-item>
+        <a matListItemTitle routerLink="stuDash">Dashboard</a>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>dashboard</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <a matListItemTitle routerLink="studentreg">Student Registration</a>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <a matListItemTitle routerLink="teacherreg">Teacher Registration</a>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>person_add</mat-icon>
         </button>
       </mat-list-item>
     </mat-nav-list>
