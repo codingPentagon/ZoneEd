@@ -75,13 +75,22 @@ mat-card{
 }
 mat-card-content{
   overflow: auto;
+  height: 100%;
 }
 mat-form-field{
-  width: 600px;
+  width: 35vw;
 }
 
-.body{
-  width: 600px;
-  height: auto;
-  display: table-cell;
+form{
+  display:none ;
+}
+mat-panel-title {
+  white-space: break-spaces;
+}
+
+.mailbody{
+  height: 35vh;
+}
+textarea{
+  resize: none;
 }
