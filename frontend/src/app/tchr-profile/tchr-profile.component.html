@@ -4,17 +4,30 @@
   <div class="mat-container">
 
     <mat-card>
+      <p class="topic">My Profile</p>
+      <div class="profie-container">
+        <p>Name</p>
+        <p>Date of Birth</p>
+        <p>Address</p>
+        <p>NIC No</p>
+        <p>Gender</p>
+        <p>UserID</p>
+        <p>Contact No</p>
+        <p>Email</p>
+   
+      </div>
  
-
-
   
     </mat-card>
     <div id="mat-right">
       <mat-card id="mat-photo">
-     
+        <p class="topic">Photo</p>
+
+        <img [src]="imageSrc">
+        <button (click)="changeImage()">Change Image</button>
       </mat-card>
       <mat-card id="mat-passwrd">
-  
+        <p class="topic">Change password</p>
       </mat-card>
   
     </div>

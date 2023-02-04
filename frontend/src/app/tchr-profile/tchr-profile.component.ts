@@ -7,12 +7,7 @@ import { Component } from '@angular/core';
   
 })
 export class TchrProfileComponent {
-  showDetails = false;
-  buttonText = 'Show Details';
- 
-  toggleDetails() {
-
-    this.showDetails = !this.showDetails;
-    this.buttonText = this.showDetails ? 'Hide Details' : 'Show Details';
-  }
+  imageSrc = './assets/ation.png';
+  
+  changeImage() {    this.imageSrc = 'https://example.com/image2.png';  }
 }
