@@ -5,6 +5,8 @@
 
     <mat-card>
       <p class="topic">My Profile</p>
+      
+      <div id="profile">
       <div class="profie-container">
         <p>Name</p>
         <p>Date of Birth</p>
@@ -16,6 +18,18 @@
         <p>Email</p>
    
       </div>
+      <div class="profie-details">
+        <p>Shriyani perera</p>
+        <p>1988/06/25</p>
+        <p>Colombo 07,athurugiriya</p>
+        <p>985465354V</p>
+        <p>Female</p>
+        <p>234576E</p>
+        <p>077654345</p>
+        <p>test@gmail.com</p>
+   
+      </div>
+    </div>
  
   
     </mat-card>
@@ -34,9 +48,27 @@
     
       </mat-card>
     </div>
-      <mat-card id="mat-passwrd">
+     <mat-card id="mat-passwrd">
         <p class="topic">Change password</p>
-    
+      <div class="login-container">
+        <div class="field">
+          <label for="newPassword">Usename:</label>
+          <mat-form-field class="fullName" appearance="outline">
+            <mat-label>Enter username</mat-label>
+             <input matInput placeholder="" id="initName" name="initName" ngModel required>
+            </mat-form-field>
+        </div>
+        <div class="field">
+          <label for="newPassword">Password:</label>
+          <mat-form-field class="fullName" appearance="outline">
+            <mat-label>Enter Password</mat-label>
+             <input type="password" matInput placeholder="" id="initName" name="initName" ngModel required>
+            </mat-form-field>
+        </div>
+      </div>
+      <button class="login_btn" type="submit">Login</button>
+      </mat-card>
+     <!--
       
       <div class="password-container">
 
@@ -65,12 +97,12 @@
           <button type="submit">Save changes</button>
         </form>
       </div>
-      </mat-card>
   
-    </div>
+  -->
+   
 
-  </div>
+
 
  
-</div>
+
  

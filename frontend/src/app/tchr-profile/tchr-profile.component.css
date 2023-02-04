@@ -68,6 +68,7 @@
   margin-bottom: 40px;
   border-radius: 5px;
   margin-top: 60px;
+  color: aliceblue;
 
  }
  .photo-container{
@@ -88,21 +89,46 @@
   margin-left: 5px;
  }
  
- .password-container{
-  width: 500px;
-  display: flex;
-  justify-content: center;
-
+ .login-container{
+  margin-left: 60px;
+  margin-top: 20px;
  }
 
  
-form label{
-  margin-right: 10px;
+label{
+ 
   padding: 3px 3px 3px 4px;
   display: inline-block;
-  width: 150px;
+  margin-right: 20px;
+  margin-left: 10px;
 }
 form button{
   margin-top:-7px;
   margin-left: 300px;
+}
+
+.display-picture{
+  width: 300px;
+  height: 200px;
+  margin-left: 25%;
+  border-radius: 5%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile{
+display: flex;
+}
+.profie-details{
+  margin-left: 30px;
+  padding-top: 30px;
+  font-style: italic;
+  color: rgb(127, 133, 133);
+    
+}
+.login_btn{
+ margin-left: 300px;
+ margin-top: -5px;
 }
