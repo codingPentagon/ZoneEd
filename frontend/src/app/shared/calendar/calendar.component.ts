@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component} from '@angular/core';
 import {CalendarToggleService} from "./calendar-toggle.service";
 import {CalendarConnectorService} from "./calendar-connector.service";
 import {MbscCalendarEvent, MbscEventcalendarOptions} from "@mobiscroll/angular";
@@ -11,7 +11,6 @@ import {MbscCalendarEvent, MbscEventcalendarOptions} from "@mobiscroll/angular";
 export class CalendarComponent {
 
   //calendar toggle
-  @HostBinding('class.is-open')
   isOpen:boolean = false;
   myEvents:MbscCalendarEvent[];
   eventSettings:MbscEventcalendarOptions;
@@ -24,6 +23,7 @@ export class CalendarComponent {
   ngOnInit() {
     this.calToggleService.change.subscribe(isOpen => {
       this.isOpen = isOpen;
+      console.log(this.isOpen);
     });
   }
 }
