@@ -7,7 +7,35 @@ import { Component } from '@angular/core';
   
 })
 export class TchrProfileComponent {
-  imageSrc = './assets/ation.png';
-  
-  changeImage() {    this.imageSrc = 'https://example.com/image2.png';  }
+  imageSrc = '';
+
+  changeImage(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.imageSrc = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+  saveImage() {
+    // Save the image to your desired location
+    // ...
+  }
+
+  oldPassword = '';
+  newPassword = '';
+  confirmPassword = '';
+
+  changePassword() {
+    // Validate the passwords
+    if (this.newPassword !== this.confirmPassword) {
+      alert('The new passwords do not match');
+      return;
+    }
+
+    // Send the change password request to the server
+    // ...
+  }
 }

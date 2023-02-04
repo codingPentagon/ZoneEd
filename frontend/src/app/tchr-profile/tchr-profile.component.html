@@ -20,14 +20,42 @@
   
     </mat-card>
     <div id="mat-right">
+      <div class="photo-container">
       <mat-card id="mat-photo">
-        <p class="topic">Photo</p>
-
-        <img [src]="imageSrc">
-        <button (click)="changeImage()">Change Image</button>
+        <p class="topic">Change profile picture</p>
+      <div class="photo-text">
+        <img class="profile-pic" [src]="imageSrc">
+        <div class="photo-save-section">
+          <input type="file" (change)="changeImage($event)">
+          <button (click)="saveImage()">Save Image</button>
+        </div>
+      </div>
+    
+    
       </mat-card>
+    </div>
       <mat-card id="mat-passwrd">
         <p class="topic">Change password</p>
+    
+      
+      <div class="password-container">
+
+        <form (ngSubmit)="changePassword()">
+          <div class="field">        
+            <label for="oldPassword">Old Password:</label>
+            <input type="password" id="oldPassword" >
+          </div>
+          <div class="field">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" >
+          </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword">
+          </div>
+          <button type="submit">Change Password</button>
+        </form>
+      </div>
       </mat-card>
   
     </div>

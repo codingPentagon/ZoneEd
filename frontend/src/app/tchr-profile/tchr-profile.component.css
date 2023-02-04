@@ -49,3 +49,58 @@
   font-size: 16px;
 
  }
+ .profile-pic{
+  width: 250px;
+
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  display: flex;
+  display: block;
+ }
+ button{
+  width: 130px;
+  text-align: center;
+
+  padding: 8px;
+  background-color: rgb(21, 83, 169);
+  border: none;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  margin-top: 60px;
+
+ }
+ .photo-container{
+  display: flex;
+ }
+
+ .photo-text{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+ }
+
+ .text{
+
+  text-align: center;
+ }
+ .photo-save-section{
+  margin-left: 5px;
+ }
+ input{
+  margin-top: 20px;
+  padding: 10px;
+  
+  
+ }
+
+ .password-container{
+  width: 500px;
+  display: flex;
+  justify-content: center;
+
+ }
+.field{
+  margin-top: 15px;
+}
+ 
