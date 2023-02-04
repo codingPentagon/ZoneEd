@@ -43,15 +43,24 @@
         <form (ngSubmit)="changePassword()">
           <div class="field">        
             <label for="oldPassword">Old Password:</label>
-            <input type="password" id="oldPassword" >
+            <mat-form-field class="fullName" appearance="outline">
+              <mat-label>Enter name with initials</mat-label>
+               <input matInput placeholder="" id="initName" name="initName" ngModel required>
+              </mat-form-field>
           </div>
           <div class="field">
             <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" >
+            <mat-form-field class="fullName" appearance="outline">
+              <mat-label>Enter name with initials</mat-label>
+               <input matInput placeholder="" id="initName" name="initName" ngModel required>
+              </mat-form-field>
           </div>
           <div class="field">
             <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword">
+            <mat-form-field class="fullName" appearance="outline">
+              <mat-label>Enter name with initials</mat-label>
+               <input matInput placeholder="" id="initName" name="initName" ngModel required>
+              </mat-form-field>
           </div>
           <button type="submit">Change Password</button>
         </form>

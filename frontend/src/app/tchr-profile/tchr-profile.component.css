@@ -87,13 +87,7 @@
  .photo-save-section{
   margin-left: 5px;
  }
- input{
-  margin-top: 20px;
-  padding: 10px;
-  
-  
- }
-
+ 
  .password-container{
   width: 500px;
   display: flex;
@@ -101,6 +95,9 @@
 
  }
 .field{
-  margin-top: 15px;
+  margin-top: 5px;
 }
  
+form label{
+  margin-right: 10px;
+}
