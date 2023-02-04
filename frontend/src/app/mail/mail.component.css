@@ -8,10 +8,11 @@
   flex: 1;
 }
 
-#All{
+.create{
   color: #87878b;
   flex: 1;
   margin: 20px;
+  display: none;
 }
 
 *{
@@ -99,4 +100,15 @@ h2{
 }
 .spacer{
   flex: 1 1 auto;
+}
+.inbox{
+  width: 80%;
+}
+
+mat-tab-group{
+  width: 20%;
+  float: right;
+}
+.delbutton{
+  float: right;
 }

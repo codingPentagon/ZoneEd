@@ -14,26 +14,30 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
     AppComponent,
     MailComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatSelectModule,
-        MatChipsModule,
-        MatIconModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatButtonModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatDividerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
