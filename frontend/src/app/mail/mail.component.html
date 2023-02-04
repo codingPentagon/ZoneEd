@@ -5,8 +5,11 @@
   <div class="left" >
     <mat-card>
     <mat-card-header>
-      <div id="img" >
-      </div>
+      <h2>New Mail</h2>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+      <mat-icon>post_add</mat-icon>
+      </button>
     </mat-card-header>
     <mat-card-content>
 <br>
@@ -61,13 +64,12 @@
       <label for="myfile">Select files:</label>
       <input type="file" id="myfile" name="myfile" multiple><br><br>
     </div>
-
-
   </mat-card-content>
   <mat-card-actions align="end">
     <div id="send">
-      <button id="Send1" type="submit" class="btn">Send</button>
-      <button id="Discard" type="submit" class="btn">Discard</button>
+      <button mat-raised-button>Send</button>
+      <span></span>
+      <button mat-raised-button>Discard</button>
     </div>
   </mat-card-actions>
   </mat-card>

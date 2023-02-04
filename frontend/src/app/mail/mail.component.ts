@@ -15,7 +15,7 @@ export class MailComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   mailCtrl = new FormControl('');
   filteredMails: Observable<string[]>;
-  mails: string[] = [''];
+  mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
 
   @ViewChild('mailInput') mailInput: ElementRef<HTMLInputElement> | undefined;

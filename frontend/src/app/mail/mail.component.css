@@ -94,3 +94,9 @@ mat-panel-title {
 textarea{
   resize: none;
 }
+h2{
+  color: black;
+}
+.spacer{
+  flex: 1 1 auto;
+}
