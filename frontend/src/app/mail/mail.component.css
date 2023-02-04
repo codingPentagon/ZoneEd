@@ -8,17 +8,11 @@
   flex: 1;
 }
 
-
-#Body1{
-color: #87878b;
-}
 #All{
   color: #87878b;
   flex: 1;
   margin: 20px;
-
 }
-
 
 *{
   box-sizing: border-box;
@@ -29,8 +23,6 @@ body{
 
   background-color: #ffffff;
 }
-
-
 .box{
 
   border: 1px solid gray;
@@ -66,21 +58,30 @@ body{
 #att-section{
   flex: 1;
   color: #87878b;
-
 }
-#send{
-  text-align: right;
-}
-#img{
-  float: right;
-}
-#mat-card{
+mat-card{
   margin: 15px;
+  height: 90vh;
 }
 .table-row{
   display: table-row;
+  width: 100%;
+
 }
 .table-row>span{
   display: table-cell;
   width: 100px;
+
+}
+mat-card-content{
+  overflow: auto;
+}
+mat-form-field{
+  width: 600px;
+}
+
+.body{
+  width: 600px;
+  height: auto;
+  display: table-cell;
 }

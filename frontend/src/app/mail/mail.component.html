@@ -1,35 +1,36 @@
 <app-nav></app-nav>
 <div id="All">
 
-
-
   <div class="content">
   <div class="left" >
     <mat-card>
     <mat-card-header>
-
       <div id="img" >
-
       </div>
     </mat-card-header>
     <mat-card-content>
-      <br>
-      <hr>
-      <br>
-      <div class="table-row" >
-        <span>From</span>
-    <mat-form-field id="fro" appearance="outline" color="accent">
-      <input matInput placeholder="Enter your email">
-       <mat-hint></mat-hint>
-       </mat-form-field>
-    </div>
-
 <br>
     <div class="table-row" >
       <span>To</span>
-      <mat-form-field appearance="outline" color="accent">
-        <input matInput placeholder="Enter receiver email">
-        <mat-hint></mat-hint>
+      <mat-form-field appearance="outline" color="accent" >
+        <mat-label>Enter mail</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Mail selection" >
+          <mat-chip-row *ngFor="let mail of mails" (removed)="remove(mail)">
+            {{mail}}
+            <button matChipRemove [attr.aria-label]="'remove ' + mail">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input placeholder="New Mail..." #mailInput [formControl]="mailCtrl"
+               [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               (matChipInputTokenEnd)="add($event)"/>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let mail of filteredMails | async" [value]="mail">
+            {{mail}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
 <br>
@@ -40,15 +41,12 @@
       </mat-form-field>
     </div>
 <br>
-    <div id="Body1">
-      Body
-      <div>
-        <textarea name="msg" id="1" cols="60" rows="16" placeholder="Enter the message"></textarea>
+      <div class="table-row">
+      <span> Body </span>
+      <mat-form-field appearance="outline" color="accent">
+        <input matInput placeholder="" >
+      </mat-form-field>
       </div>
-    </div>
-<br>
-
-
       </mat-card-content>
     </mat-card>
   </div>
@@ -64,14 +62,15 @@
       <input type="file" id="myfile" name="myfile" multiple><br><br>
     </div>
 
-    <br>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
     <div id="send">
       <button id="Send1" type="submit" class="btn">Send</button>
       <button id="Discard" type="submit" class="btn">Discard</button>
     </div>
-
-  </mat-card-content>
+  </mat-card-actions>
   </mat-card>
-</div>
+ </div>
   </div>
 </div>
