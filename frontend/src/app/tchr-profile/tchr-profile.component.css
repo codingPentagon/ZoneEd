@@ -94,10 +94,15 @@
   justify-content: center;
 
  }
-.field{
-  margin-top: 5px;
-}
+
  
 form label{
   margin-right: 10px;
+  padding: 3px 3px 3px 4px;
+  display: inline-block;
+  width: 150px;
+}
+form button{
+  margin-top:-7px;
+  margin-left: 300px;
 }
