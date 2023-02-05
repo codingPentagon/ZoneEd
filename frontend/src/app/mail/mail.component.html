@@ -80,11 +80,9 @@
   <h1>Mail</h1>
   <mat-card>
     <mat-card-header>
-
     </mat-card-header>
 
     <mat-card-content>
-
       <div class="delbutton">
       <button mat-icon-button >
         <mat-icon>delete</mat-icon>
@@ -94,11 +92,26 @@
       </button>
       </div>
       <mat-tab-group>
-        <mat-tab label="Inbox"></mat-tab>
-        <mat-tab label="Sent"></mat-tab>
+        <mat-tab label="Inbox">
+          <div class="inboxtab">
+          </div>
+        </mat-tab>
+        <mat-tab label="Sent">
+         <div class="senttab"></div>
+        </mat-tab>
       </mat-tab-group>
-      <mat-divider></mat-divider>
+
+
+      <div>
+        <mat-card>
+          <mat-card-header>
+            Inbox
+          </mat-card-header>
+        </mat-card>
+      </div>
+
     </mat-card-content>
   </mat-card>
-
 </div>
+
+
