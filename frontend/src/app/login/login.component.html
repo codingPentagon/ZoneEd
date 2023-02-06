@@ -12,16 +12,18 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="addon-wrapping"></span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-          </div>
+            <form  (ngSubmit)="onSubmit()" >
+            <input name="Username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"  [(ngModel)]="Username" > 
+        
           <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
               <span class="input-group-text" id="addon-wrapping"></span>
             </div>
-            <input type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping">
+            <input name="Password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping"  [(ngModel)]="Password">
           </div>
-          <button>Login</button>
+          <button type="submit" (click)="Show()">Login</button>
           <a href="google.com">Forget your password?</a>
+        </form>
  
     </div>
  
