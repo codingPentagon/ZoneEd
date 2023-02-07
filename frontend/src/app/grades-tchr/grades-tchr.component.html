@@ -12,8 +12,13 @@
             <mat-tab label="Second"></mat-tab>
           </mat-tab-group>
         </mat-card-header>
-        <mat-card-content>
-
+        <mat-card-content class="grades-names">
+          <div *ngFor="let name of names" class="grades-entry">
+            {{ name.name }}
+            <span class="spacer" ></span>
+            {{name.isCompleted==true ? "Complete":"Incomplete"}}<br>
+            <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

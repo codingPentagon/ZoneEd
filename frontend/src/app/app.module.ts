@@ -20,6 +20,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import { GradesTchrComponent } from './grades-tchr/grades-tchr.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatTabsModule} from "@angular/material/tabs";
+import {NgxGaugeModule} from "ngx-gauge";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatTabsModule} from "@angular/material/tabs";
         MatNativeDateModule,
         MatDividerModule,
         MatGridListModule,
-        MatTabsModule
+        MatTabsModule,
+        NgxGaugeModule
     ],
   providers: [],
   bootstrap: [AppComponent]

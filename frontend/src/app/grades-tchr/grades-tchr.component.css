@@ -24,3 +24,6 @@ mat-card-header{
   border-bottom: 1.5px solid gray;
 }
 
+.grades-entry{
+  display: flex;
+}
