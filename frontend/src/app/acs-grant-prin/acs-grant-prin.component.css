@@ -5,10 +5,12 @@
 
 .content{
   flex: 1;
+
 }
 
 mat-card{
   margin: 15px;
+  height: 50vh;
 }
 
 .left{
@@ -17,10 +19,34 @@ mat-card{
 
 .right{
   flex: 1;
-  color: red;
+
 }
 
 .spacer{
   flex: 1 1 auto;
 }
+.req-entry{
+  display: flex;
 
+}
+.req-list{
+  padding: 5px;
+}
+mat-card-content{
+  height: 100%;
+}
+.bold{
+  font-weight: bold;
+
+}
+.center{
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+button{
+  margin: 5px;
+}
+.flex{
+  display: flex;
+}

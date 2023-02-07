@@ -10,22 +10,30 @@ import { AcsGrantPrinComponent } from './acs-grant-prin/acs-grant-prin.component
 import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
     AppComponent,
     AcsGrantPrinComponent
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatSelectModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatChipsModule,
+        MatIconModule,
+        MatTableModule,
+        MatDividerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

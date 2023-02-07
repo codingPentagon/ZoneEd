@@ -5,71 +5,80 @@
     <div class="left">
       <mat-card>
         <mat-card-header>
-          Hand over Principal Dashboard
+          Request History
+          <span class="spacer"></span>
+          <mat-chip-listbox>
+            <mat-chip-option>
+              <mat-icon>
+                add
+              </mat-icon>
+            </mat-chip-option>
+          </mat-chip-listbox>
         </mat-card-header>
 
-        <mat-card-content>
+    <mat-divider></mat-divider>
 
-         <hr>
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="Select name">
-              <mat-option>Mr.Thilina Karunarathne</mat-option>
-              <mat-option>Mr. Ranasinghe R.J.K</mat-option>
-            </mat-select>
-          </mat-form-field><br>
 
-         <mat-form-field appearance="outline">
-           <mat-label>Enter notice</mat-label>
-           <input matInput placeholder="I grant access to you">
-         </mat-form-field>
-       </mat-card-content>
 
         <mat-card-content>
-          <!--<hr>-->
-          <mat-form-field appearance="outline">
-            <mat-label>Add notice</mat-label>
-            <input matInput placeholder="I can't accept">
-          </mat-form-field>
+           <div *ngFor="let request of requests">
+             <div  class="req-list">
+               <div class="req-entry">
+                 <span>To: {{request.recipient}}</span>
+                 <span class="spacer"></span>
+                 <span>{{request.sentDate}}</span>
+               </div>
+               <div class="req-entry">
+                 <span>From :- {{request.fromDate}}</span>
+                 <span class="spacer"></span>
+                 <span>{{request.sentTime}}</span>
+               </div>
+               <div class="req-entry">
+                 <span>To :- {{request.toDate}}</span>
+                 <span class="spacer"></span>
+                 <span>{{request.status}}</span>
+               </div>
+
+             </div>
+             <mat-divider></mat-divider>
+           </div>
+
+
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions align="end">
           <button mat-raised-button>Submit</button>
-        </mat-card-actions>
-
-        <mat-card-actions>
           <button mat-raised-button>Discard</button>
         </mat-card-actions>
 
-      </mat-card><br>
-    </div>
 
-    <div class="right">
-      <style>
-        table, th, td {
-        <!--border: 1px solid black;-->
-        border-collapse: collapse;
-      }</style>
-      <mat-card>
-        <mat-card-header>
-          Access grant request
-        </mat-card-header>
-        <mat-card-content>
-          <hr>
-
-          <table style="width:100%">
-            <tr>
-              <td style="border-bottom:1pt solid black">from: Mr. R.T. Meetiyagoda (Principal)<br><p style="color:limegreen">Accepted</p></td>
-              <td style="border-bottom:1pt solid black">30 December,2022<br>10.00</td>
-            </tr>
-
-
-            <tr>
-              <td class="test" >From: Mr. R.T. Meetiyagoda (Principal)<br><p style="color:red">Rejected</p></td>
-              <td>01 October,2022<br>05 min ago</td>
-            </tr>
-
-          </table>
-        </mat-card-content>
       </mat-card>
     </div>
+      <div class="right">
+        <mat-card>
+          <mat-card-header>
+            Grant Status
+          </mat-card-header>
+
+
+          <mat-card-content class="center">
+           <div>
+             <span class="bold">{{grantDetails.grantee}}</span> accepted the request
+
+           </div>
+            <button mat-raised-button>Grant Permissions</button>
+            <div class="flex">
+              <span>
+                {{grantDetails.fromDate}}<br>{{grantDetails.fromTime}}
+              </span>
+              <span class="spacer"></span>
+              <span>
+                {{grantDetails.toDate+"  "+grantDetails.toTime}}
+              </span>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
   </div>
 </div>
