@@ -13,6 +13,7 @@
   flex: 1;
   margin: 20px;
   display: none;
+
 }
 
 *{
@@ -88,7 +89,6 @@ form{
 mat-panel-title {
   white-space: break-spaces;
 }
-
 .mailbody{
   height: 35vh;
 }
@@ -101,20 +101,25 @@ h2{
 .spacer{
   flex: 1 1 auto;
 }
-.inbox{
-  width: 80%;
-}
-
 mat-tab-group{
-  width: 20%;
-  float: right;
+  width: 100%;
 }
-.delbutton{
-  float: right;
-}
-.inboxtab{
-  width: 80%;
-}
-mat-divider{
 
+/*mat-card-header{
+  background-color: red;
 }
+mat-card-content{
+  background-color: cyan;
+}
+*/
+mat-chip-option{
+  display: inline;
+}
+mat-panel-description{
+  justify-content: right;
+  text-align: right;
+}
+.mail-inbox{
+  display: none;
+}
+

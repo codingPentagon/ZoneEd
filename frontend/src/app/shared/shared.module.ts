@@ -7,6 +7,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 
 import { NavComponent } from './nav/nav.component';
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavComponent } from './nav/nav.component';
     MatInputModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   exports: [
     NavComponent

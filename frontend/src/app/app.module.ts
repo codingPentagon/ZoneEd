@@ -16,28 +16,30 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
     AppComponent,
     MailComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatSelectModule,
-    MatChipsModule,
-    MatIconModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatDividerModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatSelectModule,
+        MatChipsModule,
+        MatIconModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatDividerModule,
+        MatExpansionModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
