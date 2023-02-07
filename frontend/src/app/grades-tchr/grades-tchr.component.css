@@ -10,6 +10,7 @@ mat-card{
   width: 100%;
   margin: 15px;
   align-self: flex-start;
+  height: 100%;
 }
 
 mat-tab-group{
@@ -17,7 +18,7 @@ mat-tab-group{
 }
 
 .spacer{
-  flex: 1 1 auto
+  flex: 1 1 auto;
 }
 
 mat-card-header{
@@ -26,4 +27,22 @@ mat-card-header{
 
 .grades-entry{
   display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.grades-names{
+  overflow: auto;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+
+.grades-summary{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

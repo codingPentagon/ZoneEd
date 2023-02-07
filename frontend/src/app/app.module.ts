@@ -21,6 +21,8 @@ import { GradesTchrComponent } from './grades-tchr/grades-tchr.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatTabsModule} from "@angular/material/tabs";
 import {NgxGaugeModule} from "ngx-gauge";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -29,25 +31,27 @@ import {NgxGaugeModule} from "ngx-gauge";
     AttdnceTchrComponent,
     GradesTchrComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        FormsModule,
-        MatTableModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatDividerModule,
-        MatGridListModule,
-        MatTabsModule,
-        NgxGaugeModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatTabsModule,
+    NgxGaugeModule,
+    MatChipsModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

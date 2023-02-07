@@ -27,7 +27,8 @@ mat-card{
 }
 
 mat-checkbox{
- float-displace: block;
+  float-displace: block;
+
 }
 
 button{
@@ -49,5 +50,8 @@ mat-card-header{
 
 .attend-entry{
   display: flex;
+  align-items: center;
 }
+
+
 
