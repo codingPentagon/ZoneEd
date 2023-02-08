@@ -6,12 +6,14 @@ import {NavComponent} from "./shared/nav/nav.component";
 import {ClsAllocateComponent} from "./cls-allocate/cls-allocate.component";
 import {AttdnceTchrComponent} from "./attdnce-tchr/attdnce-tchr.component";
 import {GradesTchrComponent} from "./grades-tchr/grades-tchr.component";
+import {GradesStuComponent} from "./grades-stu/grades-stu.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
   { path: 'clsallocate', component: ClsAllocateComponent },
   { path: 'attndncetchr', component: AttdnceTchrComponent },
-  { path: 'gradestchr', component: GradesTchrComponent }
+  { path: 'gradestchr', component: GradesTchrComponent },
+  { path: 'gradesstu', component: GradesStuComponent }
 ]
 
 @NgModule({
