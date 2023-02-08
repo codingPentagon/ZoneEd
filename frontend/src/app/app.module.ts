@@ -23,6 +23,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {NgxGaugeModule} from "ngx-gauge";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
+import { GradesStuComponent } from './grades-stu/grades-stu.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {MatIconModule} from "@angular/material/icon";
     ClsAllocateComponent,
     AttdnceTchrComponent,
     GradesTchrComponent,
+    GradesStuComponent,
   ],
   imports: [
     BrowserModule,

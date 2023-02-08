@@ -45,4 +45,15 @@ mat-card-header{
   align-items: center;
   justify-content: center;
   height: 100%;
+  text-align: center;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+mat-divider.mat-divider-vertical{
+  height: 20px;
+  display: inline-block;
 }
