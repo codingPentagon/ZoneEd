@@ -41,11 +41,11 @@ mat-card-content{
 }
 .center{
   justify-items: center;
-  align-items: center;
-  align-content: center;
+
 }
 button{
   margin: 5px;
+
 }
 .flex{
   display: flex;
