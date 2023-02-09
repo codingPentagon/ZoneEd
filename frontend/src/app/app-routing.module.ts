@@ -9,7 +9,7 @@ import {SchedulePrinComponent} from "./schedule-prin/schedule-prin.component";
 const routes: Routes = [
   { path: '', component: NavComponent },
   { path: 'scheduletchr', component: ScheduleTchrComponent },
-  { path: 'scheduleprin', component: SchedulePrinComponent }
+  { path: 'scheduleprin', component: SchedulePrinComponent },
 ]
 
 @NgModule({

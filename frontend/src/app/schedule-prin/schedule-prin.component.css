@@ -1,7 +1,36 @@
-:host{
+:host, .workspace{
   display: flex;
 }
 
 .content{
   flex: 1;
+}
+
+.left{
+  flex: 1;
+  margin: 15px;
+}
+
+.right{
+  flex: 2;
+  margin: 15px 15px 15px 0;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid grey;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.teacher-entry{
+  display: flex;
+  height: 35px;
+  align-items: center;
+}
+
+mat-card-content{
+  overflow: auto;
+  height: 80vh;
 }

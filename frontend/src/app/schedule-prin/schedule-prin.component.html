@@ -1,6 +1,33 @@
-<app-nav [links]="navLinks"></app-nav>
+<app-nav></app-nav>
 <div class="content">
   <app-header headerTitle="Teacher's Schedule"></app-header>
   <div class="workspace">
+    <div class="left">
+      <mat-card>
+        <mat-card-header>
+          Teachers
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngFor="let teacher of teachers" >
+           <span class="teacher-entry">
+             {{ teacher.name }}
+             <span class="spacer" ></span>
+             {{ teacher.subject }}
+           </span>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="right">
+      <mat-card>
+        <mat-card-header>
+          Schedule
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

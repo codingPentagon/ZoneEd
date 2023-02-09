@@ -7,11 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ScheduleTchrComponent {
 
-  navLinks = [
-    {path:'', value:'Dashboard', icon:'space_dashboard'},
-    {path:'/scheduletchr', value:'Schedule', icon:'schedule'},
-    {path:'/scheduleprin', value:"Teacher's Schedule", icon:'schedule'}
-  ];
   schedule = [
     { period: 1, mon:"10A", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
     { period: 2, mon:"10A", tue:"10A", wed:"---", thu:"10A", fri:"10A" },
