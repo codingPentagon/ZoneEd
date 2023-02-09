@@ -18,6 +18,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatTabsModule,
         MatDividerModule,
         MatExpansionModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatButtonToggleModule
     ],
   providers: [],
   bootstrap: [AppComponent]

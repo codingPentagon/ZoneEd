@@ -1,69 +1,60 @@
 <app-nav></app-nav>
-<div class="create">
-  <div class="content">
-  <div class="left" >
-    <mat-card>
-    <mat-card-header>
-      <h2>New Mail</h2>
-      <span class="spacer"></span>
-        <mat-chip-listbox>
-          <mat-chip-option >
-            <mat-icon>post_add</mat-icon>
-          </mat-chip-option>
-        </mat-chip-listbox>
-    </mat-card-header>
-<br>
-      <mat-card-content>
-    <div class="table-row" >
-      <span>To</span>
-      <mat-form-field appearance="outline" color="accent" >
-        <mat-label>Enter mail</mat-label>
-        <mat-chip-grid #chipGrid aria-label="Mail selection" >
-          <mat-chip-row *ngFor="let mail of mails" (removed)="remove(mail)">
-            {{mail}}
-            <button matChipRemove [attr.aria-label]="'remove ' + mail">
-              <mat-icon>cancel</mat-icon>
-            </button>
-          </mat-chip-row>
-        </mat-chip-grid>
-        <input placeholder="New Mail..." #mailInput [formControl]="mailCtrl"
-               [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               (matChipInputTokenEnd)="add($event)"/>
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let mail of filteredMails | async" [value]="mail">
-            {{mail}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-<br>
-    <div class="table-row" >
-      <span>Subject</span>
-      <mat-form-field appearance="outline" color="accent">
-        <input matInput placeholder="">
-      </mat-form-field>
-    </div>
-<br>
-      <div class="table-row">
-      <span> Body </span>
-      <mat-form-field appearance="outline" color="accent" class="mailbody" >
-        <textarea matInput placeholder="" rows="10" ></textarea>
-      </mat-form-field>
-      </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
 
-<div class="right">
-<mat-card>
-  <mat-card-header>Attachment</mat-card-header>
-  <mat-card-content>
-    <hr>
-<br>
-    <div id="att">
-      <label for="myfile">Select files:</label>
-      <input type="file" id="myfile" name="myfile" multiple><br><br>
+<div class="create">
+      <mat-card>
+        <mat-card-header>
+          <h2>New Mail</h2>
+          <span class="spacer"></span>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="left">
+          <div class="table-row">
+            <span>To</span>
+            <mat-form-field appearance="outline" color="accent">
+              <mat-label>Enter mail</mat-label>
+              <mat-chip-grid #chipGrid>
+                <mat-chip-row *ngFor="let mail of mails" (removed)="remove(mail)">
+                  {{mail}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + mail">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              </mat-chip-grid>
+              <input placeholder="New Mail..." #mailInput [formControl]="mailCtrl"
+                     [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     (matChipInputTokenEnd)="add($event)"/>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let mail of filteredMails | async" [value]="mail">
+                  {{mail}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="table-row">
+            <span>Subject</span>
+            <mat-form-field appearance="outline" color="accent">
+              <input matInput placeholder="">
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="table-row">
+            <span> Body </span>
+            <mat-form-field appearance="outline" color="accent" class="mailbody">
+              <textarea matInput placeholder="" rows="10"></textarea>
+            </mat-form-field>
+          </div>
+          </div>
+
+
+    <div class="right">
+
+          <div id="att">
+            <label for="myfile">Select files:</label>
+            <input type="file" id="myfile" name="myfile" multiple><br><br>
+          </div>
+
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
@@ -74,103 +65,87 @@
     </div>
   </mat-card-actions>
   </mat-card>
- </div>
-  </div>
-</div>
+
 
 <div class="inbox1">
-  <h1>Mail</h1>
-  <mat-card>
+
+  <mat-card class="mail-inbox">
     <mat-card-header>
-      <mat-tab-group>
-        <mat-tab label="Inbox">
-          <ng-template matTabContent #tab1Content>
-
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Sentbox">
-          <ng-template matTabContent #tab2Content>
-          </ng-template>
-        </mat-tab>
-      </mat-tab-group>
-
-        <mat-chip-listbox>
-          <mat-chip-option>
-            <mat-icon>delete</mat-icon>
-          </mat-chip-option>
-          <mat-chip-option>
-            <mat-icon>post_add</mat-icon>
-          </mat-chip-option>
-        </mat-chip-listbox>
+      <span class="spacer"></span>
+      <mat-button-toggle-group>
+        <mat-button-toggle value="inbox" #inbox checked>Inbox</mat-button-toggle>
+        <mat-button-toggle value="sent" #sent>Sent Mail</mat-button-toggle>
+      </mat-button-toggle-group>
+      <mat-chip-listbox>
+        <mat-chip-option>
+          <mat-icon>delete</mat-icon>
+        </mat-chip-option>
+        <mat-chip-option>
+          <mat-icon>post_add</mat-icon>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card-header>
 
-    <mat-card-content >
-      <div [ngTemplateOutlet]="tab1Content">
-      </div>
-      <div [ngTemplateOutlet]="tab2Content">
-      </div>
-    <div class="mail-inbox"  *ngFor="let inboxmail of inboxmails">
-      <mat-accordion  >
-        <mat-expansion-panel >
-          <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'" (click)="inboxmail.read=true" [ngStyle]="{'font-weight': inboxmail.read == false ? 'bold' : 'normal'}">
-            <mat-panel-title>
-              {{inboxmail.sender}}
-              <br>
-              {{inboxmail.subject}}
-            </mat-panel-title>
-            <mat-panel-description>
-              <button mat-icon-button>
-                <mat-icon>
-                  reply
-                </mat-icon>
-              </button>
-              {{inboxmail.date}}
-              <br>
-              {{inboxmail.time}}
-              <br>
-              <mat-checkbox></mat-checkbox>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>
-            {{inboxmail.content}}
-          </p>
-          <button mat-icon-button>
-            <mat-icon>
-              reply
-            </mat-icon>
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div class="sentbox" *ngFor="let sentboxmail of sentboxmails">
-      <mat-card-content>
+    <mat-card-content>
+      <div  *ngFor="let inboxmail of inboxmails">
         <mat-accordion>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'" (click)="sentboxmail.read=true" [ngStyle]="{'font-weight': sentboxmail.read == false ? 'bold' : 'normal'}">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
+                                        (click)="inboxmail.read=true"
+                                        [ngStyle]="{'font-weight': inboxmail.read == false ? 'bold' : 'normal'}">
               <mat-panel-title>
-                {{sentboxmail.sender}}
+                {{inboxmail.sender}}
                 <br>
-                {{sentboxmail.subject}}
+                {{inboxmail.subject}}
               </mat-panel-title>
               <mat-panel-description>
-                {{sentboxmail.date}}
+                <button mat-icon-button>
+                  <mat-icon>
+                    reply
+                  </mat-icon>
+                </button>
+                {{inboxmail.date}}
                 <br>
-                {{sentboxmail.time}}
-                <br>
+                {{inboxmail.time}}
                 <mat-checkbox></mat-checkbox>
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>
-              {{sentboxmail.content}}
+              {{inboxmail.content}}
             </p>
+            <button mat-icon-button>
+              <mat-icon>
+                reply
+              </mat-icon>
+            </button>
           </mat-expansion-panel>
         </mat-accordion>
+      </div>
+      <div class="sentbox" *ngFor="let sentboxmail of sentboxmails">
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                <mat-panel-title>
+                  {{sentboxmail.sender}}
+                  <br>
+                  {{sentboxmail.subject}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{sentboxmail.date}}
+                  <br>
+                  {{sentboxmail.time}}
+                  <mat-checkbox></mat-checkbox>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>
+                {{sentboxmail.content}}
+              </p>
+            </mat-expansion-panel>
+          </mat-accordion>
         </mat-card-content>
       </div>
     </mat-card-content>
   </mat-card>
 </div>
-
-
-
-
+</div>
