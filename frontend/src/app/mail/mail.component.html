@@ -6,15 +6,12 @@
     <mat-card-header>
       <h2>New Mail</h2>
       <span class="spacer"></span>
-
         <mat-chip-listbox>
           <mat-chip-option >
             <mat-icon>post_add</mat-icon>
           </mat-chip-option>
         </mat-chip-listbox>
-
     </mat-card-header>
-
 <br>
       <mat-card-content>
     <div class="table-row" >
@@ -96,18 +93,15 @@
           </ng-template>
         </mat-tab>
       </mat-tab-group>
-      <div class="delbutton">
+
         <mat-chip-listbox>
           <mat-chip-option>
             <mat-icon>delete</mat-icon>
           </mat-chip-option>
-          <div class="post-button">
           <mat-chip-option>
             <mat-icon>post_add</mat-icon>
           </mat-chip-option>
-          </div>
         </mat-chip-listbox>
-      </div>
     </mat-card-header>
 
     <mat-card-content >
@@ -133,17 +127,23 @@
               {{inboxmail.date}}
               <br>
               {{inboxmail.time}}
+              <br>
+              <mat-checkbox></mat-checkbox>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <p>
             {{inboxmail.content}}
           </p>
+          <button mat-icon-button>
+            <mat-icon>
+              reply
+            </mat-icon>
+          </button>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-
-      <div class="sentbox" *ngFor="let sentboxmail of sentboxmails">
-        <mat-card-content>
+    <div class="sentbox" *ngFor="let sentboxmail of sentboxmails">
+      <mat-card-content>
         <mat-accordion>
           <mat-expansion-panel >
             <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'" (click)="sentboxmail.read=true" [ngStyle]="{'font-weight': sentboxmail.read == false ? 'bold' : 'normal'}">
@@ -153,20 +153,16 @@
                 {{sentboxmail.subject}}
               </mat-panel-title>
               <mat-panel-description>
-
                 {{sentboxmail.date}}
                 <br>
                 {{sentboxmail.time}}
+                <br>
+                <mat-checkbox></mat-checkbox>
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>
               {{sentboxmail.content}}
             </p>
-            <button mat-icon-button>
-              <mat-icon>
-                reply
-              </mat-icon>
-            </button>
           </mat-expansion-panel>
         </mat-accordion>
         </mat-card-content>

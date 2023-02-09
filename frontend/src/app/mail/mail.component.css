@@ -13,7 +13,6 @@
   flex: 1;
   margin: 20px;
   display: none;
-
 }
 
 *{
@@ -26,12 +25,10 @@ body{
   background-color: #ffffff;
 }
 .box{
-
   border: 1px solid gray;
   padding: 20px;
   font-size: 15px;
   font-weight: 600;
-
 }
 #form input,textarea{
   margin: 20px;
@@ -104,14 +101,6 @@ h2{
 mat-tab-group{
   width: 100%;
 }
-
-/*mat-card-header{
-  background-color: red;
-}
-mat-card-content{
-  background-color: cyan;
-}
-*/
 mat-chip-option{
   display: inline;
 }
@@ -122,4 +111,6 @@ mat-panel-description{
 .mail-inbox{
   display: none;
 }
-
+mat-checkbox{
+  transform: scale(0.75);
+}
