@@ -14,6 +14,7 @@ import {MatTableModule} from "@angular/material/table";
 import { SchedulePrinComponent } from './schedule-prin/schedule-prin.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -21,19 +22,20 @@ import {MatButtonModule} from "@angular/material/button";
     ScheduleTchrComponent,
     SchedulePrinComponent
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatTableModule,
-    MatSelectModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatDividerModule,
+        MatIconModule,
+        MatTableModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatChipsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

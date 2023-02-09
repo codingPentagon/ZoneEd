@@ -32,17 +32,19 @@ export class SchedulePrinComponent {
   ];
 
   schedule = [
-    { period: 1, mon:"10A", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 2, mon:"10A", tue:"10A", wed:"---", thu:"10A", fri:"10A" },
+    { period: 1, mon:"---", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
+    { period: 2, mon:"---", tue:"10A", wed:"---", thu:"10A", fri:"10A" },
     { period: 3, mon:"---", tue:"10A", wed:"10A", thu:"---", fri:"10A" },
     { period: 4, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"---" },
-    { period: 5, mon:"10A", tue:"10A", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 6, mon:"10A", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 7, mon:"10A", tue:"10A", wed:"---", thu:"---", fri:"10A" },
-    { period: 8, mon:"10A", tue:"10A", wed:"10A", thu:"10A", fri:"10A" }
+    { period: 5, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"10A" },
+    { period: 6, mon:"---", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
+    { period: 7, mon:"---", tue:"10A", wed:"---", thu:"---", fri:"10A" },
+    { period: 8, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"10A" }
   ];
 
   displayedColumns: string[] = ['period','mon','tue','wed','thu','fri'];
 
-  classes = ["10A","9A","8A","10B","9B","8B"];
+  classes = ["---","10A","9A","8A","10B","9B","8B"];
+
+  
 }
