@@ -46,5 +46,9 @@ export class SchedulePrinComponent {
 
   classes = ["---","10A","9A","8A","10B","9B","8B"];
 
-  
+  modify:boolean = false;
+
+  modifyToggle(){
+    this.modify = !this.modify;
+  }
 }

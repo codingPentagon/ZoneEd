@@ -78,3 +78,11 @@ mat-select >>> .mat-mdc-select-arrow, mat-select >>> .mat-mdc-select-value{
 button{
   margin: 15px 15px 15px 0;
 }
+
+mat-chip{
+ transition: 150ms ease-out;
+}
+
+.hide /deep/ .mat-mdc-select-arrow{
+  display: none;
+}
