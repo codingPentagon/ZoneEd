@@ -35,10 +35,6 @@ mat-card-header{
   overflow: auto;
 }
 
-.inline-block{
-  display: inline-block;
-}
-
 
 .grades-summary{
   display:flex;
@@ -54,6 +50,23 @@ mat-card-header{
 }
 
 mat-divider.mat-divider-vertical{
-  height: 20px;
+  height: 70px;
+  border-right-width: 5px;
+  color: red;
+  margin: auto 20px;
+}
+
+
+.inline-block{
   display: inline-block;
+}
+
+.box{
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+p{
+  margin: 5px 0;
 }
