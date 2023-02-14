@@ -1,4 +1,4 @@
-:host,.content,.create,mat-card-content{
+:host,.create{
   display: flex;
 }
 .left{
@@ -16,15 +16,9 @@
   color: #87878b;
   margin: 15px;
   flex: 1;
+  display: none;
 
 }
-
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 
 #form input,textarea{
   margin: 20px;
@@ -57,8 +51,8 @@
 mat-card{
   margin: 15px;
   height: 90vh;
-  width: 100%;
 }
+
 .table-row{
   display: table-row;
   width: 100%;
@@ -70,17 +64,12 @@ mat-card{
   width: 80px;
 
 }
-mat-card-content{
 
-  height: 100%;
-}
 mat-form-field{
   width: 43vw;
 }
 
-form{
-  display:none ;
-}
+
 mat-panel-title {
   white-space: break-spaces;
 }
@@ -100,23 +89,28 @@ h2{
 mat-chip-option{
   display: inline;
 }
+
 mat-panel-description{
   justify-content: right;
   text-align: right;
 }
-.mail-inbox{
-  display: none;
-}
+
 mat-checkbox{
   transform: scale(0.75);
 }
 mat-button-toggle-group{
   margin-right: 20px;
 }
-.inbox1{
-  display: none;
-}
 
 button{
   margin: 15px 15px 15px 0;
+}
+
+mat-card-content{
+  overflow: auto;
+  height: 100%;
+}
+
+mat-expansion-panel{
+  margin: 15px;
 }
