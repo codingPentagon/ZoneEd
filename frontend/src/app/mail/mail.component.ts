@@ -61,6 +61,7 @@ export class MailComponent {
     const filterValue = value.toLowerCase();
     return this.allMails.filter(mail => mail.toLowerCase().includes(filterValue));
   }
+
   inboxmails:any = [
     {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.", time:"15 min ago", read:false},
     {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
@@ -70,12 +71,12 @@ export class MailComponent {
     {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false}
   ];
   sentboxmails:any = [
-{sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.", time:"15 min ago", read:false},
-{sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
-{sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"15 min ago", read:false},
-{sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
-{sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"15 min ago", read:false},
-{sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
+    {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.", time:"15 min ago", read:false},
+    {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
+    {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"15 min ago", read:false},
+    {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
+    {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"15 min ago", read:false},
+    {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
     {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.", time:"15 min ago", read:false},
     {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago", read:false},
     {sender:"Mr. R.T. Meetiyagoda (Principal)",date:"31 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"15 min ago", read:false},
