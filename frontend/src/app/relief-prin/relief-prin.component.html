@@ -31,7 +31,8 @@
               Class {{relief.class}} Period {{relief.period}}
               <span class="spacer"></span>
               <div>
-                <mat-select placeholder="Select a Teacher" [(value)]="relief.allocatedTchr">
+                <mat-select placeholder="Select a Teacher" [(value)]="relief.allocatedTchr"
+                            [ngStyle]="{'background-color':relief.allocatedTchr == '' ? 'lightgrey' : 'blue'}">
                   <mat-option *ngFor="let teacher of availTeachers" [value]="teacher">
                     {{teacher}}
                   </mat-option>

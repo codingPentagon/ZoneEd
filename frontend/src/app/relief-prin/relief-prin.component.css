@@ -51,4 +51,7 @@ mat-card-header{
 
 mat-select{
   width: 20vw;
+  padding: 3px;
+  margin: 1px;
+  border-radius: 20px;
 }
