@@ -23,6 +23,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import { GradesStuComponent } from './grades-stu/grades-stu.component';
+import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GradesStuComponent } from './grades-stu/grades-stu.component';
     AttdnceTchrComponent,
     GradesTchrComponent,
     GradesStuComponent,
+    AttdnceStuComponent,
   ],
   imports: [
     BrowserModule,
