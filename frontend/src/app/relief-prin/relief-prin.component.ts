@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class ReliefPrinComponent {
 
+  availTeachers = ['','Saduni Perera','Sachini Silva','Tharuka Bandara','Panchali Herath'];
+
+  teachersOnLeave = [
+    {teacher: 'Saduni Perera', subject: 'Science'},
+    {teacher: 'Sachini Silva', subject: 'Sinhala'},
+    {teacher: 'Tharuka Bandara', subject: 'English'},
+    {teacher: 'Panchali Herath', subject: 'Maths'}
+  ];
+
+  reliefs = [
+    {class:'6A', period:2, allocatedTchr:''},
+    {class:'6A', period:2, allocatedTchr:''},
+    {class:'6A', period:2, allocatedTchr:''},
+    {class:'6A', period:2, allocatedTchr:''},
+  ]
+
 }
