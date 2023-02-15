@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReliefPrinComponent } from './relief-prin.component';
+import { SchedulePrinComponent } from './schedule-prin.component';
 
-describe('ReliefPrinComponent', () => {
-  let component: ReliefPrinComponent;
-  let fixture: ComponentFixture<ReliefPrinComponent>;
+describe('SchedulePrinComponent', () => {
+  let component: SchedulePrinComponent;
+  let fixture: ComponentFixture<SchedulePrinComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReliefPrinComponent ]
+      declarations: [ SchedulePrinComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReliefPrinComponent);
+    fixture = TestBed.createComponent(SchedulePrinComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
