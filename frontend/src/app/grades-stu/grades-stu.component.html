@@ -6,25 +6,56 @@
       <mat-card class="grades">
         <mat-card-header>
           Grades
-        </mat-card-header>
-        <mat-card-content>
-          <mat-form-field appearance="outline">
-            <mat-select></mat-select>
+          <span class="spacer"></span>
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-select placeholder="Select Class">
+              <mat-option *ngFor="let class of classes" [value]="class.value">{{class.viewValue}}</mat-option>
+            </mat-select>
           </mat-form-field>
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-select placeholder="Select Term">
+              <mat-option *ngFor="let term of terms" [value]="term.value">{{term.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-header>
+        <mat-card-content class="grades-names">
+          <div *ngFor="let grade of grades">
+            <div class="grades-entry">
+              {{ grade.subject }}
+              <span class="spacer"></span>
+              {{ grade.grade }}
+            </div>
+            <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
         <mat-card-actions align="end">
         </mat-card-actions>
       </mat-card>
     </div>
       <div class="right">
-        <mat-card class="gradesSummary">
+        <mat-card class="grades-summary">
           <mat-card-header>
             Grades Summary
           </mat-card-header>
+          <mat-card-content class="grades-sum">
+            <div class="box">
+              <div class="inline-block">
+                <p class="big-text">751</p>
+                <p>Total Marks</p>
+              </div>
+              <mat-divider class="inline-block" [vertical]="true"></mat-divider>
+              <div class="inline-block">
+                <p class="big-text">02</p>
+                <p>Rank</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="grades-overview">
+          <mat-card-header>
+            Grades Overview
+          </mat-card-header>
           <mat-card-content>
-            <mat-form-field appearance="outline">
-              <mat-select></mat-select>
-            </mat-form-field>
           </mat-card-content>
         </mat-card>
       </div>

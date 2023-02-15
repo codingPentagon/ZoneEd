@@ -6,8 +6,9 @@
   flex: 1;
 }
 
-mat-card{
+.grades{
   margin: 15px;
+  height: 75vh;
 }
 
 .left{
@@ -32,9 +33,60 @@ mat-card-content{
 }
 
 
-
 mat-card-header{
   border-bottom: 1.5px solid gray;
 }
 
+mat-form-field{
+  margin-left: 7px;
+}
+
+.grades-entry{
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.grades-summary{
+  height: 25vh;
+  margin: 15px 15px 15px 0;
+}
+
+.grades-overview{
+  height: 48vh;
+  margin: 0 15px 15px 0;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+mat-divider.mat-divider-vertical{
+  height: 70px;
+  border-right-width: 5px;
+  color: red;
+  margin: auto 20px;
+}
+
+
+.inline-block{
+  display: inline-block;
+}
+
+.box{
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+p{
+  margin: 5px 0;
+}
+
+.grades-sum{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
