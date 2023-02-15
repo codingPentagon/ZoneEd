@@ -1,1 +1,51 @@
-<p>relief-prin works!</p>
+<app-nav></app-nav>
+<div class="content">
+  <app-header headerTitle="Relief Allocation"></app-header>
+  <div class="workspace">
+    <div class="left">
+      <mat-card class="left-card">
+        <mat-card-header>
+          Teachers on Leave
+          <span class="spacer"></span>
+          Today
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngFor="let tol of teachersOnLeave">
+            <div class="teacher-entry">
+              {{tol.teacher}}
+              <span class="spacer"></span>
+              {{tol.subject}}
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="right">
+      <mat-card class="right-card">
+        <mat-card-header>Class Allocation</mat-card-header>
+        <mat-card-content>
+
+          <div *ngFor="let relief of reliefs">
+            <div class="allocate-entry">
+              Class {{relief.class}} Period {{relief.period}}
+              <span class="spacer"></span>
+              <div>
+                <mat-select placeholder="Select a Teacher" [(value)]="relief.allocatedTchr">
+                  <mat-option *ngFor="let teacher of availTeachers" [value]="teacher">
+                    {{teacher}}
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button (click)="foo()">Allocate</button>
+          <button mat-raised-button>Modify</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

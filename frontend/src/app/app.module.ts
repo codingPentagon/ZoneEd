@@ -13,6 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import { ReliefPrinComponent } from './relief-prin/relief-prin.component';
 import { ReliefTchrComponent } from './relief-tchr/relief-tchr.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,19 +21,20 @@ import { ReliefTchrComponent } from './relief-tchr/relief-tchr.component';
     ReliefPrinComponent,
     ReliefTchrComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatDividerModule,
-        MatIconModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatChipsModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatChipsModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
