@@ -21,6 +21,11 @@ export class ReliefPrinComponent {
     {class:'6A', period:2, allocatedTchr:''},
     {class:'6A', period:2, allocatedTchr:''},
     {class:'6A', period:2, allocatedTchr:''},
-  ]
+  ];
 
+  modify:boolean = false;
+
+  modifyToggle(){
+    this.modify = !this.modify;
+  }
 }
