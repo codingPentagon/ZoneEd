@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
-import {NavComponent} from "./shared/nav/nav.component";
-import {ScheduleTchrComponent} from "./schedule-tchr/schedule-tchr.component";
-import {SchedulePrinComponent} from "./schedule-prin/schedule-prin.component";
+import {NavComponent} from "./shared/nav/nav.component"
+import {ReliefPrinComponent} from "./relief-prin/relief-prin.component";
+import {ReliefTchrComponent} from "./relief-tchr/relief-tchr.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'scheduletchr', component: ScheduleTchrComponent },
-  { path: 'scheduleprin', component: SchedulePrinComponent },
+  { path: 'relieftchr', component: ReliefTchrComponent },
+  { path: 'reliefprin', component: ReliefPrinComponent },
 ]
 
 @NgModule({
