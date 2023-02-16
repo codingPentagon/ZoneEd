@@ -1,12 +1,17 @@
 <app-nav></app-nav>
 
-<div class="create">
-  <mat-card class="hide">
+<div class="create" *ngIf="create">
+  <mat-card class="new-mail-card">
     <mat-card-header>
       <h2>New Mail</h2>
       <span class="spacer"></span>
+      <mat-chip-listbox>
+        <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
+          <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">post_add</mat-icon>
+        </mat-chip>
+      </mat-chip-listbox>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="new-mail">
       <div class="left">
         <div class="table-row">
           <span>To</span>
@@ -68,7 +73,7 @@
 </div>
 
 
-<div class="inbox1">
+<div class="inbox1" *ngIf="!create">
 
   <mat-card class="mail-inbox">
     <mat-card-header>
@@ -78,12 +83,12 @@
         <mat-button-toggle value="sent" #sent>Sent Mail</mat-button-toggle>
       </mat-button-toggle-group>
       <mat-chip-listbox>
-        <mat-chip-option>
-          <mat-icon>delete</mat-icon>
-        </mat-chip-option>
-        <mat-chip-option>
-          <mat-icon>post_add</mat-icon>
-        </mat-chip-option>
+        <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
+          <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">post_add</mat-icon>
+        </mat-chip>
+        <mat-chip [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="deleteToggle()">
+          <mat-icon [ngStyle]="{'color':delete ? 'white' : 'black'}">delete</mat-icon>
+        </mat-chip>
       </mat-chip-listbox>
     </mat-card-header>
 
@@ -105,7 +110,7 @@
                   {{inboxmail.date}}
                   <br>
                   {{inboxmail.time}}
-                  <mat-checkbox></mat-checkbox>
+                  <mat-checkbox *ngIf="delete"></mat-checkbox>
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <p>
@@ -134,7 +139,7 @@
                   {{sentboxmail.date}}
                   <br>
                   {{sentboxmail.time}}
-                  <mat-checkbox></mat-checkbox>
+                  <mat-checkbox *ngIf="delete"></mat-checkbox>
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <p>
@@ -145,5 +150,9 @@
         </div>
       </div>
     </mat-card-content>
+    <mat-card-actions align="end" *ngIf="delete">
+      <button mat-raised-button>Delete</button>
+      <button mat-raised-button (click)="deleteToggle()">Discard</button>
+    </mat-card-actions>
   </mat-card>
 </div>
