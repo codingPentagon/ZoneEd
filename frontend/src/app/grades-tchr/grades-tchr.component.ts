@@ -45,4 +45,10 @@ names =[
     {subject: 'Geography', grade: 85},
     {subject: 'ICT', grade: 90}
   ];
+
+  modify:boolean = false;
+
+  modifyToggle(){
+    this.modify = !this.modify;
+  }
 }

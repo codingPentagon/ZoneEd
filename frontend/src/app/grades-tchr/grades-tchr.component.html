@@ -3,7 +3,7 @@
   <app-header></app-header>
   <mat-grid-list cols="2" rowHeight="30vh">
     <mat-grid-tile rowspan="3">
-      <mat-card>
+      <mat-card class="names-card">
         <mat-card-header>
           Names
           <span class="spacer"></span>
@@ -25,14 +25,14 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
-      <mat-card>
+      <mat-card class="sub-grades-card">
         <mat-card-header>
           Subject Grades
           <span class="spacer"></span>
           <mat-chip-listbox>
-            <mat-chip-option>
-              <mat-icon>create</mat-icon>
-            </mat-chip-option>
+            <mat-chip [ngStyle]="{'background-color':modify ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="modifyToggle()">
+              <mat-icon [ngStyle]="{'color':modify ? 'white' : 'black'}">create</mat-icon>
+            </mat-chip>
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content class="grades-names">
@@ -40,7 +40,10 @@
             <div class="grades-entry">
               {{ grade.subject }}
               <span class="spacer"></span>
-              {{ grade.grade }}
+              <span *ngIf="!modify">{{grade.grade}}</span>
+              <mat-form-field appearance="outline" subscriptSizing="dynamic" *ngIf="modify">
+                <input matInput type="number" [max]="100" [(ngModel)]="grade.grade"/>
+              </mat-form-field>
             </div>
             <mat-divider></mat-divider>
           </div>
@@ -48,7 +51,7 @@
       </mat-card>
       </mat-grid-tile>
     <mat-grid-tile rowspan="1">
-      <mat-card>
+      <mat-card class="grades-summary-card">
         <mat-card-header>
           Grades Summary
         </mat-card-header>

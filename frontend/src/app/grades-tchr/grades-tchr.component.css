@@ -8,7 +8,7 @@
 
 mat-card{
   width: 100%;
-  margin: 15px;
+  margin: 15px 15px 0 15px;
   align-self: flex-start;
   height: 100%;
 }
@@ -27,8 +27,8 @@ mat-card-header{
 
 .grades-entry{
   display: flex;
-  height: 40px;
   align-items: center;
+  height: 40px;
 }
 
 .grades-names{
@@ -71,4 +71,7 @@ p{
   margin: 5px 0;
 }
 
-
+mat-form-field{
+  margin: 5px;
+  width: 100px;
+}
