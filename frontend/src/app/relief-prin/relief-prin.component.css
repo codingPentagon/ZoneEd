@@ -58,6 +58,7 @@ mat-select{
 
 /deep/ .mat-mdc-select-disabled /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-arrow{
   color: white;
+  margin: 0 10px 0 10px;
 }
 
 .hide /deep/ .mat-mdc-select-arrow{
