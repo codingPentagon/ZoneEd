@@ -1,0 +1,49 @@
+:host,.workspace{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+}
+
+.attendance{
+  margin: 15px;
+  height: 85vh;
+}
+
+.left{
+  flex: 1;
+}
+
+.right{
+  flex: 1;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.yearattendance{
+  margin: 15px 15px 15px 0;
+  height: 85vh;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
+mat-select{
+  width: 140px;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 30px;
+}
+
+/deep/ .mat-mdc-select-arrow{
+  margin: 0 10px 0 10px;
+}
+
+/deep/ .mat-mdc-select-value{
+  margin-left: 20px;
+}
+
