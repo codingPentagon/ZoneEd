@@ -1,21 +1,24 @@
 package codingpentagon.sms.backend;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin (origins = "http://localhost:65348")
 public class UserController {
 
-    private final UserRepository userRepository;
+    @Autowired
+    private UserRepository repo;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
+        repo.save(user);
+        return null;
     }
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/api/users")
-    public void addUser(@RequestBody User user) {
-        userRepository.save(user);
-    }
+
+
 }

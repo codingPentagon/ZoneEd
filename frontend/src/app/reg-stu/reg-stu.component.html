@@ -1,13 +1,13 @@
 <app-nav></app-nav>
 <div>
   <app-header></app-header>
-  <form class="form_container" #userForm="ngForm" (ngSubmit)="addUser(userForm,$event)">
+  <form class="form_container" #userForm="ngForm" (ngSubmit)="sendStuData()">
 
     <div>
       <label class="required" for="fullName">Full Name</label>
       <mat-form-field class="fullName" appearance="outline">
         <mat-label>Enter full name</mat-label>
-        <input matInput id="fullName" name="fullName" ngModel required>
+        <input matInput id="fullName" name="fullName" type="text"  name="fullName" id="fullName" [(ngModel)]="stu.fullName" ngModel required>
       </mat-form-field><br>
     </div>
     <div>
@@ -38,7 +38,7 @@
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob" ngModel required [max]="maxDate">
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" ngModel required >
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
@@ -50,7 +50,7 @@
         </mat-form-field><br>
 
         <label class="required" for="gender">Gender</label>
-        <mat-radio-group aria-label="Select an option" id="gender" name="gender" [(ngModel)]="gender" required>
+        <mat-radio-group aria-label="Select an option" id="gender" name="gender" required>
           <mat-radio-button value="m">male</mat-radio-button>
           <mat-radio-button value="f">female</mat-radio-button>
         </mat-radio-group><br>
@@ -71,7 +71,7 @@
         <label class="required" for="datee">Admission Date</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker2" [max]="maxDate2" id="datee" name="datee" ngModel required>
+          <input matInput [matDatepicker]="picker2"  id="datee" name="datee" ngModel required>
           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field><br>

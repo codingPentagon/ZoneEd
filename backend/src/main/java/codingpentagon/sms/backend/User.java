@@ -1,6 +1,10 @@
 package codingpentagon.sms.backend;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
+
+@Document(collection = "User")
 
 public class User {
     private String fullName;
