@@ -65,4 +65,6 @@ mat-select{
   display: none;
 }
 
-
+/deep/ .remove>*{
+  color: rgb(150, 150, 150);    /*could not find the class of the text*/
+}
