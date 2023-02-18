@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ReliefPrinComponent {
 
-  availTeachers = ['','Saduni Perera','Sachini Silva','Tharuka Bandara','Panchali Herath'];
+  availTeachers = ['Saduni Perera','Sachini Silva','Tharuka Bandara','Panchali Herath'];
 
   teachersOnLeave = [
     {teacher: 'Saduni Perera', subject: 'Science'},
@@ -17,15 +17,16 @@ export class ReliefPrinComponent {
   ];
 
   reliefs = [
-    {class:'6A', period:2, allocatedTchr:''},
-    {class:'6A', period:2, allocatedTchr:''},
-    {class:'6A', period:2, allocatedTchr:''},
-    {class:'6A', period:2, allocatedTchr:''},
+    {class:'6A', period:2, allocatedTchr:null},
+    {class:'6A', period:2, allocatedTchr:null},
+    {class:'6A', period:2, allocatedTchr:null},
+    {class:'6A', period:2, allocatedTchr:null},
   ];
 
   modify:boolean = false;
 
   modifyToggle(){
     this.modify = !this.modify;
+    console.log(this.reliefs);
   }
 }
