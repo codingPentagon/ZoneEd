@@ -1,1 +1,40 @@
-<p>relief-tchr works!</p>
+<app-nav></app-nav>
+<div class="content">
+  <app-header headerTitle="Relief Allocations"></app-header>
+  <div class="workspace">
+    <mat-card class="left">
+      <mat-card-header>
+        Relief Allocations
+        <span class="spacer"></span>
+        Today
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let relief of reliefAllocation">
+          <div class="relief-entry">
+            <div>
+              Class {{relief.class}} for {{relief.subject}}
+              <span class="spacer"></span>
+              {{relief.fromTime}} to {{relief.toTime}}
+            </div>
+            <div>
+              Period: {{relief.period}}
+              <span class="spacer"></span>
+              {{relief.assmntCount}} Assessments Available
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="right">
+      <mat-card-header>
+        Assessments
+        <span class="spacer"></span>
+        Forwarded
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
