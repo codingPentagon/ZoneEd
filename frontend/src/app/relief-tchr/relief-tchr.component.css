@@ -20,7 +20,7 @@
   flex: 1 1 auto;
 }
 
-.relief-entry>div{
+.flex{
   display: flex;
 }
 
@@ -28,6 +28,22 @@ mat-card-header{
   border-bottom: 1.5px solid gray;
 }
 
-.relief-entry{
+.entry{
   margin: 5px 0 5px 0
+}
+
+mat-card-content{
+  overflow: auto;
+}
+
+mat-card{
+  height: 50vh;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.width{
+  width: 100%;
 }

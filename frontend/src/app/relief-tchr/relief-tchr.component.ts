@@ -11,6 +11,8 @@ export class ReliefTchrComponent {
     {class:'10A',subject:'Sinhala',fromTime:'12.10',toTime:'11.30',period:4,assmntCount:2},
     {class:'11B',subject:'English',fromTime:'12.50',toTime:'13.30',period:8,assmntCount:0},
     {class:'9B',subject:'Maths',fromTime:'11.10',toTime:'11.50',period:5,assmntCount:1},
+    {class:'9B',subject:'Maths',fromTime:'11.10',toTime:'11.50',period:5,assmntCount:1},
+    {class:'9B',subject:'Maths',fromTime:'11.10',toTime:'11.50',period:5,assmntCount:1},
     {class:'8B',subject:'ICT',fromTime:'12.10',toTime:'12.50',period:3,assmntCount:0}
   ]
 }

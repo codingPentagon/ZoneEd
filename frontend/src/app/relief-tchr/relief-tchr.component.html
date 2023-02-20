@@ -10,16 +10,16 @@
       </mat-card-header>
       <mat-card-content>
         <div *ngFor="let relief of reliefAllocation">
-          <div class="relief-entry">
-            <div>
+          <div class="entry">
+            <div class="flex">
               Class {{relief.class}} for {{relief.subject}}
               <span class="spacer"></span>
               {{relief.fromTime}} to {{relief.toTime}}
             </div>
-            <div>
+            <div class="flex">
               Period: {{relief.period}}
               <span class="spacer"></span>
-              {{relief.assmntCount}} Assessments Available
+              {{relief.assmntCount == 0 ? 'No':relief.assmntCount}} Assessments Available
             </div>
           </div>
           <mat-divider></mat-divider>
@@ -33,7 +33,24 @@
         Forwarded
       </mat-card-header>
       <mat-card-content>
-
+        <div *ngFor="let relief of reliefAllocation">
+          <div class="entry flex">
+            <mat-icon>picture_as_pdf</mat-icon>
+            <div class="width">
+              <div class="flex">
+                Class {{relief.class}} for {{relief.subject}}
+                <span class="spacer"></span>
+                {{relief.fromTime}} to {{relief.toTime}}
+              </div>
+              <div class="flex">
+                Period: {{relief.period}}
+                <span class="spacer"></span>
+                {{relief.assmntCount == 0 ? 'No':relief.assmntCount}} Assessments Available
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
