@@ -3,20 +3,6 @@
   <app-header></app-header>
   <div class="workspace">
     <div class="left">
-      <mat-card class="attendance">
-        <mat-card-header>
-          Monthly Attendance Summary
-          <span class="spacer"></span>
-          <mat-select [value]=selectedMonth>
-            <mat-option *ngFor="let month of months" [value]="month.value">{{month.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-card-header>
-        <mat-card-content>
-        </mat-card-content>
-      </mat-card>
-    </div>
-      <div class="right">
       <mat-card class="yearattendance">
         <mat-card-header>
           Yearly Attendance Summary
@@ -28,6 +14,20 @@
         <mat-card-content>
         </mat-card-content>
       </mat-card>
+    </div>
+      <div class="right">
+        <mat-card class="attendance">
+          <mat-card-header>
+            Monthly Attendance Summary
+            <span class="spacer"></span>
+            <mat-select [value]=selectedMonth>
+              <mat-option *ngFor="let month of months" [value]="month.value">{{month.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-card-header>
+          <mat-card-content>
+          </mat-card-content>
+        </mat-card>
     </div>
     </div>
 </div>

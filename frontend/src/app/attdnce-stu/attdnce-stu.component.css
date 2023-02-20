@@ -6,7 +6,7 @@
   flex: 1;
 }
 
-.attendance{
+.yearattendance{
   margin: 15px;
   height: 85vh;
 }
@@ -23,10 +23,11 @@
   flex: 1 1 auto;
 }
 
-.yearattendance{
+.attendance{
   margin: 15px 15px 15px 0;
   height: 85vh;
 }
+
 
 mat-card-header{
   border-bottom: 1.5px solid gray;
