@@ -1,0 +1,46 @@
+:host,.workspace{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+}
+
+.proposal{
+  margin: 15px;
+  height: 42vh;
+}
+
+.projects{
+  margin: 15px;
+  height: 43vh;
+}
+
+.left{
+  flex: 1;
+}
+
+.right{
+  flex: 1;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.milestones{
+  margin: 15px 15px 15px 0;
+  height: 87vh;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
+.flex{
+  display: flex;
+}
+
+.entry{
+  margin: 5px 0 5px 0;
+}

@@ -1,0 +1,60 @@
+<app-nav></app-nav>
+<div class="content">
+  <app-header></app-header>
+  <div class="workspace">
+    <div class="left">
+      <mat-card class="proposal">
+        <mat-card-header>
+          Project Proposals
+          <span class="spacer"></span>
+          <mat-chip-listbox>
+            <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="proposalAddToggle()">
+              <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
+            </mat-chip>
+          </mat-chip-listbox>
+        </mat-card-header>
+        <mat-card-content>
+
+            <div *ngFor="let proposal of proposals">
+              <div class="entry">
+                <div class="flex">
+                  {{proposal.title}}
+                  <span class="spacer"></span>
+                  {{proposal.date}}
+                </div>
+                <div class="flex">
+                  {{proposal.feedback}}
+                  <span class="spacer"></span>
+                  {{proposal.status}}
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="projects">
+        <mat-card-header>
+          Projects
+          <span class="spacer"></span>
+          <mat-chip-listbox>
+            <mat-chip [ngStyle]="{'background-color':projectAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="projectAddToggle()">
+              <mat-icon [ngStyle]="{'color':projectAdd ? 'white' : 'black'}">add</mat-icon>
+            </mat-chip>
+          </mat-chip-listbox>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="right">
+      <mat-card class="milestones">
+        <mat-card-header>
+          Project Milestones
+          <span class="spacer"></span>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+</div>
+</div>
+</div>
