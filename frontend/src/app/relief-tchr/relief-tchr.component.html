@@ -33,20 +33,16 @@
         Forwarded
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let relief of reliefAllocation">
+        <div *ngFor="let assmnt of fwdAssessments">
           <div class="entry flex">
-            <mat-icon>picture_as_pdf</mat-icon>
+            <mat-icon>assignment</mat-icon>
             <div class="width">
               <div class="flex">
-                Class {{relief.class}} for {{relief.subject}}
+                {{assmnt.fileName}}
                 <span class="spacer"></span>
-                {{relief.fromTime}} to {{relief.toTime}}
+                {{assmnt.time}}
               </div>
-              <div class="flex">
-                Period: {{relief.period}}
-                <span class="spacer"></span>
-                {{relief.assmntCount == 0 ? 'No':relief.assmntCount}} Assessments Available
-              </div>
+              Class {{assmnt.class}}
             </div>
           </div>
           <mat-divider></mat-divider>

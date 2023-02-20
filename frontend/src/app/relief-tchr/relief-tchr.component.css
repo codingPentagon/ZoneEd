@@ -47,3 +47,8 @@ mat-card{
 .width{
   width: 100%;
 }
+
+mat-icon{
+  align-self: center;
+  margin-right: 10px;
+}
