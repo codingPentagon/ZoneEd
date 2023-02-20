@@ -11,15 +11,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
-import { ReliefPrinComponent } from './relief-prin/relief-prin.component';
-import { ReliefTchrComponent } from './relief-tchr/relief-tchr.component';
-import {FormsModule} from "@angular/forms";
+import { AssessmentStuComponent } from './assessment-stu/assessment-stu.component';
+import { AssessmentTchrComponent } from './assessment-tchr/assessment-tchr.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReliefPrinComponent,
-    ReliefTchrComponent,
+    AssessmentStuComponent,
+    AssessmentTchrComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,6 @@ import {FormsModule} from "@angular/forms";
     MatSelectModule,
     MatButtonModule,
     MatChipsModule,
-    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

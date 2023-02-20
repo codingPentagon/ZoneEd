@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 
 import {NavComponent} from "./shared/nav/nav.component";
-import {ReliefTchrComponent} from "./relief-tchr/relief-tchr.component";
-import {ReliefPrinComponent} from "./relief-prin/relief-prin.component";
+import {AssessmentTchrComponent} from "./assessment-tchr/assessment-tchr.component";
+import {AssessmentStuComponent} from "./assessment-stu/assessment-stu.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'relieftchr', component: ReliefTchrComponent },
-  { path: 'reliefprin', component: ReliefPrinComponent },
+  { path: 'assessmenttchr', component: AssessmentTchrComponent},
+  { path: 'assessmentstu', component: AssessmentStuComponent },
 ]
 
 @NgModule({

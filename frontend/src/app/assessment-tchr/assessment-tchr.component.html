@@ -1,0 +1,26 @@
+<div class="content">
+  <app-header headerTitle="Assessments"></app-header>
+  <div class="workspace">
+    <mat-card class="left">
+      <mat-card-header>
+        Teaching Classes
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let cls of classes">
+          <div class="entry">
+            Class {{cls}}
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="right">
+      <mat-card-header>
+        Assessments
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

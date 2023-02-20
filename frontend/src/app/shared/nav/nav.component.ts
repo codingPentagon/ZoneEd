@@ -9,7 +9,7 @@ export class NavComponent {
 
   @Input() links: any[] = [
     {path:'', value:'Dashboard', icon:'space_dashboard'},
-    {path:'/relieftchr', value:'Relief Allocation', icon:'schedule'},
-    {path:'/reliefprin', value:"Teacher's Relief", icon:'schedule'}
+    {path:'/assessmenttchr', value:'Student Assessments', icon:'schedule'},
+    {path:'/assessmentstu', value:'Assessments', icon:'schedule'}
   ];
 }

@@ -1,0 +1,40 @@
+<app-nav></app-nav>
+<div class="content">
+  <app-header headerTitle="Assessments"></app-header>
+  <div class="workspace">
+    <mat-card class="left">
+      <mat-card-header>
+        Subjects
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let subject of subjects">
+          <div class="entry">
+            {{subject}}
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="right">
+      <mat-card-header>
+        Assessments
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let assmnt of assessments">
+          <div class="entry">
+            <div class="flex">
+              {{assmnt.fileName}}
+              <span class="spacer"></span>
+              {{assmnt.date}}
+            </div>
+            <div class="flex">
+              <span class="spacer"></span>
+              {{assmnt.time}}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

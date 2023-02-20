@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReliefTchrComponent } from './relief-tchr.component';
+import { AssessmentTchrComponent } from './assessment-tchr.component';
 
-describe('ReliefTchrComponent', () => {
-  let component: ReliefTchrComponent;
-  let fixture: ComponentFixture<ReliefTchrComponent>;
+describe('AssessmentTchrComponent', () => {
+  let component: AssessmentTchrComponent;
+  let fixture: ComponentFixture<AssessmentTchrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReliefTchrComponent ]
+      declarations: [ AssessmentTchrComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReliefTchrComponent);
+    fixture = TestBed.createComponent(AssessmentTchrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

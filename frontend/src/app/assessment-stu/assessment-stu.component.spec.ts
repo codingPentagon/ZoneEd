@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReliefPrinComponent } from './relief-prin.component';
+import { AssessmentStuComponent } from './assessment-stu.component';
 
-describe('ReliefPrinComponent', () => {
-  let component: ReliefPrinComponent;
-  let fixture: ComponentFixture<ReliefPrinComponent>;
+describe('AssessmentStuComponent', () => {
+  let component: AssessmentStuComponent;
+  let fixture: ComponentFixture<AssessmentStuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReliefPrinComponent ]
+      declarations: [ AssessmentStuComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReliefPrinComponent);
+    fixture = TestBed.createComponent(AssessmentStuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
