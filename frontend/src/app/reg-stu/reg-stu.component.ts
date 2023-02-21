@@ -16,7 +16,7 @@ export class RegStuComponent {
   constructor(private  UserRegService:UserRegService){}
 
   sendStuData() {
-    this.UserRegService.sendStuData(this.stu).  subscribe(response => {
+    this.UserRegService.sendStuData(this.stu).subscribe(response => {
        
       console.log('Data sent successfully!');
     });

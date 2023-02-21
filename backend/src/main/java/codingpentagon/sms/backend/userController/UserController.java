@@ -10,7 +10,7 @@ import codingpentagon.sms.backend.userRepo.UserRepo;
 import userModel.User;
 
 @RestController
-@CrossOrigin (origins = "http://localhost:64959")
+@CrossOrigin (origins = "http://localhost:4200")
 
 public class UserController {
     @Autowired
