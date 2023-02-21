@@ -7,12 +7,12 @@
 }
 
 .left{
-  flex: 1;
+  flex: 3;
   margin: 15px;
 }
 
 .right{
-  flex: 2;
+  flex: 4;
   margin: 15px 15px 15px 0;
 }
 
@@ -22,6 +22,7 @@ mat-card-header{
 
 .entry{
   margin: 5px 0 5px 0;
+  cursor: pointer;
 }
 
 mat-card-content{

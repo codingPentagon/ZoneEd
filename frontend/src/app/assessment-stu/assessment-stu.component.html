@@ -7,9 +7,10 @@
         Subjects
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let subject of subjects">
-          <div class="entry">
-            {{subject}}
+        <div *ngFor="let subject of subjectAssessments; let i=index">
+          <div class="entry" (click)="selectedSubject=i">
+            {{subject.subject}}
+            <span class="spacer"></span>
           </div>
           <mat-divider></mat-divider>
         </div>
@@ -20,16 +21,16 @@
         Assessments
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let assmnt of assessments">
+        <div *ngFor="let assessment of subjectAssessments[selectedSubject].assessments">
           <div class="entry">
             <div class="flex">
-              {{assmnt.fileName}}
+              {{assessment.fileName}}
               <span class="spacer"></span>
-              {{assmnt.date}}
+              {{assessment.date}}
             </div>
             <div class="flex">
               <span class="spacer"></span>
-              {{assmnt.time}}
+              {{assessment.time}}
             </div>
           </div>
           <mat-divider></mat-divider>

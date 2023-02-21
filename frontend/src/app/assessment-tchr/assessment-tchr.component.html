@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div class="content">
   <app-header headerTitle="Assessments"></app-header>
   <div class="workspace">
@@ -6,9 +7,9 @@
         Teaching Classes
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let cls of classes">
-          <div class="entry">
-            Class {{cls}}
+        <div *ngFor="let cls of clsAssessments; let i=index">
+          <div class="entry" (click)="selectedCls=i">
+            Class {{cls.class}}
           </div>
           <mat-divider></mat-divider>
         </div>
@@ -19,7 +20,20 @@
         Assessments
       </mat-card-header>
       <mat-card-content>
-
+        <div *ngFor="let assessment of clsAssessments[selectedCls].assessments">
+          <div class="entry">
+            <div class="flex">
+              {{assessment.fileName}}
+              <span class="spacer"></span>
+              {{assessment.date}}
+            </div>
+            <div class="flex">
+              <span class="spacer"></span>
+              {{assessment.time}}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

@@ -22,6 +22,7 @@ mat-card-header{
 
 .entry{
   margin: 5px 0 5px 0;
+  cursor: pointer;
 }
 
 mat-card-content{
@@ -30,4 +31,12 @@ mat-card-content{
 
 mat-card{
   height: 50vh;
+}
+
+.flex{
+  display: flex;
+}
+
+.spacer{
+  flex: 1 1 auto;
 }
