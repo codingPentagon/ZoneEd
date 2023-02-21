@@ -230,6 +230,7 @@ export class MailComponent {
 
   reply(recipient : string) {
     this.createToggle();
+    this.mails = [];
     this.mails.push(recipient);
   }
 }
