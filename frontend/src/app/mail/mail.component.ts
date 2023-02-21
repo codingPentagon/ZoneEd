@@ -212,11 +212,19 @@ export class MailComponent {
 
   createToggle(){
     this.create = !this.create;
+    if (this.delete){
+      this.delete = false;
+    }
   }
 
   delete:boolean = false;
 
   deleteToggle(){
     this.delete = !this.delete;
+    if (this.create){
+      this.create = false;
+    }
   }
+
+  mailBox:string = 'inbox';
 }

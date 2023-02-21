@@ -5,9 +5,104 @@
 .content{
   flex: 1;
 }
-
+.new-mail{
+  display: flex;
+}
 mat-card{
   margin: 15px;
   height: 86vh;
   width: 100%;
+}
+.spacer{
+  flex: 1 1 auto;
+}
+mat-button-toggle-group{
+  margin-right: 10px;
+}
+.mail-box, .left{
+  overflow: auto;
+}
+.left{
+  flex: 2;
+  margin: 10px;
+  width: 100%;
+  height: 65vh;
+}
+.right{
+  flex: 1;
+  margin: 10px;
+  height: 65vh;
+}
+#form input,textarea{
+  margin: 20px;
+  border: 1px solid #3F4E4F;
+}
+mat-expansion-panel{
+  margin: 15px;
+}
+
+mat-chip-option{
+  display: inline;
+}
+
+mat-panel-description{
+  justify-content: right;
+  text-align: right;
+}
+
+mat-checkbox{
+  transform: scale(0.75);
+}
+
+mat-button-toggle-group{
+  margin-right: 20px;
+}
+
+button{
+  margin: 15px 15px 15px 0;
+}
+.table-row{
+  display: table-row;
+  width: 100%;
+
+
+
+}
+.table-row>span{
+  display: table-cell;
+  width: 80px;
+
+}
+
+mat-form-field{
+  width: 40vw;
+}
+
+
+mat-panel-title {
+  white-space: break-spaces;
+}
+.mailbody{
+
+}
+textarea{
+  resize: none;
+}
+h2{
+  color: black;
+}
+.btn{
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  width: 70px;
+  background-color: gray;
+}
+.att{
+
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
