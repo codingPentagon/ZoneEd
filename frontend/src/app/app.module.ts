@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MailComponent } from './mail/mail.component';
 import { MatInputModule } from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from "@angular/material/select";
@@ -19,11 +18,13 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MailComponent} from './mail/mail.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MailComponent,
+    MailComponent
   ],
     imports: [
         BrowserModule,
