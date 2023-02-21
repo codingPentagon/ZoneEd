@@ -20,25 +20,25 @@
     <label class="required" for="address1">Address</label>
     <mat-form-field appearance="outline">
       <mat-label>Enter address line 1</mat-label>
-      <input matInput placeholder="" id="address1" name="address1" ngModel required>
+      <input matInput placeholder="" id="address1" name="address1" [(ngModel)]="stu.address1" ngModel required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Enter address line 2</mat-label>
-      <input matInput placeholder="" id="address2" name="address2" ngModel>
+      <input matInput placeholder="" id="address2" name="address2" [(ngModel)]="stu.address2" ngModel>
     </mat-form-field><br>
     <div class="main-sec">
       <div class="sec-01">
         <label class="required" for="email">Email</label>
         <mat-form-field class="email" appearance="outline">
           <mat-label>Enter email</mat-label>
-          <input matInput placeholder="" id="email" name="email" ngModel required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+          <input matInput placeholder="" id="email" name="email" [(ngModel)]="stu.email" ngModel required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
         </mat-form-field><br>
 
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob" ngModel required >
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" [(ngModel)]="stu.dob" ngModel required >
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
@@ -46,7 +46,7 @@
         <label class="required" for="indexNo">Index No</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Enter index No</mat-label>
-          <input matInput placeholder="" type="number" id="indexNo" name="indexNo" ngModel required>
+          <input matInput placeholder="" type="number" id="indexNo" name="indexNo" [(ngModel)]="stu.indexNo" ngModel required>
         </mat-form-field><br>
 
         <label class="required" for="gender">Gender</label>
