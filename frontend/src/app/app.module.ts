@@ -14,26 +14,34 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     AcsGrantPrinComponent
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatChipsModule,
-        MatIconModule,
-        MatTableModule,
-        MatDividerModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTableModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatTimepickerModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

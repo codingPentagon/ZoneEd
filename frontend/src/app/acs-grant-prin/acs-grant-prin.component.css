@@ -10,7 +10,7 @@
 
 mat-card{
   margin: 15px;
-  height: 50vh;
+  height: 60vh;
 }
 
 .left{
@@ -34,6 +34,7 @@ mat-card{
 }
 mat-card-content{
   height: 100%;
+  margin: 10px 0;
 }
 .bold{
   font-weight: bold;
@@ -49,4 +50,19 @@ button{
 }
 .flex{
   display: flex;
+
+}
+
+.hide{
+  display: none;
+}
+mat-label{
+  width: 500px;
+}
+mat-form-field{
+  margin: 0 5px;
+  white-space: nowrap;
+}
+.clock.mx-timepicker-overlay,.clock.mx-timepicker-clock{
+  width: 10px;
 }
