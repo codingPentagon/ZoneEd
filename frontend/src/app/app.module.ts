@@ -23,6 +23,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import { ProjectPrinComponent } from './project-prin/project-prin.component';
 import { ProjectZonalComponent } from './project-zonal/project-zonal.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -32,26 +33,27 @@ import { ProjectZonalComponent } from './project-zonal/project-zonal.component';
     ProjectZonalComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    FormsModule,
-    MatTableModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDividerModule,
-    MatGridListModule,
-    MatTabsModule,
-    MatChipsModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatTableModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDividerModule,
+        MatGridListModule,
+        MatTabsModule,
+        MatChipsModule,
+        MatIconModule,
+        MatExpansionModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

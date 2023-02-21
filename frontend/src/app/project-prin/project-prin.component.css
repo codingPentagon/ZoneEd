@@ -44,3 +44,26 @@ mat-card-header{
 .entry{
   margin: 5px 0 5px 0;
 }
+
+mat-accordion{
+  width: 100%;
+}
+
+mat-panel-description{
+  justify-content: right;
+  text-align: end;
+}
+
+.block{
+  display: inline-block;
+}
+
+.mat-panel-title{
+  white-space: nowrap;
+}
+
+.big-icon {
+  width: 100px;
+  height: 100px;
+  font-size: 56px;
+}

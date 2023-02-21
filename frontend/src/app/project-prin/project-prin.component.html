@@ -13,8 +13,7 @@
             </mat-chip>
           </mat-chip-listbox>
         </mat-card-header>
-        <mat-card-content>
-
+        <mat-card-content *ngIf="!proposalAdd">
             <div *ngFor="let proposal of proposals">
               <div class="entry">
                 <div class="flex">
@@ -31,6 +30,9 @@
               <mat-divider></mat-divider>
             </div>
         </mat-card-content>
+        <mat-card-content *ngIf="proposalAdd">
+          <input>
+        </mat-card-content>
       </mat-card>
       <mat-card class="projects">
         <mat-card-header>
@@ -43,6 +45,27 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let project of projects">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{project.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{project.createdDate}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="flex">
+                Start Date : <span class="spacer"></span>{{project.startDate}}
+              </div>
+              <div class="flex">
+                End Date : <span class="spacer"></span>{{project.endDate}}
+              </div>
+              <div class="flex">
+                Responsible Person : <span class="spacer"></span>{{project.responsiblePersons}}
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
         </mat-card-content>
       </mat-card>
     </div>
@@ -53,6 +76,30 @@
           <span class="spacer"></span>
         </mat-card-header>
         <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let milestone of milestones">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{milestone.title}}<br>
+                  {{milestone.feedback}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{milestone.dueDate}}<br>
+                  {{milestone.status}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="flex">
+                <mat-icon class="big-icon" *ngFor="let proof of milestone.proofs">{{proof.fileType}}</mat-icon>
+                <span class="spacer"></span>
+                <mat-chip-listbox>
+                  <mat-chip [ngStyle]="{'background-color':milestoneAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="milestoneAddToggle()">
+                    <mat-icon [ngStyle]="{'color':milestoneAdd ? 'white' : 'black'}">add</mat-icon>
+                  </mat-chip>
+                </mat-chip-listbox>
+              </div>
+              <input type="file" *ngIf="milestoneAdd">
+            </mat-expansion-panel>
+          </mat-accordion>
         </mat-card-content>
       </mat-card>
 </div>
