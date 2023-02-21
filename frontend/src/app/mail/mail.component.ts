@@ -227,4 +227,9 @@ export class MailComponent {
   }
 
   mailBox:string = 'inbox';
+
+  reply(recipient : string) {
+    this.createToggle();
+    this.mails.push(recipient);
+  }
 }

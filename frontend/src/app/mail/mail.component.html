@@ -43,7 +43,7 @@
                 <p>
                   {{inboxmail.content}}
                 </p>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="reply(inboxmail.sender)">
                   <mat-icon>
                     reply
                   </mat-icon>
