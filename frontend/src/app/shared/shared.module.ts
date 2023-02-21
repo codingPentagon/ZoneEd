@@ -10,22 +10,24 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
     NavComponent,
     HeaderComponent
   ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    MatToolbarModule
-  ],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        MatToolbarModule,
+        MatExpansionModule
+    ],
   exports: [
     NavComponent,
     HeaderComponent
