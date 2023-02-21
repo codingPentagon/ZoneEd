@@ -1,0 +1,13 @@
+:host,.workspace{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+}
+
+mat-card{
+  margin: 15px;
+  height: 86vh;
+  width: 100%;
+}
