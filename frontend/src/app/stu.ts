@@ -1,5 +1,5 @@
 export class Stu {
 
-fullName!:String;
-initName!:String;
+    fullName!: String;
+    initName!: String;
 }

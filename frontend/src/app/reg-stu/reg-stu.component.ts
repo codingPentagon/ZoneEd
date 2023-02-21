@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import { Stu } from '../stu';
 import { UserRegService } from '../user-reg.service';
-import {RegStuService} from "./reg-stu.service";
+
 
 @Component({
   selector: 'app-reg-stu',
@@ -16,11 +16,11 @@ export class RegStuComponent {
   constructor(private  UserRegService:UserRegService){}
 
   sendStuData() {
-    this.UserRegService.sendStuData(this.stu)
-    .subscribe(response => {
+    this.UserRegService.sendStuData(this.stu).  subscribe(response => {
        
       console.log('Data sent successfully!');
     });
+    
      
   }
 }

@@ -14,7 +14,7 @@
       <label class="required" for="initName">Name with Initials</label>
       <mat-form-field class="fullName" appearance="outline">
         <mat-label>Enter name with initials</mat-label>
-        <input matInput placeholder="" id="initName" name="initName" ngModel required>
+        <input matInput placeholder="" id="initName" name="initName" [(ngModel)]="stu.initName"  ngModel required>
       </mat-form-field><br>
     </div>
     <label class="required" for="address1">Address</label>

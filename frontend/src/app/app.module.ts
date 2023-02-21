@@ -43,7 +43,8 @@ import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
         FormsModule,
         MatSelectModule,
         MatSidenavModule,
-        MatButtonModule
+        MatButtonModule,
+        HttpClientModule,
 
 
     ],

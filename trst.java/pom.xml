@@ -1,0 +1,80 @@
+import java.util.Random;
+
+        public class Main {
+        public static void main(String[] args) {
+        Sorting s = new Sorting();
+
+        //Insertion Sorting
+        //to calculate execution time in milliseconds         long startTime = System.currentTimeMillis();
+        s.printArr(s.insertionSort(s.ascendingArr(1000))); //Best case         long endTime   = System.currentTimeMillis();         long totalTime = endTime - startTime;
+        System.out.println("\n Total execution Time : "+totalTime+" ms");
+        //execution time for the following algorithms can also be found like this.
+        s.printArr(s.insertionSort(s.randArr(1000,20000))); //Average Case
+        s.printArr(s.insertionSort(s.descendingArr(1000))); //Worse Case
+        //Selection Sorting
+        s.printArr(s.selectionSort(s.ascendingArr(1000))); //Best case
+        s.printArr(s.selectionSort(s.randArr(1000,20000))); //Average Case
+        s.printArr(s.selectionSort(s.descendingArr(1000))); //Worse Case
+        //Bubble Sorting
+        s.printArr(s.bubbleSort(s.ascendingArr(1000))); //Best case
+        s.printArr(s.bubbleSort(s.randArr(1000,20000))); //Average Case
+        s.printArr(s.bubbleSort(s.descendingArr(1000))); //Worse Case
+
+
+        }
+        }
+
+        class Sorting {
+
+        //Insertion Sort
+        int[] insertionSort(int[] arr) {
+
+        int temp;
+        for (int i = 1; i < arr.length; i++) {             temp = arr[i];
+
+        for (int j = i - 1; j >= 0; j--) {                 if (temp <= arr[j]) {                     arr[j + 1] = arr[j];                     arr[j] = temp;
+        }
+
+        }
+        }
+
+        return arr;
+        }
+
+        //Selection Sort
+        int[] selectionSort(int[] arr) {
+
+        int min, minIndex, temp;
+
+        for (int j = 0; j < arr.length; j++) {             min = arr[j];             minIndex = j;
+
+        for (int i = j + 1; i < arr.length; i++) {                 if (arr[i] < min) {                     min = arr[i];                     minIndex = i;
+        }             }
+        temp = arr[j];             arr[j] = min;
+        arr[minIndex] = temp;
+
+        }
+        return arr;
+        }
+
+        //Bubble Sort
+        int[] bubbleSort(int[] arr) {         int temp;
+        for (int i = 0; i < arr.length; i++) {
+        for (int j = 0; j < arr.length - i - 1; j++) {                 if (arr[j + 1] < arr[j]) {                     temp = arr[j];                     arr[j] = arr[j + 1];                     arr[j + 1] = temp;
+        }
+        }         }
+        return arr;
+        }
+        //Creates an array with random elements to given size and range     int[] randArr(int elements, int under) {         Random r = new Random();         int[] arr = new int[elements];         for (int i = 0; i < elements; i++)             arr[i] = r.nextInt(under);         return arr;
+        }
+
+        //Creates an ascending ordered array starting from 0 to given size     int[] ascendingArr(int noOfElements) {         int[] arr = new int[noOfElements];         for (int i = 0; i < noOfElements; i++) {             arr[i] = i;
+        }
+        return arr;
+
+        }
+        //Creates a descending ordered array starting from given number to 0     int[] descendingArr(int noOfElements) {         int[] arr = new int[noOfElements];         for (int i = 0; i < noOfElements; i++) {             arr[i] = noOfElements - i - 1;
+        }
+        return arr;
+
+        }

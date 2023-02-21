@@ -8,13 +8,10 @@ import { Stu } from './stu';
 export class UserRegService {
   
 
-
-
-
-
   constructor(private httpClient:HttpClient) { }
+
+
   sendStuData(stu:Stu) {
-    alert("Hello11");
     console.log(stu);
     return this.httpClient.post("http://localhost:8080/register",stu);
   }
