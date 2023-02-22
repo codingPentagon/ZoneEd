@@ -22,7 +22,8 @@ export class ProjectPrinComponent {
   proposals=[
     {title:"Ruk Ropanaya",date:"01/02/2023",status:"Pending",feedback:null},
     {title:"Science Camp",date:"01/02/2023",status:"Rejected",feedback:"Need improvements"},
-    {title:"English Day",date:"01/02/2023",status:"Accepted",feedback:"Good"}
+    {title:"English Day",date:"01/02/2023",status:"Accepted",feedback:"Good"},
+    {title:"Literature Camp",date:"01/02/2023",status:"Accepted",feedback:"Good"},
   ];
 
   projects=[
@@ -50,5 +51,13 @@ export class ProjectPrinComponent {
 
   milestoneAddToggle(){
     this.milestoneAdd = !this.milestoneAdd;
+  }
+
+  getAcceptedProps():any[]{
+    return this.proposals.filter(acceptedPropCheck);
+
+    function acceptedPropCheck(element:any) {
+      return element.status == 'Accepted';
+    }
   }
 }

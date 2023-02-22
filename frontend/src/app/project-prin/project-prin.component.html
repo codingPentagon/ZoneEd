@@ -31,8 +31,22 @@
             </div>
         </mat-card-content>
         <mat-card-content *ngIf="proposalAdd">
-          <input>
+          <mat-form-field appearance="outline" class="margin-top width">
+            <mat-label>Project Title</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-card-content>
+        <mat-card-content *ngIf="proposalAdd">
+          <mat-form-field appearance="outline" class="width">
+            <mat-label>Comments</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <input type="file">
+        </mat-card-content>
+        <mat-action-row *ngIf="proposalAdd">
+          <button mat-raised-button>Submit</button>
+          <button mat-raised-button>Discard</button>
+        </mat-action-row>
       </mat-card>
       <mat-card class="projects">
         <mat-card-header>
@@ -45,7 +59,7 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content>
-          <mat-accordion>
+          <mat-accordion *ngIf="!projectAdd">
             <mat-expansion-panel hideToggle *ngFor="let project of projects">
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -66,6 +80,29 @@
               </div>
             </mat-expansion-panel>
           </mat-accordion>
+        </mat-card-content>
+        <mat-card-content *ngIf="projectAdd">
+          <mat-form-field appearance="outline" class="width">
+            <mat-label>Accepted Proposals</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let acceptedProp of getAcceptedProps()" [value]="acceptedProp.title">{{acceptedProp.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="flex">
+            <mat-form-field appearance="outline" class="margin-top">
+              <mat-label>Start Date</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <span class="spacer"></span>
+            <mat-form-field appearance="outline" class="margin-top">
+              <mat-label>End Date</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline" class="margin-top width">
+            <mat-label>Responsible Person</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-card-content>
       </mat-card>
     </div>
@@ -98,6 +135,10 @@
                 </mat-chip-listbox>
               </div>
               <input type="file" *ngIf="milestoneAdd">
+              <mat-action-row *ngIf="milestoneAdd">
+                <button mat-raised-button>Submit</button>
+                <button mat-raised-button>Discard</button>
+              </mat-action-row>
             </mat-expansion-panel>
           </mat-accordion>
         </mat-card-content>
