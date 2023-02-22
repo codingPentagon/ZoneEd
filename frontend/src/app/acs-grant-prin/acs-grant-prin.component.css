@@ -41,7 +41,10 @@ mat-card-content{
 
 }
 .center{
-  justify-items: center;
+  justify-content: center;
+  align-items: center;
+
+
 
 }
 button{
@@ -70,5 +73,17 @@ mat-form-field{
 .margin-top{
   margin-top: 10px;
 }
+.height{
+  height: 10vh;
 
-
+}
+.height1{
+  height: 30vh;
+}
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+.Bwidth{
+  width: 200px;
+  height: 100px;
+}
