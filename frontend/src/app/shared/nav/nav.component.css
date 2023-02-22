@@ -14,3 +14,16 @@
 a{
   color: white;
 }
+
+mat-expansion-panel{
+  margin: 0;
+}
+
+.no-expand.mat-expanded{
+  display: flex;
+}
+
+
+.mat-expanded mat-expansion-panel-header{
+  pointer-events: none;
+}
