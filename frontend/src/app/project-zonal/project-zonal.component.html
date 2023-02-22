@@ -1,1 +1,91 @@
-<p>project-zonal works!</p>
+<app-nav></app-nav>
+<div class="content">
+  <app-header></app-header>
+  <div class="workspace">
+    <div class="left">
+   <mat-card class="school">
+     <mat-card-header>
+       Schools
+     </mat-card-header>
+     <mat-card-content>
+       <div *ngFor="let school of schoolProjsProps;let i=index">
+         <div class="entry pointer" (click)="selectedSchool=i">
+           <div class="flex">
+             {{school.schoolname}}
+           </div>
+         </div>
+         <mat-divider></mat-divider>
+       </div>
+     </mat-card-content>
+   </mat-card>
+      <mat-card class="projprop">
+        <mat-card-header>
+          Project Proposals
+        </mat-card-header>
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let proposal of schoolProjsProps[selectedSchool].proposals">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{proposal.title}}<br>
+                  {{proposal.feedback}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{proposal.date}}<br>
+                  {{proposal.status}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="right">
+      <mat-card class="milestone">
+        <mat-card-header>
+          Project Milestones
+          <span class="spacer"></span>
+          <mat-select [(value)]="selectedProject">
+            <mat-option
+              *ngFor="let project of schoolProjsProps[selectedSchool].projects;let i=index" [value]="i">
+              {{project.name}}
+            </mat-option>
+          </mat-select>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let milestone of schoolProjsProps[selectedSchool].projects[selectedProject].milestones">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{milestone.title}}<br>
+                  {{milestone.feedback}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{milestone.dueDate}}<br>
+                  {{milestone.status}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="flex">
+                <mat-icon class="big-icon" *ngFor="let proof of milestone.proofs">{{proof.fileType}}</mat-icon>
+                <span class="spacer"></span>
+                <mat-chip-listbox>
+                  <mat-chip [ngStyle]="{'background-color':feedbackAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="feedbackAddToggle()">
+                    <mat-icon [ngStyle]="{'color':feedbackAdd ? 'white' : 'black'}">rate_review</mat-icon>
+                  </mat-chip>
+                </mat-chip-listbox>
+              </div>
+              <mat-form-field *ngIf="feedbackAdd" class="width" appearance="outline">
+                <mat-label>Feedback</mat-label>
+                <input matInput placeholder="Good Work">
+              </mat-form-field>
+              <mat-action-row *ngIf="feedbackAdd" >
+                <button mat-raised-button>Submit</button>
+                <button mat-raised-button>Discard</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
