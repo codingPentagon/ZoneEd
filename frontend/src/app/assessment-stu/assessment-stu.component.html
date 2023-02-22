@@ -7,8 +7,8 @@
         Subjects
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let subject of subjectAssessments; let i=index">
-          <div class="entry" (click)="selectedSubject=i">
+        <div *ngFor="let subject of subjectAssessments; let i=index" [ngClass]="{selected:selectedSubject==i}" class="entry-wrap" (click)="selectedSubject=i">
+          <div class="entry" >
             {{subject.subject}}
             <span class="spacer"></span>
           </div>
