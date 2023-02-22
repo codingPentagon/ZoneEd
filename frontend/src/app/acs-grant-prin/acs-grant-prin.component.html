@@ -46,7 +46,7 @@
 
         <mat-card-content *ngIf="add">
 
-          <mat-form-field appearance="outline" class="flex" >
+          <mat-form-field appearance="outline" class="flex margin-top" >
             <mat-label>Select a teacher</mat-label>
             <mat-select>
               <mat-option *ngFor="let vp of vicePrincipal" [value]="vp.value">{{vp.viewValue}}</mat-option>
@@ -77,14 +77,14 @@
               </mat-icon>
             </mat-form-field>
             <div class="ngx-mtp-box-bordered" >
-              <ngx-mat-timepicker color="accent" appendToInput="true" #pickerE class="clock">
+              <ngx-mat-timepicker appendToInput="true" #pickerE class="clock">
               </ngx-mat-timepicker>
             </div>
           </div>
 
 
           <div class="flex">
-            <mat-form-field appearance="outline" >
+            <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
               <input matInput [matDatepicker]="picker1">
               <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
