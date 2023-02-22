@@ -1,0 +1,38 @@
+<app-nav></app-nav>
+<div class="content">
+  <app-header></app-header>
+  <div class="workspace">
+
+      <mat-card >
+        <mat-card-header>
+          Handover principal dashboard
+        </mat-card-header>
+        <mat-divider></mat-divider>
+
+
+        <mat-card-content>
+          <div class="req-box">
+            <div class="details">
+
+              <div class="flex margin-top-bottom">From <span class="spacer"></span>To</div>
+              <div class="flex margin-top-bottom"> {{requestDetails.fromDate}}<span class="spacer"></span>{{requestDetails.toDate}}</div>
+              <div class="flex margin-top-bottom"> {{requestDetails.fromTime}}<span class="spacer"></span>{{requestDetails.toTime}}</div>
+              <div class="center flex note">{{requestDetails.note}}</div>
+
+            </div>
+            <mat-form-field appearance="outline" class="flex comment">
+              <mat-label>Comment</mat-label>
+              <input matInput placeholder="I grant access...">
+            </mat-form-field>
+
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-raised-button class="margin-right">Accept</button>
+          <button mat-raised-button class="margin-right">Reject</button>
+        </mat-card-actions>
+      </mat-card>
+
+  </div>
+</div>

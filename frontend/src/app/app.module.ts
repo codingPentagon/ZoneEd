@@ -18,11 +18,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {FormsModule} from "@angular/forms";
+import { AcsGrantTchrComponent } from './acs-grant-tchr/arc-grant-tchr.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AcsGrantPrinComponent
+    AcsGrantPrinComponent,
+    AcsGrantTchrComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {FormsModule} from "@angular/forms";
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMatTimepickerModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

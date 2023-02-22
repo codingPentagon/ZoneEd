@@ -1,0 +1,58 @@
+
+:host,.workspace{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+
+}
+
+mat-card{
+  margin: 15px;
+  height: 70vh;
+  width: 100%;
+
+}
+.spacer{
+  flex: 1 1 auto;
+}
+.flex{
+  display: flex;
+
+}
+.req-box{
+  margin: 75px;
+}
+.cell{
+  display: table-cell;
+
+}
+.row{
+  display: table-row;
+}
+.width{
+  width: 100%;
+}
+.margin-top-bottom{
+  margin: 10px 0;
+}
+.center{
+  justify-content: center;
+  align-items: center;
+
+}
+.note{
+  margin: 50px;
+}
+.comment{
+  margin: 20px 0;
+}
+.details{
+  background-color: bisque;
+  padding: 10px 40px;
+  border-radius: 20px;
+}
+.margin-right{
+  margin-right: 10px;
+}

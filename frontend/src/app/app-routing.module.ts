@@ -4,10 +4,12 @@ import { RouterModule, Routes } from "@angular/router";
 
 import {NavComponent} from "./shared/nav/nav.component";
 import {AcsGrantPrinComponent} from "./acs-grant-prin/acs-grant-prin.component";
+import {AcsGrantTchrComponent} from "./acs-grant-tchr/arc-grant-tchr.component";
 
 const routes: Routes = [
   { path: '', component: NavComponent },
-  { path: 'accessgrant', component: AcsGrantPrinComponent }
+  { path: 'accessgrantprin', component: AcsGrantPrinComponent },
+  { path: 'accessgranttchr', component: AcsGrantTchrComponent }
 ]
 
 @NgModule({
