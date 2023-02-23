@@ -19,11 +19,11 @@ mat-expansion-panel{
   margin: 0;
 }
 
-.no-expand.mat-expanded{
-  display: flex;
-}
-
-
 .mat-expanded mat-expansion-panel-header{
   pointer-events: none;
+  /*padding: 0;*/
+}
+
+.no-expand /deep/ .mat-expansion-panel-content{
+  display: none;
 }

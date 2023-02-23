@@ -10,26 +10,34 @@
     </mat-nav-list>
 
     <mat-accordion>
-      <mat-expansion-panel hideToggle class="no-expand" expanded>
-        <mat-expansion-panel-header>
+      <mat-expansion-panel hideToggle class="no-expand" expanded style="border: 1px solid violet;width:100%">
+        <mat-expansion-panel-header style="border: 1px solid violet;width: 100%">
           Subject Management
         </mat-expansion-panel-header>
       </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header style="border: 1px solid violet">
           Subject Management
         </mat-expansion-panel-header>
-        <mat-panel-title>
-          <button>bjhbj</button>
-        </mat-panel-title>
+
+          <mat-expansion-panel hideToggle  style="border: 1px solid violet;padding: 0;width: 100%;margin: 0;">
+            <mat-expansion-panel-header >
+              Subject Management
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           Class Management
         </mat-expansion-panel-header>
-        <mat-panel-title>
-          <a href="http://google.com">dcdlkcmn</a>
-        </mat-panel-title>
+        <mat-nav-list style="margin: 0;padding: 0;width: 100%">
+          <mat-list-item *ngFor="let link of links" routerLink="link.path">
+            <a matListItemTitle>{{link.value}}</a>
+            <button matListItemMeta mat-icon-button>
+              <mat-icon>{{link.icon}}</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-sidenav>
