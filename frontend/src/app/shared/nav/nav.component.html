@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav opened disableClose mode="side">
     <mat-nav-list>
-      <mat-list-item *ngFor="let link of links" routerLink="link.path">
+      <mat-list-item *ngFor="let link of links" [routerLink]="link.path">
         <a matListItemTitle>{{link.value}}</a>
         <button matListItemMeta mat-icon-button>
           <mat-icon>{{link.icon}}</mat-icon>
@@ -10,7 +10,7 @@
     </mat-nav-list>
 
     <mat-accordion>
-      <mat-expansion-panel hideToggle class="no-expand" expanded style="width:100%">
+      <mat-expansion-panel hideToggle class="no-expand" expanded>
         <mat-expansion-panel-header style="width: 100%">
           Subject Management
         </mat-expansion-panel-header>
@@ -21,13 +21,13 @@
         </mat-expansion-panel-header>
 
           <mat-accordion>
-            <mat-expansion-panel hideToggle  style="padding: 0;width: 100%;margin: 0;" class="sub-nav no-expand" expanded>
+            <mat-expansion-panel hideToggle class="no-expand" expanded>
               <mat-expansion-panel-header >
                 Subject Management
               </mat-expansion-panel-header>
             </mat-expansion-panel>
-            <mat-expansion-panel hideToggle  style="padding: 0;width: 100%;margin: 0;" class="sub-nav no-expand">
-              <mat-expansion-panel-header >
+            <mat-expansion-panel hideToggle class="no-expand">
+              <mat-expansion-panel-header>
                 Subject Management
               </mat-expansion-panel-header>
             </mat-expansion-panel>
@@ -37,7 +37,7 @@
         <mat-expansion-panel-header>
           Class Management
         </mat-expansion-panel-header>
-        <mat-nav-list style="margin: 0;padding: 0;width: 100%">
+        <mat-nav-list>
           <mat-list-item *ngFor="let link of links" routerLink="link.path">
             <a matListItemTitle>{{link.value}}</a>
             <button matListItemMeta mat-icon-button>
