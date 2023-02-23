@@ -10,21 +10,28 @@
     </mat-nav-list>
 
     <mat-accordion>
-      <mat-expansion-panel hideToggle class="no-expand" expanded style="border: 1px solid violet;width:100%">
-        <mat-expansion-panel-header style="border: 1px solid violet;width: 100%">
+      <mat-expansion-panel hideToggle class="no-expand" expanded style="width:100%">
+        <mat-expansion-panel-header style="width: 100%">
           Subject Management
         </mat-expansion-panel-header>
       </mat-expansion-panel>
       <mat-expansion-panel >
-        <mat-expansion-panel-header style="border: 1px solid violet">
+        <mat-expansion-panel-header >
           Subject Management
         </mat-expansion-panel-header>
 
-          <mat-expansion-panel hideToggle  style="border: 1px solid violet;padding: 0;width: 100%;margin: 0;">
-            <mat-expansion-panel-header >
-              Subject Management
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle  style="padding: 0;width: 100%;margin: 0;" class="sub-nav no-expand" expanded>
+              <mat-expansion-panel-header >
+                Subject Management
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle  style="padding: 0;width: 100%;margin: 0;" class="sub-nav no-expand">
+              <mat-expansion-panel-header >
+                Subject Management
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </mat-accordion>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
