@@ -18,10 +18,10 @@ mat-card{
 .spacer{
   flex: 1 1 auto;
 }
-
-mat-chip-listbox,mat-tab-group{
-  display: inline;
+mat-button-toggle-group{
+  margin-right: 10px;
 }
+
 mat-form-field{
   display: block;
 }
@@ -34,12 +34,6 @@ button{
   float: right;
 }
 
-form{
-  display:none ;
-}
-.mat-mdc-form-field + .mat-mdc-form-field {
-  margin-left: 8px;
-}
 
 mat-panel-description{
   justify-content: right;
@@ -56,4 +50,11 @@ mat-card-content{
 mat-card-header{
   border-bottom: 1.5px solid gray;
 
+}
+mat-chip-option{
+  display: inline;
+}
+mat-card-content{
+  padding-top: 10px;
+  height: 100%;
 }

@@ -21,4 +21,23 @@ export class NoticeComponent {
     {sender:"Mrs. A. Rathnayake (Zonal Director)",date:"26 December 2022", subject:"About the sport meet", content:"It will be held on next month", time:"1 day ago"}
   ];
 
+  create:boolean = false;
+
+  createToggle(){
+    this.create = !this.create;
+    if (this.delete){
+      this.delete = false;
+    }
+  }
+
+  delete:boolean = false;
+
+  deleteToggle(){
+    this.delete = !this.delete;
+    if (this.create){
+      this.create = false;
+    }
+  }
+
+  noticeBox:string = 'all';
 }

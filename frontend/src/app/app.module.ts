@@ -17,29 +17,31 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
     AppComponent,
     NoticeComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatChipsModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatDatepickerModule,
-    MatCheckboxModule,
-    MatDividerModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatChipsModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatExpansionModule,
+        MatDatepickerModule,
+        MatCheckboxModule,
+        MatDividerModule,
+        MatIconModule,
+        MatButtonToggleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
