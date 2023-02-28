@@ -14,6 +14,7 @@ import {NotificationComponent} from "./notification/notification.component";
 import {NotificationToggleService} from "./notification/notification-toggle.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatBadgeModule} from "@angular/material/badge";
 
 
 @NgModule({
@@ -23,18 +24,19 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     NotificationComponent,
 
   ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    MatToolbarModule,
-    MatCardModule,
-    MatCheckboxModule,
-  ],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        MatToolbarModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatBadgeModule,
+    ],
 
   exports: [
     NavComponent,

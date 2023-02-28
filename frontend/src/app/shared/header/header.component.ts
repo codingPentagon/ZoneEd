@@ -15,4 +15,5 @@ export class HeaderComponent {
   notifToggle(){
     this.notifToggleService.toggle();
   }
+
 }
