@@ -40,4 +40,11 @@ export class NoticeComponent {
   }
 
   noticeBox:string = 'all';
+
+
+  getPostedNotices():any[] {
+    return this.notices.filter(notice=>{
+      return notice.sender=="Mr. R.T. Meetiyagoda (Principal)"
+    })
+  }
 }
