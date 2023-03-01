@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {NotificationToggleService} from "../notification/notification-toggle.service";
+import {Component} from '@angular/core';
+import {NotificationConnectorService} from "../notification/notification-connector.service";
 
 
 @Component({
@@ -8,14 +8,12 @@ import {NotificationToggleService} from "../notification/notification-toggle.ser
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  hidden = false;
 
-  constructor(private notifToggleService:NotificationToggleService) {
+  constructor(public notifConService: NotificationConnectorService) {
   }
 
-  notifToggle(){
-    this.notifToggleService.toggle();
-    this.hidden = !this.hidden;
+  notifToggle() {
+    this.notifConService.toggle();
+    this.notifConService.getUnreadNotifCount();
   }
-
 }

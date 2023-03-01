@@ -1,5 +1,5 @@
 <mat-drawer-container >
-  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" #drawer>
+  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false;notifConService.getUnreadNotifCount()" #drawer>
     <div class="notifhed">
       <h1>Notification</h1>
       <span class="spacer"></span>
@@ -7,7 +7,7 @@
       <mat-icon>arrow_forward</mat-icon>
       </button>
     </div>
-    <mat-card *ngFor="let notif of notifs">
+    <mat-card *ngFor="let notif of notifConService.notifs">
       <mat-card-content (click)="notif.read=true" [ngStyle]="{'font-weight': notif.read == false ? 'bold' : 'normal'}">
         {{notif.notification}}
         <div class="date">
