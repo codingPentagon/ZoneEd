@@ -5,7 +5,6 @@
     <mat-card-header>
       {{create? 'New Notice': 'Notice Board'}}
       <span class="spacer"></span>
-
           <mat-button-toggle-group *ngIf="!create" [(value)]="noticeBox">
             <mat-button-toggle value="all">All</mat-button-toggle>
             <mat-button-toggle value="post">Post</mat-button-toggle>
@@ -18,8 +17,6 @@
               <mat-icon [ngStyle]="{'color':delete ? 'white' : 'black'}">delete</mat-icon>
             </mat-chip>
           </mat-chip-listbox>
-
-
     </mat-card-header>
     <mat-card-content *ngIf="create">
       <form>
@@ -69,7 +66,6 @@
             <p>{{notice.content}}</p>
           </mat-expansion-panel>
         </mat-accordion>
-
       </mat-card-content>
     <mat-card-actions *ngIf="delete" align="end">
       <button mat-raised-button>Delete</button>
