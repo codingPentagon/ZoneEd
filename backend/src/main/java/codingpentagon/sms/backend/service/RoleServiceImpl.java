@@ -10,7 +10,7 @@ import codingpentagon.sms.backend.RoleRepo.RoleRepo;
 
 
 @Service
-public abstract class RoleServiceImpl implements RoleService {
+public abstract class RoleServiceImpl  {
 
 @Autowired
 private RoleRepo roleRepo;
@@ -21,7 +21,7 @@ private RoleRepo roleRepo;
       //  return null;
   //  }
 
-    @Override
+
     public Role save(Role role) {
         return roleRepo.save(role);
     }

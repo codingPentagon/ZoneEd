@@ -27,11 +27,6 @@ public class RoleController {
         return  roleRepo.save(role);
     }
 
-    @PostMapping("/register1")
-    public StudentReg register1(@RequestBody StudentReg studentReg){
-
-        return  roleRepo.save(studentReg);
-    }
 
     @PostMapping({"/createNewRole"})
 
