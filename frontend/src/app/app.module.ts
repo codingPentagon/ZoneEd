@@ -24,6 +24,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { ProjectPrinComponent } from './project-prin/project-prin.component';
 import { ProjectZonalComponent } from './project-zonal/project-zonal.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
         MatTabsModule,
         MatChipsModule,
         MatIconModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatButtonToggleModule
     ],
   providers: [],
   bootstrap: [AppComponent]

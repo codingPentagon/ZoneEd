@@ -42,7 +42,7 @@ mat-card-header{
 }
 
 .entry{
-  margin: 5px 0 5px 0;
+  margin: 5px 17px;
 }
 
 .margin-top{
@@ -55,4 +55,12 @@ mat-card-header{
 
 .pointer{
   cursor: pointer;
+}
+
+mat-card-content{
+  padding: 0;
+}
+
+mat-expansion-panel-header{
+  padding: 5px 17px;
 }
