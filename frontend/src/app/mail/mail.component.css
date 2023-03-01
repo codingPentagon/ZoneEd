@@ -106,3 +106,7 @@ h2{
   border: 1px solid gray;
   border-radius: 5px;
 }
+.mat-button-toggle-group {
+  height: 30px;
+  align-items: center;
+}

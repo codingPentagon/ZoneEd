@@ -7,7 +7,7 @@
         <h2>{{create ? 'New Mail' : "Mails"}}</h2>
         <span class="spacer"></span>
         <mat-button-toggle-group *ngIf="!create" [(value)]="mailBox">
-          <mat-button-toggle value="inbox">Inbox</mat-button-toggle>
+          <mat-button-toggle value="inbox" >Inbox</mat-button-toggle>
           <mat-button-toggle value="sent">Sent Mail</mat-button-toggle>
         </mat-button-toggle-group>
         <mat-chip-listbox>
