@@ -8,12 +8,14 @@ import {NotificationToggleService} from "../notification/notification-toggle.ser
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  hidden = false;
 
   constructor(private notifToggleService:NotificationToggleService) {
   }
 
   notifToggle(){
     this.notifToggleService.toggle();
+    this.hidden = !this.hidden;
   }
 
 }
