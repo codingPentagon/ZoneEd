@@ -80,4 +80,14 @@ export class ProjectZonalComponent {
   feedbackAddToggle(){
     this.feedbackAdd=!this.feedbackAdd;
   }
+
+  selectedOption='all'
+
+  getPendingProposals(){
+    return this.schoolProjsProps[this.selectedSchool].proposals.filter(prop=>{
+      return prop.status=='Pending'
+    })
+  }
+
+
 }

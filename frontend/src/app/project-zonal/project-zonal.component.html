@@ -22,14 +22,14 @@
         <mat-card-header>
           Project Proposals
           <span class="spacer"></span>
-          <mat-button-toggle-group>
-            <mat-button-toggle>All</mat-button-toggle>
-            <mat-button-toggle>Pending</mat-button-toggle>
+          <mat-button-toggle-group [(value)]="selectedOption">
+            <mat-button-toggle value="all">All</mat-button-toggle>
+            <mat-button-toggle value="pending">Pending</mat-button-toggle>
           </mat-button-toggle-group>
         </mat-card-header>
         <mat-card-content>
           <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let proposal of schoolProjsProps[selectedSchool].proposals">
+            <mat-expansion-panel hideToggle *ngFor="let proposal of (selectedOption=='all'?schoolProjsProps[selectedSchool].proposals:getPendingProposals())">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   {{proposal.title}}<br>
