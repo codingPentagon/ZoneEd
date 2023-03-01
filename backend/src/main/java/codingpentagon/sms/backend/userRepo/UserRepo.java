@@ -5,5 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import userModel.User;
 
 public interface UserRepo extends MongoRepository<User,Integer> {
+
+    String save(org.apache.catalina.User user);
     
 }
