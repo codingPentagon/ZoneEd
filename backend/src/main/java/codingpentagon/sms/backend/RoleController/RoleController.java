@@ -1,6 +1,7 @@
 package codingpentagon.sms.backend.RoleController;
 
 import RoleModel.Role;
+import RoleModel.StudentReg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,12 @@ public class RoleController {
     public Role register(@RequestBody Role role){
 
         return  roleRepo.save(role);
+    }
+
+    @PostMapping("/register1")
+    public StudentReg register1(@RequestBody StudentReg studentReg){
+
+        return  roleRepo.save(studentReg);
     }
 
     @PostMapping({"/createNewRole"})
