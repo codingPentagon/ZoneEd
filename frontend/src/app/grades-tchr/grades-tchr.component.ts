@@ -51,4 +51,12 @@ names =[
   modifyToggle(){
     this.modify = !this.modify;
   }
+
+  selectedOption='all'
+
+  getIncompleteNames() {
+    return this.names.filter(name=>{
+      return !name.isCompleted
+    })
+  }
 }

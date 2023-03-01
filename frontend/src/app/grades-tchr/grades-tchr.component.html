@@ -7,13 +7,13 @@
         <mat-card-header>
           Names
           <span class="spacer"></span>
-          <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="end">
-            <mat-tab label="All"></mat-tab>
-            <mat-tab label="Incomplete"></mat-tab>
-          </mat-tab-group>
+          <mat-button-toggle-group [(value)]="selectedOption">
+            <mat-button-toggle value="all">All</mat-button-toggle>
+            <mat-button-toggle value="incomplete">Incomplete</mat-button-toggle>
+          </mat-button-toggle-group>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <span *ngFor="let name of names">
+          <span *ngFor="let name of (selectedOption=='all'?names:getIncompleteNames())">
             <div class="grades-entry">
               {{ name.name }}
               <span class="spacer"></span>

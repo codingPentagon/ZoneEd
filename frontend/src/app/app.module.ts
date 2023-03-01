@@ -24,6 +24,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import { GradesStuComponent } from './grades-stu/grades-stu.component';
 import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
     MatGridListModule,
     MatTabsModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
