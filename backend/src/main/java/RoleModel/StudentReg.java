@@ -13,7 +13,7 @@ import java.util.Set;
 public class StudentReg {
 
     @Id
-    private int id;
+    private String id;
     private String StuFirtName;
     private String StuLastName;
 
