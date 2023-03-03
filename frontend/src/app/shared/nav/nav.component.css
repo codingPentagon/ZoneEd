@@ -27,3 +27,13 @@ mat-expansion-panel{
 .no-expand /deep/ .mat-expansion-panel-content{
   display: none;
 }
+
+mat-expansion-panel{
+  background-color: transparent;
+  color: white;
+}
+
+.mat-expanded>mat-expansion-panel-header{
+  background-color: cyan;
+  color: white;
+}
