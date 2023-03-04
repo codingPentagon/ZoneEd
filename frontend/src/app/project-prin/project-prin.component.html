@@ -81,7 +81,7 @@
         </mat-card-content>
         <mat-card-content *ngIf="projectAdd">
           <mat-form-field appearance="outline" class="width">
-            <mat-label>Accepted Proposals</mat-label>
+            <mat-label>Accepted Proposal</mat-label>
             <mat-select>
               <mat-option *ngFor="let acceptedProp of getAcceptedProps()" [value]="acceptedProp.title">{{acceptedProp.title}}</mat-option>
             </mat-select>
@@ -102,6 +102,10 @@
             <input matInput>
           </mat-form-field>
         </mat-card-content>
+        <mat-action-row *ngIf="projectAdd">
+          <button mat-raised-button>Submit</button>
+          <button mat-raised-button>Discard</button>
+        </mat-action-row>
       </mat-card>
     </div>
     <div class="right">
