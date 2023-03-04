@@ -17,10 +17,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {FormsModule} from "@angular/forms";
+import { LeaveTchrComponent } from './leave-tchr/leave-tchr.component';
+import { LeavePrinComponent } from './leave-prin/leave-prin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LeaveTchrComponent,
+    LeavePrinComponent,
   ],
   imports: [
     BrowserModule,
