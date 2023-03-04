@@ -48,3 +48,21 @@ mat-select{
   margin-left: 20px;
 }
 
+.box{
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+mat-divider.mat-divider-vertical{
+  height: 70px;
+  border-right-width: 5px;
+  color: red;
+  margin: auto 20px;
+}
+
