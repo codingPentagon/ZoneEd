@@ -21,7 +21,7 @@ export class RegStuComponent {
 
   sturegisterform=this.builder.group({
 
-    id:this.builder.control('',Validators.required),
+    indexNo:this.builder.control('',Validators.required),
     fullName:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(5)])),
     initName:this.builder.control('',Validators.required),
     address1:this.builder.control('',Validators.required),
@@ -40,6 +40,7 @@ export class RegStuComponent {
     if (this.sturegisterform.valid) {
       this.UserRegService.sendStuData(this.stu).subscribe(response => {
         console.log('Data sent successfully!');
+        console.log(this.stu);
         // Show success message using an alternative method
         alert('Registered Successfully. Please contact admin for enable.');
         this.router.navigate(['teacherreg']);
