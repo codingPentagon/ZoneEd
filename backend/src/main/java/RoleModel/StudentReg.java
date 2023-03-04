@@ -7,7 +7,7 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+
 
 @ToString
 
@@ -19,10 +19,11 @@ public class StudentReg {
 
     @Id
     private int id;
-    private String StuFirtName;
-    private String StuLastName;
+    private String fullName;
+    private String initName;
+    private String address1;
 
-    private String role;
+    private String address2;
 
 
 }
