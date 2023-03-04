@@ -3,34 +3,25 @@
   <app-header></app-header>
   <div class="workspace">
    <div class="left">
-     <mat-card class="creation">
-       <mat-card-header>
-         Class Creation
-       </mat-card-header>
-       <mat-card-content>
-         <mat-form-field appearance="outline">
-           <mat-label>Enter Class Name</mat-label>
-           <input matInput placeholder="E.g. 6 A">
-         </mat-form-field>
-       </mat-card-content>
-       <mat-card-actions align="end">
-         <button mat-raised-button>Create</button>
-       </mat-card-actions>
-     </mat-card><br>
      <mat-card class="details">
        <mat-card-header>
          Class Details
          <span class="spacer"></span>
          <mat-form-field appearance="outline">
            <mat-select placeholder="Class">
-             <mat-option *ngFor="let class of classes" [value]="class.value">{{class.viewValue}}</mat-option>
+             <mat-option *ngFor="let cls of clsAllocation" [value]="cls.value">{{cls.viewValue}}</mat-option>
            </mat-select>
          </mat-form-field>
+         <mat-chip-listbox>
+           <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
+             <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">add</mat-icon>
+           </mat-chip>
+         </mat-chip-listbox>
        </mat-card-header>
-       <mat-card-content class="allocation-form">
+       <mat-card-content *ngIf="!create" class="allocation-form">
          <table>
            <tr>
-             <td>Class Teacher</td>
+             <td class="width">Class Teacher</td>
              <td>Nimal Silva</td>
            </tr>
            <tr>
@@ -51,99 +42,51 @@
            </tr>
          </table>
        </mat-card-content>
+       <mat-card-content *ngIf="create">
+         <mat-form-field appearance="outline" class="width top-margin" >
+           <mat-label>Enter Class Name</mat-label>
+           <input matInput placeholder="E.g. 6 A">
+         </mat-form-field>
+       </mat-card-content>
+       <mat-card-actions *ngIf="create" align="end">
+         <button mat-raised-button>Create</button>
+       </mat-card-actions>
      </mat-card>
    </div>
     <div class="right">
-      <mat-card>
-        <mat-card-header>Class Allocation</mat-card-header>
+      <mat-card class="allocation">
+        <mat-card-header>
+          Class Allocation
+          <span class="spacer"></span>
+          <mat-chip-listbox>
+            <mat-chip [ngStyle]="{'background-color':modify ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="modifyToggle()">
+              <mat-icon [ngStyle]="{'color':modify  ? 'white' : 'black'}">create</mat-icon>
+            </mat-chip>
+          </mat-chip-listbox>
+        </mat-card-header>
         <mat-card-content>
-
-         <table>
-           <tr>
-             <td>6 A</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Select a Teacher">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>6 B</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Select a Teacher">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>7 A</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mrs. Maheshi Gunasekara">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>7 B</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mr. Nimal Silva">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>8 A</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mr. Roshan Ranaweera">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>8 B</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mrs. Sandani Perera">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>9 A</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Ms. Uthpala Gunasekara">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>9 B</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mr. Kasun Bandara">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>10 A</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mr. Chathura Perera">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-           <tr>
-             <td>10 B</td>
-             <td><mat-form-field appearance="outline">
-               <mat-select placeholder="Mrs. Sachini Bandara">
-                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">{{teacher.viewValue}}</mat-option>
-               </mat-select>
-             </mat-form-field></td>
-           </tr>
-         </table>
+          <div *ngFor="let cls of clsAllocation">
+            <div class="allocate-entry">
+              Class {{cls.class}}
+              <span class="spacer"></span>
+              <div>
+                <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
+                            [(value)]="cls.teacher"
+                            [ngStyle]="{'background-color':cls.teacher == null ? 'lightgrey' : 'blue'}"
+                            [disabled]="!modify" [ngClass]="{'hide':!modify}">
+                  <mat-option [value]=null class="remove">Remove Selection</mat-option>
+                  <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">
+                    {{teacher.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
-        <mat-card-actions align="end">
+        <mat-card-actions align="end" *ngIf="modify">
           <button mat-raised-button>Allocate</button>
-          <button mat-raised-button>Modify</button>
+          <button mat-raised-button (click)="modifyToggle()">Discard</button>
         </mat-card-actions>
       </mat-card>
     </div>

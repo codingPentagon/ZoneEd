@@ -6,21 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./cls-allocate.component.css']
 })
 export class ClsAllocateComponent {
-  classes: any[] = [
-    {value: '6A', viewValue: '6 A'},
-    {value: '6B', viewValue: '6 B'},
-    {value: '7A', viewValue: '7 A'},
-    {value: '7B', viewValue: '7 B'},
-    {value: '8A', viewValue: '8 A'},
-    {value: '8B', viewValue: '8 B'},
-    {value: '9A', viewValue: '9 A'},
-    {value: '9B', viewValue: '9 B'},
-    {value: '10A', viewValue: '10 A'},
-    {value: '10B', viewValue: '10 B'},
-    {value: '11A', viewValue: '11 A'},
-    {value: '11B', viewValue: '11 B'},
-    {value: '12A', viewValue: '12 A'},
-    {value: '12B', viewValue: '12 B'}
+  clsAllocation: any[] = [
+    {teacher: null, class: '6 A'},
+    {teacher: null, class: '6 B'},
+    {teacher: null, class: '7 A'},
+    {teacher: null, class: '7 B'},
+    {teacher: null, class: '8 A'},
+    {teacher: null, class: '8 B'},
+    {teacher: null, class: '9 A'},
+    {teacher: null, class: '9 B'},
+    {teacher: null, class: '10 A'},
+    {teacher: null, class: '10 B'},
+    {teacher: null, class: '11 A'},
+    {teacher: null, class: '11 B'},
+    {teacher: null, class: '12 A'},
+    {teacher: null, class: '12 B'}
   ];
 
   teachers: any[] = [
@@ -30,5 +30,18 @@ export class ClsAllocateComponent {
     {value: 'PanchaliHerath', viewValue: 'Panchali Herath'}
 
     ];
+
+  create:boolean = false;
+
+  createToggle(){
+    this.create = !this.create;
+  }
+
+  modify:boolean = false;
+
+  modifyToggle(){
+    this.modify = !this.modify;
+  }
+
 
 }

@@ -6,8 +6,12 @@
   flex: 1;
 }
 
-mat-card{
- margin: 15px;
+.left>mat-card{
+ margin: 15px 15px 0 15px;
+}
+
+.right>mat-card{
+  margin: 15px 15px 0 0;
 }
 
 .left{
@@ -23,11 +27,15 @@ mat-card{
 }
 
 .creation{
-  height: 250px;
+  height: 30vh;
 }
 
 .details{
-  height: 375px;
+  height: 82vh;
+}
+
+.allocation{
+  height: 82vh;
 }
 
 button{
@@ -36,11 +44,39 @@ button{
 
 mat-card-content{
   overflow: auto;
-  height: 75vh;
+  height: 100%;
 }
 
 mat-card-header{
   border-bottom: 1.5px solid gray;
+}
+
+.width{
+  width: 100%;
+}
+
+.top-margin{
+ margin-top: 10px;
+}
+
+mat-select{
+  width: 20vw;
+  padding: 3px;
+  margin: 1px;
+  border-radius: 20px;
+}
+
+/deep/ .mat-mdc-select-disabled /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-arrow{
+  color: white;
+  margin: 0 10px 0 10px;
+}
+
+.hide /deep/ .mat-mdc-select-arrow{
+  display: none;
+}
+
+/deep/ .remove>*{
+  color: rgb(150, 150, 150);    /*could not find the class of the text*/
 }
 
 
