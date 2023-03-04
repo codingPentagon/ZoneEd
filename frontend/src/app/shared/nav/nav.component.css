@@ -15,17 +15,19 @@ a{
   color: white;
 }
 
-mat-expansion-panel{
-  margin: 0;
-}
-
 .mat-expanded>mat-expansion-panel-header{
   pointer-events: none;
   /*padding: 0;*/
+  background-color: cyan;
+  color: white;
 }
 
 .no-expand /deep/ .mat-expansion-panel-content{
   display: none;
+}
+
+mat-expansion-panel /deep/ .mat-expansion-panel-body{
+  padding: 0 0 0 15px;
 }
 
 mat-expansion-panel{
@@ -33,7 +35,19 @@ mat-expansion-panel{
   color: white;
 }
 
-.mat-expanded>mat-expansion-panel-header{
-  background-color: cyan;
-  color: white;
+mat-expansion-panel:not(.sub-nav){
+  margin: 0 15px;
+}
+
+.sub-nav{
+  margin: 5px 0;
+}
+
+mat-expansion-panel-header{
+  padding: 0 15px;
+  border-radius: 10px;
+}
+
+.mat-expansion-panel{
+  box-shadow: none;
 }
