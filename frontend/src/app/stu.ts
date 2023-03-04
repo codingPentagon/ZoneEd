@@ -1,5 +1,5 @@
 export class Stu {
-    id!:number;
+   
     fullName!: String;
     initName!: String;
     address1!:String;

@@ -21,7 +21,7 @@ export class RegStuComponent {
 
   sturegisterform=this.builder.group({
 
-    indexNo:this.builder.control('',Validators.required),
+   
     fullName:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(5)])),
     initName:this.builder.control('',Validators.required),
     address1:this.builder.control('',Validators.required),
