@@ -28,6 +28,7 @@ mat-card-header{
   display: flex;
   height: 35px;
   align-items: center;
+  cursor: pointer;
 }
 
 mat-card-content{

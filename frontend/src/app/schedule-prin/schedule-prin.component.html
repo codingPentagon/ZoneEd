@@ -9,7 +9,7 @@
         </mat-card-header>
         <mat-card-content>
           <div *ngFor="let teacher of teachers">
-           <span class="teacher-entry">
+           <span class="teacher-entry" (click)="getSchedule(teacher.id)">
              {{ teacher.name }}
              <span class="spacer"></span>
              {{ teacher.subject }}

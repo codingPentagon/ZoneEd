@@ -1,4 +1,20 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ScheduleService} from "./schedule.service";
+
+export interface SchedulePeriod {
+  period: number,
+  mon: string,
+  tue: string,
+  wed: string,
+  thu: string,
+  fri: string
+}
+
+export interface TeacherSubject{
+  id: number,
+  name:string,
+  subject:string
+}
 
 @Component({
   selector: 'app-schedule-prin',
@@ -6,49 +22,43 @@ import { Component } from '@angular/core';
   styleUrls: ['./schedule-prin.component.css']
 })
 export class SchedulePrinComponent {
-  teachers = [
-    {name: 'Bhagya Nethmini', subject: "Science"},
-    {name: 'Rishmi Tharuka', subject: "Science"},
-    {name: 'Maleesha Kawsarani', subject: "Science"},
-    {name: 'Sachini Perera', subject: "Science"},
-    {name: 'GayanI Herath', subject: "Science"},
-    {name: 'Samadhi Fernando', subject: "Science"},
-    {name: 'Maneesha Bulner', subject: "Science"},
-    {name: 'Dulashi Sewmini', subject: "Science"},
-    {name: 'Kavindu Sankalpa', subject: "Science"},
-    {name: 'Maneth Lorance', subject: "Science"},
-    {name: 'Asitha Silva', subject: "Science"},
-    {name: 'Malindu Deshan', subject: "Science"},
-    {name: 'Thisal Gunasena', subject: "Science"},
-    {name: 'Nimesh Deshan', subject: "Science"},
-    {name: 'Maneesha Bulner', subject: "Maths"},
-    {name: 'Dulashi Sewmini', subject: "Maths"},
-    {name: 'Kavindu Sankalpa', subject: "Maths"},
-    {name: 'Maneth Lorance', subject: "Maths"},
-    {name: 'Asitha Silva', subject: "Maths"},
-    {name: 'Malindu Deshan', subject: "Maths"},
-    {name: 'Thisal Gunasena', subject: "Maths"},
-    {name: 'Nimesh Deshan', subject: "Maths"},
-  ];
 
-  schedule = [
-    { period: 1, mon:"---", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 2, mon:"---", tue:"10A", wed:"---", thu:"10A", fri:"10A" },
-    { period: 3, mon:"---", tue:"10A", wed:"10A", thu:"---", fri:"10A" },
-    { period: 4, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"---" },
-    { period: 5, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 6, mon:"---", tue:"---", wed:"10A", thu:"10A", fri:"10A" },
-    { period: 7, mon:"---", tue:"10A", wed:"---", thu:"---", fri:"10A" },
-    { period: 8, mon:"---", tue:"10A", wed:"10A", thu:"10A", fri:"10A" }
-  ];
+  sclID=1000;
 
-  displayedColumns: string[] = ['period','mon','tue','wed','thu','fri'];
+  constructor(private scheduleService: ScheduleService) {
+  }
 
-  classes = ["---","10A","9A","8A","10B","9B","8B"];
+  ngOnInit(){
+    this.scheduleService.fetchTeachers(this.sclID).subscribe({
+      next:(res)=>{
+        for (const re of res) {
+          this.teachers.push(re)
+        }
+      }
+    });
+  }
 
-  modify:boolean = false;
+  teachers:TeacherSubject[] = [];
 
-  modifyToggle(){
+  schedule:SchedulePeriod[] = [];
+
+  displayedColumns: string[] = ['period', 'mon', 'tue', 'wed', 'thu', 'fri'];
+
+  classes = ["---", "10A", "9A", "8A", "10B", "9B", "8B"];
+
+  modify: boolean = false;
+
+  modifyToggle() {
     this.modify = !this.modify;
+  }
+
+  getSchedule(id: number) {
+    this.scheduleService.fetchSchedule(id).subscribe({
+      next:(res)=>{
+        for (const re of res) {
+          this.schedule.push(re)
+        }
+      }
+    });
   }
 }
