@@ -30,13 +30,14 @@ mat-expansion-panel /deep/ .mat-expansion-panel-body{
   padding: 0 0 0 15px;
 }
 
-mat-expansion-panel{
+.mat-expansion-panel{
   background-color: transparent;
   color: white;
+  box-shadow: none;
 }
 
 mat-expansion-panel:not(.sub-nav){
-  margin: 0 15px;
+  margin: 5px 15px;
 }
 
 .sub-nav{
@@ -48,6 +49,3 @@ mat-expansion-panel-header{
   border-radius: 10px;
 }
 
-.mat-expansion-panel{
-  box-shadow: none;
-}
