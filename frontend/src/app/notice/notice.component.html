@@ -50,7 +50,8 @@
       <mat-card-content class="notices" *ngIf="!create">
         <mat-accordion>
           <mat-expansion-panel *ngFor="let notice of (noticeBox=='all'?notices:getPostedNotices())">
-            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'" (click)="notice.read=true"
+                                        [ngStyle]="{'font-weight': notice.read == false ? 'bold' : 'normal'}">
               <mat-panel-title >
                 {{notice.sender}}
                 <br>
