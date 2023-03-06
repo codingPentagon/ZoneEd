@@ -15,7 +15,7 @@ import { SchedulePrinComponent } from './schedule-prin/schedule-prin.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
-import {HttpClientModule} from "@angular/common/http";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import {HttpClientModule} from "@angular/common/http";
         MatSelectModule,
         MatButtonModule,
         MatChipsModule,
-        HttpClientModule
+        ServicesModule
     ],
   providers: [],
   bootstrap: [AppComponent]

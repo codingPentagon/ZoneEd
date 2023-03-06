@@ -1,20 +1,8 @@
 import {Component} from '@angular/core';
-import {ScheduleService} from "./schedule.service";
-
-export interface SchedulePeriod {
-  period: number,
-  mon: string,
-  tue: string,
-  wed: string,
-  thu: string,
-  fri: string
-}
-
-export interface TeacherSubject{
-  id: number,
-  name:string,
-  subject:string
-}
+import {ScheduleService} from "../services/schedule.service";
+import {TeachersService} from "../services/teachers.service";
+import {Teacher} from "../models/teacher.model";
+import {SchedulePeriod} from "../models/schedule.model";
 
 @Component({
   selector: 'app-schedule-prin',
@@ -25,11 +13,12 @@ export class SchedulePrinComponent {
 
   sclID=1000;
 
-  constructor(private scheduleService: ScheduleService) {
+  constructor(private scheduleService: ScheduleService,
+              private teachersService:TeachersService) {
   }
 
   ngOnInit(){
-    this.scheduleService.fetchTeachers(this.sclID).subscribe({
+    this.teachersService.fetchTeachers(this.sclID).subscribe({
       next:(res)=>{
         for (const re of res) {
           this.teachers.push(re)
@@ -38,7 +27,7 @@ export class SchedulePrinComponent {
     });
   }
 
-  teachers:TeacherSubject[] = [];
+  teachers:Teacher[] = [];
 
   schedule:SchedulePeriod[] = [];
 
