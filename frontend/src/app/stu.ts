@@ -7,6 +7,7 @@ export class Stu {
     password!:String;
     email!:String;
     dob!:number;
+    role!:String;
    
 
 }

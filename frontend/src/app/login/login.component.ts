@@ -24,19 +24,7 @@ export class LoginComponent {
   
   proceedlogin(){
    
- 
-    
-    //  this.service.Proceedregister(this.loginform.value).subscribe(res=>{
-       // this.toastr.success('Please contact admin for enable','Registered Succefully');
-      //  this.router.navigate(['login'])
-    //  });
-
-   // }else{
-    //  this.toastr.warning('plz enter valid data');
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
-      //console.log("Hi");
-     // console.log(this.loginform.value.fullName);
-      //console.log(res);
       this.userdata=res;
       console.log(this.userdata.fullName);
       

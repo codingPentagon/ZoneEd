@@ -27,6 +27,7 @@ public class StudentReg {
     private String password;
     private String email;
     private String dob;
+    private String role;
 
 
 }
