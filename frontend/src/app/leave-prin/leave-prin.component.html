@@ -3,9 +3,9 @@
   <app-header></app-header>
   <div class="workspace">
     <div class="left">
-      <mat-card >
+      <mat-card class="leavePage">
         <mat-card-header>
-          Request History
+          Leave Details
           <span class="spacer"></span>
           <mat-chip-listbox>
             <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="addToggle()">
@@ -13,9 +13,38 @@
             </mat-chip>
           </mat-chip-listbox>
         </mat-card-header>
-
         <mat-divider></mat-divider>
+
+        <mat-card-content>
+
+            <div  class="req-list">
+              <div class="req-entry">
+                <span>Medical request</span>
+                <span class="spacer"></span>
+                <span>02/02/2023</span>
+              </div>
+              <div class="req-entry">
+                <span>From :- 02/02/2023</span>
+                <span class="spacer"></span>
+                <span>8.00am</span>
+              </div>
+              <div class="req-entry">
+                <span>To :- 03/02/2023</span>
+                <span class="spacer"></span>
+                <span>Accepted</span>
+              </div>
+
+            </div>
+            <mat-divider></mat-divider>
+        </mat-card-content>
       </mat-card>
+    </div>
+    <div class="right">
+
     </div>
   </div>
 </div>
+
+
+
+

@@ -1,0 +1,68 @@
+:host,.workspace{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+
+}
+.left{
+  flex: 1;
+}
+
+.right{
+  flex: 1;
+
+}
+.spacer{
+  flex: 1 1 auto;
+}
+
+.req-entry{
+  display: flex;
+
+}
+.req-list{
+  padding: 5px;
+}
+mat-card-content{
+  height: 100%;
+
+}
+button{
+  margin: 5px;
+
+}
+.flex{
+  display: flex;
+}
+
+.hide{
+  display: none;
+}
+mat-label{
+  width: 500px;
+}
+mat-form-field{
+  margin: 0 5px;
+  white-space: nowrap;
+}
+
+.margin-top{
+  margin-top: 10px;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
+.width{
+  width: 100%;
+}
+mat-card{
+  margin: 15px;
+  height: 60vh;
+}
+
+
+
