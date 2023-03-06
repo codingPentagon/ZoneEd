@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ScheduleService} from "../services/schedule.service";
 import {TeachersService} from "../services/teachers.service";
 import {Teacher} from "../models/teacher.model";
-import {SchedulePeriod} from "../models/schedule.model";
+import {Schedule, SchedulePeriod} from "../models/schedule.model";
 import {Class} from "../models/class.model";
 import {ClassService} from "../services/class.service";
 
@@ -15,7 +15,9 @@ export class SchedulePrinComponent {
 
   sclID=5555;
   teachers:Teacher[] = [];
-  schedule:SchedulePeriod[] = [
+  selectedTeacherID:number=0;
+
+  emptySchedule:SchedulePeriod[] = [
     {period:1,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
     {period:2,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
     {period:3,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
@@ -26,6 +28,8 @@ export class SchedulePrinComponent {
     {period:8,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
   ];
 
+  schedule:Schedule = {id:0,teacherID:0,year:0,schedule:[]};
+
   classes:Class[] = [];
 
   constructor(private scheduleService: ScheduleService,
@@ -34,35 +38,42 @@ export class SchedulePrinComponent {
   }
 
   ngOnInit(){
+    console.log(this.schedule)
     this.teachersService.fetchTeachers(this.sclID).subscribe({
       next:(res)=>{
-        this.teachers.splice(0);
-        for (const re of res) {
-          this.teachers.push(re)
-        }
+        this.teachers = res;
+      },
+      complete:()=> {
+        this.getSchedule(this.teachers[0].id);
       }
     });
 
     this.classService.fetchClasses(this.sclID).subscribe({
       next:(res)=>{
-        this.classes.splice(0);
-        for (const re of res) {
-          this.classes.push(re)
-        }
-        console.log(res)
+        this.classes = res;
       }
     });
   }
 
-  getSchedule(id: number) {
-    this.scheduleService.fetchSchedule(id).subscribe({
+  getSchedule(id:number) {
+    this.selectedTeacherID = id;
+    this.scheduleService.fetchSchedule(this.selectedTeacherID).subscribe({
       next:(res)=>{
-        this.schedule.splice(0);
-        for (const re of res) {
-          this.schedule.push(re)
+        this.schedule = res;
+      },
+      error:()=>{
+        for (const period of this.emptySchedule) {
+          this.schedule.schedule.push(period)
+          console.log(this.schedule)
         }
       }
     });
+    console.log(this.schedule)
+  }
+
+  putSchedule(){
+    this.schedule.teacherID = this.selectedTeacherID;
+    this.scheduleService.storeSchedule(this.schedule).subscribe()
   }
 
   displayedColumns: string[] = ['period', 'mon', 'tue', 'wed', 'thu', 'fri'];

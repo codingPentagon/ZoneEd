@@ -29,6 +29,7 @@ mat-card-header{
   height: 35px;
   align-items: center;
   cursor: pointer;
+  margin: 0 18px;
 }
 
 mat-card-content{
@@ -86,4 +87,17 @@ mat-chip{
 
 .hide /deep/ .mat-mdc-select-arrow{
   display: none;
+}
+
+.selected{
+  background-color: mediumblue;
+  color: white;
+}
+
+mat-card-content{
+  padding: 0;
+}
+
+td.free-slot{
+  background-color: cyan;
 }
