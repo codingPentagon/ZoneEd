@@ -1,0 +1,20 @@
+<mat-card>
+
+    <mat-card-header>
+        <h1>User Login</h1>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form class="example-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
+            <mat-form-field class="example-full-width">
+                  <mat-label>User Name</mat-label>
+                    <input type="text" matInput formControlName="fullName" name="fullName"  [(ngModel)]="stu.fullName" required>
+            </mat-form-field><br>
+
+    <button mat-raised-button type="submit">Submit</button>
+    <a routerLink="/login" mat-raised-button color="primary">back to login</a>
+    
+</form>
+    </mat-card-content>
+</mat-card>
+

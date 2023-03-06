@@ -18,6 +18,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
 import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -26,6 +28,7 @@ import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
     AppComponent,
     RegStuComponent,
     RegTchrComponent,
+    LoginComponent,
 
   ],
     imports: [
@@ -45,6 +48,7 @@ import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
         MatSidenavModule,
         MatButtonModule,
         HttpClientModule,
+        MatCardModule
 
 
     ],

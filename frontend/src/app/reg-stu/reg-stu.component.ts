@@ -28,8 +28,8 @@ export class RegStuComponent {
     password:this.builder.control('',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
     gender:this.builder.control('male'),
-  //  role:this.builder.control(''),
-   // isactive:this.builder.control(false)
+    role:this.builder.control(''),
+    isactive:this.builder.control(true)
   });
  
 
@@ -42,7 +42,7 @@ export class RegStuComponent {
         console.log(this.sturegisterform.value);
         // Show success message using an alternative method
         alert('Registered Successfully. Please contact admin for enable.');
-        this.router.navigate(['teacherreg']);
+        this.router.navigate(['login']);
       });
     }else{
       

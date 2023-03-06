@@ -19,11 +19,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class StudentReg {
 
     @Id
-    private String id;
+    
     private String fullName;
     private String initName;
     private String address1;
     private String address2;
+    private String password;
     private String email;
     private String dob;
 
