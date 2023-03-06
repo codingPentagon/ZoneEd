@@ -7,32 +7,32 @@
       <label class="required" for="fullName">Full Name</label>
       <mat-form-field class="fullName" appearance="outline">
         <mat-label>Enter full name</mat-label>
-        <input matInput id="fullName" name="fullName" formControlName="fullName" type="text"  id="fullName" >
+        <input matInput id="fullName" name="fullName" formControlName="fullName" type="text"  id="fullName" [(ngModel)]="stu.fullName" required >
       </mat-form-field><br>
     </div>
     <div>
       <label class="required" for="initName">Name with Initials</label>
       <mat-form-field class="fullName" appearance="outline">
         <mat-label>Enter name with initials</mat-label>
-        <input matInput placeholder="" id="initName"   formControlName="initName"  >
+        <input matInput placeholder="" id="initName"   formControlName="initName"   [(ngModel)]="stu.initName" required >
       </mat-form-field><br>
     </div>
     <label class="required" for="address1">Address</label>
     <mat-form-field appearance="outline">
       <mat-label>Enter address line 1</mat-label>
-      <input matInput placeholder="" id="address1" formControlName="address1" >
+      <input matInput placeholder="" id="address1" formControlName="address1"  [(ngModel)]="stu.address1" required >
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Enter address line 2</mat-label>
-      <input matInput placeholder="" id="address2" formControlName="address2">
+      <input matInput placeholder="" id="address2" formControlName="address2"  [(ngModel)]="stu.address2" required>
     </mat-form-field><br>
     <div class="main-sec">
       <div class="sec-01">
         <label class="required" for="email">Email</label>
         <mat-form-field class="email" appearance="outline">
           <mat-label>Enter email</mat-label>
-          <input matInput placeholder="" id="email" formControlName="email"   >
+          <input matInput placeholder="" id="email" formControlName="email"  [(ngModel)]="stu.email" required  >
         </mat-form-field><br>
 
         <label class="required" for="dob">Date of Birth</label>
@@ -46,12 +46,12 @@
         <label class="required" for="indexNo">Index No</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Enter index No</mat-label>
-          <input matInput placeholder="" type="number" id="indexNo"  >
+          <input matInput id="fullName" name="id"  type="text"  id="id" >
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">
           <mat-label>password</mat-label>
-            <input type="password" matInput formControlName="password">
+            <input type="password" matInput formControlName="password"  [(ngModel)]="stu.password" required>
         
 
     </mat-form-field><br> 
