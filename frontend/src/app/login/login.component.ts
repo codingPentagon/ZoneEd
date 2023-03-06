@@ -27,8 +27,10 @@ export class LoginComponent {
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
       console.log(this.userdata.fullName);
+      //console.log(this.loginform.value.password);
+      console.log(this.userdata.password);
       
-      if(this.userdata.fullName===this.loginform.value.fullName){
+      if(this.userdata.fullName===this.loginform.value.fullName && this.userdata.password===this.loginform.value.password && this.userdata.role==="student"){
         console.log("Hi");
         console.log(this.userdata);
         if(this.userdata.isactive){

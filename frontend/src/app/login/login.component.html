@@ -11,6 +11,11 @@
                     <input type="text" matInput formControlName="fullName" name="fullName"  [(ngModel)]="stu.fullName" required>
             </mat-form-field><br>
 
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                  <input type="password" matInput formControlName="password" name="password"  [(ngModel)]="stu.password" required>
+          </mat-form-field><br>
+
     <button mat-raised-button type="submit">Submit</button>
     <a routerLink="/login" mat-raised-button color="primary">back to login</a>
     

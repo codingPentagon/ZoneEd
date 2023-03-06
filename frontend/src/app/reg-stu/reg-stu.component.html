@@ -56,6 +56,14 @@
 
     </mat-form-field><br> 
 
+    <mat-form-field class="example-full-width">
+      <mat-label>Role</mat-label>
+        <input type="text" matInput formControlName="role"  [(ngModel)]="stu.role" required>
+    
+
+      </mat-form-field><br> 
+
+
         <label class="required" >Gender</label>
         <mat-radio-group formControlName="gender" aria-label="Gender" >
           <mat-radio-button value="male">male</mat-radio-button>
