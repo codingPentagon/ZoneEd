@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService} from 'ngx-toastr'
+import { AuthGuard } from '../auth/auth.guard';
 import { Stu } from '../stu';
 import { UserRegService } from '../user-reg.service';
 
@@ -13,7 +14,7 @@ import { UserRegService } from '../user-reg.service';
 export class LoginComponent {
 
 
-  constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router){}
+  constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router,private auth:AuthGuard){}
   userdata:any;
   stu: Stu=new Stu();
 
@@ -25,6 +26,7 @@ export class LoginComponent {
   proceedlogin(){
    
     this.UserRegService.setUserData(this.loginform.value.fullName);
+    this.auth.testUserData(this.loginform.value.fullName);
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
       console.log(this.userdata.fullName);

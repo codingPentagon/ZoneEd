@@ -13,7 +13,7 @@ export class UserRegService {
   setUserData(fullName: any) {
     this.fullName=fullName;
   }
-  fullName: String="thilina1";
+  fullName: any;
   
 
   constructor(private httpClient:HttpClient) { }

@@ -7,14 +7,15 @@ import {NavComponent} from "./shared/nav/nav.component";
 import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
 import { LoginComponent } from './login/login.component';
 import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
   { path: '', component: NavComponent },
   { path: 'studentreg', component: RegStuComponent },
   {path:'teacherreg',component:RegTchrComponent },
-  {path:'login',component:LoginComponent},
-  {path:'dashboard1/:fullName',component:StuDashboardComponent}
+  {path:'login',component:LoginComponent,canActivate:[AuthGuard]},
+  {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]}
 
 ]
 
