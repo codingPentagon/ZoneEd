@@ -18,19 +18,22 @@ export class SchedulePrinComponent {
   selectedTeacherID:number=0;
 
   emptySchedule:SchedulePeriod[] = [
-    {period:1,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:2,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:3,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:4,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:5,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:6,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:7,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
-    {period:8,mon:'---',tue:'---',wed:'---',thu:'---',fri:'---'},
+    {period:1,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:2,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:3,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:4,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:5,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:6,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:7,mon:null,tue:null,wed:null,thu:null,fri:null},
+    {period:8,mon:null,tue:null,wed:null,thu:null,fri:null},
   ];
 
   schedule:Schedule = {id:0,teacherID:0,year:0,schedule:[]};
 
-  classes:Class[] = [];
+  classes:Class[] = [
+    {id:0,name:'',sclID:0},
+    {id:0,name:'---',sclID:0},
+  ];
 
   constructor(private scheduleService: ScheduleService,
               private teachersService:TeachersService,
@@ -43,14 +46,14 @@ export class SchedulePrinComponent {
       next:(res)=>{
         this.teachers = res;
       },
-      complete:()=> {
-        this.getSchedule(this.teachers[0].id);
-      }
+      // complete:()=> {
+      //   this.getSchedule(this.teachers[0].id);
+      // }
     });
 
     this.classService.fetchClasses(this.sclID).subscribe({
       next:(res)=>{
-        this.classes = res;
+        this.classes.push(...res)
       }
     });
   }
@@ -62,10 +65,7 @@ export class SchedulePrinComponent {
         this.schedule = res;
       },
       error:()=>{
-        for (const period of this.emptySchedule) {
-          this.schedule.schedule.push(period)
-          console.log(this.schedule)
-        }
+        this.schedule.schedule.push(...this.emptySchedule)
       }
     });
     console.log(this.schedule)

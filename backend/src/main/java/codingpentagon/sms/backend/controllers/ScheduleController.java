@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ScheduleController {
-    ScheduleService scheduleService;
+    private final ScheduleService scheduleService;
 
     public ScheduleController(ScheduleRepository scheduleRepo){
         this.scheduleService = new ScheduleService(scheduleRepo);

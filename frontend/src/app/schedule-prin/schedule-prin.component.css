@@ -77,6 +77,11 @@ mat-select >>> .mat-mdc-select-arrow, mat-select >>> .mat-mdc-select-value{
   color: white;
 }
 
+/*counters the above css*/
+mat-select >>> .mat-mdc-select-placeholder{
+  font-size: 16px;
+}
+
 button{
   margin: 15px 15px 15px 0;
 }
@@ -100,4 +105,8 @@ mat-card-content{
 
 td.free-slot{
   background-color: cyan;
+}
+
+td.no-selection{
+  background-color: gray;
 }
