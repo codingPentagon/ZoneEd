@@ -22,6 +22,7 @@ export class ClsAllocateComponent {
 
   ngOnInit(){
     this.getClasses();
+    this.getTeachers();
   }
 
   create: boolean = false;
@@ -59,5 +60,25 @@ export class ClsAllocateComponent {
         this.classes=res;
       }
     })
+  }
+
+  getTeachers(){
+    this.teachersService.fetchTeachers(this.sclID).subscribe({
+      next:res=>{
+        this.teachers=res;
+      }
+    })
+  }
+
+  findTeacherName(teacherID:number){
+    if (teacherID==0){
+      return 'Not Allocated';
+    }
+    else {
+     //TODO:try to use find method
+      return this.teachers.filter(teacher=>{
+        return teacher.id==teacherID;
+      })[0].name
+    }
   }
 }
