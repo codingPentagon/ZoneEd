@@ -20,7 +20,9 @@ public class ClassService {
     }
 
     public void storeClass(Class cls) {
-        cls.setId(new Random().nextInt(500));
+        if (cls.getId()==0){
+            cls.setId(new Random().nextInt(500));
+        }
         classRepository.save(cls);
     }
 }

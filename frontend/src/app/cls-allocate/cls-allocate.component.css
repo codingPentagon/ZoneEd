@@ -55,11 +55,19 @@ mat-card-header{
  margin-top: 10px;
 }
 
-mat-select{
+.right mat-select{
   width: 20vw;
   padding: 3px;
   margin: 1px;
   border-radius: 20px;
+}
+
+.left mat-select{
+  width: 100px;
+  margin-right: 10px;
+  background-color: gainsboro;
+  border-radius: 20px;
+  align-self: center;
 }
 
 /deep/ .mat-mdc-select-disabled /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-value, /deep/ .mat-mdc-select-arrow{

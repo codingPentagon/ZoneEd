@@ -7,11 +7,9 @@
        <mat-card-header>
          Class Details
          <span class="spacer"></span>
-         <mat-form-field appearance="outline">
-           <mat-select placeholder="Class" [(value)]="selectedClass">
-             <mat-option *ngFor="let cls of classes;let i=index" [value]="i">{{cls.name}}</mat-option>
-           </mat-select>
-         </mat-form-field>
+         <mat-select placeholder="Class" [(value)]="selectedClass" *ngIf="!create">
+           <mat-option *ngFor="let cls of classes;let i=index" [value]="i">{{cls.name}}</mat-option>
+         </mat-select>
          <mat-chip-listbox>
            <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
              <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">add</mat-icon>
@@ -49,7 +47,8 @@
          </mat-form-field>
        </mat-card-content>
        <mat-card-actions *ngIf="create" align="end">
-         <button mat-raised-button (click)="createClass(newClass)">Create</button>
+         <button mat-raised-button (click)="createClass(newClass);createToggle()">Create</button>
+         <button mat-raised-button (click)="createToggle()">Discard</button>
        </mat-card-actions>
      </mat-card>
    </div>
@@ -65,7 +64,7 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content>
-          <div *ngFor="let cls of classes">
+          <div *ngFor="let cls of (modify ? tempClasses:classes)">
             <div class="allocate-entry">
               Class {{cls.name}}
               <span class="spacer"></span>
@@ -73,7 +72,7 @@
                           [(value)]="cls.teacherID"
                           [ngStyle]="{'background-color':cls.teacherID == 0 ?'lightgrey' : 'blue'}"
                           [disabled]="!modify" [ngClass]="{'hide':!modify}">
-                <mat-option [value]=null class="remove">Remove Selection</mat-option>
+                <mat-option [value]=0 class="remove">Remove Selection</mat-option>
                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
                   {{teacher.name}}
                 </mat-option>
@@ -83,7 +82,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
-          <button mat-raised-button>Allocate</button>
+          <button mat-raised-button (click)="modifyToggle();allocate()">Allocate</button>
           <button mat-raised-button (click)="modifyToggle()">Discard</button>
         </mat-card-actions>
       </mat-card>
