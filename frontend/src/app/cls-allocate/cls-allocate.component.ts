@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Teacher} from "../models/teacher.model";
+import {Class} from "../models/class.model";
+import {ClassesService} from "../services/classes.service";
+import {TeachersService} from "../services/teachers.service";
 
 @Component({
   selector: 'app-cls-allocate',
@@ -6,42 +10,54 @@ import { Component } from '@angular/core';
   styleUrls: ['./cls-allocate.component.css']
 })
 export class ClsAllocateComponent {
-  clsAllocation: any[] = [
-    {teacher: null, class: '6 A'},
-    {teacher: null, class: '6 B'},
-    {teacher: null, class: '7 A'},
-    {teacher: null, class: '7 B'},
-    {teacher: null, class: '8 A'},
-    {teacher: null, class: '8 B'},
-    {teacher: null, class: '9 A'},
-    {teacher: null, class: '9 B'},
-    {teacher: null, class: '10 A'},
-    {teacher: null, class: '10 B'},
-    {teacher: null, class: '11 A'},
-    {teacher: null, class: '11 B'},
-    {teacher: null, class: '12 A'},
-    {teacher: null, class: '12 B'}
-  ];
 
-  teachers: any[] = [
-    {value: 'SaduniPerera', viewValue: 'Saduni Perera'},
-    {value: 'SachiniSilva', viewValue: 'Sachini Silva'},
-    {value: 'TharukaBandara', viewValue: 'Tharuka Bandara'},
-    {value: 'PanchaliHerath', viewValue: 'Panchali Herath'}
+  sclID = 5555;
+  teachers: Teacher[] = [];
+  classes: Class[] = [];
+  selectedClass: number = 0;
+  newClass: string='';
 
-    ];
+  constructor(private classesService:ClassesService, private teachersService:TeachersService) {
+  }
 
-  create:boolean = false;
+  ngOnInit(){
+    this.getClasses();
+  }
 
-  createToggle(){
+  create: boolean = false;
+
+  createToggle() {
     this.create = !this.create;
   }
 
-  modify:boolean = false;
+  modify: boolean = false;
 
-  modifyToggle(){
+
+
+  modifyToggle() {
     this.modify = !this.modify;
   }
 
 
+  createClass(clsName: string) {
+    const cls: Class = {
+      id: 0,
+      name: clsName,
+      sclID: this.sclID,
+      teacherID: 0,
+      allocatedDate: new Date(0, 0, 0),
+      boysCount: 0,
+      girlsCount: 0
+    };
+
+    this.classesService.storeClass(cls).subscribe()
+  }
+
+  getClasses(){
+    this.classesService.fetchClasses(this.sclID).subscribe({
+      next:res=>{
+        this.classes=res;
+      }
+    })
+  }
 }

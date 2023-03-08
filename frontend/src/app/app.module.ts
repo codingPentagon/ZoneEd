@@ -25,6 +25,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { GradesStuComponent } from './grades-stu/grades-stu.component';
 import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatTabsModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
