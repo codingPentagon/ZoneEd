@@ -8,6 +8,12 @@ import { Stu } from './stu';
   providedIn: 'root'
 })
 export class UserRegService {
+
+
+  setUserData(fullName: any) {
+    this.fullName=fullName;
+  }
+  fullName: String="thilina1";
   
 
   constructor(private httpClient:HttpClient) { }
@@ -21,7 +27,7 @@ export class UserRegService {
   apiurl='http://localhost:8080/api/v1/stu"';
 
   public proceedlogin(): Observable<any> {
-    return this.httpClient.get("http://localhost:8080/api/v1/stu/regStuData/admin3");
+    return this.httpClient.get(`http://localhost:8080/api/v1/stu/regStuData/${this.fullName}`);
   }
   
   

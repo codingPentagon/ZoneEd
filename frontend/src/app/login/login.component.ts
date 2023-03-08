@@ -11,7 +11,7 @@ import { UserRegService } from '../user-reg.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  fullName = 'admin1';
+
 
   constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router){}
   userdata:any;
@@ -24,6 +24,7 @@ export class LoginComponent {
   
   proceedlogin(){
    
+    this.UserRegService.setUserData(this.loginform.value.fullName);
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
       console.log(this.userdata.fullName);
@@ -39,7 +40,7 @@ export class LoginComponent {
           this.router.navigate(['']);
         }else{
           console.log('plz contact admin','in active user');
-          this.router.navigate(['']);
+          this.router.navigate([`dashboard1/${this.loginform.value.fullName}`]);
         }
       }else{
         console.log('Invalid crediatial');

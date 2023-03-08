@@ -20,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from '@angular/material/card';
+import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 
 
 
@@ -29,6 +30,7 @@ import {MatCardModule} from '@angular/material/card';
     RegStuComponent,
     RegTchrComponent,
     LoginComponent,
+    StuDashboardComponent,
 
   ],
     imports: [
