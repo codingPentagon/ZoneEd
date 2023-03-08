@@ -7,9 +7,9 @@
       <mat-icon>arrow_forward</mat-icon>
       </button>
     </div>
-    <mat-card *ngFor="let notif of notifConService.notifs">
-      <mat-card-content (click)="notif.read=true" [ngStyle]="{'font-weight': notif.read == false ? 'bold' : 'normal'}">
-        {{notif.notification}}
+    <mat-card *ngFor="let notif of notifs">
+      <mat-card-content (click)="notif.isRead=true" [ngStyle]="{'font-weight': notif.isRead == false ? 'bold' : 'normal'}">
+        {{notif.content}}
         <div class="date">
           {{notif.date}}
           <br>

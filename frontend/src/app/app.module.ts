@@ -16,6 +16,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatDatepickerModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    ServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

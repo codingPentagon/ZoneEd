@@ -1,5 +1,7 @@
 import {Component, HostBinding} from '@angular/core';
 import {NotificationConnectorService} from "./notification-connector.service";
+import {NotificationService} from "../../services/notification.service";
+import {Notification} from "../../models/notification.model";
 
 @Component({
   selector: 'app-notification',
@@ -8,10 +10,14 @@ import {NotificationConnectorService} from "./notification-connector.service";
 })
 export class NotificationComponent {
 
+  userID = 1000;
+  notifs : Notification[]= [];
+
   @HostBinding('class.is-open')
   isOpen:boolean = false;
 
-  constructor(public notifConService:NotificationConnectorService) {
+  constructor(public notifConService:NotificationConnectorService,
+              private notifService : NotificationService) {
   }
 
   ngOnInit() {
@@ -19,6 +25,12 @@ export class NotificationComponent {
       this.isOpen = isOpen;
     });
     this.notifConService.getUnreadNotifCount();
+
+    this.notifService.getNotifications(this.userID).subscribe({
+      next: res => {
+        this.notifs=res
+      }
+    })
   }
 
 
