@@ -69,17 +69,15 @@
             <div class="allocate-entry">
               Class {{cls.class}}
               <span class="spacer"></span>
-              <div>
-                <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
-                            [(value)]="cls.teacher"
-                            [ngStyle]="{'background-color':cls.teacher == null ? 'lightgrey' : 'blue'}"
-                            [disabled]="!modify" [ngClass]="{'hide':!modify}">
-                  <mat-option [value]=null class="remove">Remove Selection</mat-option>
-                  <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">
-                    {{teacher.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </div>
+              <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
+                          [(value)]="cls.teacher"
+                          [ngStyle]="{'background-color':cls.teacher == null ? 'lightgrey' : 'blue'}"
+                          [disabled]="!modify" [ngClass]="{'hide':!modify}">
+                <mat-option [value]=null class="remove">Remove Selection</mat-option>
+                <mat-option *ngFor="let teacher of teachers" [value]="teacher.value">
+                  {{teacher.viewValue}}
+                </mat-option>
+              </mat-select>
             </div>
             <mat-divider></mat-divider>
           </div>

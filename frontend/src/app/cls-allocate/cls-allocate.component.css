@@ -26,10 +26,6 @@
   flex: 1 1 auto;
 }
 
-.creation{
-  height: 30vh;
-}
-
 .details{
   height: 82vh;
 }
@@ -79,4 +75,8 @@ mat-select{
   color: rgb(150, 150, 150);    /*could not find the class of the text*/
 }
 
+.allocate-entry{
+  display: flex;
+  margin: 5px 0;
+}
 
