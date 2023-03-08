@@ -7,10 +7,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 
 import { NavComponent } from './nav/nav.component';
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatExpansionModule} from "@angular/material/expansion";
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
         MatButtonModule,
         RouterLink,
         MatToolbarModule,
-        MatExpansionModule
+        MatExpansionModule,
+        RouterOutlet,
+
     ],
   exports: [
     NavComponent,

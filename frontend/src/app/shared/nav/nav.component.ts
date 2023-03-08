@@ -8,6 +8,8 @@ import {Component, Input} from '@angular/core';
 export class NavComponent {
 
   @Input() links: any[] = [
-    {value:'Dashboard',icon:'space_dashboard',path:''},
+    {value:'Dashboard',icon:'space_dashboard',path:'/home'},
+    {value:'Header',icon:'header',path:'header'},
+    {value:'Reg',icon:'register',path:'/studentreg'},
   ];
 }

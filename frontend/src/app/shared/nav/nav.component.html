@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <mat-sidenav-container>
   <mat-sidenav opened disableClose mode="side">
     <mat-nav-list>
@@ -39,7 +40,7 @@
           Class Management
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <mat-list-item *ngFor="let link of links" routerLink="link.path">
+          <mat-list-item *ngFor="let link of links" [routerLink]="link.path">
             <a matListItemTitle>{{link.value}}</a>
             <button matListItemMeta mat-icon-button>
               <mat-icon>{{link.icon}}</mat-icon>
@@ -50,3 +51,4 @@
     </mat-accordion>
   </mat-sidenav>
 </mat-sidenav-container>
+
