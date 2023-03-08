@@ -3,6 +3,7 @@ export interface Teacher{
   name:string,
   subject:string
   sclID:number;
+  classID:number;
 
 }
 

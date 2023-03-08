@@ -51,7 +51,10 @@ export class ClsAllocateComponent {
       girlsCount: 0
     };
 
-    this.classesService.storeClass(cls).subscribe()
+    this.classesService.storeClass(cls).subscribe({
+      next : res=>{console.log(res)},
+      complete:()=> this.getClasses()
+    })
   }
 
   getClasses(){
