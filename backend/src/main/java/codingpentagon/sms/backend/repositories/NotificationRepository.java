@@ -1,6 +1,6 @@
-package repositories;
+package codingpentagon.sms.backend.repositories;
 
-import models.Notification;
+import codingpentagon.sms.backend.models.Notification;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

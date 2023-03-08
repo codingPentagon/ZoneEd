@@ -1,8 +1,8 @@
-package services;
+package codingpentagon.sms.backend.services;
 
-import models.Notification;
+import codingpentagon.sms.backend.models.Notification;
 import org.springframework.stereotype.Service;
-import repositories.NotificationRepository;
+import codingpentagon.sms.backend.repositories.NotificationRepository;
 
 import java.util.List;
 import java.util.Random;

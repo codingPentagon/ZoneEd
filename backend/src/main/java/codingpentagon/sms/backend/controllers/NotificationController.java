@@ -1,9 +1,9 @@
-package controllers;
+package codingpentagon.sms.backend.controllers;
 
-import models.Notification;
+import codingpentagon.sms.backend.models.Notification;
 import org.springframework.web.bind.annotation.*;
-import repositories.NotificationRepository;
-import services.NotificationService;
+import codingpentagon.sms.backend.repositories.NotificationRepository;
+import codingpentagon.sms.backend.services.NotificationService;
 
 import java.util.List;
 

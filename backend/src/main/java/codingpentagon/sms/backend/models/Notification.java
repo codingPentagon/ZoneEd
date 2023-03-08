@@ -1,4 +1,4 @@
-package models;
+package codingpentagon.sms.backend.models;
 
 import org.springframework.data.annotation.Id;
 
