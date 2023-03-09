@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Student} from "../models/student.model";
+import {StudentsService} from "../services/students.service";
 
 
 @Component({
@@ -7,24 +9,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./attdnce-tchr.component.css']
 })
 export class AttdnceTchrComponent {
-  students = [
-    {name: 'Bhagya Nethmini', present: false},
-    {name: 'Rishmi Tharuka', present: false},
-    {name: 'Maleesha Kawsarani', present: false},
-    {name: 'Sachini Perera', present: false},
-    {name: 'GayanI Herath', present: false},
-    {name: 'Samadhi Fernando', present: false},
-    {name: 'Maneesha Bulner', present: false},
-    {name: 'Dulashi Sewmini', present: false},
-    {name: 'Kavindu Sankalpa', present: false},
-    {name: 'Maneth Lorance', present: false},
-    {name: 'Asitha Silva', present: false},
-    {name: 'Malindu Deshan', present: false},
-    {name: 'Thisal Gunasena', present: false},
-    {name: 'Nimesh Deshan', present: false},
-
-  ];
+  students:Student[]=[];
   maxDate = new Date();
+  clsID:number=555;
+
+  constructor(private studentsService:StudentsService) {
+  }
+
+  ngOnInit(){
+    this.getStudents();
+  }
+
+  getStudents(){
+   this.studentsService.fetchStudents(this.clsID).subscribe({
+     next:res=>{
+       this.students=res;
+     }
+   })
+  }
 
 }
 
