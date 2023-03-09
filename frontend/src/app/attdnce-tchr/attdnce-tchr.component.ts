@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Student} from "../models/student.model";
 import {StudentsService} from "../services/students.service";
+import {AttendanceService} from "../services/attendance.service";
 
 
 @Component({
@@ -13,8 +14,9 @@ export class AttdnceTchrComponent {
   maxDate = new Date();
   clsID:number=555;
 
-  constructor(private studentsService:StudentsService) {
+  constructor(private studentsService:StudentsService,private attendanceService:AttendanceService) {
   }
+
 
   ngOnInit(){
     this.getStudents();
@@ -26,6 +28,12 @@ export class AttdnceTchrComponent {
        this.students=res;
      }
    })
+  }
+
+  getAttendance(date:Date){
+    this.attendanceService.fetchAttendance(this.clsID,date).subscribe({
+      next:res=>{console.log()}
+    })
   }
 
 }
