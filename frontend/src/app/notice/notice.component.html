@@ -6,8 +6,8 @@
       {{create? 'New Notice': 'Notice Board'}}
       <span class="spacer"></span>
           <mat-button-toggle-group *ngIf="!create" [(value)]="noticeBox">
-            <mat-button-toggle value="all">All</mat-button-toggle>
-            <mat-button-toggle value="post">Post</mat-button-toggle>
+            <mat-button-toggle value="all" (click)="getNotices()">All</mat-button-toggle>
+            <mat-button-toggle value="post" (click)="getPostedNotices()">Post</mat-button-toggle>
           </mat-button-toggle-group>
           <mat-chip-listbox>
             <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
@@ -19,10 +19,10 @@
           </mat-chip-listbox>
     </mat-card-header>
     <mat-card-content *ngIf="create">
-      <form>
+      <form #newNotice="ngForm" (ngSubmit)="createNotice(newNotice);createToggle()" id="newNotice">
         <mat-form-field appearance="outline">
           <mat-label>Select category</mat-label>
-          <mat-select multiple>
+          <mat-select multiple ngModel name="categories">
             <mat-option *ngFor="let category of categories" [value]="category.value">
               {{category.viewValue}}
             </mat-option>
@@ -32,28 +32,27 @@
           <mat-label >
            Subject
           </mat-label>
-          <input matInput >
+          <input matInput ngModel name="subject" >
         </mat-form-field>
         <mat-form-field class="body" appearance="outline">
           <mat-label>
-            Body
+            Content
           </mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput ngModel name="content"></textarea>
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions *ngIf="create" align="end">
-      <button mat-raised-button>Discard</button>
-      <button mat-raised-button>Post</button>
+      <button mat-raised-button (click)="createToggle()">Discard</button>
+      <button mat-raised-button type="submit" form="newNotice" >Post</button>
     </mat-card-actions>
 
       <mat-card-content class="notices" *ngIf="!create">
         <mat-accordion>
-          <mat-expansion-panel *ngFor="let notice of (noticeBox=='all'?notices:getPostedNotices())">
-            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'" (click)="notice.read=true"
-                                        [ngStyle]="{'font-weight': notice.read == false ? 'bold' : 'normal'}">
+          <mat-expansion-panel *ngFor="let notice of notices">
+            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
               <mat-panel-title >
-                {{notice.sender}}
+                {{notice.senderID}}
                 <br>
                 {{notice.subject}}
               </mat-panel-title>

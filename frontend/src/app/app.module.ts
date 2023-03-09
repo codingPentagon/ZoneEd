@@ -18,30 +18,34 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {FormsModule} from "@angular/forms";
+import {ServicesModule} from "./services/services/services.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     NoticeComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatChipsModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatExpansionModule,
-        MatDatepickerModule,
-        MatCheckboxModule,
-        MatDividerModule,
-        MatIconModule,
-        MatButtonToggleModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    ServicesModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

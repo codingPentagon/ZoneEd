@@ -9,12 +9,12 @@ public class Notice {
     @Id
     private int id;
     private int senderID;
-    private String receiverCategory;
+    private String[] receiverCategories;
     private Date date;
-    private Time time;
+    private String time;
     private String subject;
     private String content;
-    private boolean isRead;
+
 
     public int getId() {
         return id;
@@ -32,12 +32,12 @@ public class Notice {
         this.senderID = senderID;
     }
 
-    public String getReceiverCategory() {
-        return receiverCategory;
+    public String[] getReceiverCategories() {
+        return receiverCategories;
     }
 
-    public void setReceiverCategory(String receiverCategory) {
-        this.receiverCategory = receiverCategory;
+    public void setReceiverCategories(String[] receiverCategories) {
+        this.receiverCategories = receiverCategories;
     }
 
     public Date getDate() {
@@ -48,11 +48,11 @@ public class Notice {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String  time) {
         this.time = time;
     }
 
@@ -72,11 +72,4 @@ public class Notice {
         this.content = content;
     }
 
-    public boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(boolean read) {
-        isRead = read;
-    }
 }

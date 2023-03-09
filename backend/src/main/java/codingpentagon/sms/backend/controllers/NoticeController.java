@@ -11,17 +11,22 @@ import java.util.List;
 public class NoticeController {
     NoticeService noticeService;
 
-    public NoticeController(NoticeRepository noticeRepo){
+    public NoticeController(NoticeRepository noticeRepo) {
         this.noticeService = new NoticeService(noticeRepo);
     }
 
-    @GetMapping()
-    public List<Notice> getNotices(@PathVariable int userID){
-        return this.noticeService.findNotices(userID);
+    @GetMapping("notices/{category}")
+    public List<Notice> getNotices(@PathVariable String category) {
+        return this.noticeService.findNotices(category);
     }
 
-    @PostMapping()
-    public void createNotice(@RequestBody Notice notice){
+    @GetMapping("notices/posted/{userID}")
+    public List<Notice> getPostedNotices(@PathVariable int userID) {
+        return this.noticeService.findPostedNotices(userID);
+    }
+
+    @PostMapping("notices/")
+    public void createNotice(@RequestBody Notice notice) {
         this.noticeService.saveNotice(notice);
     }
 }

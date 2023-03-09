@@ -12,11 +12,15 @@ public class NoticeService {
     public NoticeService(NoticeRepository noticeRepo) {
         this.noticeRepository = noticeRepo;
     }
-    public List<Notice> findNotices(int userID){
+    public List<Notice> findNotices(String category) {
+        return this.noticeRepository.findByReceiverCategoriesContainsIgnoreCase(category);
+    }
+
+    public List<Notice> findPostedNotices(int userID) {
         return this.noticeRepository.findBySenderID(userID);
     }
 
-    public void saveNotice(Notice notice){
+    public void saveNotice(Notice notice) {
         notice.setId(new Random().nextInt(4000));
         this.noticeRepository.save(notice);
     }
