@@ -19,6 +19,7 @@ import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {FormsModule} from "@angular/forms";
 import { LeaveTchrComponent } from './leave-tchr/leave-tchr.component';
 import { LeavePrinComponent } from './leave-prin/leave-prin.component';
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LeavePrinComponent } from './leave-prin/leave-prin.component';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMatTimepickerModule,
-    FormsModule
+    FormsModule,
+    ServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,9 +3,9 @@
   <app-header></app-header>
   <div class="workspace">
     <div class="left">
-      <mat-card class="leavePage">
+      <mat-card class="teacher">
         <mat-card-header>
-          Leave Details
+          Teachers
           <span class="spacer"></span>
           <mat-chip-listbox>
             <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="addToggle()">
@@ -13,36 +13,59 @@
             </mat-chip>
           </mat-chip-listbox>
         </mat-card-header>
-        <mat-divider></mat-divider>
+
 
         <mat-card-content>
-
-            <div  class="req-list">
-              <div class="req-entry">
-                <span>Medical request</span>
-                <span class="spacer"></span>
-                <span>02/02/2023</span>
-              </div>
-              <div class="req-entry">
-                <span>From :- 02/02/2023</span>
-                <span class="spacer"></span>
-                <span>8.00am</span>
-              </div>
-              <div class="req-entry">
-                <span>To :- 03/02/2023</span>
-                <span class="spacer"></span>
-                <span>Accepted</span>
-              </div>
-
-            </div>
+          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id">
+           <span class="teacher-entry">
+             {{ teacher.name }}
+           </span>
             <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="right">
 
+
+    <div class="right">
+      <mat-card class="req_history">
+        <mat-card-header>
+          Request History
+        </mat-card-header>
+        <mat-card-content>
+
+          <div  class="req-list">
+            <div class="req-entry">
+              <span>{{request.reason}}</span>
+              <span class="spacer"></span>
+              <span>{{request.fromdate}}</span>
+            </div>
+            <div class="req-entry">
+              <span>From :- 02/02/2023</span>
+              <span class="spacer"></span>
+              <span>8.00am</span>
+            </div>
+            <div class="req-entry">
+              <span>To :- 03/02/2023</span>
+              <span class="spacer"></span>
+              <span>Accepted</span>
+            </div>
+
+          </div>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+
+      </mat-card>
+
+      <mat-card class="leave_overview">
+        <mat-card-header>
+          Leave Overview
+        </mat-card-header>
+
+      </mat-card>
     </div>
-  </div>
+
+</div>
 </div>
 
 

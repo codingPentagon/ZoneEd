@@ -1,9 +1,11 @@
 :host,.workspace{
   display: flex;
-}
 
+
+}
 .content{
   flex: 1;
+
 
 }
 .left{
@@ -17,11 +19,36 @@
 .spacer{
   flex: 1 1 auto;
 }
-.leavePage{
+
+mat-card{
   margin: 15px;
+  height: 100%;
+
+}
+
+mat-card-content {
+  height: 100%;
+}
+
+.teacher{
   height: 85vh;
+  cursor: pointer;
+
 }
-.graph{
-  margin: 15px 15px 15px 0;
-  height: 85px;
+.req_history{
+  height:33vh;
 }
+
+.leave_overview{
+  height: 50vh;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+.selected{
+  background-color: mediumblue;
+  color: white;
+
+}
+
