@@ -4,7 +4,7 @@ export interface Notification {
   id : number;
   receiverID : number;
   date : Date;
-  time : Time;
+  time : string;
   content : string;
   event : string;
   isRead : boolean;

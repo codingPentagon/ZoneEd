@@ -8,7 +8,7 @@
       </button>
     </div>
     <mat-card *ngFor="let notif of notifs">
-      <mat-card-content (click)="notif.isRead=true" [ngStyle]="{'font-weight': notif.isRead == false ? 'bold' : 'normal'}">
+      <mat-card-content (click)="updateNotification(notif,true)" [ngStyle]="{'font-weight': notif.isRead == false ? 'bold' : 'normal'}">
         {{notif.content}}
         <div class="date">
           {{notif.date}}

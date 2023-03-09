@@ -10,7 +10,7 @@ public class Notification {
     private int id;
     private int receiverID;
     private Date date;
-    private Time time;
+    private String time;
     private String content;
     private String event;
     private boolean isRead;
@@ -39,11 +39,11 @@ public class Notification {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -63,11 +63,13 @@ public class Notification {
         this.event = event;
     }
 
-    public boolean isRead() {
+    public boolean getIsRead() {
         return isRead;
     }
 
-    public void setRead(boolean read) {
+    public void setIsRead(boolean read) {
         isRead = read;
     }
+
 }
+

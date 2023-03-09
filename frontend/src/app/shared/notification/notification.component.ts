@@ -10,7 +10,7 @@ import {Notification} from "../../models/notification.model";
 })
 export class NotificationComponent {
 
-  userID = 1000;
+  userID = 3333;
   notifs : Notification[]= [];
 
   @HostBinding('class.is-open')
@@ -25,10 +25,24 @@ export class NotificationComponent {
       this.isOpen = isOpen;
     });
     this.notifConService.getUnreadNotifCount();
+    this.getNotifications();
 
+
+  }
+  getNotifications(){
     this.notifService.getNotifications(this.userID).subscribe({
       next: res => {
         this.notifs=res
+        console.log(res)
+      }
+    })
+  }
+
+  updateNotification(notification: Notification, read: boolean){
+    notification.isRead=read;
+    this.notifService.updateNotification(notification).subscribe({
+      complete:()=>{
+        this.getNotifications();
       }
     })
   }

@@ -16,17 +16,22 @@ export class NotificationService {
       id : 0,
       receiverID : receiverID,
       date : new Date(),
-      time : {hours: new Date().getHours(), minutes: new Date().getMinutes()},
+      time : new Date().getHours().toString()+ new Date().getMinutes().toString(),
       content : content,
       event : event,
       isRead : false,
 
     }
-    this.http.post(url,notif)
+    return this.http.post(url,notif)
   }
 
   getNotifications(userID: number) {
     return this.http.get<Notification[]>(url+userID.toString());
   }
+
+  updateNotification(notification:Notification){
+    return this.http.put(url,notification);
+  }
+
 }
 

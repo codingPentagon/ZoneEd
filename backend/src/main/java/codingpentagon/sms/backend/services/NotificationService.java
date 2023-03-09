@@ -24,4 +24,8 @@ public class NotificationService {
         notification.setId(new Random().nextInt(3000));
         this.notificationRepository.save(notification);
     }
+
+    public void updateNotification(Notification notification) {
+        this.notificationRepository.save(notification);
+    }
 }

@@ -17,11 +17,14 @@ public class NotificationController {
     @GetMapping("notifications/{userID}")
     public List<Notification> getNotifications(@PathVariable int userID){
         return this.notificationService.findNotifications(userID);
-
     }
 
     @PostMapping("notifications/")
     public void createNotification(@RequestBody Notification notification){
         this.notificationService.saveNotification(notification);
+    }
+    @PutMapping("notifications/")
+    public void updateNotification(@RequestBody Notification notification ){
+        this.notificationService.updateNotification(notification);
     }
 }
