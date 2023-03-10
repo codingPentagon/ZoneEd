@@ -78,20 +78,44 @@ mat-accordion:has(mat-accordion){
 
 .profile-pic{
   display: grid;
-  justify-content: center;
-  margin: 40px;
+  justify-items: center;
+  margin: 35px;
 }
 
 .profile-pic>img{
-  height: 25vh;
-  width: 25vh;
   border: 5px solid white;
   border-radius: 50%;
+  width: 70%;
+  height: 88%;
 }
 
 .profile-pic>span{
   text-align: center;
   margin-top: 20px;
   font-size: 200%;
+  color: white;
+}
+
+
+.school-tag{
+  display: grid;
+  grid-auto-flow: column;
+  margin: 15px;
+  align-items: center;
+  padding: 5px;
+  backdrop-filter: grayscale(25%);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.school-tag>img{
+  border-radius: 5px;
+  background-color: white;
+  height: 100%;
+  max-height: 40px;
+}
+
+.school-tag>span{
+  margin-left: 10px;
   color: white;
 }
