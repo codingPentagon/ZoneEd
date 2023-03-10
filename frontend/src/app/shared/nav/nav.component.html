@@ -4,15 +4,21 @@
 
     <mat-accordion>
       <mat-expansion-panel *ngFor="let link of links" [routerLink]="link.path" routerLinkActive=""
-                           #rla="routerLinkActive" [expanded]="rla.isActive">
+                           #rla1="routerLinkActive" [expanded]="rla1.isActive">
         <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{link.icon}}</mat-icon>
+          </mat-panel-title>
           {{link.value}}
         </mat-expansion-panel-header>
 
         <mat-accordion *ngIf="link.children!=null">
           <mat-expansion-panel class="sub-nav" *ngFor="let linkChild of link.children" [routerLink]="linkChild.path"
-                               routerLinkActive="" #rla="routerLinkActive" [expanded]="rla.isActive">
+                               routerLinkActive="" #rla2="routerLinkActive" [expanded]="rla2.isActive">
             <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>{{linkChild.icon}}</mat-icon>
+              </mat-panel-title>
               {{linkChild.value}}
             </mat-expansion-panel-header>
           </mat-expansion-panel>

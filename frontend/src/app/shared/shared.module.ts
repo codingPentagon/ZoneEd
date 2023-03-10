@@ -41,7 +41,7 @@ import {MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionModule} from "@angular/
       provide: MAT_EXPANSION_PANEL_DEFAULT_OPTIONS,
       useValue: {
         hideToggle: true,
-        expandedHeight: '50px',
+        expandedHeight: '47px',
         collapsedHeight: '40px'
       }
     }
