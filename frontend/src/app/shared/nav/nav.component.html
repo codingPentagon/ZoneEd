@@ -2,6 +2,11 @@
 <mat-sidenav-container>
   <mat-sidenav opened disableClose mode="side">
 
+    <div class="profile-pic">
+      <img src="favicon.ico" alt="image">
+      <span>Hello, Name</span>
+    </div>
+
     <mat-accordion>
       <mat-expansion-panel *ngFor="let link of links" [routerLink]="link.path" routerLinkActive=""
                            #rla1="routerLinkActive" [expanded]="rla1.isActive">

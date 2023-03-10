@@ -72,3 +72,26 @@ mat-accordion:has(mat-accordion){
 /deep/ .mat-content{
   align-items: center;
 }
+
+
+
+
+.profile-pic{
+  display: grid;
+  justify-content: center;
+  margin: 40px;
+}
+
+.profile-pic>img{
+  height: 25vh;
+  width: 25vh;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.profile-pic>span{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 200%;
+  color: white;
+}
