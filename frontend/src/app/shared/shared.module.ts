@@ -10,7 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatExpansionModule} from "@angular/material/expansion";
+import {MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -34,6 +34,16 @@ import {MatExpansionModule} from "@angular/material/expansion";
   exports: [
     NavComponent,
     HeaderComponent
+  ],
+  providers:[
+    {
+      provide: MAT_EXPANSION_PANEL_DEFAULT_OPTIONS,
+      useValue: {
+        hideToggle: true,
+        expandedHeight: '50px',
+        collapsedHeight: '40px'
+      }
+    }
   ]
 })
 export class SharedModule { }

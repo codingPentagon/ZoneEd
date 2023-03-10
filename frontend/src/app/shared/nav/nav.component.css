@@ -1,51 +1,67 @@
-.mat-sidenav-container{
+.mat-sidenav-container {
   height: 100vh;
 }
 
-.mat-sidenav{
+.mat-sidenav {
   background-color: darkblue;
   width: 275px;
 }
 
-.mat-icon{
+.mat-icon {
   color: white;
 }
 
-a{
+a {
   color: white;
 }
 
-.mat-expanded>mat-expansion-panel-header{
+.mat-expanded > mat-expansion-panel-header {
   pointer-events: none;
-  /*padding: 0;*/
-  background-color: cyan;
   color: white;
 }
 
-.no-expand /deep/ .mat-expansion-panel-content{
-  display: none;
+.mat-expanded:not(.sub-nav) > mat-expansion-panel-header{
+  background-color: lightseagreen;
 }
 
-mat-expansion-panel /deep/ .mat-expansion-panel-body{
-  padding: 0 0 0 15px;
+
+.mat-expansion-panel /deep/ .mat-expansion-panel-body {
+  padding: 0;
 }
 
-.mat-expansion-panel{
+.mat-expansion-panel {
   background-color: transparent;
-  color: white;
+  color: darkgrey;
   box-shadow: none;
 }
 
-mat-expansion-panel:not(.sub-nav){
-  margin: 5px 15px;
+.mat-expansion-panel-header {
+  margin: 0;
+  padding: 0 15px;
 }
 
-.sub-nav{
+.mat-expansion-panel-spacing {
+  margin: 0;
+}
+
+:not(.sub-nav).mat-expansion-panel.mat-expanded {
+  backdrop-filter: grayscale(30%);
+}
+
+mat-accordion{
+  display: grid;
+  grid-auto-columns: 90%;
+  justify-content: center;
+}
+
+:not(.no-expand).mat-expansion-panel-content {
+  margin: 3px 0;
+}
+
+mat-accordion mat-accordion{
   margin: 5px 0;
 }
 
-mat-expansion-panel-header{
-  padding: 0 15px;
-  border-radius: 10px;
+mat-accordion:has(mat-accordion){
+  gap: 5px;
 }
-
