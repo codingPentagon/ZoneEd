@@ -15,7 +15,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule,} from "@angular/material/core";
 import {MatDividerModule} from "@angular/material/divider";
 import { GradesTchrComponent } from './grades-tchr/grades-tchr.component';
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -49,16 +49,18 @@ import {ServicesModule} from "./services/services.module";
     FormsModule,
     MatTableModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatDividerModule,
     MatGridListModule,
     MatTabsModule,
     MatChipsModule,
     MatIconModule,
     MatButtonToggleModule,
-    ServicesModule
+    ServicesModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

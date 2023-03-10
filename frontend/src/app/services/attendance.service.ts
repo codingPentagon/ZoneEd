@@ -10,7 +10,7 @@ export class AttendanceService {
 
   constructor(private http:HttpClient) { }
 
-  fetchAttendance(clsID:number, date:Date) {
+  fetchAttendance(clsID: number, date: Date) {
     return this.http.get<AttendanceRecord[]>(url+clsID.toString()+'/'+date.toString())
   }
 }
