@@ -79,20 +79,20 @@ mat-accordion:has(mat-accordion){
 .profile-pic{
   display: grid;
   justify-items: center;
-  margin: 35px;
+  margin: 30px 20px;
 }
 
 .profile-pic>img{
   border: 5px solid white;
   border-radius: 50%;
-  width: 70%;
+  width: 60%;
   height: 88%;
 }
 
 .profile-pic>span{
   text-align: center;
-  margin-top: 20px;
-  font-size: 200%;
+  margin-top: 15px;
+  font-size: 180%;
   color: white;
 }
 

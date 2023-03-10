@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -7,10 +6,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-
-  constructor(private router: Router) {
-  }
-
   @Input() links: any[] = [
     {value:'Dashboard',icon:'space_dashboard',path:'/home',children: null},
     {value:'Header',icon:'person',path:'home',children: null},
@@ -23,8 +18,6 @@ export class NavComponent {
     },
   ];
 
-  route(url: string){
-    console.log(url)
-    this.router.navigateByUrl(url).then(r => {return r});
-  }
+  @Input() name: string = 'Sandeepani';
+  @Input() school: string = 'Dehiaththakandiya Maha Vidyalaya';
 }
