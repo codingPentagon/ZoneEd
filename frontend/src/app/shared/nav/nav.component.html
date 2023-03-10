@@ -1,26 +1,26 @@
 <router-outlet></router-outlet>
 <mat-sidenav-container>
   <mat-sidenav opened disableClose mode="side">
+
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let link of links">
+      <mat-expansion-panel *ngFor="let link of links" [routerLink]="link.path" routerLinkActive=""
+                           #rla="routerLinkActive" [expanded]="rla.isActive">
         <mat-expansion-panel-header>
           {{link.value}}
         </mat-expansion-panel-header>
 
-          <mat-accordion>
-            <mat-expansion-panel class="no-expand sub-nav" expanded>
-              <mat-expansion-panel-header >
-                Subject Management
-              </mat-expansion-panel-header>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="no-expand sub-nav">
-              <mat-expansion-panel-header>
-                Subject Management
-              </mat-expansion-panel-header>
-            </mat-expansion-panel>
-          </mat-accordion>
+        <mat-accordion *ngIf="link.children!=null">
+          <mat-expansion-panel class="sub-nav" *ngFor="let linkChild of link.children" [routerLink]="linkChild.path"
+                               routerLinkActive="" #rla="routerLinkActive" [expanded]="rla.isActive">
+            <mat-expansion-panel-header>
+              {{linkChild.value}}
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+
       </mat-expansion-panel>
     </mat-accordion>
+
   </mat-sidenav>
 </mat-sidenav-container>
 

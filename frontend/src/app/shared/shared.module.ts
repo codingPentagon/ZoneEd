@@ -7,7 +7,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 
 import { NavComponent } from './nav/nav.component';
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionModule} from "@angular/material/expansion";
@@ -18,19 +18,20 @@ import {MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionModule} from "@angular/
     NavComponent,
     HeaderComponent
   ],
-    imports: [
-        CommonModule,
-        MatSidenavModule,
-        MatInputModule,
-        MatListModule,
-        MatIconModule,
-        MatButtonModule,
-        RouterLink,
-        MatToolbarModule,
-        MatExpansionModule,
-        RouterOutlet,
+  imports: [
+    CommonModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink,
+    MatToolbarModule,
+    MatExpansionModule,
+    RouterOutlet,
+    RouterLinkActive,
 
-    ],
+  ],
   exports: [
     NavComponent,
     HeaderComponent
