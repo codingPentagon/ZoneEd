@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
+import {BaseModule} from "./base/base.module";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {MatTabsModule} from "@angular/material/tabs";
   imports: [
     BrowserModule,
     SharedModule,
+    BaseModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
