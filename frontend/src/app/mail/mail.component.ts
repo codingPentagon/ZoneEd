@@ -12,13 +12,16 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 })
 
 export class MailComponent {
+  senderID :number =80;
+
+
   separatorKeysCodes: number[] = [ENTER, COMMA];
   mailCtrl = new FormControl('');
   filteredMails: Observable<string[]>;
   mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
 
-  constructor() {
+  constructor() {//TODO
     this.filteredMails = this.mailCtrl.valueChanges.pipe(
       startWith(null),
       map((mail: string | null) => (mail ? this._filter(mail) : this.allMails.slice())),

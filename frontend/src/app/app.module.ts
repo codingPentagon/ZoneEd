@@ -11,7 +11,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatDividerModule} from "@angular/material/divider";
@@ -19,6 +19,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MailComponent} from './mail/mail.component'
+import {ServicesModule} from "./services/mail.module";
 
 
 @NgModule({
@@ -43,7 +44,9 @@ import {MailComponent} from './mail/mail.component'
         MatDividerModule,
         MatExpansionModule,
         MatCheckboxModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        FormsModule,
+        ServicesModule
     ],
   providers: [],
   bootstrap: [AppComponent]
