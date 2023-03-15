@@ -20,6 +20,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MailComponent} from './mail/mail.component'
 import {ServicesModule} from "./services/mail.module";
+import {NgxFileDropModule} from "ngx-file-drop";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {ServicesModule} from "./services/mail.module";
         MatCheckboxModule,
         MatButtonToggleModule,
         FormsModule,
-        ServicesModule
+        ServicesModule,
+        NgxFileDropModule
     ],
   providers: [],
   bootstrap: [AppComponent]

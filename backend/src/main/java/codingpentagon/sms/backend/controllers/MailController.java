@@ -11,17 +11,18 @@ import java.util.List;
 public class MailController {
     MailService mailService;
 
-    public MailController(MailRepository mailRepo) {
+    public MailController(MailRepository mailRepo)
+    {
         this.mailService = new MailService(mailRepo);
     }
 
     @GetMapping("mails/posted/senderID}")
-    public List<Mail> getPostedNotices(@PathVariable int senderID) {
+    public List<Mail> getSentBoxMails(@PathVariable int senderID) {
         return this.mailService.findPostedMail(senderID);
     }
 
     @PostMapping("mails/")
-    public void createNotice(@RequestBody Mail mail) {
+    public void createMail(@RequestBody Mail mail) {
         this.mailService.saveMail(mail);
     }
 }

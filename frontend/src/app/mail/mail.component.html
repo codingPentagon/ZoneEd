@@ -7,8 +7,8 @@
         <h2>{{create ? 'New Mail' : "Mails"}}</h2>
         <span class="spacer"></span>
         <mat-button-toggle-group *ngIf="!create" [(value)]="mailBox">
-          <mat-button-toggle value="inbox" >Inbox</mat-button-toggle>
-          <mat-button-toggle value="sent">Sent Mail</mat-button-toggle>
+          <mat-button-toggle value="inbox" (click)="getInboxMails()" >Inbox</mat-button-toggle>
+          <mat-button-toggle value="sent" (click)="getSentBoxMails()">Sent Mail</mat-button-toggle>
         </mat-button-toggle-group>
         <mat-chip-listbox>
           <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
@@ -126,8 +126,13 @@
 
         <div class="right">
           <div class="att">
-            <label for="myfile">Select files:</label>
-            <input type="file" id="myfile" name="myfile" multiple><br><br>
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                           (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                Optional custom content that replaces the the entire default content.
+                <button type="button" (click)="openFileSelector()">Browse Files</button>
+              </ng-template>
+            </ngx-file-drop><br><br>
           </div>
         </div>
 

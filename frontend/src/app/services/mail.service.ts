@@ -12,14 +12,13 @@ export class MailService {
   constructor(private http: HttpClient) { }
 
   createMail(mail:Mail){
-
     return this.http.post(url,mail)
   }
-  getPostedMails(senderID: number) {
-    return this.http.get<Mail[]>(url+'posted/'+senderID.toString());
+  getSentBoxMails(senderID: number) {
+    return this.http.get<Mail[]>(url+'sentbox/'+senderID.toString());
   }
 
-  getMails(category: string) {
-    return this.http.get<Mail[]>(url+category);
+  getInboxMails(receiverID: number) {
+    return this.http.get<Mail[]>(url+'inbox/'+receiverID.toString());
   }
 }

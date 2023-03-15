@@ -8,7 +8,7 @@ public class Mail {
     @Id
     private int id;
     private int senderID;
-    private String[] receiverID;
+    private int receiverID;
     private Date date;
     private String time;
     private String subject;
@@ -31,11 +31,11 @@ public class Mail {
         this.senderID = senderID;
     }
 
-    public String[] getReceiverID() {
+    public int getReceiverID() {
         return receiverID;
     }
 
-    public void setReceiverID(String[] receiverID) {
+    public void setReceiverID(int receiverID) {
         this.receiverID = receiverID;
     }
 

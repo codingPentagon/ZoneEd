@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
-import {FormControl} from "@angular/forms";
+import {FormControl, NgForm} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {MailService} from "../services/mail.service";
+import {Mail} from "../models/mail.model";
+import {NgxFileDropEntry} from "ngx-file-drop";
 
 @Component({
   selector: 'app-mail',
@@ -12,7 +15,7 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 })
 
 export class MailComponent {
-  senderID :number =80;
+  userID :number =80;
 
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -21,12 +24,16 @@ export class MailComponent {
   mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
 
-  constructor() {//TODO
+  constructor(private mailService:MailService) {//TODO
     this.filteredMails = this.mailCtrl.valueChanges.pipe(
       startWith(null),
       map((mail: string | null) => (mail ? this._filter(mail) : this.allMails.slice())),
     );
 
+  }
+
+  ngOnInit(){
+    this.getInboxMails();
   }
 
   add(event: MatChipInputEvent): void {
@@ -62,154 +69,42 @@ export class MailComponent {
     return this.allMails.filter(mail => mail.toLowerCase().includes(filterValue));
   }
 
-  inboxmails: any = [
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
+  inboxmails: Mail[] = [];
+  sentboxmails: Mail[] = [];
+
+
+  getInboxMails(){
+    this.mailService.getInboxMails(this.userID).subscribe({
+      next:res=>{
+        this.inboxmails=res;
+      }
+    })
+  }
+  getSentBoxMails(){
+    this.mailService.getSentBoxMails(this.userID).subscribe({
+      next:res=>{
+        this.sentboxmails=res;
+      }
+    })
+  }
+
+  createMail(newMail: NgForm) {
+    const mail:Mail={
+      id:0,
+      senderID : this.userID,
+      date :new Date(),
+      time : "",
+      receiverID :newMail.value.receiverID,
+      subject : newMail.value.subject,
+      content :newMail.value.content,
+      attachment : newMail.value.attachment
     }
-  ];
-  sentboxmails: any = [
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "A personal access token (classic)  with gist, read:org, repo, and workflow scopes was recently regenerated for your account. Visit https://github.com/settings/tokens for more information.",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    },
-    {
-      sender: "Mr. R.T. Meetiyagoda (Principal)",
-      date: "31 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "15 min ago",
-      read: false
-    },
-    {
-      sender: "Mrs. A. Rathnayake (Zonal Director)",
-      date: "26 December 2022",
-      subject: "About the sport meet",
-      content: "It will be held on next month",
-      time: "1 day ago",
-      read: false
-    }
-  ];
+    this.mailService.createMail(mail).subscribe({
+      next:res=>{console.log(res)}
+    })
+
+  }
+
 
   create:boolean = false;
 
@@ -235,5 +130,54 @@ export class MailComponent {
     this.createToggle();
     this.mails = [];
     this.mails.push(recipient);
+  }
+
+  //File drop module**************
+
+  public files: NgxFileDropEntry[] = [];
+
+  public dropped(files: NgxFileDropEntry[]) {
+    this.files = files;
+    for (const droppedFile of files) {
+
+      // Is it a file?
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        fileEntry.file((file: File) => {
+
+          // Here you can access the real file
+          console.log(droppedFile.relativePath, file);
+
+          /**
+           // You could upload it like this:
+           const formData = new FormData()
+           formData.append('logo', file, relativePath)
+
+           // Headers
+           const headers = new HttpHeaders({
+            'security-token': 'mytoken'
+          })
+
+           this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
+           .subscribe(data => {
+            // Sanitized logo returned from backend
+          })
+           **/
+
+        });
+      } else {
+        // It was a directory (empty directories are added, otherwise only files)
+        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+        console.log(droppedFile.relativePath, fileEntry);
+      }
+    }
+  }
+
+  public fileOver(event){
+    console.log(event);
+  }
+
+  public fileLeave(event){
+    console.log(event);
   }
 }
