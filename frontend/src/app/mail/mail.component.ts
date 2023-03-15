@@ -97,8 +97,8 @@ export class MailComponent {
       time : "",
       receiverID :newMail.value.receiverID,
       subject : newMail.value.subject,
-      content :newMail.value.content,
-      attachment : newMail.value.attachment
+      content :newMail.value.content
+
     }
     this.mailService.createMail(mail).subscribe({
       next:res=>{console.log(res)}
