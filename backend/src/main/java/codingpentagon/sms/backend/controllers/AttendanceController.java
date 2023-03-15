@@ -25,4 +25,6 @@ public class AttendanceController {
     public void addAttendance(@RequestBody AttendanceRecord attendanceRecord){
         this.attendanceService.addAttendance(attendanceRecord);
     }
+
+
 }

@@ -24,6 +24,7 @@ export class AttdnceTchrComponent {
   ngOnInit(){
     this.getStudents();
     this.getAttendance(this.maxDate);
+    console.log(this.maxDate)
   }
 
   getStudents(){
@@ -51,6 +52,18 @@ export class AttdnceTchrComponent {
         return rec.studentID==id;
       })[0].attendance
     }
+  }
+
+  getPresentCount(){
+    return this.attndanceRecords.filter(rec=>{
+      return rec.attendance
+    }).length
+  }
+
+  getAbsentCount(){
+    return this.attndanceRecords.filter(rec=>{
+      return !rec.attendance
+    }).length
   }
 }
 
