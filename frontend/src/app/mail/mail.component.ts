@@ -90,6 +90,7 @@ export class MailComponent {
 
   createMail(newMail: NgForm) {
     const mail:Mail={
+      isRead: false,
       id:0,
       senderID : this.userID,
       date :new Date(),
@@ -103,6 +104,14 @@ export class MailComponent {
       next:res=>{console.log(res)}
     })
 
+  }
+  updateMail(mail: Mail, read: boolean){
+    mail.isRead=read;
+    this.mailService.updateMail(mail).subscribe({
+      complete:()=>{
+        this.getInboxMails();
+      }
+    })
   }
 
 
@@ -126,19 +135,20 @@ export class MailComponent {
 
   mailBox:string = 'inbox';
 
-  reply(recipient : string) {
+  reply(recipientID: number) {
     this.createToggle();
     this.mails = [];
-    this.mails.push(recipient);
+    //TODO:fetch name by user ID
+    this.mails.push(recipientID.toString());
   }
 
   //File drop module**************
 
-  public files: NgxFileDropEntry[] = [];
+  public attachments: NgxFileDropEntry[] = [];//TODO: cant add attachments one after another
 
-  public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
-    for (const droppedFile of files) {
+  public dropped(attachments: NgxFileDropEntry[]) {
+    this.attachments.push(...attachments);
+    for (const droppedFile of attachments) {
 
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
@@ -148,36 +158,21 @@ export class MailComponent {
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
 
-          /**
-           // You could upload it like this:
-           const formData = new FormData()
-           formData.append('logo', file, relativePath)
-
-           // Headers
-           const headers = new HttpHeaders({
-            'security-token': 'mytoken'
-          })
-
-           this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-           .subscribe(data => {
-            // Sanitized logo returned from backend
-          })
-           **/
 
         });
       } else {
-        // It was a directory (empty directories are added, otherwise only files)
+        // It was a directory (empty directories are added, otherwise only attachments)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }
 
-  public fileOver(event){
+  public fileOver(event:any){
     console.log(event);
   }
 
-  public fileLeave(event){
+  public fileLeave(event:any){
     console.log(event);
   }
 }

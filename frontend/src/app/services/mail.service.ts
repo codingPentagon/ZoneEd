@@ -21,4 +21,8 @@ export class MailService {
   getInboxMails(receiverID: number) {
     return this.http.get<Mail[]>(url+'inbox/'+receiverID.toString());
   }
+
+  updateMail(mail: Mail) {
+    return this.http.put(url,mail);
+  }
 }

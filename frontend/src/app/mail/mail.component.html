@@ -25,10 +25,10 @@
             <mat-accordion>
               <mat-expansion-panel  *ngFor="let inboxmail of inboxmails">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
-                                            (click)="inboxmail.read=true"
-                                            [ngStyle]="{'font-weight': inboxmail.read == false ? 'bold' : 'normal'}">
+                                            (click)="updateMail(inboxmail,true)"
+                                            [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : 'normal'}">
                   <mat-panel-title>
-                    {{inboxmail.sender}}
+                    {{inboxmail.senderID}}
                     <br>
                     {{inboxmail.subject}}
                   </mat-panel-title>
@@ -43,7 +43,7 @@
                 <p>
                   {{inboxmail.content}}
                 </p>
-                <button mat-icon-button (click)="reply(inboxmail.sender)">
+                <button mat-icon-button (click)="reply(inboxmail.senderID)">
                   <mat-icon>
                     reply
                   </mat-icon>
@@ -58,7 +58,7 @@
               <mat-expansion-panel *ngFor="let sentboxmail of sentboxmails">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
                   <mat-panel-title>
-                    {{sentboxmail.sender}}
+                    {{sentboxmail.senderID}}
                     <br>
                     {{sentboxmail.subject}}
                   </mat-panel-title>
@@ -126,13 +126,14 @@
 
         <div class="right">
           <div class="att">
-            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
-                           (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            <ngx-file-drop [multiple]="true" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                           (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
               <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                Optional custom content that replaces the the entire default content.
                 <button type="button" (click)="openFileSelector()">Browse Files</button>
+                <button *ngIf="attachments.length!=0" type="button" (click)="attachments.splice(0)">Clear Files</button>
               </ng-template>
             </ngx-file-drop><br><br>
+            <span *ngFor="let attachment of attachments">{{attachment.relativePath}}</span>
           </div>
         </div>
 

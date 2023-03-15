@@ -1,4 +1,5 @@
 export interface Mail {
+  isRead: boolean;
   id : number;
   senderID : number;
   receiverID : number;
