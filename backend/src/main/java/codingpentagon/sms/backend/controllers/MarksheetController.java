@@ -1,4 +1,30 @@
 package codingpentagon.sms.backend.controllers;
+import codingpentagon.sms.backend.models.Marksheet;
+import codingpentagon.sms.backend.services.MarksheetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-public class MarksheetController {
+import java.util.Date;
+import java.util.List;
+
+@RestController
+public class MarksheetController{
+    private final MarksheetService marksheetService;
+    @Autowired
+    public MarksheetController(MarksheetService marksheetService) {
+        this.marksheetService = marksheetService;
+    }
+
+    @GetMapping("marksheet/{studentID}/{year}/{term}")
+    public List<Marksheet> fetchMarksheets(@PathVariable int studentID, @PathVariable int year, @PathVariable int term){
+        return this.marksheetService.findMarksheets(studentID,year,term);
+    }
+
+    @PostMapping("marksheet/")
+    public void addMarksheet(@RequestBody Marksheet marksheet){
+        this.marksheetService.addMarksheet(marksheet);
+    }
+
+
+
 }
