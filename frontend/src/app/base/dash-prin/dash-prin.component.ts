@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dash-prin',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dash-prin.component.css']
 })
 export class DashPrinComponent {
+  constructor(private route:ActivatedRoute) {
+  }
 
+  userID:number=this.route.snapshot.params['userID'];
 }
