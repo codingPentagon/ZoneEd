@@ -4,6 +4,7 @@ import codingpentagon.sms.backend.models.Mail;
 import codingpentagon.sms.backend.repositories.MailRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class MailService {
@@ -25,5 +26,14 @@ public class MailService {
 
     public List<Mail> findSentboxMail(int userID) {
         return this.mailRepository.findBySenderID(userID);
+    }
+
+
+    public void updateAsRead(int mailID) {
+        Optional<Mail> mail = this.mailRepository.findById(mailID);
+        mail.ifPresent(theMail -> {
+            theMail.setIsRead(true);
+            this.mailRepository.save(theMail);
+        });
     }
 }

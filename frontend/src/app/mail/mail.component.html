@@ -23,9 +23,8 @@
         <div *ngIf="mailBox=='inbox'">
           <div>
             <mat-accordion>
-              <mat-expansion-panel  *ngFor="let inboxmail of inboxmails">
+              <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="updateAsRead(inboxmail.id)">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
-                                            (click)="updateMail(inboxmail,true)"
                                             [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
                   <mat-panel-title>
                     {{inboxmail.senderID}}

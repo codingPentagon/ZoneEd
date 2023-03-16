@@ -107,9 +107,8 @@ export class MailComponent {
     })
 
   }
-  updateMail(mail: Mail, read: boolean){
-    mail.isRead=read;
-    this.mailService.updateMail(mail).subscribe({
+  updateAsRead(mailID: number){
+    this.mailService.patchAsRead(mailID).subscribe({
       complete:()=>{
         this.getInboxMails();
       }

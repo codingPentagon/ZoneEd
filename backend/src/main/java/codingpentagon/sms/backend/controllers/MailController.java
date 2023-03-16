@@ -30,4 +30,8 @@ public class MailController {
         this.mailService.saveMail(mail);
     }
 
+    @PatchMapping("mails/")
+    public void patchAsRead(@RequestBody int mailID){
+        this.mailService.updateAsRead(mailID);
+    }
 }

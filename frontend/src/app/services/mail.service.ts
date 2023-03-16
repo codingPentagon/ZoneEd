@@ -22,7 +22,7 @@ export class MailService {
     return this.http.get<Mail[]>(url+'inbox/'+receiverID.toString());
   }
 
-  updateMail(mail: Mail) {
-    return this.http.put(url,mail);
+  patchAsRead(mailID: number) {
+    return this.http.patch(url, mailID);
   }
 }
