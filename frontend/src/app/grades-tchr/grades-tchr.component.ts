@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {Student} from "../models/student.model";
+import {StudentsService} from "../services/students.service";
+import {Marksheet} from "../models/marksheet.model";
+import {MarksheetService} from "../services/marksheet.service";
 
 @Component({
   selector: 'app-grades-tchr',
@@ -6,45 +10,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./grades-tchr.component.css']
 })
 export class GradesTchrComponent {
-names =[
-  {name: 'Bhagya Nethmini', isCompleted: true},
-  {name: 'Rishmi Tharuka', isCompleted: true},
-  {name: 'Maleesha Kawsarani', isCompleted: false},
-  {name: 'Sachini Perera', isCompleted: false},
-  {name: 'GayanI Herath', isCompleted: false},
-  {name: 'Samadhi Fernando', isCompleted: false},
-  {name: 'Maneesha Bulner', isCompleted: false},
-  {name: 'Dulashi Sewmini', isCompleted: false},
-  {name: 'Kavindu Sankalpa', isCompleted: false},
-  {name: 'Maneth Lorance', isCompleted: false},
-  {name: 'Asitha Silva', isCompleted: false},
-  {name: 'Malindu Deshan', isCompleted: false},
-  {name: 'Thisal Gunasena', isCompleted: false},
-  {name: 'Nimesh Deshan', isCompleted: false},
-  {name: 'Chethiya Nuwan', isCompleted: false},
-  {name: 'Bandara Hitihamu', isCompleted: false},
-  {name: 'Asitha Silva', isCompleted: false},
-  {name: 'Malindu Deshan', isCompleted: false},
-  {name: 'Thisal Gunasena', isCompleted: false},
-  {name: 'Nimesh Deshan', isCompleted: false},
-];
 
-  grades:{subject:any,grade:number}[]=[
-    {subject: 'Sinhala', grade: 80},
-    {subject: 'Buddhism', grade: 90},
-    {subject: 'Science', grade: 92},
-    {subject: 'Mathematics', grade: 75},
-    {subject: 'English', grade: 82},
-    {subject: 'History', grade: 76},
-    {subject: 'Dancing', grade: 81},
-    {subject: 'Geography', grade: 85},
-    {subject: 'Mathematics', grade: 75},
-    {subject: 'English', grade: 82},
-    {subject: 'History', grade: 76},
-    {subject: 'Dancing', grade: 81},
-    {subject: 'Geography', grade: 85},
-    {subject: 'ICT', grade: 90}
-  ];
+  students:Student[] = [];
+  clsID:number=555;
+  marksheet:Marksheet={id:0,classID:0,studentID:0,totalMarks:0,year:0,term:0,rank:0,isCompleted:false,marks:[]};
+  term:number=1;
+  year:number=new Date().getFullYear();
+  selectedStudentID:number=this.students[0].id
+
+  constructor(private studentService:StudentsService, private marksheetService:MarksheetService) {
+  }
+
+  ngOnInit(){
+    this.studentService.fetchStudents(this.clsID).subscribe({
+      next:res=>{
+        this.students=res;
+      }
+    })
+  }
+
+  getMarksheet(){
+    this.marksheetService.fetchMarksheet(this.selectedStudentID,this.year,this.term).subscribe({
+      next:res=>{
+        this.marksheet=res;
+      }
+    })
+  }
 
   modify:boolean = false;
 
@@ -54,9 +45,15 @@ names =[
 
   selectedOption='all'
 
-  getIncompleteNames() {
-    return this.names.filter(name=>{
-      return !name.isCompleted
-    })
-  }
-}
+  // getIncompleteNames() {
+  //   return this.students.filter(student=>{
+  //     return !name.isCompleted
+  //   })
+  // }
+
+  terms: any[] = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+];}
+

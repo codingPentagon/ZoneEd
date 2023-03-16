@@ -75,3 +75,13 @@ mat-form-field{
   margin: 5px;
   width: 100px;
 }
+
+mat-select{
+  width: 120px;
+  margin-right: 15px;
+  background-color: darkgrey;
+  border-radius: 20px;
+  padding: 0 5px;
+  display: block;
+  height: 30px;
+}

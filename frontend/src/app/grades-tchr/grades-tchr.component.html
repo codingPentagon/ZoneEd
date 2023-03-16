@@ -13,11 +13,11 @@
           </mat-button-toggle-group>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <span *ngFor="let name of (selectedOption=='all'?names:getIncompleteNames())">
+          <span *ngFor="let student of (selectedOption=='all'?students:students)">
             <div class="grades-entry">
-              {{ name.name }}
+              {{ student.name }}
               <span class="spacer"></span>
-              {{name.isCompleted==true ? "Complete":"Incomplete"}}
+<!--              {{name.isCompleted==true ? "Complete":"Incomplete"}}-->
             </div>
             <mat-divider></mat-divider>
           </span>
@@ -29,6 +29,9 @@
         <mat-card-header>
           Subject Grades
           <span class="spacer"></span>
+          <mat-select placeholder="Select Term">
+            <mat-option *ngFor="let term of terms" [value]="term.value">{{term.viewValue}}</mat-option>
+          </mat-select>
           <mat-chip-listbox>
             <mat-chip [ngStyle]="{'background-color':modify ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="modifyToggle()">
               <mat-icon [ngStyle]="{'color':modify ? 'white' : 'black'}">create</mat-icon>

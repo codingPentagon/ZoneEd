@@ -7,6 +7,10 @@ export interface Marksheet {
   term:number;
   rank:number;
   isCompleted:boolean;
-
+  marks:SubjectMark[]
 }
 
+interface SubjectMark {
+  subjectID:number;
+  mark:number;
+}

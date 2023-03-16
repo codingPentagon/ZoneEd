@@ -16,7 +16,7 @@ public class MarksheetService {
         this.marksheetRepository = marksheetRepository;
     }
 
-    public List<Marksheet> findMarksheet(int studentID, int year, int term) {
+    public List<Marksheet> findMarksheets(int studentID, int year, int term) {
         return this.marksheetRepository.findByStudentIDAndYearAndTerm(studentID,year,term);
     }
 
@@ -24,4 +24,5 @@ public class MarksheetService {
         marksheet.setId(new Random().nextInt(50000));
         this.marksheetRepository.save(marksheet);
     }
+
 }
