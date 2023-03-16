@@ -5,7 +5,7 @@ import {map, Observable, startWith} from "rxjs";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {MailService} from "../services/mail.service";
-import {Mail} from "../models/mail.model";
+import {Attachment, Mail} from "../models/mail.model";
 import {NgxFileDropEntry} from "ngx-file-drop";
 
 @Component({
@@ -23,6 +23,7 @@ export class MailComponent {
   filteredMails: Observable<string[]>;
   mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
+  attachments : Attachment[]=[]
 
   constructor(private mailService:MailService) {//TODO
     this.filteredMails = this.mailCtrl.valueChanges.pipe(
@@ -97,7 +98,8 @@ export class MailComponent {
       time : "",
       receiverID :newMail.value.receiverID,
       subject : newMail.value.subject,
-      content :newMail.value.content
+      content :newMail.value.content,
+      attachments : this.attachments
 
     }
     this.mailService.createMail(mail).subscribe({
@@ -144,21 +146,21 @@ export class MailComponent {
 
   //File drop module**************
 
-  public attachments: NgxFileDropEntry[] = [];//TODO: cant add attachments one after another
+  public droppedFiles: NgxFileDropEntry[] = [];
 
-  public dropped(attachments: NgxFileDropEntry[]) {
-    this.attachments.push(...attachments);
-    for (const droppedFile of attachments) {
+  public dropped(droppedFiles: NgxFileDropEntry[]) {
+    this.droppedFiles.push(...droppedFiles);
+    for (const droppedFile of droppedFiles) {
 
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
-
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
-
-
+          this.attachments.push(
+            {fileName:fileEntry.name,filePath:fileEntry.fullPath,file:file}
+          )
         });
       } else {
         // It was a directory (empty directories are added, otherwise only attachments)

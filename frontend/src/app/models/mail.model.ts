@@ -7,5 +7,12 @@ export interface Mail {
   time : string;
   subject : string;
   content : string;
+  attachments : Attachment[];
+}
+
+export interface Attachment {
+  fileName: string,
+  filePath: string,
+  file:File
 }
 

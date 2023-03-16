@@ -133,7 +133,7 @@
                 <button *ngIf="attachments.length!=0" type="button" (click)="attachments.splice(0)">Clear Files</button>
               </ng-template>
             </ngx-file-drop><br><br>
-            <span *ngFor="let attachment of attachments">{{attachment.relativePath}}</span>
+            <span *ngFor="let file of droppedFiles">{{file.relativePath}}</span>
           </div>
         </div>
 
