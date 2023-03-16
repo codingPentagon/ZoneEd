@@ -12,8 +12,28 @@
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fit,minmax(500px,1fr));
-  grid-auto-rows: minmax(250px,1fr);
+  grid-template-rows: repeat(16,minmax(1fr,auto));
   height: 85vh;
   overflow: auto;
   padding: 15px;
+}
+
+.card1{
+  grid-row: span 4;
+}
+
+.card2{
+  grid-row: span 7;
+}
+
+.card3{
+  grid-row: span 7;
+}
+
+.card4{
+  grid-row: span 9;
+}
+
+.card5{
+  grid-row: span 5;
 }

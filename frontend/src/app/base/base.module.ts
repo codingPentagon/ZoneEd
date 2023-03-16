@@ -9,6 +9,7 @@ import { DashZonalComponent } from './dash-zonal/dash-zonal.component';
 import { DashAdminComponent } from './dash-admin/dash-admin.component';
 import {SharedModule} from "../shared/shared.module";
 import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -20,11 +21,12 @@ import {MatCardModule} from "@angular/material/card";
     DashZonalComponent,
     DashAdminComponent
   ],
-  imports: [
-    CommonModule,
-    BaseRoutingModule,
-    SharedModule,
-    MatCardModule
-  ]
+    imports: [
+        CommonModule,
+        BaseRoutingModule,
+        SharedModule,
+        MatCardModule,
+        MatGridListModule
+    ]
 })
 export class BaseModule { }
