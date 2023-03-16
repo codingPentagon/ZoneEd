@@ -1,0 +1,40 @@
+:host{
+  display: flex;
+}
+
+.content{
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.workspace{
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit,minmax(10.8%,1fr));
+  grid-template-rows: repeat(16,3.8%);
+  height: 85%;
+  overflow: auto;
+  padding: 15px;
+}
+
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.card1{
+  grid-row: span 11;
+}
+
+.card2{
+  grid-row: span 8;
+}
+
+.card3{
+  grid-row: span 8;
+}
+
+.card4{
+  grid-row: span 5;
+}
