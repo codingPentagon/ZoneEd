@@ -1,6 +1,9 @@
 package codingpentagon.sms.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -13,7 +16,8 @@ public class Mail {
     private String time;
     private String subject;
     private String content;
-    private String attachment;// TODO
+    private Attachment[] attachment;
+    private  boolean isRead;
 
     public int getId() {
         return id;
@@ -71,11 +75,50 @@ public class Mail {
         this.content = content;
     }
 
-    public String getAttachment() {
+    public Attachment[] getAttachment() {
         return attachment;
     }
 
-    public void setAttachment(String attachment) {
+    public void setAttachment(Attachment[] attachment) {
         this.attachment = attachment;
+    }
+
+    public boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(boolean read) {
+        isRead = read;
+    }
+}
+
+class Attachment{
+    private String fileName;
+    private String filePath;
+    @Transient
+    private MultipartFile file;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }

@@ -16,13 +16,18 @@ public class MailController {
         this.mailService = new MailService(mailRepo);
     }
 
-    @GetMapping("mails/posted/senderID}")
-    public List<Mail> getSentBoxMails(@PathVariable int senderID) {
-        return this.mailService.findPostedMail(senderID);
+    @GetMapping("mails/inbox/{userID}")
+    public List<Mail> getInboxMails(@PathVariable int userID) {
+        return this.mailService.findInboxMail(userID);
+    }
+    @GetMapping("mails/sentbox/{userID}")
+    public List<Mail> getSentboxMails(@PathVariable int userID) {
+        return this.mailService.findSentboxMail(userID);
     }
 
     @PostMapping("mails/")
     public void createMail(@RequestBody Mail mail) {
         this.mailService.saveMail(mail);
     }
+
 }

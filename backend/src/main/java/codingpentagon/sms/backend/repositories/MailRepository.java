@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface MailRepository extends MongoRepository<Mail, Integer> {
     List<Mail> findBySenderID(int SenderID);
+    List<Mail> findByReceiverID(int SenderID);
 
 }

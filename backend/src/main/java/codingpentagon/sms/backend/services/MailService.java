@@ -13,11 +13,17 @@ public class MailService {
     public MailService(MailRepository mailRepo) {
         this.mailRepository = mailRepo;
     }
-    public List<Mail> findPostedMail(int senderID) {
-        return this.mailRepository.findBySenderID(senderID);
-    }
+
     public void saveMail(Mail mail) {
         mail.setId(new Random().nextInt(6000));
         this.mailRepository.save(mail);
+    }
+
+    public List<Mail> findInboxMail(int userID) {
+        return this.mailRepository.findByReceiverID(userID);
+    }
+
+    public List<Mail> findSentboxMail(int userID) {
+        return this.mailRepository.findBySenderID(userID);
     }
 }
