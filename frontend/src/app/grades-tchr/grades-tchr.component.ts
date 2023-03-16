@@ -16,7 +16,7 @@ export class GradesTchrComponent {
   marksheet:Marksheet={id:0,classID:0,studentID:0,totalMarks:0,year:0,term:0,rank:0,isCompleted:false,marks:[]};
   term:number=1;
   year:number=new Date().getFullYear();
-  selectedStudentID:number=this.students[0].id
+  selectedStudentID:number=0;
 
   constructor(private studentService:StudentsService, private marksheetService:MarksheetService) {
   }
