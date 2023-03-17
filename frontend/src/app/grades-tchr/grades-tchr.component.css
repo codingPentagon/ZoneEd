@@ -29,6 +29,8 @@ mat-card-header{
   display: flex;
   align-items: center;
   height: 40px;
+  cursor: pointer;
+  padding: 0 15px;
 }
 
 .grades-names{
@@ -84,4 +86,14 @@ mat-select{
   padding: 0 5px;
   display: block;
   height: 30px;
+}
+
+.selected{
+  background-color: mediumblue;
+  color: white;
+  font-weight: 500;
+}
+
+mat-card-content{
+  padding: 0;
 }

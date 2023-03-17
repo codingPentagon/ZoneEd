@@ -15,9 +15,9 @@ public class MarksheetController{
         this.marksheetService = marksheetService;
     }
 
-    @GetMapping("marksheet/{studentID}/{year}/{term}")
-    public List<Marksheet> fetchMarksheets(@PathVariable int studentID, @PathVariable int year, @PathVariable int term){
-        return this.marksheetService.findMarksheets(studentID,year,term);
+    @GetMapping("marksheet/{classID}/{year}/{term}")
+    public List<Marksheet> fetchMarksheets(@PathVariable int classID, @PathVariable int year, @PathVariable int term){
+        return this.marksheetService.findMarksheets(classID,year,term);
     }
 
     @PostMapping("marksheet/")

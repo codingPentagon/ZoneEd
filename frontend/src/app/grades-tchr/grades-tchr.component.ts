@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {Student} from "../models/student.model";
 import {StudentsService} from "../services/students.service";
-import {Marksheet} from "../models/marksheet.model";
 import {MarksheetService} from "../services/marksheet.service";
+import {Marksheet} from "../models/marksheet.model";
+import {Subject} from "../models/subject.model";
+import { SubjectService } from '../services/subject.service';
 
 @Component({
   selector: 'app-grades-tchr',
@@ -13,28 +15,52 @@ export class GradesTchrComponent {
 
   students:Student[] = [];
   clsID:number=555;
-  marksheet:Marksheet={id:0,classID:0,studentID:0,totalMarks:0,year:0,term:0,rank:0,isCompleted:false,marks:[]};
+  marksheets:Marksheet[]=[];
   term:number=1;
   year:number=new Date().getFullYear();
-  selectedStudentID:number=0;
+  selectedStudent:number=0;
+  subjects:Subject[] = [];
 
-  constructor(private studentService:StudentsService, private marksheetService:MarksheetService) {
+  constructor(private studentService:StudentsService, private marksheetService:MarksheetService,private subjectService:SubjectService) {
   }
 
   ngOnInit(){
+    this.getStudents();
+    this.getMarksheets();
+  }
+
+  getStudents(){
     this.studentService.fetchStudents(this.clsID).subscribe({
       next:res=>{
         this.students=res;
+      },
+      complete:()=>{
+        this.getSubjects();
       }
     })
   }
 
-  getMarksheet(){
-    this.marksheetService.fetchMarksheet(this.selectedStudentID,this.year,this.term).subscribe({
+  getMarksheets(){
+    this.marksheetService.fetchMarksheets(this.clsID,this.year,this.term).subscribe({
       next:res=>{
-        this.marksheet=res;
+        this.marksheets=res;
       }
     })
+  }
+
+  getSubjects(){
+    this.subjectService.fetchSubjects(this.students[this.selectedStudent]?.takenSubjectIDs).subscribe({
+      next:res=>{
+        this.subjects=res;
+        console.log(res);
+      }
+    })
+  }
+
+  getSubjectName(subjectID:number){
+    return this.subjects.find((sub)=>{
+      return sub.id==subjectID;
+    })?.name
   }
 
   modify:boolean = false;
@@ -52,8 +78,8 @@ export class GradesTchrComponent {
   // }
 
   terms: any[] = [
-    {value: '1', viewValue: '1'},
-    {value: '2', viewValue: '2'},
-    {value: '3', viewValue: '3'},
+    {value: 1, viewValue: '1st Term'},
+    {value: 2, viewValue: '2nd Term'},
+    {value: 3, viewValue: '3rd Term'},
 ];}
 

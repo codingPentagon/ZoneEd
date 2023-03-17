@@ -5,7 +5,7 @@
     <mat-grid-tile rowspan="3">
       <mat-card class="names-card">
         <mat-card-header>
-          Names
+          Students
           <span class="spacer"></span>
           <mat-button-toggle-group [(value)]="selectedOption">
             <mat-button-toggle value="all">All</mat-button-toggle>
@@ -13,14 +13,14 @@
           </mat-button-toggle-group>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <span *ngFor="let student of (selectedOption=='all'?students:students)">
-            <div class="grades-entry">
+          <div *ngFor="let student of (selectedOption=='all'?students:students);let i = index" [ngClass]="{'selected':i==selectedStudent}">
+            <div class="grades-entry" (click)="selectedStudent=i;getSubjects()">
               {{ student.name }}
               <span class="spacer"></span>
 <!--              {{name.isCompleted==true ? "Complete":"Incomplete"}}-->
             </div>
             <mat-divider></mat-divider>
-          </span>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -29,7 +29,7 @@
         <mat-card-header>
           Subject Grades
           <span class="spacer"></span>
-          <mat-select placeholder="Select Term" [(value)]="term">
+          <mat-select placeholder="Select Term" [(value)]="term" (valueChange)="getMarksheets()">
             <mat-option *ngFor="let term of terms" [value]="term.value">{{term.viewValue}}</mat-option>
           </mat-select>
           <mat-chip-listbox>
@@ -39,9 +39,9 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <div *ngFor="let mark of marksheet.marks">
+          <div *ngFor="let mark of marksheets[selectedStudent]?.marks">
             <div class="grades-entry">
-              {{ mark.subjectID }}
+              {{ getSubjectName(mark.subjectID) }}
               <span class="spacer"></span>
               <span *ngIf="!modify">{{mark.mark}}</span>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" *ngIf="modify">

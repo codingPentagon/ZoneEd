@@ -16,8 +16,8 @@ public class MarksheetService {
         this.marksheetRepository = marksheetRepository;
     }
 
-    public List<Marksheet> findMarksheets(int studentID, int year, int term) {
-        return this.marksheetRepository.findByStudentIDAndYearAndTerm(studentID,year,term);
+    public List<Marksheet> findMarksheets(int classID, int year, int term) {
+        return this.marksheetRepository.findByClassIDAndYearAndTerm(classID,year,term);
     }
 
     public void addMarksheet(Marksheet marksheet) {

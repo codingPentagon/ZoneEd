@@ -5,7 +5,9 @@ import codingpentagon.sms.backend.repositories.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class SubjectService {
@@ -15,7 +17,13 @@ public class SubjectService {
         this.subjectRepository=subjectRepository;
     }
 
-    public String findSubjectName(int subjectID){
-        return this.subjectRepository.findById(subjectID).ifPresent(subject -> {return subject.getSubjectName()});
+    public List<Subject> findSubjects(List<Integer> subjectID){
+        return this.subjectRepository.findAllById(subjectID);
+    }
+
+
+    public void saveSubject(Subject subject) {
+        subject.setId(new Random().nextInt(50));
+        this.subjectRepository.save(subject);
     }
 }
