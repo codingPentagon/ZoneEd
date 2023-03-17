@@ -34,4 +34,6 @@ public class MailController {
     public void patchAsRead(@RequestBody int mailID){
         this.mailService.updateAsRead(mailID);
     }
+
+
 }

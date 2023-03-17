@@ -82,11 +82,19 @@
       </mat-card-actions>
 
       <mat-card-content *ngIf="create" class="new-mail">
-        <div class="left">
-          <div class="table-row">
-            <span>To</span>
+        <form class="left" #newMail="ngForm"  (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
+
             <mat-form-field appearance="outline" color="accent">
-              <mat-label>Enter mail</mat-label>
+              <mat-label>Category</mat-label>
+               <mat-select>
+                 <mat-option>
+
+                 </mat-option>
+               </mat-select>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+              <mat-label>Recipient</mat-label>
               <mat-chip-grid #chipGrid>
                 <mat-chip-row *ngFor="let mail of mails" (removed)="remove(mail)">
                   {{mail}}
@@ -105,22 +113,20 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-          </div>
-          <br>
-          <div class="table-row">
-            <span>Subject</span>
+
+
             <mat-form-field appearance="outline" color="accent">
-              <input matInput placeholder="">
+              <mat-label>Subject</mat-label>
+              <input matInput placeholder="" ngModel name="subject">
             </mat-form-field>
-          </div>
-          <br>
-          <div class="table-row">
-            <span> Body </span>
+
+
             <mat-form-field appearance="outline" color="accent" class="mailbody">
-              <textarea matInput placeholder="" rows="9"></textarea>
+              <mat-label>Content</mat-label>
+              <textarea matInput placeholder="" ngModel name="content"></textarea>
             </mat-form-field>
-          </div>
-        </div>
+
+        </form>
 
 
         <div class="right">
@@ -139,9 +145,9 @@
       </mat-card-content>
       <mat-card-actions align="end" *ngIf="create">
         <div id="send">
-          <button mat-raised-button>Send</button>
+          <button mat-raised-button type="submit" form="newMail">Send</button>
           <span></span>
-          <button mat-raised-button>Discard</button>
+          <button mat-raised-button (click)="createToggle()">Discard</button>
         </div>
       </mat-card-actions>
     </mat-card>

@@ -7,6 +7,7 @@
 }
 .new-mail{
   display: flex;
+  height: 65vh;
 }
 mat-card{
   margin: 15px;
@@ -25,13 +26,12 @@ mat-button-toggle-group{
 .left{
   flex: 2;
   margin: 10px;
-  width: 100%;
-  height: 65vh;
+  height: 100%;
 }
 .right{
   flex: 1;
   margin: 10px;
-  height: 65vh;
+  height: 100%;
 }
 #form input,textarea{
   margin: 20px;
@@ -61,21 +61,10 @@ mat-button-toggle-group{
 button{
   margin: 15px 15px 15px 0;
 }
-.table-row{
-  display: table-row;
-  width: 100%;
 
-
-
-}
-.table-row>span{
-  display: table-cell;
-  width: 80px;
-
-}
 
 mat-form-field{
-  width: 40vw;
+  width: 96%;
 }
 
 
@@ -87,6 +76,8 @@ mat-panel-title {
 }
 textarea{
   resize: none;
+  min-height: 223px;
+  margin: 0;
 }
 h2{
   color: black;

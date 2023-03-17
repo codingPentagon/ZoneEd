@@ -102,6 +102,7 @@ export class MailComponent {
       attachments : this.attachments
 
     }
+    console.log(mail);
     this.mailService.createMail(mail).subscribe({
       next:res=>{console.log(res)}
     })
