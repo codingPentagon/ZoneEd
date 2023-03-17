@@ -36,4 +36,10 @@ public class MailService {
             this.mailRepository.save(theMail);
         });
     }
+
+    public void removeMails(int[] mailIDs) {
+        for (int id:mailIDs) {
+            this.mailRepository.deleteById(id);
+        }
+    }
 }

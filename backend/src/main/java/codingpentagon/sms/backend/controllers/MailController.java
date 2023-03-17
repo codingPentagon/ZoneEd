@@ -5,6 +5,7 @@ import codingpentagon.sms.backend.repositories.MailRepository;
 import codingpentagon.sms.backend.services.MailService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -35,5 +36,8 @@ public class MailController {
         this.mailService.updateAsRead(mailID);
     }
 
-
+    @DeleteMapping("mails/{mailIDs}")
+    public void removeMails(@PathVariable int[] mailIDs){
+        this.mailService.removeMails(mailIDs);
+    }
 }

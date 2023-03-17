@@ -72,6 +72,7 @@ export class MailComponent {
 
   inboxmails: Mail[] = [];
   sentboxmails: Mail[] = [];
+  mailsToDelete: number[] = [];
 
 
   getInboxMails(){
