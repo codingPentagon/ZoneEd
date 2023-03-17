@@ -8,5 +8,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface MarksheetRepository extends MongoRepository<Marksheet,Integer> {
-    List<Marksheet> findByStudentIDAndYearAndTerm(int studentID, int year, int term);
+    Marksheet findByStudentIDAndYearAndTerm(int studentID, int year, int term);
 }
