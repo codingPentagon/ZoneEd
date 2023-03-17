@@ -9,7 +9,7 @@ public class Student {
     private int id;
     private String name;
     private int classID;
-    private long contactNo;
+    private int[] takenSubjectIDs;
 
     public int getId() {
         return id;
@@ -35,11 +35,11 @@ public class Student {
         this.classID = classID;
     }
 
-    public long getContactNo() {
-        return contactNo;
+    public int[] getTakenSubjectIDs() {
+        return takenSubjectIDs;
     }
 
-    public void setContactNo(long contactNo) {
-        this.contactNo = contactNo;
+    public void setTakenSubjectIDs(int[] takenSubjectIDs) {
+        this.takenSubjectIDs = takenSubjectIDs;
     }
 }
