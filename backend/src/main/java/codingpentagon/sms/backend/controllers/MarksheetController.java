@@ -15,16 +15,19 @@ public class MarksheetController{
         this.marksheetService = marksheetService;
     }
 
-    @GetMapping("marksheet/{classID}/{year}/{term}")
+    @GetMapping("marksheets/{classID}/{year}/{term}")
     public List<Marksheet> fetchMarksheets(@PathVariable int classID, @PathVariable int year, @PathVariable int term){
         return this.marksheetService.findMarksheets(classID,year,term);
     }
 
-    @PostMapping("marksheet/")
+    @PostMapping("marksheets/")
     public void addMarksheet(@RequestBody Marksheet marksheet){
-        this.marksheetService.addMarksheet(marksheet);
+        this.marksheetService.saveMarksheet(marksheet);
     }
 
-
+    @GetMapping("marksheets/classids/{studentID}")
+    public List<Integer> fetchStudentClassIDs(@PathVariable int studentID){
+        return this.marksheetService.findStudentClassIDs(studentID);
+    }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Marksheet} from "../models/marksheet.model";
 
-const url='http://localhost:8080/marksheet/'
+const url='http://localhost:8080/marksheets/'
 @Injectable({
   providedIn: 'root'
 })

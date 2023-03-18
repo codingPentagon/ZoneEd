@@ -41,9 +41,9 @@ export class GradesStuComponent {
   ];
 
   terms: any[] = [
-    {value: '1', viewValue: '1st'},
-    {value: '2', viewValue: '2nd'},
-    {value: '3', viewValue: '3rd'},
+    {value: 1, viewValue: '1st Term'},
+    {value: 2, viewValue: '2nd Term'},
+    {value: 3, viewValue: '3rd Term'},
   ];
 
 }
