@@ -35,8 +35,7 @@ export class ProjectPrinComponent {
   milestones=[
     {title:"Ruk Ropanaya",dueDate:"01/02/2023",feedback:"Good",status:"Approved",
       proofs:[
-        {fileName:"1.jpg",fileType:"image",uploadedOn:"01/02/2023"},
-        {fileName:"22.mp4",fileType:"video",uploadedOn:"01/02/2023"}
+        {fileName:"1.jpg",fileType:"image",uploadedOn:"01/02/2023"}
       ]
     },
     {title:"Ruk Ropanaya",dueDate:"01/02/2023",feedback:"Good",status:"Approved",
