@@ -20,9 +20,14 @@ public class MarksheetService {
         return this.marksheetRepository.findByClassIDAndYearAndTerm(classID,year,term);
     }
 
-    public void addMarksheet(Marksheet marksheet) {
+    public void saveMarksheet(Marksheet marksheet) {
         marksheet.setId(new Random().nextInt(50000));
         this.marksheetRepository.save(marksheet);
     }
+
+    public List<Integer> findStudentClassIDs(int studentID) {
+       return this.marksheetRepository.findByTheStudentID(studentID);
+    }
+
 
 }
