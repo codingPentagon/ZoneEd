@@ -21,7 +21,17 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MailComponent} from './mail/mail.component'
 import {ServicesModule} from "./services/mail.module";
 import {NgxFileDropModule} from "ngx-file-drop";
+import {AngularFireModule} from "@angular/fire/compat";
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNYmNI8dvHyNRpcp2JNSRdYCrUSz2vEyI",
+  authDomain: "zoneed-a61da.firebaseapp.com",
+  projectId: "zoneed-a61da",
+  storageBucket: "zoneed-a61da.appspot.com",
+  messagingSenderId: "896598316718",
+  appId: "1:896598316718:web:274c66582a3baa5aeabf3f"
+};
 
 @NgModule({
   declarations: [
@@ -33,6 +43,7 @@ import {NgxFileDropModule} from "ngx-file-drop";
         SharedModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
         MatInputModule,
         MatCardModule,
         MatSelectModule,
