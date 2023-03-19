@@ -1,7 +1,7 @@
 package codingpentagon.sms.backend.repositories;
 
-import codingpentagon.sms.backend.models.AttendanceRecord;
 import codingpentagon.sms.backend.models.Marksheet;
+import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -11,6 +11,11 @@ import java.util.List;
 public interface MarksheetRepository extends MongoRepository<Marksheet,Integer> {
     List<Marksheet> findByClassIDAndYearAndTerm(int classID, int year, int term);
 
-    @Query(value = "{'studentID':?0}",fields = "{'classID': 1}")
-    List<Integer> findByTheStudentID(int studentID);
+    @Aggregation(pipeline = {
+            "{$match: {studentID: ?0}}",
+            "{$group: {_id: '$classID'}}",
+            "{$project: {classID: '$_id',_id: 0}}"
+    })
+    List<Object> findDistinctClassIDByStudentID(int studentID);
+
 }

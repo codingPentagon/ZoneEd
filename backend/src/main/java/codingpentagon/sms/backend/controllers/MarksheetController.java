@@ -26,7 +26,7 @@ public class MarksheetController{
     }
 
     @GetMapping("marksheets/classids/{studentID}")
-    public List<Integer> fetchStudentClassIDs(@PathVariable int studentID){
+    public List<Object> fetchStudentClassIDs(@PathVariable int studentID){
         return this.marksheetService.findStudentClassIDs(studentID);
     }
 

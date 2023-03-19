@@ -25,8 +25,8 @@ public class MarksheetService {
         this.marksheetRepository.save(marksheet);
     }
 
-    public List<Integer> findStudentClassIDs(int studentID) {
-       return this.marksheetRepository.findByTheStudentID(studentID);
+    public List<Object> findStudentClassIDs(int studentID) {
+       return this.marksheetRepository.findDistinctClassIDByStudentID(studentID);
     }
 
 
