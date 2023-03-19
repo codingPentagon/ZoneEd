@@ -135,10 +135,16 @@
                            (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
               <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                 <button type="button" (click)="openFileSelector()">Browse Files</button>
-                <button *ngIf="attachments.length!=0" type="button" (click)="attachments.splice(0)">Clear Files</button>
               </ng-template>
             </ngx-file-drop><br><br>
-            <span *ngFor="let file of droppedFiles">{{file.relativePath}}</span>
+
+            <div *ngFor="let attachment of attachments;" class="attachment-list">
+              <a download [href]="attachment.downloadUrl">
+                {{attachment.name}}
+                ({{attachment.size}})
+              </a>
+             <mat-icon (click)="deleteAttachment(attachment)">delete</mat-icon>
+            </div>
           </div>
         </div>
 

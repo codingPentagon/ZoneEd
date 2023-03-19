@@ -1,3 +1,5 @@
+import {FileMetadata} from "./file.model";
+
 export interface Mail {
   isRead: boolean;
   id : number;
@@ -7,12 +9,7 @@ export interface Mail {
   time : string;
   subject : string;
   content : string;
-  attachments : Attachment[];
+  attachments : FileMetadata[];
 }
 
-export interface Attachment {
-  fileName: string,
-  filePath: string,
-  file:File
-}
 

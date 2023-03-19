@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormControl, NgForm} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
+import {finalize, map, Observable, startWith} from "rxjs";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {MailService} from "../services/mail.service";
-import {Attachment, Mail} from "../models/mail.model";
+import { Mail} from "../models/mail.model";
 import {NgxFileDropEntry} from "ngx-file-drop";
+import { FileMetadata} from "../models/file.model";
+import {FilesService} from "../services/files.service";
 
 @Component({
   selector: 'app-mail',
@@ -23,15 +25,19 @@ export class MailComponent {
   filteredMails: Observable<string[]>;
   mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
-  attachments : Attachment[]=[]
+  fileDir = '/mail/attachments/';
+  attachments : FileMetadata[]=[];
 
-  constructor(private mailService:MailService) {//TODO
+
+
+  constructor(private mailService:MailService,private filesService:FilesService) {//TODO
     this.filteredMails = this.mailCtrl.valueChanges.pipe(
       startWith(null),
       map((mail: string | null) => (mail ? this._filter(mail) : this.allMails.slice())),
     );
-
   }
+
+
 
   ngOnInit(){
     this.getInboxMails();
@@ -101,8 +107,8 @@ export class MailComponent {
       subject : newMail.value.subject,
       content :newMail.value.content,
       attachments : this.attachments
-
     }
+
     console.log(mail);
     this.mailService.createMail(mail).subscribe({
       next:res=>{console.log(res)}
@@ -147,9 +153,10 @@ export class MailComponent {
 
   //File drop module**************
 
-  public droppedFiles: NgxFileDropEntry[] = [];
+  droppedFiles: NgxFileDropEntry[] = [];
 
   public dropped(droppedFiles: NgxFileDropEntry[]) {
+    console.log(droppedFiles)
     this.droppedFiles.push(...droppedFiles);
     for (const droppedFile of droppedFiles) {
 
@@ -158,12 +165,10 @@ export class MailComponent {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
-          this.attachments.push(
-            {fileName:fileEntry.name,filePath:fileEntry.fullPath,file:file}
-          )
+          this.createAttachment(file);
         });
-      } else {
+      }
+      else {
         // It was a directory (empty directories are added, otherwise only attachments)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         console.log(droppedFile.relativePath, fileEntry);
@@ -177,5 +182,20 @@ export class MailComponent {
 
   public fileLeave(event:any){
     console.log(event);
+  }
+
+
+  createAttachment(file: File) {
+    this.filesService.addFile(this.fileDir,file);
+    this.attachments=this.filesService.filesMetadata;
+  }
+
+  deleteAttachment(attachment: FileMetadata){
+    this.filesService.removeFile(attachment);
+    this.attachments=this.filesService.filesMetadata;
+  }
+
+  getDownloadLink() {
+    this.filesService.fetchDownloadLinks();
   }
 }

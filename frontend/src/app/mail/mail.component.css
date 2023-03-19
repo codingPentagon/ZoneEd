@@ -101,3 +101,20 @@ h2{
   height: 30px;
   align-items: center;
 }
+.attachment-list>mat-icon{
+  justify-self: right;
+}
+mat-card-content{
+  height: 100%;
+}
+.attachment-list{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+}
+.attachment-list>mat-icon{
+  cursor: pointer;
+}
+.attachment-list>mat-icon:hover{
+  color: #3F4E4F;
+}
