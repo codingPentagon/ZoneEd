@@ -26,7 +26,7 @@ public class MarksheetService {
     }
 
     public List<Integer> findStudentClassIDs(int studentID) {
-       return this.marksheetRepository.findByTheStudentID(studentID);
+       return this.marksheetRepository.findDistinctClassIDByStudentID(studentID);
     }
 
 
