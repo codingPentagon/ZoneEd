@@ -6,17 +6,11 @@
       <mat-card class="teacher">
         <mat-card-header>
           Teachers
-          <span class="spacer"></span>
-          <mat-chip-listbox>
-            <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="addToggle()">
-              <mat-icon [ngStyle]="{'color':add ? 'white' : 'black'}">add</mat-icon>
-            </mat-chip>
-          </mat-chip-listbox>
         </mat-card-header>
 
 
         <mat-card-content>
-          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id">
+          <div *ngFor="let teacher of teachers;let i =index" [ngClass]="{'selected':selectedTeacher==i}" (click)="selectedTeacher=i;getLeaveRequests(teacher.id)">
            <span class="teacher-entry">
              {{ teacher.name }}
            </span>
@@ -31,28 +25,44 @@
       <mat-card class="req_history">
         <mat-card-header>
           Request History
+          <span class="spacer"></span>
+          <mat-button-toggle-group [(value)]="selectedOption">
+            <mat-button-toggle value="All">
+              All
+            </mat-button-toggle>
+            <mat-button-toggle value="Pending" (click)="getPendingLeaveRequest()">
+              Pending
+            </mat-button-toggle>
+          </mat-button-toggle-group>
         </mat-card-header>
+
         <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let request of (selectedOption=='All'?leaveRequests:pendingLeaveRequests)">
+              <mat-expansion-panel-header>
+                {{request.reason}}
+                {{request.submitedDate}}
+                {{request.startDate}}
+                {{request.endDate}}
+                {{request.leaveType}}
+                {{request.id}}
+                {{request.teacherID}}
+                {{request.status}}
 
-          <div  class="req-list">
-            <div class="req-entry">
-              <span>{{request.reason}}</span>
-              <span class="spacer"></span>
-              <span>{{request.fromdate}}</span>
-            </div>
-            <div class="req-entry">
-              <span>From :- 02/02/2023</span>
-              <span class="spacer"></span>
-              <span>8.00am</span>
-            </div>
-            <div class="req-entry">
-              <span>To :- 03/02/2023</span>
-              <span class="spacer"></span>
-              <span>Accepted</span>
-            </div>
+              </mat-expansion-panel-header>
+              <mat-action-row *ngIf="request.status =='pending'">
+                <button mat-raised-button>
+                  Accept
+                </button>
+                <button mat-raised-button>
+                  Reject
+                </button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
 
-          </div>
-          <mat-divider></mat-divider>
+
+
         </mat-card-content>
 
       </mat-card>

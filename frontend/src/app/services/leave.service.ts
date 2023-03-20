@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {LeaveRequest} from "../models/leave-request.model";
+
+const url='http://localhost:8080/leaves/'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LeaveService {
+
+  constructor(private http:HttpClient) { }
+
+  fetchleaveRequests(selectedTeacherID: number) {
+    return this.http.get<LeaveRequest[]>(url+'requests/'+selectedTeacherID.toString())
+
+  }
+}

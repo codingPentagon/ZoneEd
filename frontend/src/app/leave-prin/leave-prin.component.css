@@ -27,6 +27,7 @@ mat-card{
 }
 
 mat-card-content {
+  overflow: auto;
   height: 100%;
 }
 

@@ -20,6 +20,8 @@ import {FormsModule} from "@angular/forms";
 import { LeaveTchrComponent } from './leave-tchr/leave-tchr.component';
 import { LeavePrinComponent } from './leave-prin/leave-prin.component';
 import {ServicesModule} from "./services/services.module";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -27,25 +29,27 @@ import {ServicesModule} from "./services/services.module";
     LeaveTchrComponent,
     LeavePrinComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatIconModule,
-    MatTableModule,
-    MatDividerModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    NgxMatTimepickerModule,
-    FormsModule,
-    ServicesModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatChipsModule,
+        MatIconModule,
+        MatTableModule,
+        MatDividerModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NgxMatTimepickerModule,
+        FormsModule,
+        ServicesModule,
+        MatExpansionModule,
+        MatButtonToggleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

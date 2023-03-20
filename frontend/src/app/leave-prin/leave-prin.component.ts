@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {TeachersService} from "../services/teachers.service";
+import {LeaveRequest} from "../models/leave-request.model";
+
+import {LeaveService} from "../services/leave.service";
 
 
 @Component({
@@ -11,30 +14,43 @@ import {TeachersService} from "../services/teachers.service";
 export class LeavePrinComponent {
   teachers:Teacher[]=[]
   sclID:number=5555
+  leaveRequests:LeaveRequest[]=[]
 
-  add: any;
-  request= {recipient:"Mr.Karunathilaka",reason:"Medical appointment",sentDate:"02/02/2023",fromdate:"02/02/2023",toDate:"0/02/2023",sentTime:"08.00am",status:"accepted"}
+  selectedTeacher: number=0;
+  selectedOption='All'
+  pendingLeaveRequests:LeaveRequest[]=[];
 
-
-
-  selectedTeacherID: any;
-
-  constructor(private teachersService:TeachersService) {
+  constructor(private teachersService:TeachersService,private leaveService:LeaveService) {
   }
 
   ngOnInit(){
+    this.getTeachers()
+
+
+  }
+
+  getTeachers() {
     this.teachersService.fetchTeachers(this.sclID).subscribe({
-      next:res=>{
-        this.teachers=res
+      next: res => {
+        this.teachers = res
       }
     })
-
   }
 
-  addToggle() {
+    getLeaveRequests(teacherID:number){
+      this.leaveService.fetchleaveRequests(teacherID).subscribe({
+        next:res=>{
+          this.leaveRequests=res
 
-  }
+        }
+      })
+    }
 
+    getPendingLeaveRequest(){
+      this.pendingLeaveRequests=this.leaveRequests.filter(req=>{
+        return req.status.toLowerCase()=='pending'
+      })
+    }
 
 
 
