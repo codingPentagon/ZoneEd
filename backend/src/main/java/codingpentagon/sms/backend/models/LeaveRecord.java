@@ -1,10 +1,12 @@
 package codingpentagon.sms.backend.models;
 
+import java.util.Date;
+
 public class LeaveRecord {
 
     private int id;
     private int leaveRequestID;
-    private int dates;
+    private Date[] dates;
     private String leaveType;
     private int teacherID;
 
@@ -24,11 +26,11 @@ public class LeaveRecord {
         this.leaveRequestID = leaveRequestID;
     }
 
-    public int getDates() {
+    public Date[] getDates() {
         return dates;
     }
 
-    public void setDates(int dates) {
+    public void setDates(Date[] dates) {
         this.dates = dates;
     }
 

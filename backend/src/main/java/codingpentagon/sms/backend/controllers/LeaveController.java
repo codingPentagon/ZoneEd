@@ -1,5 +1,6 @@
 package codingpentagon.sms.backend.controllers;
 
+import codingpentagon.sms.backend.models.LeaveRecord;
 import codingpentagon.sms.backend.models.LeaveRequest;
 import codingpentagon.sms.backend.services.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class LeaveController {
     @PostMapping("leaves/requests/")
     public void addleaveRequest(@RequestBody LeaveRequest leaveRequest){
         this.leaveService.saveleaveRequest(leaveRequest);
+    }
+    @PostMapping("leaves/")
+    public void addLeaveRecord(@RequestBody LeaveRecord leaveRecord){
+        this.leaveService.saveleaveRecord(leaveRecord);
     }
 
 }
