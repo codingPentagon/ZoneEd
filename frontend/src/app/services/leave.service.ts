@@ -21,4 +21,9 @@ export class LeaveService {
     return this.http.post(url,leaveRecord)
 
   }
+
+  updateLeaveRequest(patchRecord:any) {
+    return this.http.patch(url+'requests/',patchRecord)
+
+  }
 }

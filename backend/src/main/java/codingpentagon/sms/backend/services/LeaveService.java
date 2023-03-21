@@ -5,7 +5,6 @@ import codingpentagon.sms.backend.models.LeaveRequest;
 import codingpentagon.sms.backend.repositories.LeaveRecordRepository;
 import codingpentagon.sms.backend.repositories.LeaveRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +34,9 @@ public class LeaveService {
     public void saveleaveRecord(LeaveRecord leaveRecord) {
         leaveRecord.setId(new Random().nextInt(999));
         this.leaveRecordRepository.save(leaveRecord);
+    }
+
+    public void updateLeaveRequest(Object patchRecord) {
+
     }
 }

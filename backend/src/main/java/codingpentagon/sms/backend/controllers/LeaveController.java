@@ -31,4 +31,10 @@ public class LeaveController {
         this.leaveService.saveleaveRecord(leaveRecord);
     }
 
+    @PatchMapping("leaves/requests/")
+    public void patchLeaveRequest(@RequestBody Object patchRecord){
+        this.leaveService.updateLeaveRequest(patchRecord);
+
+    }
+
 }

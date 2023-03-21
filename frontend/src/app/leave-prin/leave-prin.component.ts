@@ -74,4 +74,12 @@ export class LeavePrinComponent {
     }
     return arr
   }
+
+
+  modifyLeaveRequest(id: number, isAccepted: boolean) {
+    const patchRecord={id:id,isAccepted:isAccepted}
+    this.leaveService.updateLeaveRequest(patchRecord).subscribe()
+
+
+  }
 }
