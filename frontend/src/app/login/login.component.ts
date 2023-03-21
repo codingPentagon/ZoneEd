@@ -24,13 +24,13 @@ export class LoginComponent {
   })
   
   proceedlogin(){
+    
    
     this.UserRegService.setUserData(this.loginform.value.fullName);
     this.auth.testUserData(this.loginform.value.fullName);
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
       console.log(this.userdata.fullName);
-      //console.log(this.loginform.value.password);
       console.log(this.userdata.password);
       
       if(this.userdata.fullName===this.loginform.value.fullName && this.userdata.password===this.loginform.value.password && this.userdata.role==="student"){

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', component: NavComponent },
   { path: 'studentreg', component: RegStuComponent },
   {path:'teacherreg',component:RegTchrComponent },
-  {path:'login',component:LoginComponent,canActivate:[AuthGuard]},
+  {path:'login',component:LoginComponent},
   {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]}
 
 ]
@@ -27,6 +27,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }
