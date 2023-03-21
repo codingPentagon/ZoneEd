@@ -4,6 +4,7 @@ import {TeachersService} from "../services/teachers.service";
 import {LeaveRequest} from "../models/leave-request.model";
 
 import {LeaveService} from "../services/leave.service";
+import {LeaveRecord} from "../models/leave-record.model";
 
 
 @Component({
@@ -53,5 +54,24 @@ export class LeavePrinComponent {
     }
 
 
+  createLeaveRecord(request: LeaveRequest) {
+    const leaveRecord:LeaveRecord={
+      id:0,
+      leaveRequestID:request.id,
+      leaveType:request.leaveType,
+      teacherID:request.teacherID,
+      dates:this.getDaysArray(request.startDate,request.endDate)
 
+    }
+    this.leaveService.addLeaveRecord(leaveRecord).subscribe()
+
+  }
+
+  getDaysArray(start:Date,end:Date){
+    let arr:Date[]=[];
+    for (let temp=new Date(start);temp<=end;temp.setDate(temp.getDate()+1)) {
+      arr.push(new Date(temp))
+    }
+    return arr
+  }
 }
