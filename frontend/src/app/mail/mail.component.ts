@@ -18,7 +18,13 @@ import {FilesService} from "../services/files.service";
 
 export class MailComponent {
   userID :number =80;
+  category :string='teacher';
 
+  categories = [
+    {viewValue:"Teachers", value:"teacher"},
+    {viewValue:"Parents", value:"parent"},
+    {viewValue:"Students", value:"student"}
+  ];
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
   mailCtrl = new FormControl('');
@@ -186,7 +192,9 @@ export class MailComponent {
 
 
   createAttachment(file: File) {
-    this.filesService.addFile(this.fileDir,file);
+    this.filesService.addFile(this.fileDir,file).then(()=>{
+      this.filesService.fetchDownloadLinks();
+    });
     this.attachments=this.filesService.filesMetadata;
   }
 
@@ -195,7 +203,7 @@ export class MailComponent {
     this.attachments=this.filesService.filesMetadata;
   }
 
-  getDownloadLink() {
-    this.filesService.fetchDownloadLinks();
+  deleteAllAttachments(){
+    this.filesService.removeAllFiles();
   }
 }
