@@ -46,7 +46,7 @@
         <label class="required" for="indexNo">Index No</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Enter index No</mat-label>
-          <input matInput id="fullName" name="id"  type="text"  id="id" >
+          <input matInput id="indexNo" formControlName="indexNo"  type="text"  [(ngModel)]="stu.indexNo" required >
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">

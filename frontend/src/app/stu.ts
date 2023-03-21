@@ -8,6 +8,7 @@ export class Stu {
     email!:String;
     dob!:number;
     role!:String;
+    indexNo!:number;
    
 
 }
