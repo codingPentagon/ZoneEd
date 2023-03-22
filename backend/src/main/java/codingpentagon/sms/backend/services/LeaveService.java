@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -36,7 +37,16 @@ public class LeaveService {
         this.leaveRecordRepository.save(leaveRecord);
     }
 
-    public void updateLeaveRequest(Object patchRecord) {
+    public void updateLeaveRequest(int requestID, boolean isAccepted) {
+        Optional<LeaveRequest> request=this.leaveRequestRepository.findById(requestID);
+        String status=isAccepted?"Accepted":"Rejected";
+        request.ifPresent(req->{
+                req.setStatus(status);
+                this.leaveRequestRepository.save(req);
+            }
+        );
+
+
 
     }
 }

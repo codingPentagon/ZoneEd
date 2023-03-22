@@ -22,8 +22,8 @@ export class LeaveService {
 
   }
 
-  updateLeaveRequest(patchRecord:any) {
-    return this.http.patch(url+'requests/',patchRecord)
-
+  updateLeaveRequest(id:number, isAccepted: boolean) {
+    return this.http.patch(url+'requests/'+id.toString(),isAccepted)
   }
+
 }

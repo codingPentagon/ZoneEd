@@ -22,6 +22,7 @@ import { LeavePrinComponent } from './leave-prin/leave-prin.component';
 import {ServicesModule} from "./services/services.module";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
         FormsModule,
         ServicesModule,
         MatExpansionModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatRadioModule
     ],
   providers: [],
   bootstrap: [AppComponent]
