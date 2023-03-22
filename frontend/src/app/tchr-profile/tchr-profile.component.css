@@ -91,15 +91,15 @@
  
  .login-container{
   margin-left: 60px;
-  margin-top: 20px;
+  margin-top: 2px;
  }
 
  
 label{
- 
+  
   padding: 3px 3px 3px 4px;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 50px;
   margin-left: 10px;
 }
 form button{
@@ -131,4 +131,7 @@ display: flex;
 .login_btn{
  margin-left: 300px;
  margin-top: -5px;
+}
+mat-form-field {
+  width: 80%;
 }
