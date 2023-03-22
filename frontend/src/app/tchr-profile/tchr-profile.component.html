@@ -52,14 +52,21 @@
         <p class="topic">Change password</p>
       <div class="login-container">
         <div class="field">
-          <label for="newPassword">Usename:</label>
+          <label for="newPassword">Current Password:</label>
           <mat-form-field class="fullName" appearance="outline">
             <mat-label>Enter username</mat-label>
              <input matInput placeholder="" id="initName" name="initName" ngModel required>
             </mat-form-field>
         </div>
         <div class="field">
-          <label for="newPassword">Password:</label>
+          <label for="newPassword">New Password:</label>
+          <mat-form-field class="fullName" appearance="outline">
+            <mat-label>Enter Password</mat-label>
+             <input type="password" matInput placeholder="" id="initName" name="initName" ngModel required>
+            </mat-form-field>
+        </div>
+        <div class="field">
+          <label for="newPassword">Confirm New Password:</label>
           <mat-form-field class="fullName" appearance="outline">
             <mat-label>Enter Password</mat-label>
              <input type="password" matInput placeholder="" id="initName" name="initName" ngModel required>
