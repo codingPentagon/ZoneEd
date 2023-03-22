@@ -38,7 +38,7 @@
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob"  >
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob"  [(ngModel)]="stu.dob" required >
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
@@ -48,24 +48,24 @@
           <mat-label>Enter index No</mat-label>
           <input matInput id="indexNo" formControlName="indexNo"  type="text"  [(ngModel)]="stu.indexNo" required >
         </mat-form-field><br>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>password</mat-label>
-            <input type="password" matInput formControlName="password"  [(ngModel)]="stu.password" required>
         
+        <label class="required" for="password">Password</label>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enter default password</mat-label>
+          <input matInput id="password" formControlName="password"  type="password"  [(ngModel)]="stu.password" required >
+        </mat-form-field><br>
+     
 
-    </mat-form-field><br> 
-
-    <mat-form-field class="example-full-width">
+   <!--<mat-form-field class="example-full-width">
       <mat-label>Role</mat-label>
         <input type="text" matInput formControlName="role"  [(ngModel)]="stu.role" required>
     
 
-      </mat-form-field><br> 
+      </mat-form-field><br> --> 
 
 
         <label class="required" >Gender</label>
-        <mat-radio-group formControlName="gender" aria-label="Gender" >
+        <mat-radio-group formControlName="gender" aria-label="Gender" [(ngModel)]="stu.gender" required >
           <mat-radio-button value="male">male</mat-radio-button>
           <mat-radio-button value="female">female</mat-radio-button>
         </mat-radio-group><br>
@@ -73,7 +73,7 @@
         <label class="required" for="stuClass">Class</label>
         <mat-form-field  class="size-02" appearance="outline">
           <mat-label>Enter class</mat-label>
-          <input matInput placeholder="" id="stuClass" name="stuClass" >
+          <input matInput placeholder="" id="stuClass" name="stuClass" formControlName="stuClass"  type="text"  [(ngModel)]="stu.stuClass" required >
         </mat-form-field><br>
   
 
@@ -88,7 +88,7 @@
         <label class="required" for="datee">Admission Date</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker2"  id="datee" name="datee" >
+          <input matInput [matDatepicker]="picker2"  id="admDate" name="admDate"  formControlName="admDate"  type="date"  [(ngModel)]="stu.admDate" required  >
           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field><br>
@@ -105,34 +105,34 @@
           <label class="required"  id="fatherName" for="fatherName1">Father's Name</label>
           <mat-form-field  class="size-03" appearance="outline">
             <mat-label>Enter father's name</mat-label>
-            <input matInput placeholder="" id="fatherName1" name="fatherName1">
+            <input matInput placeholder="" id="fatherName1" name="fatherName1" formControlName="fatherName1"  type="text"  [(ngModel)]="stu.fatherName1" required>
           </mat-form-field><br>
 
           <label class="required" for="faddress1">Address</label>
           <mat-form-field class="address-02" appearance="outline">
             <mat-label>Enter address line 1</mat-label>
-            <input matInput placeholder="" id="faddress1" name="faddress1" >
+            <input matInput placeholder="" id="faddress1" name="faddress1" formControlName="faddress1"  type="text"  [(ngModel)]="stu.faddress1" required>
           </mat-form-field>
           <mat-form-field class="address-02" appearance="outline">
             <mat-label>Enter address line 2</mat-label>
-            <input matInput placeholder="" id="faddress2" name="faddress2" >
+            <input matInput placeholder="" id="faddress2" name="faddress2"  formControlName="faddress2"  type="text"  [(ngModel)]="stu.faddress2" required>
           </mat-form-field><br>
           <label class="required" for="nic">Father's NIC</label>
           <mat-form-field  class="size-02" appearance="outline">
             <mat-label>Enter father's NIC</mat-label>
-            <input matInput placeholder=""  id="nic" name="nic" >
+            <input matInput placeholder=""  id="nic" name="faNic"  formControlName="faNic"  type="text"  [(ngModel)]="stu.faNic" required>
           </mat-form-field><br>
 
 
           <label class="required" for="occupation">Occupation</label>
           <mat-form-field  class="size-02" appearance="outline">
             <mat-label>Enter occupation</mat-label>
-            <input matInput placeholder="" id="occupation" name="occupation" >
+            <input matInput placeholder="" id="faOccupation" name="faOccupation" formControlName="faOccupation"  type="text"  [(ngModel)]="stu.faOccupation" required>
           </mat-form-field><br>
           <label class="required" for="contNo">Contact No</label>
           <mat-form-field  class="size-02" appearance="outline">
             <mat-label>Enter contact number</mat-label>
-            <input matInput placeholder="" id="contNo" name="contNo" >
+            <input matInput placeholder="" id="faContNo" name="faContNo" formControlName="faContNo"  type="text"  [(ngModel)]="stu.faContNo" required >
           </mat-form-field><br>
 
           <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>

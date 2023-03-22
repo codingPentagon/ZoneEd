@@ -59,7 +59,7 @@
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob">
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob" [(ngModel)]="tch.dob" required>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>

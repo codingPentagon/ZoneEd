@@ -4,5 +4,5 @@ export class Tchr {
     address1!:String;
     address2!:String;
     email!:String;
-    dob!:String;
+    dob!:Date;
 }

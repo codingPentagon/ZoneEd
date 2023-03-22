@@ -26,11 +26,20 @@ export class RegStuComponent {
     address1:this.builder.control('',Validators.required),
     address2:this.builder.control('',Validators.required),
     indexNo:this.builder.control('',Validators.required),
+    dob:this.builder.control('',Validators.required),
     
     password:this.builder.control('',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
-    gender:this.builder.control('male'),
-    role:this.builder.control('admin'),
+    gender:this.builder.control(''),
+    stuClass:this.builder.control('',Validators.required),
+    admDate:this.builder.control('',Validators.required),
+    fatherName1:this.builder.control('',Validators.required),
+    faddress1:this.builder.control('',Validators.required),
+    faddress2:this.builder.control('',Validators.required),
+    faNic:this.builder.control('',Validators.required),
+    faOccupation:this.builder.control('',Validators.required),
+    faContNo:this.builder.control('',Validators.required),
+    role:this.builder.control('student'),
     isactive:this.builder.control(true)
   });
  

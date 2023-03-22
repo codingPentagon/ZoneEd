@@ -1,9 +1,9 @@
 package codingpentagon.sms.backend.service;
 
 
-import RoleModel.StudentReg;
+
 import RoleModel.TeacherReg;
-import codingpentagon.sms.backend.RoleRepo.StuRegRepo;
+
 import codingpentagon.sms.backend.RoleRepo.TchRegRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;

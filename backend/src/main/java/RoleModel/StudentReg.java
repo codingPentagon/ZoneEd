@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -24,10 +27,23 @@ public class StudentReg {
     private String initName;
     private String address1;
     private String address2;
+    private String indexNo;
     private String password;
     private String email;
-    private String dob;
+    private Date dob;
     private String role;
+    private String gender;
+    private String stuClass;
+    private String admDate;
+    private String fatherName1;
+    private String faddress1;
+    private String faddress2;
+    private String faNic;
+    private String faOccupation;
+    private String faContNo;
+
+
+
 
 
 }
