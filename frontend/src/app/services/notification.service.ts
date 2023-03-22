@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Notification} from "../models/notification.model";
 import {HttpClient} from "@angular/common/http";
-import {AngularFireMessaging} from '@angular/fire/compat/messaging'
-import {} from "@angular/fire/compat/messaging";
+import {getMessaging,getToken,onMessage} from '@angular/fire/messaging'
+import { BehaviorSubject } from 'rxjs'
 
 const url = 'http://localhost:8080/notifications/'
 
@@ -11,13 +11,38 @@ const url = 'http://localhost:8080/notifications/'
   providedIn: 'root'
 })
 export class NotificationService {
+  message :any=null;
 
-  constructor(private http: HttpClient, private fireNotification:AngularFireMessaging) {
-    this.fireNotification.requestToken.subscribe((token)=>{
-      console.log(token);
-    });
+  constructor(private http: HttpClient) {
 
   }
+  ngOnInit(){
+    this.requestPermission();
+    this.listen();
+  }
+
+  private requestPermission() {
+    const messaging = getMessaging();
+    getToken(messaging,{vapidKey:'BP5k-BYYIzmnZZvCbwWiddeELjekqDkuV8x2OVYS1c_sBVF3jhzaHDIkN4WRrUv1infhRDiFZ9w0rR066nnSP7M'}).then(
+      (currentToken)=>{
+        if (currentToken){
+          console.log("Got token");
+        }
+        else {
+          console.log("No Token");
+        }
+      }
+    );
+  }
+
+  private listen() {
+    const messaging = getMessaging();
+    onMessage(messaging,(payLoad)=>{
+      this.message=payLoad;
+      console.log(payLoad);
+    })
+  }
+
 
   createNotification(receiverID:number, content:string, event:string){
     const notif :Notification = {
@@ -40,6 +65,7 @@ export class NotificationService {
   updateNotification(notification:Notification){
     return this.http.put(url,notification);
   }
+
 
 }
 
