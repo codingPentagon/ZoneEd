@@ -87,8 +87,8 @@
             <mat-form-field appearance="outline" color="accent">
               <mat-label>Category</mat-label>
                <mat-select>
-                 <mat-option>
-
+                 <mat-option *ngFor="let category of categories" [value]="category.value">
+                   {{category.viewValue}}
                  </mat-option>
                </mat-select>
 

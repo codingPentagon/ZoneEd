@@ -18,13 +18,9 @@ import {FilesService} from "../services/files.service";
 
 export class MailComponent {
   userID :number =80;
-  category :string='teacher';
+  userRole:string = 'student';
 
-  categories = [
-    {viewValue:"Teachers", value:"teacher"},
-    {viewValue:"Parents", value:"parent"},
-    {viewValue:"Students", value:"student"}
-  ];
+  categories : any[] = [];
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
   mailCtrl = new FormControl('');
@@ -47,6 +43,7 @@ export class MailComponent {
 
   ngOnInit(){
     this.getInboxMails();
+    this.getCategories();
   }
 
   add(event: MatChipInputEvent): void {
@@ -205,5 +202,23 @@ export class MailComponent {
 
   deleteAllAttachments(){
     this.filesService.removeAllFiles();
+  }
+
+  getCategories(){
+    if (this.userRole == 'zonal' || this.userRole == 'principal' || this.userRole == 'teacher' || this.userRole == 'student' || this.userRole == 'parent'){
+      this.categories.push({viewValue:"Teacher", value:"teacher"})
+    }
+    if (this.userRole == 'zonal' || this.userRole == 'admin' || this.userRole == 'teacher' || this.userRole == 'student' || this.userRole == 'parent'){
+      this.categories.push({viewValue:"Principal", value:"principal"})
+    }
+    if (this.userRole == 'principal' || this.userRole == 'admin' || this.userRole == 'teacher'){
+      this.categories.push({viewValue:"Zonal Director", value:"zonal"})
+    }
+    if (this.userRole == 'principal' || this.userRole == 'zonal'){
+      this.categories.push({viewValue:"Admin", value:"admin"})
+    }
+    if (this.userRole == 'principal' || this.userRole == 'teacher'){
+      this.categories.push({viewValue:"Parent", value:"parent"},{viewValue:"Student", value:"student"})
+    }
   }
 }
