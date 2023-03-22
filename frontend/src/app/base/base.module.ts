@@ -10,6 +10,7 @@ import { DashAdminComponent } from './dash-admin/dash-admin.component';
 import {SharedModule} from "../shared/shared.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
         BaseRoutingModule,
         SharedModule,
         MatCardModule,
-        MatGridListModule
+        MatGridListModule,
+        MatListModule
     ]
 })
 export class BaseModule { }

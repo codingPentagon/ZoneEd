@@ -23,11 +23,11 @@
   min-height: 130px;
 }
 
-.card1{
+.attendance{
   grid-row: span 11;
 }
 
-.card2{
+.notice-board{
   grid-row: span 8;
 }
 
@@ -37,4 +37,54 @@
 
 .card4{
   grid-row: span 5;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.sub-header{
+  color: darkgrey;
+}
+
+mat-card-header{
+  padding: 10px 15px;
+}
+
+.attendance .overview{
+  display: grid;
+  grid-template-rows: 2fr 5fr;
+  height: 100%;
+}
+
+mat-divider{
+  padding-top: 5px;
+}
+
+.flex{
+  display: flex;
+}
+
+.attendance .overview .value{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: 100px 1px 100px;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.value mat-divider{
+  height: 60%;
+  border-right-width: 4px;
+  border-radius: 10px;
+}
+
+.value p{
+  margin:10px 0;
 }
