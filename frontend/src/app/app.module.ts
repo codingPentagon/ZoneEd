@@ -17,6 +17,16 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {ServicesModule} from "./services/services.module";
+import {AngularFireModule} from "@angular/fire/compat";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNYmNI8dvHyNRpcp2JNSRdYCrUSz2vEyI",
+  authDomain: "zoneed-a61da.firebaseapp.com",
+  projectId: "zoneed-a61da",
+  storageBucket: "zoneed-a61da.appspot.com",
+  messagingSenderId: "896598316718",
+  appId: "1:896598316718:web:274c66582a3baa5aeabf3f"
+};
 
 @NgModule({
   declarations: [
@@ -26,6 +36,7 @@ import {ServicesModule} from "./services/services.module";
     BrowserModule,
     SharedModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
