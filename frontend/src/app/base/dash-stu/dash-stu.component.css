@@ -31,12 +31,12 @@
   grid-row: span 8;
 }
 
-.card3{
-  grid-row: span 8;
+.assessments{
+  grid-row: span 5;
 }
 
-.card4{
-  grid-row: span 5;
+.grades{
+  grid-row: span 8;
 }
 
 .spacer{
@@ -87,4 +87,9 @@ mat-divider{
 
 .value p{
   margin:10px 0;
+}
+
+.header{
+  font-size: medium;
+  font-weight: 500;
 }
