@@ -41,7 +41,7 @@
             <mat-expansion-panel *ngFor="let request of (selectedOption=='All'?leaveRequests:pendingLeaveRequests)">
               <mat-expansion-panel-header>
                 {{request.reason}}
-                {{request.submitedDate}}
+                {{request.submittedDate}}
                 {{request.startDate}}
                 {{request.endDate}}
                 {{request.leaveType}}

@@ -25,4 +25,6 @@ public class TeacherController {
     public void storeTeacher(@RequestBody Teacher teacher){
         this.teacherService.saveTeacher(teacher);
     }
+
+
 }

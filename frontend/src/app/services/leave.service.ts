@@ -26,4 +26,8 @@ export class LeaveService {
     return this.http.patch(url+'requests/'+id.toString(),isAccepted)
   }
 
+  addLeaveRequest(request: LeaveRequest) {
+    return this.http.post(url+'requests/',request)
+
+  }
 }

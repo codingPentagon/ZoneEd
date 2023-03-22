@@ -16,7 +16,7 @@
         <mat-divider></mat-divider>
 
 
-        <mat-card-content *ngIf="add">
+        <mat-card-content *ngIf="!add">
           <div *ngFor="let request of requests">
             <div  class="req-list">
               <div class="req-entry">
@@ -43,42 +43,50 @@
 
 
 
-        <mat-card-content *ngIf="!add">
+        <mat-card-content *ngIf="add">
+          <form id="request-form" #newRequest="ngForm" (ngSubmit)="createLeaveRequest(newRequest.value)">
+            <mat-radio-group color="primary" ngModel name="type">
+              <mat-radio-button value="sick">Sick Leave</mat-radio-button>
+              <mat-radio-button value="duty">Duty Leave</mat-radio-button>
+              <mat-radio-button value="other">Other Leave</mat-radio-button>
 
+            </mat-radio-group>
 
-           <span>
+            <span>
             <mat-form-field appearance="outline" class="width">
-              <input matInput placeholder="Reason for leave">
+              <input matInput placeholder="Reason for leave" ngModel name="reason">
             </mat-form-field>
           </span>
 
 
-          <div class="flex">
-            <mat-form-field appearance="outline" class="width">
-              <mat-label>Date of commencing leave </mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+            <div class="flex">
+              <mat-form-field appearance="outline" class="width" >
+                <mat-label>Date of commencing leave </mat-label>
+                <input matInput [matDatepicker]="picker" ngModel name="startDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
 
-            <span class="spacer"></span>
-          </div>
+              <span class="spacer"></span>
+            </div>
 
+            <div class="flex">
+              <mat-form-field appearance="outline" class="width">
+                <mat-label>Date of assuming duties</mat-label>
+                <input matInput [matDatepicker]="picker1" ngModel name="endDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
 
-          <div class="flex">
-            <mat-form-field appearance="outline" class="width">
-              <mat-label>Date of assuming duties</mat-label>
-              <input matInput [matDatepicker]="picker1">
-              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-          </div>
+          </form>
+
 
         </mat-card-content>
 
-        <mat-card-actions align="end" *ngIf="!add">
-          <button mat-raised-button>Submit</button>
-          <button mat-raised-button>Discard</button>
+        <mat-card-actions align="end" *ngIf="add">
+          <button mat-raised-button type="submit" form="request-form">Submit</button>
+          <button mat-raised-button (click)="addToggle()">Discard</button>
         </mat-card-actions>
 
       </mat-card>

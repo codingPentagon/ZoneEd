@@ -2,15 +2,17 @@ package codingpentagon.sms.backend.models;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class LeaveRequest {
     @Id
     private int id;
-    private int submitedDate;
+    private Date submittedDate;
     private String leaveType;
     private int teacherID;
     private String reason;
-    private int startDate;
-    private int endDate;
+    private Date startDate;
+    private Date endDate;
     private String status;
 
     public int getId() {
@@ -21,12 +23,12 @@ public class LeaveRequest {
         this.id = id;
     }
 
-    public int getSubmitedDate() {
-        return submitedDate;
+    public Date getSubmittedDate() {
+        return submittedDate;
     }
 
-    public void setSubmitedDate(int submitedDate) {
-        this.submitedDate = submitedDate;
+    public void setSubmittedDate(Date submitedDate) {
+        this.submittedDate = submitedDate;
     }
 
     public String getLeaveType() {
@@ -53,19 +55,19 @@ public class LeaveRequest {
         this.reason = reason;
     }
 
-    public int getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(int startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public int getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

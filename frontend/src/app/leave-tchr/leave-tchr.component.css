@@ -63,6 +63,13 @@ mat-card{
   margin: 15px;
   height: 60vh;
 }
-
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+mat-radio-group{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
 
 

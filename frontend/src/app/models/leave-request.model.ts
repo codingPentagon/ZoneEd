@@ -1,6 +1,6 @@
 export interface LeaveRequest {
   id: number;
-  submitedDate:Date;
+  submittedDate:Date;
   leaveType:string;
   teacherID:number;
   reason:string;
