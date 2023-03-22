@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
  // constructor(private auth:AuthGuard){}
  
  constructor(private  userRegService:UserRegService){}
-  fullName: any;
+  fullName: any='';
 
   testUserData(fullName: any) {
     this.fullName=fullName;
@@ -24,11 +24,13 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      
-    if(this.userRegService.fullName==="admin3"){
+      console.log(this.fullName);
+    if(this.userRegService.fullName===this.fullName){
+      console.log(this.userRegService.fullName,this.fullName);
       return true;
     }
       else{
+      
         return false;
       }
       }

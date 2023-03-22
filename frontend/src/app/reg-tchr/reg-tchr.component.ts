@@ -21,12 +21,18 @@ export class RegTchrComponent {
    initName:this.builder.control('',Validators.required),
     address1:this.builder.control('',Validators.required),
     address2:this.builder.control('',Validators.required),
-    dob:this.builder.control('',Validators.required),
+    tchDob:this.builder.control('',Validators.required),
+    tchContNo:this.builder.control('',Validators.required),
+    tchNic:this.builder.control('',Validators.required),
+    tchAdmDate:this.builder.control('',Validators.required),
+    tchId:this.builder.control('',Validators.required),
+    subDetails:this.builder.control('',Validators.required),
     
-   // password:this.builder.control('',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
+    
+    password:this.builder.control('',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
    email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
-    //gender:this.builder.control('male'),
-   // role:this.builder.control('admin'),
+    tchGender:this.builder.control('male'),
+    role:this.builder.control('teacher'),
    // isactive:this.builder.control(true)
   });
 

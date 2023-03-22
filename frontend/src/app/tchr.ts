@@ -4,5 +4,12 @@ export class Tchr {
     address1!:String;
     address2!:String;
     email!:String;
-    dob!:Date;
+    password!:String;
+    tchDob!:Date;
+    tchContNo!:number;
+    tchNic!:String;
+    tchAdmDate!:Date;
+    tchId!:String;
+    tchGender!:String;
+    subDetails!:String;
 }

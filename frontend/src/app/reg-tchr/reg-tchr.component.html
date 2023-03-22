@@ -45,28 +45,37 @@
           <mat-label>Enter email</mat-label>
           <input matInput placeholder="" id="email" name="email"  formControlName="email" [(ngModel)]="tch.email" required>
         </mat-form-field><br>
+
+
+        
+        <label class="required" for="password">Password</label>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enter default password</mat-label>
+          <input matInput id="password" formControlName="password"  type="password"  [(ngModel)]="tch.password" required >
+        </mat-form-field><br>
+
         <label class="required" for="contNo">Contact No</label>
         <mat-form-field  class="size-02" appearance="outline">
           <mat-label>Enter contact number</mat-label>
-          <input matInput placeholder="" id="contNo" name="contNo" >
+          <input matInput placeholder="" id="tchContNo" name="tchContNo"  formControlName="tchContNo" [(ngModel)]="tch.tchContNo" required>
         </mat-form-field><br>
         <label class="required" for="nic"> NIC No</label>
           <mat-form-field  class="size-02" appearance="outline">
             <mat-label>Enter father's NIC</mat-label>
-            <input matInput placeholder=""  id="nic" name="nic" >
+            <input matInput placeholder=""  id="tchNic" name="tchNic" formControlName="tchNic" [(ngModel)]="tch.tchNic" required >
           </mat-form-field><br>
 
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob" [(ngModel)]="tch.dob" required>
+          <input matInput [matDatepicker]="picker" id="tchDob" name="tchDob" formControlName="tchDob" [(ngModel)]="tch.tchDob" required>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
         <label class="required" for="datee">Admission Date</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker2" [max]=" " id="datee" name="datee" >
+          <input matInput [matDatepicker]="picker2" [max]=" " id="tchAdmDate" name="tchAdmDate" formControlName="tchAdmDate" [(ngModel)]="tch.tchAdmDate" required >
           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field><br>
@@ -74,11 +83,11 @@
         <label class="required" for="indexNo">Teacher ID</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Enter index No</mat-label>
-          <input matInput placeholder="" type="number" id="indexNo" name="indexNo" >
+          <input matInput placeholder="" type="text" id="tchId" name="tchId" formControlName="tchId" [(ngModel)]="tch.tchId" required>
         </mat-form-field><br>
 
         <label class="required" for="gender">Gender</label>
-        <mat-radio-group aria-label="Select an option" id="gender" name="gender" required>
+        <mat-radio-group aria-label="Select an option" id="tchGender" name="tchGender" formControlName="tchGender" [(ngModel)]="tch.tchGender" required>
           <mat-radio-button value="m">male</mat-radio-button>
           <mat-radio-button value="f">female</mat-radio-button>
         </mat-radio-group><br>
@@ -106,7 +115,7 @@
           <label class="required"  id="fatherName" for="fatherName1">Subjects</label>
           <mat-form-field  class="size-03" appearance="outline">
             <mat-label>What are the subjects you can teach,separate with comma</mat-label>
-            <input matInput placeholder="" id="fatherName1" name="fatherName1"d>
+            <input matInput placeholder="" type="text" id="subDetails" name="subDetails" formControlName="subDetails" [(ngModel)]="tch.subDetails" required>
           </mat-form-field><br>
           <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>
         </div>

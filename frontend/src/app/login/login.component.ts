@@ -28,9 +28,10 @@ export class LoginComponent {
    
     this.UserRegService.setUserData(this.loginform.value.fullName);
     this.auth.testUserData(this.loginform.value.fullName);
+ //   console.log(this.loginform.value.fullName);
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
-      console.log(this.userdata.fullName);
+    //  console.log(this.userdata.fullName);
       console.log(this.userdata.password);
       
       if(this.userdata.fullName===this.loginform.value.fullName && this.userdata.password===this.loginform.value.password && this.userdata.role==="student"){
@@ -44,6 +45,7 @@ export class LoginComponent {
           console.log('plz contact admin','in active user');
           this.router.navigate([`dashboard1/${this.loginform.value.fullName}`]);
         }
+        
       }else{
         console.log('Invalid crediatial');
       }
