@@ -17,23 +17,22 @@
 
 
         <mat-card-content *ngIf="!add">
-          <div *ngFor="let request of requests">
+          <div *ngFor="let request of leaveRequests">
             <div  class="req-list">
               <div class="req-entry">
-                <span>Medical Apoinment</span>
-                <span></span>
+                <span>{{request?.reason}}</span>
                 <span class="spacer"></span>
-                <span>{{request.sentDate}}</span>
+                <span>{{request?.submittedDate}}</span>
               </div>
               <div class="req-entry">
-                <span>From :- {{request.fromDate}}</span>
+                <span>From :- {{request?.startDate}}</span>
                 <span class="spacer"></span>
-                <span>{{request.sentTime}}</span>
+                <span>{{request?.submittedDate}}</span>
               </div>
               <div class="req-entry">
-                <span>To :- {{request.toDate}}</span>
+                <span>To :- {{request?.endDate}}</span>
                 <span class="spacer"></span>
-                <span>{{request.status}}</span>
+                <span>{{request?.status}}</span>
               </div>
 
             </div>

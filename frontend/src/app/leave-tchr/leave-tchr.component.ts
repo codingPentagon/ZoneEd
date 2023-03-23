@@ -9,14 +9,16 @@ import {LeaveService} from "../services/leave.service";
 })
 export class LeaveTchrComponent {
 
-  requests=[
-    {condition:"Medical appointment", sentDate:"02/05/2023", fromDate:"03/05/2023", sentTime:"08.30p.m", toDate:"04/05/2023", status:"Pending"},
-    {condition:"Medical appointment", sentDate:"02/05/2023", fromDate:"03/05/2023", sentTime:"08.30p.m", toDate:"04/05/2023", status:"Pending"},
-  ];
-  userID:number=1361;
+  userID:number=1948;
   add: boolean= false;
+  leaveRequests: LeaveRequest[] = []
+
   constructor(private leaveService:LeaveService) {
 
+  }
+
+  ngOnInit(){
+    this.getLeaveRequests();
   }
 
   addToggle() {
@@ -36,8 +38,14 @@ export class LeaveTchrComponent {
       status:'Pending'
     }
     this.leaveService.addLeaveRequest(request).subscribe()
+  }
 
-
-
+  getLeaveRequests() {
+    this.leaveService.fetchLeaveRequests(this.userID).subscribe({
+      next: res => {
+        this.leaveRequests = res
+        console.log(res)
+      }
+    })
   }
 }

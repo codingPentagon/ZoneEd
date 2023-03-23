@@ -39,7 +39,7 @@ export class LeavePrinComponent {
   }
 
   getLeaveRequests() {
-    this.leaveService.fetchleaveRequests(this.selectedTeacherID).subscribe({
+    this.leaveService.fetchLeaveRequests(this.selectedTeacherID).subscribe({
       next: res => {
         this.leaveRequests = res
 

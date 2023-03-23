@@ -50,7 +50,7 @@
                 {{request.status}}
 
               </mat-expansion-panel-header>
-              <mat-action-row *ngIf="request.status =='pending'">
+              <mat-action-row *ngIf="request.status.toLowerCase() =='pending'">
                 <button mat-raised-button (click)="createLeaveRecord(request);modifyLeaveRequest(request.id,true)">
                   Accept
                 </button>

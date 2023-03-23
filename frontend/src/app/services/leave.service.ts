@@ -12,7 +12,7 @@ export class LeaveService {
 
   constructor(private http:HttpClient) { }
 
-  fetchleaveRequests(selectedTeacherID: number) {
+  fetchLeaveRequests(selectedTeacherID: number) {
     return this.http.get<LeaveRequest[]>(url+'requests/'+selectedTeacherID.toString())
 
   }
