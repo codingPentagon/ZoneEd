@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Notification} from "../models/notification.model";
 import {HttpClient} from "@angular/common/http";
-import {getMessaging,getToken,onMessage} from '@angular/fire/messaging'
-import { BehaviorSubject } from 'rxjs'
+import {AngularFireMessaging} from "@angular/fire/compat/messaging";
+
+
 
 const url = 'http://localhost:8080/notifications/'
 
@@ -10,37 +11,34 @@ const url = 'http://localhost:8080/notifications/'
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService {
-  message :any=null;
+export class NotificationService implements OnInit{
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private fireMessaging: AngularFireMessaging) {
 
   }
+
   ngOnInit(){
     this.requestPermission();
     this.listen();
   }
 
-  private requestPermission() {
-    const messaging = getMessaging();
-    getToken(messaging,{vapidKey:'BP5k-BYYIzmnZZvCbwWiddeELjekqDkuV8x2OVYS1c_sBVF3jhzaHDIkN4WRrUv1infhRDiFZ9w0rR066nnSP7M'}).then(
-      (currentToken)=>{
-        if (currentToken){
-          console.log("Got token");
-        }
-        else {
-          console.log("No Token");
-        }
-      }
-    );
+  requestPermission(){
+    this.fireMessaging.requestToken.subscribe({
+      next:(token)=>{
+        console.log("Permission granted!");
+        console.log(token);
+      },
+      error:(error)=>{console.error(error);}
+    })
   }
 
-  private listen() {
-    const messaging = getMessaging();
-    onMessage(messaging,(payLoad)=>{
-      this.message=payLoad;
-      console.log(payLoad);
-    })
+
+  listen(){
+    this.fireMessaging.messages.subscribe({
+      next:message=>{
+        console.log(message);
+      }
+    });
   }
 
 

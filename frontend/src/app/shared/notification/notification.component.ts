@@ -26,6 +26,7 @@ export class NotificationComponent {
     });
     this.notifConService.getUnreadNotifCount();
     this.getNotifications();
+    this.notifService.requestPermission();
 
 
   }

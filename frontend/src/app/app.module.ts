@@ -18,6 +18,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {ServicesModule} from "./services/services.module";
 import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireMessagingModule} from "@angular/fire/compat/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNYmNI8dvHyNRpcp2JNSRdYCrUSz2vEyI",
@@ -37,6 +38,7 @@ const firebaseConfig = {
     SharedModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireMessagingModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
