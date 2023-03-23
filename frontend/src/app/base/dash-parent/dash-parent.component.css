@@ -31,19 +31,6 @@
   grid-row: span 9;
 }
 
-.header{
-  font-size: medium;
-  font-weight: 500;
-}
-
-.sub-header{
-  color: darkgrey;
-}
-
-mat-card-header{
-  padding: 10px 15px;
-}
-
 .spacer{
   flex: 1 1 auto;
 }

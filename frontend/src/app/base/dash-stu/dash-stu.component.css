@@ -43,14 +43,6 @@
   flex: 1 1 auto;
 }
 
-.sub-header{
-  color: darkgrey;
-}
-
-mat-card-header{
-  padding: 10px 15px;
-}
-
 .attendance .overview{
   display: grid;
   grid-template-rows: 2fr 5fr;
@@ -87,9 +79,4 @@ mat-divider{
 
 .value p{
   margin:10px 0;
-}
-
-.header{
-  font-size: medium;
-  font-weight: 500;
 }
