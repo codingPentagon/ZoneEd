@@ -38,7 +38,7 @@
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob"  [(ngModel)]="stu.dob" required >
+          <input matInput [matDatepicker]="picker" id="dob" name="dob" formControlName="dob"  >
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
@@ -88,7 +88,7 @@
         <label class="required" for="datee">Admission Date</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker2"  id="admDate" name="admDate"  formControlName="admDate"  type="date"  [(ngModel)]="stu.admDate" required  >
+          <input matInput [matDatepicker]="picker2"  id="admDate" name="admDate"  formControlName="admDate"  type="date"    >
           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field><br>

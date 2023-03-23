@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//@RequestMapping("api/v1/stu")
+@RequestMapping("api/v1/stu")
 @CrossOrigin (origins = "http://localhost:4200")
 public class StuRegController {
 
@@ -28,11 +28,11 @@ public class StuRegController {
     @PostMapping("/regStu")
     public StudentReg register(@RequestBody StudentReg studentReg){
 
-        return  stuRegRepo.save(studentReg);
+       return stuRegRepo.save(studentReg);
 
     }
     @GetMapping("/regStuData")
-    public List<StudentReg> getStudent (){
+    public List<StudentReg> getStudent(){
         return stuRegRepo.findAll();
     }
 

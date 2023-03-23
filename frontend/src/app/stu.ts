@@ -7,11 +7,11 @@ export class Stu {
     password!:String;
     email!:String;
     gender!:String;
-    dob!:Date;
+  //  dob!:Date;
     role:String="student";
     indexNo!:number;
     stuClass!:String;
-    admDate!:Date;
+   // admDate!:Date;
     fatherName1!:String;
     faddress1!:String;
     faddress2!:String;
