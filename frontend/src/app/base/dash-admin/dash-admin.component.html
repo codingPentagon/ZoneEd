@@ -2,7 +2,21 @@
 <div class="content">
   <app-header></app-header>
   <div class="workspace">
-    <mat-card class="card1">testjvankslvnarjngvlawiongvgawsinbali;rbnaejbfb</mat-card>
-    <mat-card class="card2">testfv .dfkjsfdfvnkdfdbndkjfbnjdfb</mat-card>
+    <mat-card class="overview">
+      <mat-card-header>
+        <span class="header">User Overview</span>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let userCount of usersCount" class="tile">
+          <div class="header">{{userCount.user}}</div>
+          <div class="count">{{userCount.count}}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="notice-board">
+      notice
+      <!--        notice component-->
+    </mat-card>
   </div>
 </div>

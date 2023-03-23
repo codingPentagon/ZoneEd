@@ -11,4 +11,10 @@ export class DashAdminComponent {
   }
 
   userID:number=this.route.snapshot.params['userID'];
+  usersCount=[
+    {user:'Principals',count:10},
+    {user:'Teachers',count:500},
+    {user:'Students',count:30000},
+    {user:'Parents',count:29000}
+  ]
 }
