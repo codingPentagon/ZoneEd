@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(232,232,232);}
+
+.header{
+  font-size: medium;
+  font-weight: 500;
+}
+
+.sub-header{
+  color: darkgrey;
+}
+
+mat-card-header{
+  padding: 10px 15px;
+}
