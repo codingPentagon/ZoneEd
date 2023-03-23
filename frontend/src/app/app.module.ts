@@ -51,7 +51,7 @@ const firebaseConfig = {
     MatCheckboxModule,
     MatDividerModule,
     MatIconModule,
-    ServicesModule
+    ServicesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
