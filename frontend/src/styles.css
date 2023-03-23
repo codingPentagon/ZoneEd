@@ -12,6 +12,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   color: darkgrey;
 }
 
-mat-card-header{
+mat-card-header.mat-mdc-card-header{
   padding: 10px 15px;
 }
