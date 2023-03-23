@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from '../Service/user-service.service';
+import { Stu } from '../User/stu';
+
+
 
 @Component({
   selector: 'app-tchr-profile',
@@ -6,7 +11,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./tchr-profile.component.css'],
   
 })
-export class TchrProfileComponent {
+export class TchrProfileComponent implements OnInit {
+  
+stu:any;
+
+
+
+constructor(private userservice:UserServiceService,private router:Router){}
+
+  ngOnInit(): void {
+    this.getUser();
+  }
   imageSrc = '';
 
   changeImage(event: any) {
@@ -38,4 +53,12 @@ export class TchrProfileComponent {
     // Send the change password request to the server
     // ...
   }
+  
+  private getUser(){
+    this.userservice.getUserDeatils().subscribe(data => {
+      this.stu = data;
+    });
+  }
+
+  
 }
