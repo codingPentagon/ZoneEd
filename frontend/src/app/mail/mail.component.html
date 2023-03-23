@@ -20,8 +20,7 @@
         </mat-chip-listbox>
       </mat-card-header>
       <mat-card-content *ngIf="!create" class="mail-box">
-        <div *ngIf="mailBox=='inbox'">
-          <div>
+        <div *ngIf="mailBox=='inbox'" [ngModelGroup]="">
             <mat-accordion>
               <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="updateAsRead(inboxmail.id)">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
@@ -36,7 +35,7 @@
                     {{inboxmail.date}}
                     <br>
                     {{inboxmail.time}}
-                    <mat-checkbox *ngIf="delete"></mat-checkbox>
+                    <mat-checkbox *ngIf="delete" [value]="inboxmail.id.toString()" ngModel></mat-checkbox>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <p>
@@ -49,7 +48,6 @@
                 </button>
               </mat-expansion-panel>
             </mat-accordion>
-          </div>
         </div>
         <div *ngIf="mailBox=='sent'">
           <div class="sentbox" >
@@ -86,7 +84,7 @@
 
             <mat-form-field appearance="outline" color="accent">
               <mat-label>Category</mat-label>
-               <mat-select>
+               <mat-select [(value)]="selectedCategory">
                  <mat-option *ngFor="let category of categories" [value]="category.value">
                    {{category.viewValue}}
                  </mat-option>

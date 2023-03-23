@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormControl, NgForm} from "@angular/forms";
-import {finalize, map, Observable, startWith} from "rxjs";
+import { map, Observable, startWith} from "rxjs";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {MailService} from "../services/mail.service";
@@ -18,6 +18,7 @@ import {FilesService} from "../services/files.service";
 
 export class MailComponent {
   userID :number =80;
+  sclID:number=555;
   userRole:string = 'student';
 
   categories : any[] = [];
@@ -29,6 +30,7 @@ export class MailComponent {
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=[];
+  selectedCategory: string='';
 
 
 
@@ -82,6 +84,7 @@ export class MailComponent {
   inboxmails: Mail[] = [];
   sentboxmails: Mail[] = [];
   mailsToDelete: number[] = [];
+
 
 
   getInboxMails(){
@@ -158,6 +161,7 @@ export class MailComponent {
 
   droppedFiles: NgxFileDropEntry[] = [];
 
+
   public dropped(droppedFiles: NgxFileDropEntry[]) {
     console.log(droppedFiles)
     this.droppedFiles.push(...droppedFiles);
@@ -219,6 +223,18 @@ export class MailComponent {
     }
     if (this.userRole == 'principal' || this.userRole == 'teacher'){
       this.categories.push({viewValue:"Parent", value:"parent"},{viewValue:"Student", value:"student"})
+    }
+  }
+
+  users : {name:string,id:number}[]=[];
+  getUsers(){
+    switch (this.selectedCategory) {
+      // case 'teacher' : this.teachersService.fetchTeachers(this.sclID).subscribe({next:res=>{this.users=res}});break;
+      // case 'principal' : this.principalsService.fetchPrincipals(this.sclID).subscribe({next:res=>{this.users=res}});break;
+      // case 'zonal' : this.zonalsService.fetchZonals(this.sclID).subscribe({next:res=>{this.users=res}});break;
+      // case 'admin' : this.adminsService.fetchAdmins(this.sclID).subscribe({next:res=>{this.users=res}});break;
+      // case 'parent' : this.parentService.fetchParents(this.sclID).subscribe({next:res=>{this.users=res}});break;
+      // case 'student' : this.studentsService.fetchStudents(this.sclID).subscribe({next:res=>{this.users=res}});break;
     }
   }
 }
