@@ -37,6 +37,11 @@ public class LeaveController {
 
     }
 
+    @GetMapping("leaves/{teacherID}")
+    public List<LeaveRecord> fetchLeaveRecords(@PathVariable int teacherID){
+        return this.leaveService.findLeaveRecord(teacherID);
+    }
+
 
 
 }

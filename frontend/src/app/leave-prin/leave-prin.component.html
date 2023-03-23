@@ -10,7 +10,7 @@
 
 
         <mat-card-content>
-          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id;getLeaveRequests()">
+          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id;getLeaveRequests();getLeaveRecords()">
            <span class="teacher-entry">
              {{ teacher.name }}
            </span>

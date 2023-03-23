@@ -30,4 +30,9 @@ export class LeaveService {
     return this.http.post(url+'requests/',request)
 
   }
+
+  fetchLeaveRecords(selectedTeacherID: number) {
+    return this.http.get<LeaveRecord[]>(url+selectedTeacherID.toString())
+
+  }
 }

@@ -45,8 +45,10 @@ public class LeaveService {
                 this.leaveRequestRepository.save(req);
             }
         );
+    }
 
 
-
+    public List<LeaveRecord> findLeaveRecord(int teacherID) {
+        return this.leaveRecordRepository.findByTeacherID(teacherID);
     }
 }
