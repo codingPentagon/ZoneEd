@@ -56,6 +56,7 @@ constructor(private userservice:UserServiceService,private router:Router){}
   
   private getUser(){
     this.userservice.getUserDeatils().subscribe(data => {
+      console.log("data sent");
       console.log(data);
       this.stu = data;
     });

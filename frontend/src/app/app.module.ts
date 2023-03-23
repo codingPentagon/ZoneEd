@@ -8,7 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from "@angular/material/input";
 
+
 import { TchrProfileComponent } from './tchr-profile/tchr-profile.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+HttpClientModule
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { TchrProfileComponent } from './tchr-profile/tchr-profile.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
