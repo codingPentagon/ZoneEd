@@ -12,8 +12,8 @@ import { Stu } from '../User/stu';
   
 })
 export class TchrProfileComponent implements OnInit {
-  
-stu:any;
+  stu: Stu=new Stu();
+
 
 
 

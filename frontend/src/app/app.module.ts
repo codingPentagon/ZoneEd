@@ -7,7 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from "@angular/material/input";
-;
+
 import { TchrProfileComponent } from './tchr-profile/tchr-profile.component';
 
 @NgModule({
