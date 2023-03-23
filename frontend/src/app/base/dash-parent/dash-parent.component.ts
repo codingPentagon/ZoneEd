@@ -11,4 +11,5 @@ export class DashParentComponent {
   }
 
   userID:number=this.route.snapshot.params['userID'];
+  children:any[] =[1]
 }

@@ -2,7 +2,47 @@
 <div class="content">
   <app-header></app-header>
   <div class="workspace">
-    <mat-card class="card1">testjvankslvnarjngvlawiongvgawsinbali;rbnaejbfb</mat-card>
-    <mat-card class="card2">testfv .dfkjsfdfvnkdfdbndkjfbnjdfb</mat-card>
+    <mat-card class="attendance">
+      <mat-card-header>
+        <span class="header">My Children</span>
+        <span class="spacer"></span>
+        <span class="sub-header">This Month</span>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card *ngFor="let child of children">
+          <div class="child-details">
+            <div>
+              Tharindu Herath
+            </div>
+            <div>
+              <div class="sub-header">School</div>
+              <div>Dehiaththakandiya Maha Vidyalaya</div>
+            </div>
+            <div class="two-column">
+              <div>
+                <div class="sub-header">Grade</div>
+                <div>9A</div>
+              </div>
+              <div>
+                <div class="sub-header">Today's Attendance</div>
+                <div>Present</div>
+              </div>
+            </div>
+          </div>
+          <div class="child-photo">
+<!--            child's photo-->
+          </div>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="notice-board">
+      <mat-card-header>
+        <span class="header">Notice Board</span>
+      </mat-card-header>
+      <mat-card-content>
+<!--        notice component-->
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
