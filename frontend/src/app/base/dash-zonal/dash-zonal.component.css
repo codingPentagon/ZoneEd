@@ -7,10 +7,10 @@
   min-height: 130px;
 }
 
-.card1{
+.proposals{
   grid-row: span 9;
 }
 
-.card2{
+.notice-board{
   grid-row: span 9;
 }

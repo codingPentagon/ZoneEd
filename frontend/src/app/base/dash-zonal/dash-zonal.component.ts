@@ -11,4 +11,5 @@ export class DashZonalComponent {
   }
 
   userID:number=this.route.snapshot.params['userID'];
+  pendingProposals: any[]=[1,1,1,1];
 }
