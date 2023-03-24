@@ -27,6 +27,8 @@ import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ServicesModule} from "./services/services.module";
 import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu-yearly-attendence.component';
+import { StuGradesOverviewComponent } from './charts/stu-grades-overview/stu-grades-overview.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu
     GradesTchrComponent,
     GradesStuComponent,
     AttdnceStuComponent,
-    StuYearlyAttendenceComponent
+    StuYearlyAttendenceComponent,
+    StuGradesOverviewComponent
   ],
   imports: [
     BrowserModule,

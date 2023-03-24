@@ -1,0 +1,10 @@
+.charBox{
+    width: 550px;
+    
+}
+.chartBox-Container{
+    margin-top: 30px;
+    position:relative;
+    margin-left: 20px;
+    margin-bottom: 70px;
+}
