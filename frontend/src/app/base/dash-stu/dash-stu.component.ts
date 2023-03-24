@@ -11,5 +11,6 @@ export class DashStuComponent {
   }
 
   userID:number=this.route.snapshot.params['userID'];
+  assessments :any[]=[1,1]
 
 }
