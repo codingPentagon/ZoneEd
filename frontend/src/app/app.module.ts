@@ -29,6 +29,8 @@ import {ServicesModule} from "./services/services.module";
 import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu-yearly-attendence.component';
 import { StuGradesOverviewComponent } from './charts/stu-grades-overview/stu-grades-overview.component';
 import { TchrSubjectsPerfComponent } from './charts/tchr-subjects-perf/tchr-subjects-perf.component';
+import { TchrLeaveOverviewComponent } from './charts/tchr-leave-overview/tchr-leave-overview.component';
+
 
 
 
@@ -42,7 +44,8 @@ import { TchrSubjectsPerfComponent } from './charts/tchr-subjects-perf/tchr-subj
     AttdnceStuComponent,
     StuYearlyAttendenceComponent,
     StuGradesOverviewComponent,
-    TchrSubjectsPerfComponent
+    TchrSubjectsPerfComponent,
+    TchrLeaveOverviewComponent
   ],
   imports: [
     BrowserModule,
