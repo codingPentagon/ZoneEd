@@ -25,11 +25,11 @@ mat-card-header.mat-mdc-card-header{
 }
 
 .entry-left{
-  justify-self: left;
+  justify-items: left;
 }
 
 .entry-right{
-  justify-self: right;
+  justify-items: right;
 }
 
 .grid{
@@ -58,4 +58,8 @@ mat-card-header.mat-mdc-card-header{
 
 .spacer{
   flex: 1 1 auto;
+}
+
+.scrollable{
+  overflow: auto;
 }
