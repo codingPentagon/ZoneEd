@@ -8,7 +8,7 @@
         <span class="spacer"></span>
         <span class="sub-heading heading-large">This Month</span>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content class="scrollable">
         <mat-card *ngFor="let child of children">
           <div class="child-details">
             <div>
@@ -18,12 +18,12 @@
               <div class="sub-heading">School</div>
               <div>Dehiaththakandiya Maha Vidyalaya</div>
             </div>
-            <div class="two-column">
-              <div>
+            <div class="grid entry">
+              <div class="grid entry-left">
                 <div class="sub-heading">Grade</div>
                 <div>9A</div>
               </div>
-              <div>
+              <div class="grid">
                 <div class="sub-heading">Today's Attendance</div>
                 <div>Present</div>
               </div>
