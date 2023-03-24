@@ -26,6 +26,7 @@ import { GradesStuComponent } from './grades-stu/grades-stu.component';
 import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ServicesModule} from "./services/services.module";
+import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu-yearly-attendence.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {ServicesModule} from "./services/services.module";
     GradesTchrComponent,
     GradesStuComponent,
     AttdnceStuComponent,
+    StuYearlyAttendenceComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import {ServicesModule} from "./services/services.module";
     MatIconModule,
     MatButtonToggleModule,
     ServicesModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
