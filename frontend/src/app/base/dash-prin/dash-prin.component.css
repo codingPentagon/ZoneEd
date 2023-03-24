@@ -16,11 +16,11 @@
 }
 
 .on-leave{
-  grid-row: span 8;
+  grid-row: span 6;
 }
 
 .milestones{
-  grid-row: span 6;
+  grid-row: span 8;
 }
 
 .tile {

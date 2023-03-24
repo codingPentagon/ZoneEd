@@ -12,4 +12,6 @@ export class DashPrinComponent {
 
   userID: number = this.route.snapshot.params['userID'];
   classAttendance: any[] = [1,1,1,1,1,1,1];
+  teachersOnLeave:any[] = [1,1,1,1];
+  upcomingMilestones:any[] = [1,1,1,1]
 }
