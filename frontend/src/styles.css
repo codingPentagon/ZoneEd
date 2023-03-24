@@ -3,15 +3,37 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(232,232,232);}
 
-.header{
-  font-size: medium;
+.heading{
   font-weight: 500;
 }
 
-.sub-header{
+.heading-large{
+  font-size: medium;
+}
+
+.sub-heading{
   color: darkgrey;
 }
 
 mat-card-header.mat-mdc-card-header{
   padding: 10px 15px;
 }
+
+.entry{
+  grid-auto-flow: column;
+  margin-bottom: 5px;
+}
+
+.entry-left{
+  justify-self: left;
+}
+
+.entry-right{
+  justify-self: right;
+}
+
+.grid{
+  display:grid;
+}
+
+
