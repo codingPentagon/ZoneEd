@@ -52,3 +52,6 @@ mat-card-header.mat-mdc-card-header{
   padding: 15px;
 }
 
+.spacer{
+  flex: 1 1 auto;
+}
