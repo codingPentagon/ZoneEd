@@ -7,8 +7,9 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./dash-prin.component.css']
 })
 export class DashPrinComponent {
-  constructor(private route:ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
-  userID:number=this.route.snapshot.params['userID'];
+  userID: number = this.route.snapshot.params['userID'];
+  classAttendance: any[] = [1,1,1,1,1,1,1];
 }
