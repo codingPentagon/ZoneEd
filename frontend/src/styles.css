@@ -21,6 +21,7 @@ mat-card-header.mat-mdc-card-header{
 
 .entry{
   grid-auto-flow: column;
+  margin: 5px 0;
 }
 
 .entry-left{
