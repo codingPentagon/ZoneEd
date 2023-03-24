@@ -11,8 +11,6 @@ export class DashTchrComponent {
   constructor(private route:ActivatedRoute) {
   }
   userID:number = this.route.snapshot.params['userID'];
-
-  ngOnInit() {
-    console.log(this.userID)
-  }
+  reliefToday:any[] =[1,1,1];
+  schedulePeriods:any[] = [1,1,1,1,1,1,1,1];
 }
