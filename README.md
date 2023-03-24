@@ -1,2 +1,2 @@
-# SchoolManagementSystem
-with zonal coordination
+# ZoneEd
+School Management System with Zonal Coordination
