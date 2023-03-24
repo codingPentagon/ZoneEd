@@ -36,6 +36,10 @@ mat-card-header.mat-mdc-card-header{
   display:grid;
 }
 
+.flex{
+  display: flex;
+}
+
 .content{
   flex: 1;
   height: 100vh;
