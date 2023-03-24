@@ -2,9 +2,38 @@
 <div class="content">
   <app-header></app-header>
   <div class="workspace">
-    <mat-card class="card1">testjvankslvnarjngvlawiongvgawsinbali;rbnaejbfb</mat-card>
-    <mat-card class="card2">testfv .dfkjsfdfvnkdfdbndkjfbnjdfb</mat-card>
-    <mat-card class="card3">testdfmvbdfjkmbldf</mat-card>
-    <mat-card class="card4">testdfkmbvldkfmbdklfbdmfbdkbkldfbmdflkbmlgbmdlfbmkld</mat-card>
+    <mat-card class="attendance-overview">
+      <mat-card-header>
+        <span class="heading heading-large">Class Attendance Overview</span>
+        <span class="spacer"></span>
+        <span class="sub-heading heading-large">Today</span>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid tile-grid">
+          <div class="grid tile" *ngFor="let attendance of classAttendance">
+            <span class="grid inner-tile heading">10A</span>
+            <div class="grid entry heading">
+              <div class="grid entry-left">
+                <span>Present:</span>
+                <span>Absent:</span>
+              </div>
+              <div class="grid entry-right">
+                <span>5</span>
+                <span>2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="notice-board">
+      notice
+    </mat-card>
+    <mat-card class="on-leave">
+
+    </mat-card>
+    <mat-card class="milestones">
+
+    </mat-card>
   </div>
 </div>
