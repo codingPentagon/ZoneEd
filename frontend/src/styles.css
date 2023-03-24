@@ -26,12 +26,12 @@ mat-card-header.mat-mdc-card-header{
 
 .entry-left{
   justify-self: left;
-  justify-items: left;
+  text-align: left;
 }
 
 .entry-right{
   justify-self: right;
-  justify-items: right;
+  text-align: right;
 }
 
 .grid{
