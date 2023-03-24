@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Chart,registerables } from 'node_modules/chart.js';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-stu-yearly-attendence',
