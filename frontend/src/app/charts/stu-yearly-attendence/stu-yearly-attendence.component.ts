@@ -19,10 +19,10 @@ export class StuYearlyAttendenceComponent implements OnInit {
     new Chart("piechart", {
       type: 'bar',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Jan', 'feb', 'mar', 'apr', 'may', 'june','july','aug','sep','oct','nov','dec'],
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          data: [12, 19, 3, 5, 2, 3,5,6,12,25,9,18],
          // backgroundColor :[
 
           //  'rgba(255,235,255,0.2)'

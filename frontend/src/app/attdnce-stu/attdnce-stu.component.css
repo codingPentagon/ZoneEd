@@ -49,10 +49,14 @@ mat-select{
 }
 
 .box{
-  margin-top: 20px;
+  margin-top: 200px;
   align-items: center;
   display: flex;
   text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .big-text{
