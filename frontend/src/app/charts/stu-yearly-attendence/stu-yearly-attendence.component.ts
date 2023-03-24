@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Chart,registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 
@@ -7,6 +7,40 @@ Chart.register(...registerables);
   templateUrl: './stu-yearly-attendence.component.html',
   styleUrls: ['./stu-yearly-attendence.component.css']
 })
-export class StuYearlyAttendenceComponent {
+export class StuYearlyAttendenceComponent implements OnInit {
+  ngOnInit(): void {
+    this.renderStuYearlyAttendanceChart();
+
+  }
+
+  renderStuYearlyAttendanceChart(){
+    const ctx = document.getElementById('myChart');
+
+    new Chart("piechart", {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+         // backgroundColor :[
+
+          //  'rgba(255,235,255,0.2)'
+         // ],
+        
+        borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+
+  }
 
 }

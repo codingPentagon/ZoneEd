@@ -49,6 +49,7 @@ mat-select{
 }
 
 .box{
+  margin-top: 20px;
   align-items: center;
   display: flex;
   text-align: center;
