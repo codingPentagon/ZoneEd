@@ -3,23 +3,22 @@ import { Chart,registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 
 @Component({
-  selector: 'app-stu-yearly-attendence',
-  templateUrl: './stu-yearly-attendence.component.html',
-  styleUrls: ['./stu-yearly-attendence.component.css']
+  selector: 'app-tchr-subjects-perf',
+  templateUrl: './tchr-subjects-perf.component.html',
+  styleUrls: ['./tchr-subjects-perf.component.css']
 })
-export class StuYearlyAttendenceComponent implements OnInit {
+export class TchrSubjectsPerfComponent implements OnInit{
   ngOnInit(): void {
-    this.renderStuYearlyAttendanceChart();
-
+    this.renderTchrSubjectsPerf();
   }
 
-  renderStuYearlyAttendanceChart(){
+  renderTchrSubjectsPerf(){
     const ctx = document.getElementById('myChart');
 
     new Chart("piechart", {
       type: 'bar',
       data: {
-        labels: ['Jan', 'feb', 'mar', 'apr', 'may', 'june','july','aug','sep','oct','nov','dec'],
+        labels: ['8A', '8C', '9B', '9D', '10C', '10D','11A'],
         datasets: [{
           label: '# of Votes',
           data: [12, 19, 3, 5, 2, 3,5,6,12,25,9,18],
@@ -36,10 +35,11 @@ export class StuYearlyAttendenceComponent implements OnInit {
           y: {
             beginAtZero: true
           }
-        },maintainAspectRatio:false
+        },
+        maintainAspectRatio:false,
+       
       }
     });
-
 
   }
 

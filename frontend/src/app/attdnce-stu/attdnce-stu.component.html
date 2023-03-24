@@ -13,7 +13,8 @@
           </mat-select>
         </mat-card-header>
         <mat-card-content>
-          <app-stu-yearly-attendence></app-stu-yearly-attendence>
+        <app-stu-yearly-attendence></app-stu-yearly-attendence>
+          
           <div class="box">
             <div class="inline-block">
               <p class="big-text">100</p>
@@ -32,15 +33,17 @@
         <mat-card class="attendance">
           <mat-card-header>
             Monthly Attendance Summary
+            
             <span class="spacer"></span>
             <mat-select [value]=selectedMonth>
               <mat-option *ngFor="let month of months" [value]="month.value">{{month.viewValue}}
               </mat-option>
             </mat-select>
+          
           </mat-card-header>
           <mat-card-content>
-         
-           
+       
+          
               <div class="box">
                 <div class="inline-block">
                   <p class="big-text">20</p>

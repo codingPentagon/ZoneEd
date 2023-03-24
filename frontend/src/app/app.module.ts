@@ -28,6 +28,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ServicesModule} from "./services/services.module";
 import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu-yearly-attendence.component';
 import { StuGradesOverviewComponent } from './charts/stu-grades-overview/stu-grades-overview.component';
+import { TchrSubjectsPerfComponent } from './charts/tchr-subjects-perf/tchr-subjects-perf.component';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { StuGradesOverviewComponent } from './charts/stu-grades-overview/stu-gra
     GradesStuComponent,
     AttdnceStuComponent,
     StuYearlyAttendenceComponent,
-    StuGradesOverviewComponent
+    StuGradesOverviewComponent,
+    TchrSubjectsPerfComponent
   ],
   imports: [
     BrowserModule,

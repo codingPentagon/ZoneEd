@@ -1,5 +1,5 @@
 .charBox{
-    width: 35vw;
+    width: 40vw;
     height: 40vh;
     
 }
@@ -8,4 +8,5 @@
     position:relative;
     margin-left: 0px;
     margin-bottom: 0;
+    
 }
