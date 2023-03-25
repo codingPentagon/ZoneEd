@@ -10,3 +10,8 @@
 .workspace{
   display: grid;
 }
+
+.mat-mdc-unelevated-button:not(:disabled){
+  background-color: mediumspringgreen;
+  color: navy;
+}

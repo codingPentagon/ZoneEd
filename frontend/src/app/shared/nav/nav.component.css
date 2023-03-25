@@ -3,7 +3,7 @@
 }
 
 .mat-sidenav {
-  background-color: darkblue;
+  background-color: navy;
   width: 275px;
 }
 
@@ -17,7 +17,8 @@ a {
 }
 
 .mat-expanded:not(.sub-nav) > mat-expansion-panel-header{
-  background-color: lightseagreen;
+  background-color: paleturquoise;
+  color: navy;
 }
 
 
@@ -85,8 +86,9 @@ mat-accordion:has(mat-accordion){
 .profile-pic>img{
   border: 5px solid white;
   border-radius: 50%;
-  width: 60%;
-  height: 88%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
 }
 
 .profile-pic>span{
