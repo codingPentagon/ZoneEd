@@ -9,7 +9,7 @@
         </mat-card-header>
         <mat-card-content>
           <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}">
-           <span class="teacher-entry" (click)="getSchedule(teacher.id)">
+           <span class="teacher-entry" (click)="selectedTeacherID=this.teacher.id;schedule.getSchedule()">
              {{ teacher.name }}
              <span class="spacer"></span>
              {{ teacher.subject }}
@@ -31,75 +31,11 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content>
-          <table mat-table [dataSource]="schedule.schedule">
-
-            <ng-container matColumnDef="period">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let element"> {{element.period}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="mon">
-              <th mat-header-cell *matHeaderCellDef> Monday </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="{'free-slot':element.mon == '---','no-selection':element.mon==null}">
-                <mat-select [(value)]="element.mon" [disabled]="!modify" [ngClass]="{'hide':!modify}" placeholder="select a class">
-                  <mat-option *ngFor="let cls of classes" [value]="cls.name==''?null:cls.name">
-                    {{cls.name==''?'remove class':cls.name}}
-                  </mat-option>
-                </mat-select>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="tue">
-              <th mat-header-cell *matHeaderCellDef> Tuesday </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="{'free-slot':element.tue == '---','no-selection':element.tue==null}">
-                <mat-select [(value)]="element.tue" [disabled]="!modify" [ngClass]="{'hide':!modify}" placeholder="select a class">
-                  <mat-option *ngFor="let cls of classes" [value]="cls.name==''?null:cls.name">
-                    {{cls.name==''?'remove class':cls.name}}
-                  </mat-option>
-                </mat-select>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="wed">
-              <th mat-header-cell *matHeaderCellDef> Wednesday </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="{'free-slot':element.wed == '---','no-selection':element.wed==null}">
-                <mat-select [(value)]="element.wed" [disabled]="!modify" [ngClass]="{'hide':!modify}" placeholder="select a class">
-                  <mat-option *ngFor="let cls of classes" [value]="cls.name==''?null:cls.name">
-                    {{cls.name==''?'remove class':cls.name}}
-                  </mat-option>
-                </mat-select>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="thu">
-              <th mat-header-cell *matHeaderCellDef> Thursday </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="{'free-slot':element.thu == '---','no-selection':element.thu==null}">
-                <mat-select [(value)]="element.thu" [disabled]="!modify" [ngClass]="{'hide':!modify}" placeholder="select a class">
-                  <mat-option *ngFor="let cls of classes" [value]="cls.name==''?null:cls.name">
-                    {{cls.name==''?'remove class':cls.name}}
-                  </mat-option>
-                </mat-select>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="fri">
-              <th mat-header-cell *matHeaderCellDef> Friday </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="{'free-slot':element.fri == '---','no-selection':element.fri==null}">
-                <mat-select [(value)]="element.fri" [disabled]="!modify" [ngClass]="{'hide':!modify}" placeholder="select a class">
-                  <mat-option *ngFor="let cls of classes" [value]="cls.name==''?null:cls.name">
-                    {{cls.name==''?'remove class':cls.name}}
-                  </mat-option>
-                </mat-select>
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+          <app-schedule [teacherID]="selectedTeacherID" [sclID]="sclID" [modify]="modify" #schedule></app-schedule>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
-          <button mat-raised-button (click)="putSchedule()">Save</button>
-          <button mat-raised-button (click)="getSchedule(selectedTeacherID);modifyToggle();">Discard</button>
+          <button mat-raised-button (click)="schedule.modifySchedule()">Save</button>
+          <button mat-raised-button (click)="schedule.getSchedule();modifyToggle();">Discard</button>
         </mat-card-actions>
       </mat-card>
     </div>
