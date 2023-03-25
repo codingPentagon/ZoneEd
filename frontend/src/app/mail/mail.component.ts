@@ -83,7 +83,7 @@ export class MailComponent {
 
   inboxmails: Mail[] = [];
   sentboxmails: Mail[] = [];
-  mailsToDelete: number[] = [];
+  mailsToDelete: Mail[] = [];
 
 
 
@@ -240,4 +240,31 @@ export class MailComponent {
       // case 'student' : this.studentsService.fetchStudents(this.sclID).subscribe({next:res=>{this.users=res}});break;
     }
   }
+
+  toggleDeleteItems(mail:Mail) {
+    const index=this.mailsToDelete.indexOf(mail);
+    if (index===-1){
+      this.mailsToDelete.push(mail);
+    }
+    else{
+      this.mailsToDelete.splice(index,1);
+    }
+    console.log(this.mailsToDelete);
+  }
+
+  deleteMails(){
+    const mailIDs:number[]=[];
+    this.mailsToDelete.forEach(mail=>{
+      mailIDs.push(mail.id);
+      this.filesService.filesMetadata=mail.attachments;
+      this.filesService.removeAllFiles();
+    })
+    this.mailService.removeMails(mailIDs).subscribe({
+      complete : () => {
+        this.getInboxMails();
+        this.getSentBoxMails();
+      }
+    })
+  }
+
 }

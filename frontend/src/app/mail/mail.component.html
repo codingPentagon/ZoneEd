@@ -22,35 +22,35 @@
       <mat-card-content *ngIf="!create" class="mail-box">
         <div *ngIf="mailBox=='inbox'" >
             <mat-accordion>
-              <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="updateAsRead(inboxmail.id)">
-                <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
-                                            [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
-                  <mat-panel-title>
-                    {{inboxmail.senderID}}
-                    <br>
-                    {{inboxmail.subject}}
-                  </mat-panel-title>
-                  <mat-panel-description>
 
-                    {{inboxmail.date}}
-                    <br>
-                    {{inboxmail.time}}
-                    <mat-checkbox *ngIf="delete" [value]="inboxmail.id.toString()" ngModel></mat-checkbox>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>
-                  {{inboxmail.content}}
-                </p>
-                <div class="attachment-list">
-                  <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
-                </div>
-                <button mat-icon-button (click)="reply(inboxmail.senderID)">
-                  <mat-icon>
-                    reply
-                  </mat-icon>
-                </button>
+                <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
+                  <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
+                                              [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
+                    <mat-panel-title>
+                      {{inboxmail.senderID}}
+                      <br>
+                      {{inboxmail.subject}}
+                    </mat-panel-title>
+                    <mat-panel-description>
 
-              </mat-expansion-panel>
+                      {{inboxmail.date}}
+                      <br>
+                      {{inboxmail.time}}
+                      <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(inboxmail)"></mat-checkbox>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>
+                    {{inboxmail.content}}
+                  </p>
+                  <div class="attachment-list">
+                    <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
+                  </div>
+                  <button mat-icon-button (click)="reply(inboxmail.senderID)">
+                    <mat-icon>
+                      reply
+                    </mat-icon>
+                  </button>
+                </mat-expansion-panel>
             </mat-accordion>
         </div>
         <div *ngIf="mailBox=='sent'">
@@ -82,7 +82,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end" *ngIf="delete">
-        <button mat-raised-button>Delete</button>
+        <button mat-raised-button (click)="deleteMails(); deleteToggle()">Delete</button>
         <button mat-raised-button (click)="deleteToggle()">Discard</button>
       </mat-card-actions>
 

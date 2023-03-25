@@ -25,4 +25,8 @@ export class MailService {
   patchAsRead(mailID: number) {
     return this.http.patch(url, mailID);
   }
+
+  removeMails(mailsToDelete: number[]) {
+    return this.http.delete(url+mailsToDelete.toString());
+  }
 }
