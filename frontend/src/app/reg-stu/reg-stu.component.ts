@@ -4,7 +4,7 @@ import { Stu } from '../stu';
 import { UserRegService } from '../user-reg.service';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService} from 'ngx-toastr'
+
 
 
 

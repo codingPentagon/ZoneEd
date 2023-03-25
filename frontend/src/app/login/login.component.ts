@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService} from 'ngx-toastr'
+
 import { AuthGuard } from '../auth/auth.guard';
 import { Stu } from '../stu';
 import { UserRegService } from '../user-reg.service';
