@@ -62,18 +62,14 @@ button{
   margin: 15px 15px 15px 0;
 }
 
-
 mat-form-field{
   width: 96%;
 }
 
-
 mat-panel-title {
   white-space: break-spaces;
 }
-.mailbody{
 
-}
 textarea{
   resize: none;
   min-height: 223px;

@@ -21,11 +21,11 @@ public class MailService {
     }
 
     public List<Mail> findInboxMail(int userID) {
-        return this.mailRepository.findByReceiverID(userID);
+        return this.mailRepository.findByReceiverIDOrderByDateDesc(userID);
     }
 
     public List<Mail> findSentboxMail(int userID) {
-        return this.mailRepository.findBySenderID(userID);
+        return this.mailRepository.findBySenderIDOrderByDateDesc(userID);
     }
 
 

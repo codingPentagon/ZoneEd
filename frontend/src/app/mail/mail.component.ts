@@ -200,11 +200,12 @@ export class MailComponent {
     this.filesService.addFile(this.fileDir,file).then(()=>{
       this.filesService.fetchDownloadLinks();
     });
-
+    this.attachments=this.filesService.filesMetadata
   }
 
   deleteAttachment(attachment: FileMetadata){
     this.filesService.removeFile(attachment);
+    this.attachments=this.filesService.filesMetadata;
   }
 
   deleteAllAttachments(){
@@ -254,17 +255,19 @@ export class MailComponent {
 
   deleteMails(){
     const mailIDs:number[]=[];
-    this.mailsToDelete.forEach(mail=>{
+    this.mailsToDelete?.forEach(mail=>{
       mailIDs.push(mail.id);
-      this.filesService.filesMetadata=mail.attachments;
-      this.filesService.removeAllFiles();
-    })
+      if (mail.attachments){
+        this.filesService.filesMetadata=mail.attachments;
+        this.filesService.removeAllFiles();
+      }
+    });
     this.mailService.removeMails(mailIDs).subscribe({
       complete : () => {
         this.getInboxMails();
         this.getSentBoxMails();
       }
-    })
+    });
   }
 
 }
