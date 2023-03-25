@@ -20,7 +20,7 @@
         </mat-chip-listbox>
       </mat-card-header>
       <mat-card-content *ngIf="!create" class="mail-box">
-        <div *ngIf="mailBox=='inbox'" [ngModelGroup]="">
+        <div *ngIf="mailBox=='inbox'" >
             <mat-accordion>
               <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="updateAsRead(inboxmail.id)">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
@@ -41,11 +41,15 @@
                 <p>
                   {{inboxmail.content}}
                 </p>
+                <div class="attachment-list">
+                  <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
+                </div>
                 <button mat-icon-button (click)="reply(inboxmail.senderID)">
                   <mat-icon>
                     reply
                   </mat-icon>
                 </button>
+
               </mat-expansion-panel>
             </mat-accordion>
         </div>
@@ -69,6 +73,9 @@
                 <p>
                   {{sentboxmail.content}}
                 </p>
+                <div class="attachment-list">
+                  <a *ngFor="let file of sentboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
+                </div>
               </mat-expansion-panel>
             </mat-accordion>
           </div>

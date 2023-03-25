@@ -16,7 +16,7 @@ public class Mail {
     private String time;
     private String subject;
     private String content;
-    private Attachment[] attachment;
+    private FileMetadata[] attachments;
     private  boolean isRead;
 
     public int getId() {
@@ -75,13 +75,6 @@ public class Mail {
         this.content = content;
     }
 
-    public Attachment[] getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(Attachment[] attachment) {
-        this.attachment = attachment;
-    }
 
     public boolean getIsRead() {
         return isRead;
@@ -90,35 +83,13 @@ public class Mail {
     public void setIsRead(boolean read) {
         isRead = read;
     }
-}
 
-class Attachment{
-    private String fileName;
-    private String filePath;
-    @Transient
-    private MultipartFile file;
-
-    public String getFileName() {
-        return fileName;
+    public FileMetadata[] getAttachments() {
+        return attachments;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    public void setFile(MultipartFile file) {
-        this.file = file;
+    public void setAttachments(FileMetadata[] attachments) {
+        this.attachments = attachments;
     }
 }
+

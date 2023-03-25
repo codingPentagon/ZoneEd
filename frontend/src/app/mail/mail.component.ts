@@ -29,7 +29,7 @@ export class MailComponent {
   mails: string[] = [];
   allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
   fileDir = '/mail/attachments/';
-  attachments : FileMetadata[]=[];
+  attachments : FileMetadata[]=this.filesService.filesMetadata;
   selectedCategory: string='';
 
 
@@ -98,6 +98,7 @@ export class MailComponent {
     this.mailService.getSentBoxMails(this.userID).subscribe({
       next:res=>{
         this.sentboxmails=res;
+        console.log(res)
       }
     })
   }
@@ -109,7 +110,7 @@ export class MailComponent {
       senderID : this.userID,
       date :new Date(),
       time : "",
-      receiverID :newMail.value.receiverID,
+      receiverID :newMail.value.receiverIDm,
       subject : newMail.value.subject,
       content :newMail.value.content,
       attachments : this.attachments
@@ -136,7 +137,9 @@ export class MailComponent {
     this.create = !this.create;
     if (this.delete){
       this.delete = false;
-    }
+    };
+    this.getInboxMails();
+    this.getSentBoxMails();
   }
 
   delete:boolean = false;
@@ -157,7 +160,7 @@ export class MailComponent {
     this.mails.push(recipientID.toString());
   }
 
-  //File drop module**************
+  //File drop module
 
   droppedFiles: NgxFileDropEntry[] = [];
 
@@ -173,6 +176,7 @@ export class MailComponent {
         fileEntry.file((file: File) => {
           // Here you can access the real file
           this.createAttachment(file);
+          console.log(this.attachments)
         });
       }
       else {
@@ -196,12 +200,11 @@ export class MailComponent {
     this.filesService.addFile(this.fileDir,file).then(()=>{
       this.filesService.fetchDownloadLinks();
     });
-    this.attachments=this.filesService.filesMetadata;
+
   }
 
   deleteAttachment(attachment: FileMetadata){
     this.filesService.removeFile(attachment);
-    this.attachments=this.filesService.filesMetadata;
   }
 
   deleteAllAttachments(){
