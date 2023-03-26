@@ -6,18 +6,18 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  @Input() links: any[] = [
+  links: any[] = [
     {value:'Dashboard',icon:'space_dashboard',path:'/home',children: null},
-    {value:'Header',icon:'person',path:'home',children: null},
-    {value:'Reg',icon:'check',path:'/studentreg',children: null},
-    {value:'home',icon:'book',path:'/home/header',children:[
-        {value:'home',icon:'school',path:'header'},
-        {value:'Reg',icon:'image',path:'/studentreg'},
-        {value:'Reg',icon:'movie',path:'/home/page'}
-      ]
-    },
+    {value:'My Profile',icon:'person',path:'home',children: null},
+    {value:'Mails',icon:'mail',path:'/studentreg',children: null},
+    {value:'Reports',icon:'report',path:'/home/header',children:null}
   ];
 
+  @Input() navLinks:any[] = [];
   @Input() name: string = 'Sandeepani';
   @Input() school: string = 'Dehiaththakandiya Maha Vidyalaya';
+
+  ngOnInit() {
+    this.links.splice(1,0,...this.navLinks);
+  }
 }
