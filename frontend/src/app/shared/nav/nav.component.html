@@ -13,9 +13,8 @@
     </div>
 
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let link of linksSet" [routerLink]="link.parentLink.path" routerLinkActive=""
-                           #rla1="routerLinkActive" [expanded]="rla1.isActive">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel *ngFor="let link of linksSet" [expanded]="rla1.isActive">
+        <mat-expansion-panel-header [routerLink]="link.parentLink.path" routerLinkActive="" #rla1="routerLinkActive">
           <mat-panel-title>
             <mat-icon>{{link.parentLink.icon}}</mat-icon>
           </mat-panel-title>
