@@ -49,6 +49,7 @@ mat-accordion{
   display: grid;
   grid-auto-columns: 90%;
   justify-content: center;
+  grid-gap: 5px;
 }
 
 :not(.no-expand).mat-expansion-panel-content {
