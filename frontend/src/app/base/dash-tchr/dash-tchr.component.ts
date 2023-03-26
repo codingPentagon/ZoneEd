@@ -20,10 +20,11 @@ export class DashTchrComponent {
         {value:'Student Grades',icon:'text_increase',path:'class_management/grades'}
       ]
     },
-    {parentLink:{value:'Subject Management',icon:'menu_book',path:'project_management/assessments'},
+    {parentLink:{value:'Subject Management',icon:'menu_book',path:'subject_management/schedules'},
       childLinks:[
-        {value:'Assessments',icon:'assignment',path:'project_management/assessments'},
-        {value:'Relief Allocations',icon:'supervisor_account',path:'project_management/relief'}
+        {value:'Schedule',icon:'table_chart',path:'subject_management/schedules'},
+        {value:'Assessments',icon:'assignment',path:'subject_management/schedules'},
+        {value:'Relief Allocations',icon:'supervisor_account',path:'subject_management/relief'}
       ]
     },
     {parentLink:{value:'Leave Management',icon:'work_history',path:'school_calendars'},
