@@ -18,10 +18,10 @@ export class DashAdminComponent {
     {parentLink:{value:'Schools',icon:'school',path:'schools'},
       childLinks:null
     },
-    {parentLink:{value:'User Management',icon:'people',path:'user_management'},
+    {parentLink:{value:'User Management',icon:'manage_accounts',path:'user_management'},
       childLinks:null
     },
-    {parentLink:{value:'My Profile',icon:'person',path:'my_profile'},
+    {parentLink:{value:'My Profile',icon:'account_circle',path:'my_profile'},
       childLinks:null
     },
     {parentLink:{value:'Mails',icon:'mail',path:'mails'},

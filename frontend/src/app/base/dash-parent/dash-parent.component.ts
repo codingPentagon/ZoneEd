@@ -15,7 +15,7 @@ export class DashParentComponent {
     {parentLink:{value:'My Children',icon:'escalator_warning',path:'my_children'},
       childLinks:null
     },
-    {parentLink:{value:'My Profile',icon:'person',path:'my_profile'},
+    {parentLink:{value:'My Profile',icon:'account_circle',path:'my_profile'},
       childLinks:null
     },
     {parentLink:{value:'Mails',icon:'mail',path:'mails'},

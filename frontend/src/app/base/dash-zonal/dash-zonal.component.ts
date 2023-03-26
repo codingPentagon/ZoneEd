@@ -22,6 +22,9 @@ export class DashZonalComponent {
     {parentLink:{value:'School Calendars',icon:'date_range',path:'school_calendars'},
       childLinks:null
     },
+    {parentLink:{value:'My Profile',icon:'account_circle',path:'my_profile'},
+      childLinks:null
+    },
     {parentLink:{value:'Mails',icon:'mail',path:'mails'},
       childLinks:null
     },
