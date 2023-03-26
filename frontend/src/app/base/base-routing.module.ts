@@ -8,9 +8,9 @@ import {DashZonalComponent} from "./dash-zonal/dash-zonal.component";
 import {DashAdminComponent} from "./dash-admin/dash-admin.component";
 
 const routes: Routes = [
-  {path:'tchr/:userID', component:DashTchrComponent},
-  {path:'stu/:userID', component:DashStuComponent},
-  {path:'prin/:userID', component:DashPrinComponent},
+  {path:'teacher/:userID', component:DashTchrComponent},
+  {path:'student/:userID', component:DashStuComponent},
+  {path:'principal/:userID', component:DashPrinComponent},
   {path:'parent/:userID', component:DashParentComponent},
   {path:'zonal/:userID', component:DashZonalComponent},
   {path:'admin/:userID', component:DashAdminComponent},
