@@ -27,7 +27,7 @@ export class DashAdminComponent {
     {parentLink:{value:'Mails',icon:'mail',path:'mails'},
       childLinks:null
     },
-    {parentLink:{value:'Reports',icon:'analytics',path:'reports'},
+    {parentLink:{value:'Reports',icon:'assessment',path:'reports'},
       childLinks:null
     }
   ];
