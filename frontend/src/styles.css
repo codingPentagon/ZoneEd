@@ -50,12 +50,12 @@ mat-card-header.mat-mdc-card-header{
 
 .workspace{
   display: grid;
-  grid-gap: 15px;
+  grid-gap: 2vh;
   grid-template-columns: repeat(auto-fit,minmax(10.8%,1fr));
-  grid-template-rows: repeat(16,3.8%);
-  height: 85%;
+  grid-template-rows: repeat(16,1fr);
   overflow: auto;
   padding: 15px;
+  height: 85%;
 }
 
 .spacer{
@@ -64,6 +64,10 @@ mat-card-header.mat-mdc-card-header{
 
 .scrollable{
   overflow: auto;
+}
+
+mat-card-content{
+  height: 100%;
 }
 
 /*mat-card-header{*/
