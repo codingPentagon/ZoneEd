@@ -52,7 +52,7 @@ mat-card-header.mat-mdc-card-header{
   display: grid;
   grid-gap: 2vh;
   grid-template-columns: repeat(auto-fit,minmax(10.8%,1fr));
-  grid-template-rows: repeat(16,1fr);
+  grid-template-rows: repeat(16,4%);
   overflow: auto;
   padding: 15px;
   height: 85%;
