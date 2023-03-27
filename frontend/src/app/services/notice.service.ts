@@ -23,4 +23,7 @@ export class NoticeService {
     return this.http.get<Notice[]>(url+category);
   }
 
+  removeMails(noticesToDelete: number[]) {
+    return this.http.delete(url+'posted/'+noticesToDelete.toString())
+  }
 }

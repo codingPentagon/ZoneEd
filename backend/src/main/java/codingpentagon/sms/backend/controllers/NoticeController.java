@@ -29,4 +29,9 @@ public class NoticeController {
     public void createNotice(@RequestBody Notice notice) {
         this.noticeService.saveNotice(notice);
     }
+
+    @DeleteMapping("notices/posted/{noticeIDs}")
+    public void removeNotices(@PathVariable List<Integer> noticeIDs){
+        this.noticeService.deleteNotices(noticeIDs);
+    }
 }

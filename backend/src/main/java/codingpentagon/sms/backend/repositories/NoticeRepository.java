@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface NoticeRepository extends MongoRepository<Notice,Integer> {
-    List<Notice> findBySenderID(int userID);
-    List<Notice> findByReceiverCategoriesContainsIgnoreCase(String category);
+    List<Notice> findBySenderIDOrderByDateDesc(int userID);
+    List<Notice> findByReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(String category);
 
 
 }

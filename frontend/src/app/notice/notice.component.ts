@@ -10,13 +10,9 @@ import {NoticeService} from "../services/notice.service";
 })
 export class NoticeComponent {
   userID:number=55;
-  category :string='teacher';
-
-  categories = [
-    {viewValue:"Teachers", value:"teacher"},
-    {viewValue:"Parents", value:"parent"},
-    {viewValue:"Students", value:"student"}
-  ];
+  userRole :string='teacher';
+  noticesToDelete : number[]=[];
+  categories:any[] = [];
 
   constructor(private noticeService:NoticeService) {
   }
@@ -24,10 +20,11 @@ export class NoticeComponent {
   notices :Notice[] = [];
   ngOnInit(){
     this.getNotices();
+    this.getCategories();
   }
 
   getNotices(){
-    this.noticeService.getNotices(this.category).subscribe({
+    this.noticeService.getNotices(this.userRole).subscribe({
       next:res=>{
         this.notices=res;
       }
@@ -46,6 +43,7 @@ export class NoticeComponent {
   delete:boolean = false;
 
   deleteToggle(){
+    this.noticesToDelete.splice(0);
     this.delete = !this.delete;
     if (this.create){
       this.create = false;
@@ -77,5 +75,38 @@ export class NoticeComponent {
       next:res=>{console.log(res)}
     })
 
+  }
+  toggleDeleteItems(noticeID:number) {
+    const index=this.noticesToDelete.indexOf(noticeID);
+    if (index===-1){
+      this.noticesToDelete.push(noticeID);
+    }
+    else{
+      this.noticesToDelete.splice(index,1);
+    }
+    console.log(this.noticesToDelete);
+  }
+
+  deleteNotices(){
+    this.noticeService.removeMails(this.noticesToDelete).subscribe({
+      complete : () => {
+        this.getPostedNotices();
+      }
+    });
+  }
+
+  getCategories(){
+    if (this.userRole == 'admin' || this.userRole == 'zonal'){
+      this.categories.push({value:'principal',viewValue:'Principal'})
+    }
+    if (this.userRole == 'admin'){
+      this.categories.push({value:'zonal',viewValue:'Zonal Director'})
+    }
+    if (this.userRole == 'teacher' || this.userRole == 'principal'){
+      this.categories.push({value:'parent',viewValue:'Parent'},{value:'student',viewValue:'Student'})
+    }
+    if (this.userRole == 'principal'){
+      this.categories.push({value:'teacher',viewValue:'Teacher'})
+    }
   }
 }
