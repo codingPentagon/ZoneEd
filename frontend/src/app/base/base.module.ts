@@ -1,34 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BaseRoutingModule } from './base-routing.module';
-import { DashStuComponent } from './dash-stu/dash-stu.component';
-import { DashPrinComponent } from './dash-prin/dash-prin.component';
-import { DashParentComponent } from './dash-parent/dash-parent.component';
-import { DashTchrComponent } from './dash-tchr/dash-tchr.component';
-import { DashZonalComponent } from './dash-zonal/dash-zonal.component';
-import { DashAdminComponent } from './dash-admin/dash-admin.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BaseRoutingModule} from './base-routing.module';
 import {SharedModule} from "../shared/shared.module";
-import {MatCardModule} from "@angular/material/card";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatListModule} from "@angular/material/list";
+import {BaseAdminComponent} from './base-admin/base-admin.component';
+import {BaseZonalComponent} from './base-zonal/base-zonal.component';
+import {BasePrinComponent} from './base-prin/base-prin.component';
+import {BaseTchrComponent} from './base-tchr/base-tchr.component';
+import {BaseStuComponent} from './base-stu/base-stu.component';
+import {BaseParentComponent} from './base-parent/base-parent.component';
+import {DashboardsModule} from "../dashboards/dashboards.module";
 
 
 @NgModule({
   declarations: [
-    DashStuComponent,
-    DashPrinComponent,
-    DashParentComponent,
-    DashTchrComponent,
-    DashZonalComponent,
-    DashAdminComponent
+    BaseAdminComponent,
+    BaseZonalComponent,
+    BasePrinComponent,
+    BaseTchrComponent,
+    BaseStuComponent,
+    BaseParentComponent,
   ],
-    imports: [
-        CommonModule,
-        BaseRoutingModule,
-        SharedModule,
-        MatCardModule,
-        MatGridListModule,
-        MatListModule
-    ]
+  imports: [
+    CommonModule,
+    BaseRoutingModule,
+    SharedModule,
+    DashboardsModule
+  ]
 })
-export class BaseModule { }
+export class BaseModule {
+}
