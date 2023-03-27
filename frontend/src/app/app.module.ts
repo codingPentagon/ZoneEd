@@ -23,12 +23,14 @@ import {ServicesModule} from "./services/services.module";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
+import { LeavesOverviewComponent } from './leaves-overview/leaves-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeaveTchrComponent,
     LeavePrinComponent,
+    LeavesOverviewComponent,
   ],
     imports: [
         BrowserModule,

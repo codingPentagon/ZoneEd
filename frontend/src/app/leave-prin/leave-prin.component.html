@@ -10,7 +10,7 @@
 
 
         <mat-card-content>
-          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id;getLeaveRequests();getLeaveRecords()">
+          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id;getLeaveRequests();lo.getLeaveRecords();">
            <span class="teacher-entry">
              {{ teacher.name }}
            </span>
@@ -68,9 +68,9 @@
       </mat-card>
 
       <mat-card class="leave_overview">
-        <mat-card-header>
-          Leave Overview
-        </mat-card-header>
+
+        <app-leaves-overview [teacherID]="selectedTeacherID" #lo></app-leaves-overview>
+
 
       </mat-card>
     </div>

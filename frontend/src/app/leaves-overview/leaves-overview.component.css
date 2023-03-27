@@ -1,0 +1,22 @@
+.spacer{
+  flex: 1 1 auto;
+}
+.grid{
+  display: grid;
+
+}
+.values{
+  grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+  justify-items: center;
+  text-align: center;
+  margin: 10px 15px;
+  align-items: center;
+}
+mat-divider{
+  height: 60px;
+  border-right: 5px;
+}
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}

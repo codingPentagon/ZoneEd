@@ -16,7 +16,7 @@ export class LeavePrinComponent {
   teachers: Teacher[] = []
   sclID: number = 5555
   leaveRequests: LeaveRequest[] = []
-  leaveRecords:LeaveRecord[]=[]
+
 
   selectedTeacherID: number = 0;
   selectedOption = 'All'
@@ -27,7 +27,7 @@ export class LeavePrinComponent {
 
   ngOnInit() {
     this.getTeachers()
-    this.getLeaveRecords()
+
 
 
   }
@@ -86,15 +86,7 @@ export class LeavePrinComponent {
     })
   }
 
-  getLeaveRecords(){
-    this.leaveService.fetchLeaveRecords(this.selectedTeacherID).subscribe({
-      next:res=>{
-        this.leaveRecords=res;
-        console.log(res)
-      }
 
-    })
-  }
 
 
 }
