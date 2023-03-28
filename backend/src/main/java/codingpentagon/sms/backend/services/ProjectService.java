@@ -11,8 +11,8 @@ import java.util.List;
 
 @Service
 public class ProjectService {
-    private final ProposalRepository proposalRepository;
-    private final ProjectRepository projectRepository;
+    ProposalRepository proposalRepository;
+    ProjectRepository projectRepository;
 
     @Autowired
     public ProjectService(ProposalRepository proposalRepository,ProjectRepository projectRepository) {

@@ -2,7 +2,6 @@ package codingpentagon.sms.backend.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.io.File;
 import java.util.Date;
 
 public class Proposal {
@@ -16,7 +15,7 @@ public class Proposal {
     private String fileName;
     private int schoolID;
     private int principalID;
-    private File documents;
+    private String[] documents;
 
     public int getId() {
         return id;
@@ -90,11 +89,11 @@ public class Proposal {
         this.principalID = principalID;
     }
 
-    public File getDocuments() {
+    public String[] getDocuments() {
         return documents;
     }
 
-    public void setDocuments(File documents) {
+    public void setDocuments(String[] documents) {
         this.documents = documents;
     }
 }

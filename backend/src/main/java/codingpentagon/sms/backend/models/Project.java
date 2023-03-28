@@ -2,7 +2,6 @@ package codingpentagon.sms.backend.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.io.File;
 import java.util.Date;
 
 public class Project {
@@ -104,7 +103,7 @@ class Milestone {
     private Date dueDate;
     private Date createdDate;
     private String title;
-    private File proofs;
+    private String[] proofs;
 
     public String getFeedback() {
         return feedback;
@@ -138,11 +137,11 @@ class Milestone {
         this.title = title;
     }
 
-    public File getProofs() {
+    public String[] getProofs() {
         return proofs;
     }
 
-    public void setProofs(File proofs) {
+    public void setProofs(String[] proofs) {
         this.proofs = proofs;
     }
 }
