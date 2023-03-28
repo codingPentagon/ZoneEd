@@ -36,9 +36,9 @@ public class StuRegController {
         return stuRegRepo.findAll();
     }
 
-    @GetMapping("/regStuData/{fullName}")
-    public Optional<StudentReg> getStudentRegById(@PathVariable ("fullName") String fullName) {
-        return stuRegRepo.findById(fullName);
-    }
+    // @GetMapping("/regStuData/{fullName}")
+    // public Optional<StudentReg> getStudentRegById(@PathVariable ("fullName") String fullName) {
+    //     return stuRegRepo.findById(fullName);
+    // }
     
 }

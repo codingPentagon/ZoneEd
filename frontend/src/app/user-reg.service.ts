@@ -35,7 +35,7 @@ export class UserRegService {
   apiurl='http://localhost:8080/api/v1/stu"';
 
   public proceedlogin(): Observable<any> {
-    return this.httpClient.get(`http://localhost:8080/api/v1/stu/regStuData/${this.fullName}`);
+    return this.httpClient.get(`http://localhost:8080/api/v1/login/${this.fullName}`);
   }
   
   
