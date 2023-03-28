@@ -13,6 +13,10 @@ export class ProjectPrinComponent {
   constructor(private projectService:ProjectService) {
   }
 
+  ngOnInit(){
+    this.getProposals()
+  }
+
   proposalAdd:boolean = false;
 
   proposalAddToggle(){

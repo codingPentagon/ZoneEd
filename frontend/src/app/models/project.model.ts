@@ -1,7 +1,7 @@
 export interface Project {
   id:number;
   createdDate:Date;
-  title:String;
+  title:string;
   proposalID:number;
   startDate:Date;
   endDate:Date;
@@ -12,10 +12,10 @@ export interface Project {
 }
 
 interface Milestone {
-  feedback:String;
+  feedback:string;
   dueDate:Date;
   createdDate:Date;
-  title:String;
+  title:string;
   proofs:File[];
 }
 

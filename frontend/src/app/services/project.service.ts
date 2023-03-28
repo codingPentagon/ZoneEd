@@ -11,6 +11,6 @@ export class ProjectService {
   constructor(private http:HttpClient) { }
 
   fetchProposals(sclID: number) {
-    return this.http.get<Proposal[]>(url+'proposals/')
+    return this.http.get<Proposal[]>(url+'proposals/'+sclID.toString())
   }
 }
