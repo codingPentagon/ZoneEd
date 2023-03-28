@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Proposal} from "../models/proposal.model";
+import {ProjectService} from "../services/project.service";
 
 @Component({
   selector: 'app-project-prin',
@@ -6,6 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-prin.component.css']
 })
 export class ProjectPrinComponent {
+  sclID:number=555;
+
+  constructor(private projectService:ProjectService) {
+  }
 
   proposalAdd:boolean = false;
 
@@ -19,12 +25,7 @@ export class ProjectPrinComponent {
     this.projectAdd = !this.projectAdd;
   }
 
-  proposals=[
-    {title:"Ruk Ropanaya",date:"01/02/2023",status:"Pending",feedback:null},
-    {title:"Science Camp",date:"01/02/2023",status:"Rejected",feedback:"Need improvements"},
-    {title:"English Day",date:"01/02/2023",status:"Accepted",feedback:"Good"},
-    {title:"Literature Camp",date:"01/02/2023",status:"Accepted",feedback:"Good"},
-  ];
+  proposals: Proposal[]=[];
 
   projects=[
     {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
@@ -59,4 +60,13 @@ export class ProjectPrinComponent {
       return element.status == 'Accepted';
     }
   }
+
+  getProposals(){
+    this.projectService.fetchProposals(this.sclID).subscribe({
+      next:res=>{
+        this.proposals=res;
+      }
+    })
+  }
+
 }

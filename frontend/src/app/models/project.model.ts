@@ -5,7 +5,7 @@ export interface Project {
   proposalID:number;
   startDate:Date;
   endDate:Date;
-  responsiblePersonID:number;
+  responsiblePersonIDs:number;
   schoolID:number;
   principalID:number;
   milestones:Milestone[];
@@ -16,12 +16,6 @@ interface Milestone {
   dueDate:Date;
   createdDate:Date;
   title:String;
-  proofs:Proof[];
+  proofs:File[];
 }
 
-interface Proof {
-  filePath:String;
-  fileName:String;
-  file:File;
-
-}

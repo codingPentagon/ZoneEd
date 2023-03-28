@@ -7,12 +7,8 @@ export interface Proposal {
   feedback:String;
   fileName:String;
   schoolID:number;
-  pricipalID:number;
-  documents:Document[];
+  principalID:number;
+  documents:File[];
 }
 
-interface Document {
-  filePath:String;
-  fileName:String;
-  file:File;
-}
+
