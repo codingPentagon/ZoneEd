@@ -31,10 +31,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-        .antMatchers(HttpMethod.POST).permitAll()
+        http.cors().and().csrf().disable()
+         .authorizeRequests()
+        .antMatchers("/api/v1/stu/regStu").permitAll()
+        .antMatchers("/api/v1/login/{fullName}").permitAll()
+        .antMatchers("/api/v1/stu/regStuData").permitAll()
+        .anyRequest().authenticated()
         .and()
         .httpBasic();
+        //.formLogin()
+       // .loginPage("/api/v1/login/{fullName}");
+       
     }
 
     @Bean
