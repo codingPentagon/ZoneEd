@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dash-prin',
@@ -8,10 +7,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DashPrinComponent {
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
   }
 
-  userID: number = this.route.snapshot.params['userID'];
   classAttendance: any[] = [1,1,1,1,1,1,1];
   teachersOnLeave:any[] = [1,1,1,1];
   upcomingMilestones:any[] = [1,1,1,1]

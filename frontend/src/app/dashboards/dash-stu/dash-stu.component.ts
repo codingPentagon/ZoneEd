@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dash-stu',
@@ -8,10 +7,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DashStuComponent {
 
-  constructor(private route:ActivatedRoute) {
+  constructor() {
   }
 
-  userID:number=this.route.snapshot.params['userID'];
   assessments :any[]=[1,1]
 
 }

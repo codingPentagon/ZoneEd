@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dash-parent',
@@ -8,9 +7,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DashParentComponent {
 
-  constructor(private route:ActivatedRoute) {
+  constructor() {
   }
 
-  userID:number=this.route.snapshot.params['userID'];
   children:any[] =[1]
 }
