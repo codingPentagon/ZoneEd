@@ -10,7 +10,8 @@
 
 
         <mat-card-content>
-          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}" (click)="selectedTeacherID=teacher.id;getLeaveRequests();lo.getLeaveRecords();">
+          <div *ngFor="let teacher of teachers" [ngClass]="{'selected':selectedTeacherID==teacher.id}"
+               (click)="selectedTeacherID=teacher.id;getLeaveRequests();lo.getLeaveRecords(teacher.id);">
            <span class="teacher-entry">
              {{ teacher.name }}
            </span>
@@ -62,20 +63,19 @@
           </mat-accordion>
 
 
-
         </mat-card-content>
 
       </mat-card>
 
       <mat-card class="leave_overview">
 
-        <app-leaves-overview [teacherID]="selectedTeacherID" #lo></app-leaves-overview>
+        <app-leaves-overview #lo></app-leaves-overview>
 
 
       </mat-card>
     </div>
 
-</div>
+  </div>
 </div>
 
 

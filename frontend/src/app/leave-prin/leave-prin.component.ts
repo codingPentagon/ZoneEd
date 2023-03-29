@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {TeachersService} from "../services/teachers.service";
 import {LeaveRequest} from "../models/leave-request.model";
@@ -10,15 +10,13 @@ import {LeaveRecord} from "../models/leave-record.model";
 @Component({
   selector: 'app-leave-prin',
   templateUrl: './leave-prin.component.html',
-  styleUrls: ['./leave-prin.component.css']
+  styleUrls: ['./leave-prin.component.css'],
 })
 export class LeavePrinComponent {
   teachers: Teacher[] = []
   sclID: number = 5555
-  leaveRequests: LeaveRequest[] = []
-
-
-  selectedTeacherID: number = 0;
+  leaveRequests: LeaveRequest[] = [];
+  selectedTeacherID: number=0;
   selectedOption = 'All'
   pendingLeaveRequests: LeaveRequest[] = [];
 
@@ -26,25 +24,29 @@ export class LeavePrinComponent {
   }
 
   ngOnInit() {
-    this.getTeachers()
-
-
-
+    this.getTeachers();
   }
 
   getTeachers() {
     this.teachersService.fetchTeachers(this.sclID).subscribe({
       next: res => {
         this.teachers = res
+      },
+      complete:()=>{
+        this.selectedTeacherID=this.teachers[0]?.id;
+        this.getLeaveRequests();
       }
     })
   }
 
   getLeaveRequests() {
+    console.log(this.selectedTeacherID)
     this.leaveService.fetchLeaveRequests(this.selectedTeacherID).subscribe({
       next: res => {
         this.leaveRequests = res
-
+      },
+      complete: () => {
+        this.getPendingLeaveRequest();
       }
     })
   }
@@ -65,7 +67,11 @@ export class LeavePrinComponent {
       dates: this.getDaysArray(request.startDate, request.endDate)
 
     }
-    this.leaveService.addLeaveRecord(leaveRecord).subscribe()
+    this.leaveService.addLeaveRecord(leaveRecord).subscribe({
+      complete:()=>{
+        this.getLeaveRequests();
+      }
+    })
 
   }
 
@@ -85,8 +91,4 @@ export class LeavePrinComponent {
       }
     })
   }
-
-
-
-
 }

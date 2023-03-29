@@ -8,20 +8,15 @@ import {LeaveRecord} from "../models/leave-record.model";
   styleUrls: ['./leaves-overview.component.css']
 })
 export class LeavesOverviewComponent {
-  @Input() teacherID:number=0
   leaveRecords:LeaveRecord[]=[]
   duty:number=0;
   sick: number=0;
   other:number=0;
   constructor(private leaveService:LeaveService) {
   }
-  ngOnInit(){
-    this.getLeaveRecords();
 
-  }
-
-  getLeaveRecords(){
-    this.leaveService.fetchLeaveRecords(this.teacherID).subscribe({
+  getLeaveRecords(teacherID:number){
+    this.leaveService.fetchLeaveRecords(teacherID).subscribe({
       next:res=>{
         this.leaveRecords=res;
 
