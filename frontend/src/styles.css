@@ -54,7 +54,7 @@ mat-card-header.mat-mdc-card-header{
   grid-template-columns: repeat(auto-fit,minmax(10.8%,1fr));
   grid-template-rows: repeat(16,4%);
   overflow: auto;
-  padding: 15px;
+  padding: 10px 15px;
   height: 85%;
 }
 
