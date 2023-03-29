@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    today:string = new Date().toLocaleDateString('en-GB',{year: 'numeric', month: 'long', day: 'numeric'});
 }

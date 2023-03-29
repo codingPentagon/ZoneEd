@@ -1,7 +1,32 @@
-mat-toolbar{
-  /*background-color: transparent;*/
+.mat-toolbar-single-row{
+  display: grid;
+  height: fit-content;
+  padding: 10px 16px 0;
+  background-color: transparent;
 }
 
-.spacer{
-  flex: 1 1 auto;
+.entry{
+  margin: 0;
+  align-items: center;
+}
+
+.big-text{
+  font-size: x-large;
+  font-weight: 590;
+}
+
+.user-name{
+  font-size: large;
+  font-weight: 500;
+  margin: auto 10px;
+}
+
+.entry-right{
+  grid-auto-flow: column;
+  align-content: center;
+  align-items: center;
+}
+
+img{
+  border-radius: 10px;
 }

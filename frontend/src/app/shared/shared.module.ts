@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionModule} from "@angular/material/expansion";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -32,6 +33,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatExpansionModule,
     RouterOutlet,
     RouterLinkActive,
+    MatMenuModule,
+    NgOptimizedImage,
 
   ],
   exports: [
