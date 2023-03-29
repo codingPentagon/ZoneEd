@@ -24,17 +24,9 @@
   flex: 1;
 }
 
-.spacer{
-  flex: 1 1 auto;
-}
-
 .milestones{
   margin: 15px 15px 15px 0;
   height: 87vh;
-}
-
-mat-card-header{
-  border-bottom: 1.5px solid gray;
 }
 
 .flex{
@@ -43,15 +35,6 @@ mat-card-header{
 
 .entry{
   margin: 5px 15px;
-}
-
-mat-accordion{
-  width: 100%;
-}
-
-mat-panel-description{
-  justify-content: right;
-  text-align: end;
 }
 
 .block{
@@ -76,7 +59,3 @@ mat-panel-description{
   width: 100%;
 }
 
-mat-card-content{
-  padding: 0;
-  overflow: auto;
-}

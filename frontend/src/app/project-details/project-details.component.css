@@ -1,0 +1,21 @@
+.spacer{
+  flex: 1 1 auto;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
+.flex{
+  display: flex;
+}
+
+mat-accordion{
+  width: 100%;
+}
+
+mat-panel-description{
+  justify-content: right;
+  text-align: end;
+}
+

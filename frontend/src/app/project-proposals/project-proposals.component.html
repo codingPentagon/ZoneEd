@@ -1,0 +1,43 @@
+
+
+        <mat-card-header>
+          Project Proposals
+          <span class="spacer"></span>
+          <mat-chip-listbox>
+            <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="proposalAddToggle()">
+              <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
+            </mat-chip>
+          </mat-chip-listbox>
+        </mat-card-header>
+        <mat-card-content *ngIf="!proposalAdd">
+          <div *ngFor="let proposal of proposals">
+            <div class="entry">
+              <div class="flex">
+                {{proposal.title}}
+                <span class="spacer"></span>
+                {{proposal.createdDate}}
+              </div>
+              <div class="flex">
+                {{proposal.feedback}}
+                <span class="spacer"></span>
+                {{proposal.status}}
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-card-content>
+        <mat-card-content *ngIf="proposalAdd">
+          <mat-form-field appearance="outline" class="margin-top width">
+            <mat-label>Project Title</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="width">
+            <mat-label>Comments</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <input type="file">
+        </mat-card-content>
+        <mat-action-row *ngIf="proposalAdd">
+          <button mat-raised-button>Submit</button>
+          <button mat-raised-button>Discard</button>
+        </mat-action-row>

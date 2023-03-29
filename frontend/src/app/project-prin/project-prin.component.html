@@ -4,147 +4,16 @@
   <div class="workspace">
     <div class="left">
       <mat-card class="proposal">
-        <mat-card-header>
-          Project Proposals
-          <span class="spacer"></span>
-          <mat-chip-listbox>
-            <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="proposalAddToggle()">
-              <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
-            </mat-chip>
-          </mat-chip-listbox>
-        </mat-card-header>
-        <mat-card-content *ngIf="!proposalAdd">
-            <div *ngFor="let proposal of proposals">
-              <div class="entry">
-                <div class="flex">
-                  {{proposal.title}}
-                  <span class="spacer"></span>
-                  {{proposal.createdDate}}
-                </div>
-                <div class="flex">
-                  {{proposal.feedback}}
-                  <span class="spacer"></span>
-                  {{proposal.status}}
-                </div>
-              </div>
-              <mat-divider></mat-divider>
-            </div>
-        </mat-card-content>
-        <mat-card-content *ngIf="proposalAdd">
-          <mat-form-field appearance="outline" class="margin-top width">
-            <mat-label>Project Title</mat-label>
-            <input matInput>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="width">
-            <mat-label>Comments</mat-label>
-            <input matInput>
-          </mat-form-field>
-          <input type="file">
-        </mat-card-content>
-        <mat-action-row *ngIf="proposalAdd">
-          <button mat-raised-button>Submit</button>
-          <button mat-raised-button>Discard</button>
-        </mat-action-row>
+        <app-project-proposals></app-project-proposals>
       </mat-card>
       <mat-card class="projects">
-        <mat-card-header>
-          Projects
-          <span class="spacer"></span>
-          <mat-chip-listbox>
-            <mat-chip [ngStyle]="{'background-color':projectAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="projectAddToggle()">
-              <mat-icon [ngStyle]="{'color':projectAdd ? 'white' : 'black'}">add</mat-icon>
-            </mat-chip>
-          </mat-chip-listbox>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-accordion *ngIf="!projectAdd">
-            <mat-expansion-panel hideToggle *ngFor="let project of projects">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{project.title}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{project.createdDate}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="flex">
-                Start Date : <span class="spacer"></span>{{project.startDate}}
-              </div>
-              <div class="flex">
-                End Date : <span class="spacer"></span>{{project.endDate}}
-              </div>
-              <div class="flex">
-                Responsible Person : <span class="spacer"></span>{{project.responsiblePersons}}
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </mat-card-content>
-        <mat-card-content *ngIf="projectAdd">
-          <mat-form-field appearance="outline" class="width">
-            <mat-label>Accepted Proposal</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let acceptedProp of getAcceptedProps()" [value]="acceptedProp.title">{{acceptedProp.title}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div class="flex">
-            <mat-form-field appearance="outline" class="margin-top">
-              <mat-label>Start Date</mat-label>
-              <input matInput>
-            </mat-form-field>
-            <span class="spacer"></span>
-            <mat-form-field appearance="outline" class="margin-top">
-              <mat-label>End Date</mat-label>
-              <input matInput>
-            </mat-form-field>
-          </div>
-          <mat-form-field appearance="outline" class="margin-top width">
-            <mat-label>Responsible Person</mat-label>
-            <input matInput>
-          </mat-form-field>
-        </mat-card-content>
-        <mat-action-row *ngIf="projectAdd">
-          <button mat-raised-button>Submit</button>
-          <button mat-raised-button>Discard</button>
-        </mat-action-row>
+        <app-project-details></app-project-details>
       </mat-card>
     </div>
     <div class="right">
       <mat-card class="milestones">
-        <mat-card-header>
-          Project Milestones
-          <span class="spacer"></span>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let milestone of milestones">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{milestone.title}}<br>
-                  {{milestone.feedback}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{milestone.dueDate}}<br>
-                  {{milestone.proofs.length}} Proofs Available
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="flex">
-                <mat-icon class="big-icon" *ngFor="let proof of milestone.proofs">{{proof.fileType}}</mat-icon>
-                <span class="spacer"></span>
-                <mat-chip-listbox>
-                  <mat-chip [ngStyle]="{'background-color':milestoneAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="milestoneAddToggle()">
-                    <mat-icon [ngStyle]="{'color':milestoneAdd ? 'white' : 'black'}">add</mat-icon>
-                  </mat-chip>
-                </mat-chip-listbox>
-              </div>
-              <input type="file" *ngIf="milestoneAdd">
-              <mat-action-row *ngIf="milestoneAdd">
-                <button mat-raised-button>Submit</button>
-                <button mat-raised-button>Discard</button>
-              </mat-action-row>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </mat-card-content>
+        <app-project-milestones></app-project-milestones>
       </mat-card>
-</div>
-</div>
+    </div>
+  </div>
 </div>

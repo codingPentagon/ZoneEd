@@ -1,0 +1,31 @@
+
+
+.content{
+  flex: 1;
+}
+
+.proposal{
+  margin: 15px;
+  height: 42vh;
+}
+
+.left{
+  flex: 1;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+}
+
+.flex{
+  display: flex;
+}
+
+mat-card-content{
+  padding: 0;
+  overflow: auto;
+}

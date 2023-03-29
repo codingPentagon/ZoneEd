@@ -25,6 +25,10 @@ import { ProjectPrinComponent } from './project-prin/project-prin.component';
 import { ProjectZonalComponent } from './project-zonal/project-zonal.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {ServicesModule} from "./services/services.module";
+import { ProjectProposalsComponent } from './project-proposals/project-proposals.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectMilestonesComponent } from './project-milestones/project-milestones.component';
 
 
 @NgModule({
@@ -32,12 +36,16 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     AppComponent,
     ProjectPrinComponent,
     ProjectZonalComponent,
+    ProjectProposalsComponent,
+    ProjectDetailsComponent,
+    ProjectMilestonesComponent,
 
   ],
     imports: [
         BrowserModule,
         SharedModule,
         AppRoutingModule,
+        ServicesModule,
         BrowserAnimationsModule,
         MatInputModule,
         MatCardModule,
