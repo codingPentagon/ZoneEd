@@ -11,19 +11,19 @@ export class BasePrinComponent {
     {parentLink:{value:'Dashboard',icon:'space_dashboard',path:'/principal'},
       childLinks:null
     },
-    {parentLink:{value:'Staff Management',icon:'groups',path:'staff_management/teachers'},
+    {parentLink:{value:'Staff Management',icon:'groups',path:'teacher_registration'},
       childLinks:[
-        {value:'Teacher Registration',icon:'person_add',path:'staff_management/teachers'},
-        {value:'Relief Allocations',icon:'supervisor_account',path:'staff_management/relief'}
+        {value:'Teacher Registration',icon:'person_add',path:'teacher_registration'},
+        {value:'Relief Allocations',icon:'supervisor_account',path:'relief_allocations'}
       ]
     },
     {parentLink:{value:'Class Management',icon:'class',path:'class_management'},
       childLinks:null
     },
-    {parentLink:{value:'Subject Management',icon:'menu_book',path:'subject_management/assessments'},
+    {parentLink:{value:'Subject Management',icon:'menu_book',path:'teacher_schedules'},
       childLinks:[
-        {value:'Teacher Schedules',icon:'table_chart',path:'subject_management/schedules'},
-        {value:'Relief Allocations',icon:'supervisor_account',path:'subject_management/relief'}
+        {value:'Teacher Schedules',icon:'table_chart',path:'teacher_schedules'},
+        {value:'Relief Allocations',icon:'supervisor_account',path:'relief_allocations'}
       ]
     },
     {parentLink:{value:'Project Management',icon:'workspaces',path:'project_management'},

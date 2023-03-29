@@ -11,18 +11,18 @@ export class BaseTchrComponent {
     {parentLink:{value:'Dashboard',icon:'space_dashboard',path:'/teacher'},
       childLinks:null
     },
-    {parentLink:{value:'Class Management',icon:'class',path:'class_management/students'},
+    {parentLink:{value:'Class Management',icon:'class',path:'student_management'},
       childLinks:[
-        {value:'Student Registration',icon:'person_add',path:'class_management/students'},
-        {value:'Student Attendance',icon:'rule',path:'class_management/attendance'},
-        {value:'Student Grades',icon:'text_increase',path:'class_management/grades'}
+        {value:'Student Management',icon:'person_add',path:'student_management'},
+        {value:'Student Attendance',icon:'rule',path:'student_attendance'},
+        {value:'Student Grades',icon:'text_increase',path:'student_grades'},
       ]
     },
-    {parentLink:{value:'Subject Management',icon:'menu_book',path:'subject_management/schedules'},
+    {parentLink:{value:'Subject Management',icon:'menu_book',path:'schedule'},
       childLinks:[
-        {value:'Schedule',icon:'table_chart',path:'subject_management/schedules'},
-        {value:'Assessments',icon:'assignment',path:'subject_management/schedules'},
-        {value:'Relief Allocations',icon:'supervisor_account',path:'subject_management/relief'}
+        {value:'Schedule',icon:'table_chart',path:'schedule'},
+        {value:'Assessments',icon:'assignment',path:'assessments'},
+        {value:'Relief Allocations',icon:'supervisor_account',path:'relief_allocations'},
       ]
     },
     {parentLink:{value:'Leave Management',icon:'work_history',path:'school_calendars'},
