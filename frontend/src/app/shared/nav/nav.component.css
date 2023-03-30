@@ -32,7 +32,7 @@
 }
 
 .mat-expansion-panel.sub-nav , .mat-expansion-panel.sub-nav .mat-icon{
-  color: #a9a9a9;
+  color: darkgray;
 }
 
 
@@ -62,10 +62,7 @@ mat-accordion{
 
 mat-accordion mat-accordion{
   margin: 5px 0;
-}
-
-mat-accordion:has(mat-accordion){
-  gap: 5px;
+  grid-gap: 0;
 }
 
 .mat-expansion-panel-header-title {
