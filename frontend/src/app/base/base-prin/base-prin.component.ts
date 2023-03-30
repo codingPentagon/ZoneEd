@@ -14,7 +14,7 @@ export class BasePrinComponent {
     {parentLink:{value:'Staff Management',icon:'groups',path:'teacher_registration'},
       childLinks:[
         {value:'Teacher Registration',icon:'person_add',path:'teacher_registration'},
-        {value:'Relief Allocations',icon:'supervisor_account',path:'relief_allocations'}
+        {value:'Leave Management',icon:'work_history',path:'leave_management'},
       ]
     },
     {parentLink:{value:'Class Management',icon:'class',path:'class_management'},

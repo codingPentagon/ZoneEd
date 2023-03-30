@@ -13,9 +13,9 @@ export class BaseTchrComponent {
     },
     {parentLink:{value:'Class Management',icon:'class',path:'student_management'},
       childLinks:[
-        {value:'Student Management',icon:'person_add',path:'student_management'},
-        {value:'Student Attendance',icon:'rule',path:'student_attendance'},
-        {value:'Student Grades',icon:'text_increase',path:'student_grades'},
+        {value:'Student Registration',icon:'person_add',path:'student_management'},
+        {value:'Attendance',icon:'rule',path:'attendance'},
+        {value:'Grades',icon:'text_increase',path:'grades'},
       ]
     },
     {parentLink:{value:'Subject Management',icon:'menu_book',path:'schedule'},
@@ -25,7 +25,7 @@ export class BaseTchrComponent {
         {value:'Relief Allocations',icon:'supervisor_account',path:'relief_allocations'},
       ]
     },
-    {parentLink:{value:'Leave Management',icon:'work_history',path:'school_calendars'},
+    {parentLink:{value:'Leave Management',icon:'work_history',path:'leave_management'},
       childLinks:null
     },
     {parentLink:{value:'My Profile',icon:'account_circle',path:'my_profile'},
