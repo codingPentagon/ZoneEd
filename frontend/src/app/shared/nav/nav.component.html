@@ -1,0 +1,40 @@
+<mat-sidenav-container>
+  <mat-sidenav opened disableClose mode="side">
+
+    <div class="school-tag">
+      <img src="favicon.ico" alt="image">
+      <span>{{school}}</span>
+    </div>
+
+    <div class="profile-pic">
+      <img src="favicon.ico" alt="image">
+      <span>Hello, {{name}}</span>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let link of linksSet" [expanded]="rla1.isActive">
+        <mat-expansion-panel-header [routerLink]="link.parentLink.path" routerLinkActive="" #rla1="routerLinkActive">
+          <mat-panel-title>
+            <mat-icon>{{link.parentLink.icon}}</mat-icon>
+          </mat-panel-title>
+          {{link.parentLink.value}}
+        </mat-expansion-panel-header>
+
+        <mat-accordion *ngIf="link.childLinks!=null">
+          <mat-expansion-panel class="sub-nav" *ngFor="let childLink of link.childLinks" [routerLink]="childLink.path"
+                               routerLinkActive="" #rla2="routerLinkActive" [expanded]="rla2.isActive">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>{{childLink.icon}}</mat-icon>
+              </mat-panel-title>
+              {{childLink.value}}
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-sidenav>
+</mat-sidenav-container>
+

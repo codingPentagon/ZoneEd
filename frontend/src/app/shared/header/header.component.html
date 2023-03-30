@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <div class="grid entry">
+    <div class="grid entry-left">
+      <span class="big-text">ZoneEd</span>
+      <span class="sub-heading">{{today}}</span>
+    </div>
+    <div class="entry-right grid">
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>calendar_today</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+      <span class="user-name">Sandeepani Gunasekara</span>
+      <img src="favicon.ico" alt="profile avatar">
+      <mat-icon [matMenuTriggerFor]="menu">arrow_drop_down</mat-icon>
+    </div>
+  </div>
+</mat-toolbar>

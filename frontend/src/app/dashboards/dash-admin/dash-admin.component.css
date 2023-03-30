@@ -1,0 +1,36 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.overview{
+  grid-row: span 9;
+}
+
+.notice-board{
+  grid-row: span 9;
+}
+
+.overview>mat-card-content{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  grid-gap: 10px;
+  grid-template-rows: repeat(auto-fit,80px);
+}
+
+.tile{
+  background-color: mediumblue;
+  border-radius: 10px;
+  padding: 8px;
+  color: white;
+  display: grid;
+  grid-gap: 5px;
+}
+
+.count{
+  font-size: xxx-large;
+  justify-self: right;
+  margin: 5px 0;
+}
+
+

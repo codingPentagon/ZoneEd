@@ -1,0 +1,58 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.attendance{
+  grid-row: span 11;
+}
+
+.notice-board{
+  grid-row: span 8;
+}
+
+.assessments{
+  grid-row: span 5;
+}
+
+.grades{
+  grid-row: span 8;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.attendance .overview{
+  display: grid;
+  grid-template-rows: 2fr 5fr;
+  height: 100%;
+}
+
+.flex{
+  display: flex;
+}
+
+.attendance .overview .value{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: 100px 1px 100px;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.value mat-divider{
+  height: 65%;
+  border-right-width: 4px;
+  border-radius: 10px;
+}
+
+.value p{
+  margin:10px 0;
+}

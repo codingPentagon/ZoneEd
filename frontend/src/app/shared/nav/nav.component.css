@@ -1,0 +1,131 @@
+.mat-sidenav-container {
+  height: 100vh;
+}
+
+.mat-sidenav {
+  background-color: darkblue;
+  width: 275px;
+}
+
+.mat-expanded > .mat-expansion-panel-header, .mat-expanded > .mat-expansion-panel-header .mat-icon{
+  pointer-events: none;
+  color: navy;
+}
+
+.mat-expanded.sub-nav > .mat-expansion-panel-header, .mat-expanded.sub-nav > .mat-expansion-panel-header .mat-icon{
+  color: white;
+}
+
+.mat-expanded:not(.sub-nav) > mat-expansion-panel-header{
+  background-color: aqua;
+}
+
+
+.mat-expansion-panel /deep/ .mat-expansion-panel-body {
+  padding: 0;
+}
+
+.mat-expansion-panel , .mat-expansion-panel .mat-icon{
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+}
+
+.mat-expansion-panel.sub-nav , .mat-expansion-panel.sub-nav .mat-icon{
+  color: darkgray;
+}
+
+
+.mat-expansion-panel-header {
+  margin: 0;
+  padding: 0 10px;
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0;
+}
+
+:not(.sub-nav).mat-expansion-panel.mat-expanded {
+  backdrop-filter: grayscale(30%);
+}
+
+mat-accordion{
+  display: grid;
+  grid-auto-columns: 90%;
+  justify-content: center;
+  grid-gap: 5px;
+}
+
+:not(.no-expand).mat-expansion-panel-content {
+  margin: 3px 0;
+}
+
+mat-accordion mat-accordion{
+  margin: 5px 0;
+  grid-gap: 0;
+}
+
+.mat-expansion-panel-header-title {
+  margin: 0 10px 0 0;
+  flex-grow: 0;
+  align-items: center;
+}
+
+/deep/ .mat-content{
+  align-items: center;
+}
+
+
+
+
+.profile-pic{
+  display: grid;
+  justify-items: center;
+  margin: 30px 20px;
+}
+
+.profile-pic>img{
+  border: 5px solid white;
+  border-radius: 50%;
+  width: 60%;
+  height: 88%;
+}
+
+.profile-pic>span{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 180%;
+  color: white;
+}
+
+
+.school-tag{
+  display: grid;
+  grid-auto-flow: column;
+  margin: 15px;
+  align-items: center;
+  padding: 5px;
+  backdrop-filter: grayscale(25%);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.school-tag>img{
+  border-radius: 5px;
+  background-color: white;
+  height: 100%;
+  max-height: 40px;
+}
+
+.school-tag>span{
+  margin-left: 10px;
+  color: white;
+}
+
+mat-sidenav >>>.mat-drawer-inner-container::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+
+mat-sidenav >>>.mat-drawer-inner-container::-webkit-scrollbar-thumb{
+  background-color: rgba(255, 255, 255, 0.56);
+}

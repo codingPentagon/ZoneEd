@@ -1,0 +1,43 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.attendance{
+  grid-row: span 9;
+}
+
+.notice-board{
+  grid-row: span 9;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+mat-card-content>mat-card{
+  background-color: aliceblue;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 130px;
+  min-height: 130px;
+}
+
+.child-details{
+  display: grid;
+  align-content: space-between;
+}
+
+.two-column{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+mat-card-content>mat-card>div{
+  margin: 5px;
+}
+
+.child-photo{
+  border: 3px solid black;
+  border-radius: 20px;
+}

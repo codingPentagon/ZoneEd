@@ -1,0 +1,49 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.attendance-overview{
+  grid-row: span 10;
+}
+
+.notice-board{
+  grid-row: span 8;
+}
+
+.on-leave{
+  grid-row: span 6;
+}
+
+.milestones{
+  grid-row: span 8;
+}
+
+.tile {
+  background-color: mediumblue;
+  grid-template-columns: 1fr 2fr;
+  color: white;
+  grid-column-gap: 10px;
+  height: 50px;
+  align-items: center;
+  border-radius:10px;
+  padding: 7px;
+}
+
+.tile-grid{
+  grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+  grid-gap: 10px;
+}
+
+.inner-tile{
+  background-color: blue;
+  font-size: x-large;
+  align-items: center;
+  height: 43px;
+  padding: 3px;
+  justify-content: center;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 5px darkblue);
+}
+
+

@@ -1,0 +1,68 @@
+<div class="workspace">
+  <mat-card class="attendance">
+    <mat-card-header>
+      <span class="heading heading-large">Attendance Overview</span>
+      <span class="spacer"></span>
+      <span class="sub-heading heading-large">This Month</span>
+    </mat-card-header>
+    <mat-card-content class="overview">
+      <div class="value">
+        <div>
+          <p class="big-text">751</p>
+          <p>Total Marks</p>
+        </div>
+        <mat-divider class="inline-block" [vertical]="true"></mat-divider>
+        <div>
+          <p class="big-text">02</p>
+          <p>Rank</p>
+        </div>
+      </div>
+      <div class="chart">
+        <mat-divider></mat-divider>
+        <div class="grid entry">
+          <div class="entry-right sub-heading heading-large">This Year</div>
+        </div>
+        <!--          attendance summary chart-->
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="notice-board">
+    notice
+    <!--        notice component-->
+  </mat-card>
+
+  <mat-card class="grades">
+    <mat-card-header>
+      <span class="heading heading-large">Grades Overview</span>
+      <span class="spacer"></span>
+      <span class="sub-heading heading-large">Last Term</span>
+    </mat-card-header>
+    <mat-card-content>
+      <!--        grades chart-->
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="assessments">
+    <mat-card-header>
+      <span class="heading heading-large">Assessments</span>
+      <span class="spacer"></span>
+      <span class="sub-heading heading-large">Today</span>
+    </mat-card-header>
+    <mat-card-content class="scrollable">
+      <div *ngFor="let assessment of assessments">
+        <div class="grid entry">
+          <div class="grid entry-left">
+            <span class="heading">Assessment1.pdf</span>
+            <span class="sub-heading">Science</span>
+          </div>
+          <div class="grid entry-right">
+            <span class="sub-heading">8.00 am</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

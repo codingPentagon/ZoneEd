@@ -1,0 +1,12 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.proposals{
+  grid-row: span 9;
+}
+
+.notice-board{
+  grid-row: span 9;
+}

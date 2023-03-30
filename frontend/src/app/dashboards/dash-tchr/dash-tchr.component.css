@@ -1,0 +1,59 @@
+.workspace>*{
+  grid-column: span 4;
+  min-height: 130px;
+}
+
+.schedule{
+  grid-row: span 4;
+}
+
+.notice-board{
+  grid-row: span 7;
+}
+
+.subject-perf{
+  grid-row: span 7;
+}
+
+.leave{
+  grid-row: span 9;
+}
+
+.relief{
+  grid-row: span 5;
+}
+
+.tile-grid{
+  grid-template-columns: repeat(8,minmax(53px,1fr));
+  grid-column-gap: 3px;
+}
+
+.tile{
+  background-color: mediumblue;
+  justify-items: center;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+.inner-tile{
+  background-color: blue;
+  box-shadow: 0 0 10px darkblue;
+  font-size: large;
+  margin: 5px 0;
+  padding: 1px 5px;
+  border-radius: 5px;
+  width: 60%;
+  text-align: center;
+
+}
+
+.schedule>mat-card-content{
+  padding: 0 16px;
+}
+
+.tile > span{
+  font-size: x-small;
+  line-height:13px
+}
+
