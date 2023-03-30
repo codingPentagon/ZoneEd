@@ -16,32 +16,32 @@ import {DashAdminComponent} from "../dashboards/dash-admin/dash-admin.component"
 const routes: Routes = [
   {path:'teacher', component:BaseTchrComponent,
     children:[
-      {path:'dashboard', component:DashTchrComponent},
+      {path:'', component:DashTchrComponent},
     ]
   },
   {path:'student', component:BaseStuComponent,
     children:[
-      {path:'dashboard', component:DashStuComponent},
+      {path:'', component:DashStuComponent},
     ]
   },
   {path:'principal', component:BasePrinComponent,
     children:[
-      {path:'dashboard', component:DashPrinComponent},
+      {path:'', component:DashPrinComponent},
     ]
   },
   {path:'parent', component:BaseParentComponent,
     children:[
-      {path:'dashboard', component:DashParentComponent},
+      {path:'', component:DashParentComponent},
     ]
   },
   {path:'zonal', component:BaseZonalComponent,
     children:[
-      {path:'dashboard', component:DashZonalComponent},
+      {path:'', component:DashZonalComponent},
     ]
   },
   {path:'admin', component:BaseAdminComponent,
     children:[
-      {path:'dashboard', component:DashAdminComponent},
+      {path:'', component:DashAdminComponent},
     ]
   },
 ];
