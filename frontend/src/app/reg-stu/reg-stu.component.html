@@ -1,8 +1,10 @@
 <app-nav></app-nav>
 <div>
   <app-header></app-header>
+  <mat-stepper>
+    <mat-step [stepControl]="sturegisterform">
   <form class="form_container" [formGroup]="sturegisterform"  (ngSubmit)="sendStuData()">
-
+    <ng-template matStepLabel>Fill Student Information</ng-template>
     <div>
       <label class="required" for="fullName">Full Name</label>
       <mat-form-field class="fullName" appearance="outline">
@@ -34,7 +36,7 @@
           <mat-label>Enter email</mat-label>
           <input matInput placeholder="" id="email" formControlName="email"  [(ngModel)]="stu.email" required  >
         </mat-form-field><br>
-
+<div class="form_Container-lefe-side">
         <label class="required" for="dob">Date of Birth</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Select date of birth</mat-label>
@@ -55,14 +57,14 @@
           <input matInput id="password" formControlName="password"  type="password"  [(ngModel)]="stu.password" required >
         </mat-form-field><br>
      
-
+      </div>
    <!--<mat-form-field class="example-full-width">
       <mat-label>Role</mat-label>
         <input type="text" matInput formControlName="role"  [(ngModel)]="stu.role" required>
     
 
       </mat-form-field><br> --> 
-
+<div class="form_Container_right_Side">
 
         <label class="required" >Gender</label>
         <mat-radio-group formControlName="gender" aria-label="Gender" [(ngModel)]="stu.gender" required >
@@ -95,9 +97,24 @@
 
         <label  for="myfile">Picture</label>
         <input type="file" id="myfile" name="myfile"><br>
+        <button class="nextStepperButton" mat-button matStepperNext  mat-raised-button color="primary">Next</button>
       </div>
+    </div>
+    </div>
+    <div>
+     
+    </div>
+    </form>
+    </mat-step>
 
-      <div class="sec-01" id="v1"></div>
+
+
+
+
+ <mat-step [stepControl]="sturegisterform" label="Fill out your address">
+
+ <form  class="form_container" [formGroup]="sturegisterform"  (ngSubmit)="sendStuData()">
+  <ng-template matStepLabel>Fill Steward Information</ng-template>
       <div class="sec-01">
 
         <div class="sec-02-container">
@@ -134,12 +151,12 @@
             <mat-label>Enter contact number</mat-label>
             <input matInput placeholder="" id="faContNo" name="faContNo" formControlName="faContNo"  type="text"  [(ngModel)]="stu.faContNo" required >
           </mat-form-field><br>
-
+          <button mat-button matStepperPrevious  mat-raised-button color="primary">Back</button>
           <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>
         </div>
-      </div>
+      </div> 
 
-    </div>
-  </form>
-
+    </form>
+    </mat-step>
+</mat-stepper>
 </div>
