@@ -7,17 +7,13 @@
   width: 275px;
 }
 
-a {
-  color: white;
-}
-
 .mat-expanded > .mat-expansion-panel-header, .mat-expanded > .mat-expansion-panel-header .mat-icon{
   pointer-events: none;
-  color: white;
+  color: navy;
 }
 
 .mat-expanded:not(.sub-nav) > mat-expansion-panel-header{
-  background-color: lightseagreen;
+  background-color: aqua;
 }
 
 
@@ -28,7 +24,7 @@ a {
 .mat-expansion-panel , .mat-expansion-panel .mat-icon{
   background-color: transparent;
   box-shadow: none;
-  color: darkgrey;
+  color: white;
 }
 
 
