@@ -12,6 +12,10 @@
   color: navy;
 }
 
+.mat-expanded.sub-nav > .mat-expansion-panel-header, .mat-expanded.sub-nav > .mat-expansion-panel-header .mat-icon{
+  color: white;
+}
+
 .mat-expanded:not(.sub-nav) > mat-expansion-panel-header{
   background-color: aqua;
 }
@@ -25,6 +29,10 @@
   background-color: transparent;
   box-shadow: none;
   color: white;
+}
+
+.mat-expansion-panel.sub-nav , .mat-expansion-panel.sub-nav .mat-icon{
+  color: #a9a9a9;
 }
 
 
