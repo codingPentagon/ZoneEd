@@ -108,8 +108,8 @@
     margin: 15px;
     background-color: rgb(255, 255, 255);
     padding: 20px;
-    height: 760px;
-    margin-top: 40px;
+    height:72vh;
+    margin-top: -10px;
     border-radius: 15px;
     font-family:sans-serif;
   
@@ -122,4 +122,17 @@
   .titileRadio{
     margin-right: 60px;
   }
-  
+  .container-right-side{
+    float: right;
+    margin-left: 200px;
+  }
+  .container-left{
+    float: left;
+  }
+  .pic{
+    margin-top: 30px;
+  }
+
+  .nextStepperButton{
+    margin-left: 400px;
+  }

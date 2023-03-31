@@ -2,8 +2,10 @@
 <div>
   
   <app-header></app-header>
+  <mat-stepper>
+    <mat-step [stepControl]="tchregisterform">
   <form class="form_container" [formGroup]="tchregisterform"  (ngSubmit)="sendTchData()">
-
+    <ng-template matStepLabel>Fill Teacher Information</ng-template>
     <div>
       <label class="required" for="fullName">Full Name</label>
       <mat-form-field class="fullName" appearance="outline">
@@ -46,7 +48,7 @@
           <input matInput placeholder="" id="email" name="email"  formControlName="email" [(ngModel)]="tch.email" required>
         </mat-form-field><br>
 
-
+<div class="container-left">
         
         <label class="required" for="password">Password</label>
         <mat-form-field class="example-full-width" appearance="outline">
@@ -59,6 +61,10 @@
           <mat-label>Enter contact number</mat-label>
           <input matInput placeholder="" id="tchContNo" name="tchContNo"  formControlName="tchContNo" [(ngModel)]="tch.tchContNo" required>
         </mat-form-field><br>
+     
+       
+    
+       
         <label class="required" for="nic"> NIC No</label>
           <mat-form-field  class="size-02" appearance="outline">
             <mat-label>Enter father's NIC</mat-label>
@@ -72,6 +78,8 @@
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field><br>
+      </div>
+      <div class="container-right-side">
         <label class="required" for="datee">Admission Date</label>
         <mat-form-field class="size-02" appearance="outline">
           <mat-label>Choose a date</mat-label>
@@ -100,15 +108,27 @@
             <mat-label>Enter address line 1</mat-label>
             <input matInput placeholder="">
           </mat-form-field><br>-->
-
-     
-
+        
+<div class="pic">
         <label  for="myfile">Picture</label>
         <input type="file" id="myfile" name="myfile"><br>
       </div>
+      <button class="nextStepperButton" mat-button matStepperNext  mat-raised-button color="primary">Next</button>
+      
+      </div>
+    </div>
+  </div>
+  
+  </form>
 
-      <div class="sec-01" id="v1"></div>
-      <div class="sec-01">
+  </mat-step>
+     
+   
+  <mat-step [stepControl]="tchregisterform">
+    <form class="form_container" [formGroup]="tchregisterform"  (ngSubmit)="sendTchData()">
+      <ng-template matStepLabel>Fill Teacher's Experience</ng-template>
+  
+       <div class="sec-01">
 
         <div class="sec-02-container">
           <p>Experiences Section</p>
@@ -117,12 +137,14 @@
             <mat-label>What are the subjects you can teach,separate with comma</mat-label>
             <input matInput placeholder="" type="text" id="subDetails" name="subDetails" formControlName="subDetails" [(ngModel)]="tch.subDetails" required>
           </mat-form-field><br>
+          <button mat-button matStepperPrevious  mat-raised-button color="primary">Back</button>
           <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>
         </div>
-      </div>
+      </div> 
 
-    </div>
-  </form>
-
+   
+    </form>
+    </mat-step>
+</mat-stepper>
 </div>
 
