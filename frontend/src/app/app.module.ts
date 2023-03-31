@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import {MatCardModule} from '@angular/material/card';
 import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { RegPrinComponent } from './reg-prin/reg-prin.component';
 
 
 
@@ -32,6 +33,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     RegTchrComponent,
     LoginComponent,
     StuDashboardComponent,
+    RegPrinComponent,
 
   ],
     imports: [

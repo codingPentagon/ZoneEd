@@ -8,6 +8,7 @@ import { RegTchrComponent } from './reg-tchr/reg-tchr.component';
 import { LoginComponent } from './login/login.component';
 import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegPrinComponent } from './reg-prin/reg-prin.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'studentreg', component: RegStuComponent },
   {path:'teacherreg',component:RegTchrComponent },
   {path:'login',component:LoginComponent},
-  {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]}
+  {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]},
+  {path:'principalreg',component:RegPrinComponent}
 
 ]
 
