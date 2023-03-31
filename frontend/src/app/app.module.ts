@@ -16,14 +16,12 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import {ServicesModule} from "./services/services.module";
-import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScheduleTchrComponent,
-    SchedulePrinComponent,
-    ScheduleComponent
+    SchedulePrinComponent
   ],
     imports: [
         BrowserModule,

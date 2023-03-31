@@ -1,6 +1,7 @@
 export interface Schedule {
   id:number,
   teacherID:number,
+  year:number,
   schedule:SchedulePeriod[]
 }
 
