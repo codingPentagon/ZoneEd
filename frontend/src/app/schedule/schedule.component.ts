@@ -12,7 +12,7 @@ import {ScheduleService} from "../services/schedule.service";
 export class ScheduleComponent {
   @Input() sclID!: number
   @Input() teacherID!: number
-  @Input() disableModify!: boolean;
+  @Input() disableModify: boolean = false;
 
   constructor(private classService: ClassService, private scheduleService: ScheduleService) {
   }
@@ -38,6 +38,7 @@ export class ScheduleComponent {
   ];
 
   isComplete!:boolean;
+  isAvailable!:boolean;
 
   ngOnInit() {
     this.getClasses();
@@ -66,10 +67,16 @@ export class ScheduleComponent {
   getSchedule() {
     this.scheduleService.fetchSchedule(this.teacherID).subscribe({
       next: (res) => {
-        this.schedule = res ? res : JSON.parse(this.emptySchedule);
+        if (res) {
+          this.isAvailable = true;
+          this.schedule = res;
+        }
+        else {
+          this.isAvailable = false;
+          this.schedule = JSON.parse(this.emptySchedule);
+        }
       }
     });
-    console.log(this.schedule)
   }
 
   putSchedule() {

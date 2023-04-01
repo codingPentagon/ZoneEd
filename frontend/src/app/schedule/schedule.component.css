@@ -68,3 +68,11 @@ td.no-selection{
   background-color: gray;
 }
 
+.no-schedule{
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  color: darkgray;
+  height: 68vh;
+}
+
