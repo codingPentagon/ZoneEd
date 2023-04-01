@@ -80,6 +80,7 @@ export class ScheduleComponent {
   }
 
   putSchedule() {
+    this.schedule.teacherID = this.teacherID;
     this.scheduleService.storeSchedule(this.schedule).subscribe({
       complete:()=>{
         this.modifyToggle();
