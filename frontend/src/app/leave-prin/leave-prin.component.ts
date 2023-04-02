@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {TeachersService} from "../services/teachers.service";
 import {LeaveRequest} from "../models/leave-request.model";
@@ -16,7 +16,7 @@ export class LeavePrinComponent {
   teachers: Teacher[] = []
   sclID: number = 5555
   leaveRequests: LeaveRequest[] = [];
-  selectedTeacherID: number=0;
+  selectedTeacherID!: number;
   selectedOption = 'All'
   pendingLeaveRequests: LeaveRequest[] = [];
 
@@ -30,10 +30,10 @@ export class LeavePrinComponent {
   getTeachers() {
     this.teachersService.fetchTeachers(this.sclID).subscribe({
       next: res => {
-        this.teachers = res
+        this.teachers = res;
+        this.selectedTeacherID = res[0]?.id;
       },
       complete:()=>{
-        this.selectedTeacherID=this.teachers[0]?.id;
         this.getLeaveRequests();
       }
     })

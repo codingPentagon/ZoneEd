@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, SimpleChanges} from '@angular/core';
 import {LeaveService} from "../services/leave.service";
 import {LeaveRecord} from "../models/leave-record.model";
 
@@ -8,11 +8,16 @@ import {LeaveRecord} from "../models/leave-record.model";
   styleUrls: ['./leaves-overview.component.css']
 })
 export class LeavesOverviewComponent {
+  @Input() teacherID!:number;
   leaveRecords:LeaveRecord[]=[]
   duty:number=0;
   sick: number=0;
   other:number=0;
   constructor(private leaveService:LeaveService) {
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    changes['teacherID']?this.getLeaveRecords(this.teacherID):null;
   }
 
   getLeaveRecords(teacherID:number){
