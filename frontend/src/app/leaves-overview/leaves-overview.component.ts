@@ -17,11 +17,11 @@ export class LeavesOverviewComponent {
   }
 
   ngOnChanges(changes:SimpleChanges){
-    changes['teacherID']?this.getLeaveRecords(this.teacherID):null;
+    changes['teacherID']?this.getLeaveRecords():null;
   }
 
-  getLeaveRecords(teacherID:number){
-    this.leaveService.fetchLeaveRecords(teacherID).subscribe({
+  getLeaveRecords(){
+    this.leaveService.fetchLeaveRecords(this.teacherID).subscribe({
       next:res=>{
         this.leaveRecords=res;
 

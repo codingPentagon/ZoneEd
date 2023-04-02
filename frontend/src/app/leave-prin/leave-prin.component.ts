@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {TeachersService} from "../services/teachers.service";
 import {LeaveRequest} from "../models/leave-request.model";
 
 import {LeaveService} from "../services/leave.service";
 import {LeaveRecord} from "../models/leave-record.model";
+import {LeavesOverviewComponent} from "../leaves-overview/leaves-overview.component";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class LeavePrinComponent {
   selectedTeacherID!: number;
   selectedOption = 'All'
   pendingLeaveRequests: LeaveRequest[] = [];
+  @ViewChild(LeavesOverviewComponent) overview!:LeavesOverviewComponent;
 
   constructor(private teachersService: TeachersService, private leaveService: LeaveService) {
   }
@@ -70,6 +72,7 @@ export class LeavePrinComponent {
     this.leaveService.addLeaveRecord(leaveRecord).subscribe({
       complete:()=>{
         this.getLeaveRequests();
+        this.overview.getLeaveRecords()
       }
     })
 
