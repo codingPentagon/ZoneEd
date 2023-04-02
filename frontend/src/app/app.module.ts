@@ -19,6 +19,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {ServicesModule} from "./services/services.module";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireMessagingModule} from "@angular/fire/compat/messaging";
+import {environment} from 'src/environments/environment'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNYmNI8dvHyNRpcp2JNSRdYCrUSz2vEyI",
@@ -37,7 +38,7 @@ const firebaseConfig = {
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
     BrowserAnimationsModule,
     MatInputModule,
