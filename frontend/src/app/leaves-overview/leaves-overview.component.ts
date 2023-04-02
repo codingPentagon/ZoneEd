@@ -8,37 +8,42 @@ import {LeaveRecord} from "../models/leave-record.model";
   styleUrls: ['./leaves-overview.component.css']
 })
 export class LeavesOverviewComponent {
-  @Input() teacherID!:number;
-  leaveRecords:LeaveRecord[]=[]
-  duty:number=0;
-  sick: number=0;
-  other:number=0;
-  constructor(private leaveService:LeaveService) {
+  @Input() teacherID!: number;
+  leaveRecords: LeaveRecord[] = []
+  duty: number = 0;
+  sick: number = 0;
+  other: number = 0;
+
+  constructor(private leaveService: LeaveService) {
   }
 
-  ngOnChanges(changes:SimpleChanges){
-    this.teacherID?this.getLeaveRecords():null;
+  ngOnChanges(changes: SimpleChanges) {
+    this.teacherID ? this.getLeaveRecords() : null;
   }
 
-  getLeaveRecords(){
+  getLeaveRecords() {
     this.leaveService.fetchLeaveRecords(this.teacherID).subscribe({
-      next:res=>{
-        this.leaveRecords=res;
+      next: res => {
+        this.leaveRecords = res;
 
       },
-      complete:()=>{
-       this.sick=this.getLeavesCount('sick')
-       this.duty=this.getLeavesCount('duty')
-       this.other=this.getLeavesCount('other')
+      complete: () => {
+        this.sick = this.getLeavesCount('sick')
+        this.duty = this.getLeavesCount('duty')
+        this.other = this.getLeavesCount('other')
       }
 
     })
   }
 
-  getLeavesCount(type:string){
-    return this.leaveRecords.filter(rec=>{
-      return rec.leaveType.toLowerCase()==type;
-    })?.length
+  getLeavesCount(type: string) {
+    const leaves = this.leaveRecords.filter(rec => {
+      return rec.leaveType.toLowerCase() == type;
+    });
+    let count = 0;
+    leaves.forEach(rec => {
+      count += rec.dates.length;
+    });
+    return count;
   }
-
 }
