@@ -17,7 +17,7 @@ export class LeavesOverviewComponent {
   }
 
   ngOnChanges(changes:SimpleChanges){
-    changes['teacherID']?this.getLeaveRecords():null;
+    this.teacherID?this.getLeaveRecords():null;
   }
 
   getLeaveRecords(){
