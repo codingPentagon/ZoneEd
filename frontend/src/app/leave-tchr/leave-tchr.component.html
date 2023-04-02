@@ -43,7 +43,7 @@
 
 
         <mat-card-content *ngIf="add">
-          <form id="request-form" #newRequest="ngForm" (ngSubmit)="createLeaveRequest(newRequest.value)">
+          <form id="request-form" #newRequest="ngForm" (ngSubmit)="createLeaveRequest(newRequest.value);">
             <mat-radio-group color="primary" ngModel name="type">
               <mat-radio-button value="sick">Sick Leave</mat-radio-button>
               <mat-radio-button value="duty">Duty Leave</mat-radio-button>

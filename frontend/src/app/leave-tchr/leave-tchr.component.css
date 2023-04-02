@@ -72,4 +72,6 @@ mat-radio-group{
   margin: 15px 0;
 }
 
-
+mat-card-content{
+  overflow: auto;
+}

@@ -23,7 +23,6 @@ export class LeaveTchrComponent {
 
   addToggle() {
     this.add=!this.add;
-
   }
 
   createLeaveRequest(form: any) {
@@ -37,14 +36,18 @@ export class LeaveTchrComponent {
       endDate:form.endDate,
       status:'Pending'
     }
-    this.leaveService.addLeaveRequest(request).subscribe()
+    this.leaveService.addLeaveRequest(request).subscribe({
+      complete:() => {
+        this.addToggle();
+        this.getLeaveRequests();
+      }
+    })
   }
 
   getLeaveRequests() {
     this.leaveService.fetchLeaveRequests(this.userID).subscribe({
       next: res => {
         this.leaveRequests = res
-        console.log(res)
       }
     })
   }

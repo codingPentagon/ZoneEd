@@ -42,7 +42,6 @@ export class LeavePrinComponent {
   }
 
   getLeaveRequests() {
-    console.log(this.selectedTeacherID)
     this.leaveService.fetchLeaveRequests(this.selectedTeacherID).subscribe({
       next: res => {
         this.leaveRequests = res
