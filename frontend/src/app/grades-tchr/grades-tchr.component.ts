@@ -20,6 +20,7 @@ export class GradesTchrComponent {
   year:number=new Date().getFullYear();
   selectedStudent:number=0;
   subjects:Subject[] = [];
+  totalMarks:number = 0;
 
   constructor(private studentService:StudentsService, private marksheetService:MarksheetService,private subjectService:SubjectService) {
   }
@@ -44,17 +45,28 @@ export class GradesTchrComponent {
     this.marksheetService.fetchMarksheets(this.clsID,this.year,this.term).subscribe({
       next:res=>{
         this.marksheets=res;
+      },
+      complete:()=>{
+        this.getSubjects();
       }
     })
   }
 
+  getTotalMarks(){
+    this.totalMarks=0;
+    this.marksheets[this.selectedStudent]?.marks.forEach(mark=>{
+      this.totalMarks+=mark.mark;
+    })
+  }
+
   getSubjects(){
-    this.subjectService.fetchSubjects(this.students[this.selectedStudent]?.takenSubjectIDs).subscribe({
+    const subjectIDs:number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
+    subjectIDs.length && this.subjectService.fetchSubjects(subjectIDs).subscribe({
       next:res=>{
         this.subjects=res;
-        console.log(res);
       }
-    })
+    });
+    this.getTotalMarks();
   }
 
   getSubjectName(subjectID:number){
@@ -81,5 +93,7 @@ export class GradesTchrComponent {
     {value: 1, viewValue: '1st Term'},
     {value: 2, viewValue: '2nd Term'},
     {value: 3, viewValue: '3rd Term'},
-];}
+  ];
+
+}
 
