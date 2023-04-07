@@ -9,7 +9,7 @@
           <span class="spacer"></span>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Choose a date</mat-label>
-            <input matInput [max]="maxDate" [matDatepicker]="picker" [value]="maxDate" (dateInput)="getAttendance($event.value)">
+            <input matInput [max]="maxDate" [matDatepicker]="picker" [value]="maxDate" (dateInput)="selectedDate=$event.value;getAttendance()">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -17,7 +17,7 @@
         <mat-card-content class="attend-sheet">
          <div *ngFor="let attendance of attendanceSheet?.attendanceRecords" >
            <span class="attend-entry">
-             {{ attendance.studentID }}
+             {{ getStudentName(attendance.studentID) }}
            <span class="spacer" ></span>
              <mat-checkbox [checked]="attendance.attendance"></mat-checkbox>
            </span>
@@ -25,7 +25,8 @@
          </div>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-raised-button>Submit</button>
+          <button mat-raised-button (click)="createAttendance()">Submit</button>
+          <button mat-raised-button (click)="getAttendance()">Clear</button>
         </mat-card-actions>
       </mat-card>
     </div>

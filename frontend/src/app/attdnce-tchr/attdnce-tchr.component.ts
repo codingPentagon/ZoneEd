@@ -15,7 +15,7 @@ export class AttdnceTchrComponent {
   maxDate = new Date();
   clsID: number = 555;
   attendanceSheet!: AttendanceSheet;
-
+  selectedDate: Date = new Date();
 
   constructor(private studentsService: StudentsService, private attendanceService: AttendanceService) {
   }
@@ -23,7 +23,7 @@ export class AttdnceTchrComponent {
 
   ngOnInit() {
     this.getStudents();
-    this.getAttendance(this.maxDate);
+    this.getAttendance();
   }
 
   getStudents() {
@@ -34,16 +34,22 @@ export class AttdnceTchrComponent {
     })
   }
 
-  getAttendance(date: Date) {
-    console.log(date.toString())
-    this.attendanceService.fetchAttendance(this.clsID, date).subscribe({
+  getAttendance() {
+    this.attendanceService.fetchAttendance(this.clsID, this.selectedDate).subscribe({
       next: res => {
-        this.attendanceSheet = res;
-        console.log(res);
+        if (res) {
+          this.attendanceSheet = res;
+        }
+        else {
+          this.createTempAttendanceSheet();
+        }
       }
     })
   }
 
+  getStudentName(id: number) {
+    return this.students.find(student => student.id == id)?.name;
+  }
 
   getPresentCount() {
     return this.attendanceSheet?.attendanceRecords.filter(rec => {
@@ -55,6 +61,29 @@ export class AttdnceTchrComponent {
     return this.attendanceSheet?.attendanceRecords.filter(rec => {
       return !rec.attendance
     }).length
+  }
+
+  createTempAttendanceSheet() {
+    console.log(this.selectedDate)
+    this.attendanceSheet = {
+      id: 0,
+      classID: this.clsID,
+      date: this.selectedDate,
+      attendanceRecords: this.students.map(student => {
+        return {
+          studentID: student.id,
+          attendance: false
+        }
+      })
+    }
+  }
+
+  createAttendance(){
+    this.attendanceService.addAttendance(this.attendanceSheet).subscribe({
+      next: res => {
+        console.log(res);
+      }
+    })
   }
 }
 
