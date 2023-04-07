@@ -1,11 +1,11 @@
 package codingpentagon.sms.backend.repositories;
 
-import codingpentagon.sms.backend.models.AttendanceRecord;
+import codingpentagon.sms.backend.models.AttendanceSheet;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Date;
 import java.util.List;
 
-public interface AttendanceRepository extends MongoRepository<AttendanceRecord,Integer> {
-    List<AttendanceRecord> findByClassIDAndDateBetween(int classID, Date dayStart, Date dayEnd);
+public interface AttendanceRepository extends MongoRepository<AttendanceSheet,Integer> {
+    AttendanceSheet findByClassIDAndDateBetween(int classID, Date dayStart, Date dayEnd);
 }

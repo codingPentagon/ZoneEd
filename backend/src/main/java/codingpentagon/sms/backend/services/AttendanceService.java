@@ -1,6 +1,6 @@
 package codingpentagon.sms.backend.services;
 
-import codingpentagon.sms.backend.models.AttendanceRecord;
+import codingpentagon.sms.backend.models.AttendanceSheet;
 import codingpentagon.sms.backend.repositories.AttendanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class AttendanceService {
         this.attendanceRepository = attendanceRepository;
     }
 
-    public List<AttendanceRecord> findAttendance(int clsID, Date date) {
+    public AttendanceSheet findAttendance(int clsID, Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -33,8 +33,8 @@ public class AttendanceService {
         return this.attendanceRepository.findByClassIDAndDateBetween(clsID, dayStart, dayEnd);
     }
 
-    public void addAttendance(AttendanceRecord attendanceRecord) {
-        attendanceRecord.setId(new Random().nextInt(50000));
-        this.attendanceRepository.save(attendanceRecord);
+    public void addAttendance(AttendanceSheet attendanceSheet) {
+        attendanceSheet.setId(new Random().nextInt(50000));
+        this.attendanceRepository.save(attendanceSheet);
     }
 }
