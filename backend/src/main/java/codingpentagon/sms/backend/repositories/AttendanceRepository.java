@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface AttendanceRepository extends MongoRepository<AttendanceRecord,Integer> {
-    List<AttendanceRecord> findByClassIDAndDateAfter(int classID, Date date);
+    List<AttendanceRecord> findByClassIDAndDateBetween(int classID, Date dayStart, Date dayEnd);
 }
