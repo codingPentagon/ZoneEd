@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Student} from "../models/student.model";
 import {StudentsService} from "../services/students.service";
 import {AttendanceService} from "../services/attendance.service";
-import {AttendanceRecord} from "../models/attendance.model";
+import {AttendanceSheet} from "../models/attendance.model";
 
 
 @Component({
@@ -11,57 +11,48 @@ import {AttendanceRecord} from "../models/attendance.model";
   styleUrls: ['./attdnce-tchr.component.css']
 })
 export class AttdnceTchrComponent {
-  students:Student[]=[];
-  maxDate = new Date() ;
-  clsID:number=555;
-  attndanceRecords:AttendanceRecord[]=[];
+  students: Student[] = [];
+  maxDate = new Date();
+  clsID: number = 555;
+  attendanceSheet!: AttendanceSheet;
 
 
-  constructor(private studentsService:StudentsService,private attendanceService:AttendanceService) {
+  constructor(private studentsService: StudentsService, private attendanceService: AttendanceService) {
   }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.getStudents();
     this.getAttendance(this.maxDate);
-    console.log(this.maxDate)
   }
 
-  getStudents(){
-   this.studentsService.fetchStudents(this.clsID).subscribe({
-     next:res=>{
-       this.students=res;
-     }
-   })
-  }
-
-  getAttendance(date: Date){
-    console.log(date.toISOString())
-    this.attendanceService.fetchAttendance(this.clsID,date).subscribe({
-      next:res=>{this.attndanceRecords=res}
+  getStudents() {
+    this.studentsService.fetchStudents(this.clsID).subscribe({
+      next: res => {
+        this.students = res;
+      }
     })
-    console.log(this.attndanceRecords);
   }
 
-  getAttendanceRecord(id: number) {
-    if (this.attndanceRecords.length==0){
-      return false;
-    }
-    else {
-      return this.attndanceRecords.filter(rec=>{
-        return rec.studentID==id;
-      })[0].attendance
-    }
+  getAttendance(date: Date) {
+    console.log(date.toString())
+    this.attendanceService.fetchAttendance(this.clsID, date).subscribe({
+      next: res => {
+        this.attendanceSheet = res;
+        console.log(res);
+      }
+    })
   }
 
-  getPresentCount(){
-    return this.attndanceRecords.filter(rec=>{
+
+  getPresentCount() {
+    return this.attendanceSheet.attendanceRecords.filter(rec => {
       return rec.attendance
     }).length
   }
 
-  getAbsentCount(){
-    return this.attndanceRecords.filter(rec=>{
+  getAbsentCount() {
+    return this.attendanceSheet.attendanceRecords.filter(rec => {
       return !rec.attendance
     }).length
   }
