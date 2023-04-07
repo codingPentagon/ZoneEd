@@ -44,9 +44,7 @@
               {{ getSubjectName(mark.subjectID) }}
               <span class="spacer"></span>
               <span *ngIf="!modify">{{mark.mark}}</span>
-              <mat-form-field appearance="outline" subscriptSizing="dynamic" *ngIf="modify">
-                <input matInput type="number" [max]="100" [(ngModel)]="mark.mark"/>
-              </mat-form-field>
+              <input *ngIf="modify" matInput type="number" [max]="100" [(ngModel)]="mark.mark"/>
             </div>
             <mat-divider></mat-divider>
           </div>
