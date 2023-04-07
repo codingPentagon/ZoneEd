@@ -1,7 +1,12 @@
-export interface AttendanceRecord {
+export interface AttendanceSheet {
   id:number;
-  studentID:number;
   classID:number;
   date:Date;
+  attendanceRecords:AttendanceRecord[];
+}
+
+export interface AttendanceRecord {
+  studentID:number;
   attendance:boolean;
 }
+

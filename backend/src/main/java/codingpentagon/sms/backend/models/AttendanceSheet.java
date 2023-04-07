@@ -4,13 +4,12 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-public class AttendanceRecord {
+public class AttendanceSheet {
     @Id
     private int id;
-    private int studentID;
     private int classID;
     private Date date;
-    private boolean attendance;
+    private AttendanceRecord[] attendanceRecords;
 
     public int getId() {
         return id;
@@ -18,14 +17,6 @@ public class AttendanceRecord {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
     }
 
     public int getClassID() {
@@ -44,7 +35,28 @@ public class AttendanceRecord {
         this.date = date;
     }
 
-    public boolean isAttendance() {
+    public AttendanceRecord[] getAttendanceRecords() {
+        return attendanceRecords;
+    }
+
+    public void setAttendanceRecords(AttendanceRecord[] attendanceRecords) {
+        this.attendanceRecords = attendanceRecords;
+    }
+}
+
+class AttendanceRecord{
+    private int studentID;
+    private boolean attendance;
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public boolean getAttendance() {
         return attendance;
     }
 
