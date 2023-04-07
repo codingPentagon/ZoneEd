@@ -68,7 +68,7 @@ import { TchrLeaveOverviewComponent } from './charts/tchr-leave-overview/tchr-le
     MatButtonToggleModule,
     ServicesModule,
     MatNativeDateModule,
-    
+
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
