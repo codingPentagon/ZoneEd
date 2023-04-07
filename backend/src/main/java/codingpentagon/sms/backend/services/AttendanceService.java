@@ -5,10 +5,7 @@ import codingpentagon.sms.backend.repositories.AttendanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class AttendanceService {
@@ -21,10 +18,7 @@ public class AttendanceService {
     public AttendanceSheet findAttendance(int clsID, Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.ZONE_OFFSET, (300+45)*60*1000);       //5.45 hours in milliseconds
         Date dayStart = calendar.getTime();
 
         calendar.add(Calendar.DATE, 1);
@@ -35,6 +29,9 @@ public class AttendanceService {
 
     public void addAttendance(AttendanceSheet attendanceSheet) {
         attendanceSheet.setId(new Random().nextInt(50000));
+
+        System.out.println(attendanceSheet.getDate());
+
         this.attendanceRepository.save(attendanceSheet);
     }
 }
