@@ -16,6 +16,7 @@ export class AttdnceTchrComponent {
   clsID: number = 555;
   attendanceSheet!: AttendanceSheet;
   selectedDate: Date = new Date();
+  marked!:boolean;
 
   constructor(private studentsService: StudentsService, private attendanceService: AttendanceService) {
   }
@@ -39,9 +40,11 @@ export class AttdnceTchrComponent {
       next: res => {
         if (res) {
           this.attendanceSheet = res;
+          this.marked = true;
         }
         else {
           this.createTempAttendanceSheet();
+          this.marked = false;
         }
       }
     })
@@ -82,6 +85,9 @@ export class AttdnceTchrComponent {
     this.attendanceService.addAttendance(this.attendanceSheet).subscribe({
       next: res => {
         console.log(res);
+      },
+      complete:()=>{
+        this.getAttendance();
       }
     })
   }

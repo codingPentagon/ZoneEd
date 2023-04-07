@@ -19,12 +19,12 @@
            <span class="attend-entry">
              {{ getStudentName(attendance.studentID) }}
            <span class="spacer" ></span>
-             <mat-checkbox [checked]="attendance.attendance"></mat-checkbox>
+             <mat-checkbox [disabled]="marked" [checked]="attendance.attendance" (change)="attendance.attendance=$event.checked"></mat-checkbox>
            </span>
            <mat-divider></mat-divider>
          </div>
         </mat-card-content>
-        <mat-card-actions align="end">
+        <mat-card-actions align="end" *ngIf="!marked">
           <button mat-raised-button (click)="createAttendance()">Submit</button>
           <button mat-raised-button (click)="getAttendance()">Clear</button>
         </mat-card-actions>
