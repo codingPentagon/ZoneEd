@@ -7,6 +7,6 @@ export interface AttendanceSheet {
 
 export interface AttendanceRecord {
   studentID:number;
-  attendance:boolean;
+  attendance:boolean | null;
 }
 

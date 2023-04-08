@@ -17,6 +17,9 @@ export class AttdnceTchrComponent {
   attendanceSheet!: AttendanceSheet;
   selectedDate: Date = new Date();
   marked!:boolean;
+  isAllMarked: boolean = false;
+  presentCount!: number;
+  absentCount!: number;
 
   constructor(private studentsService: StudentsService, private attendanceService: AttendanceService) {
   }
@@ -46,6 +49,9 @@ export class AttdnceTchrComponent {
           this.createTempAttendanceSheet();
           this.marked = false;
         }
+      },
+      complete: () => {
+        this.getAttendanceCount();
       }
     })
   }
@@ -54,15 +60,13 @@ export class AttdnceTchrComponent {
     return this.students.find(student => student.id == id)?.name;
   }
 
-  getPresentCount() {
-    return this.attendanceSheet?.attendanceRecords.filter(rec => {
+  getAttendanceCount() {
+    this.presentCount = this.attendanceSheet?.attendanceRecords.filter(rec => {
       return rec.attendance
-    }).length
-  }
+    }).length;
 
-  getAbsentCount() {
-    return this.attendanceSheet?.attendanceRecords.filter(rec => {
-      return !rec.attendance
+    this.absentCount = this.attendanceSheet?.attendanceRecords.filter(rec => {
+      return rec.attendance != null && !rec.attendance;
     }).length
   }
 
@@ -75,7 +79,7 @@ export class AttdnceTchrComponent {
       attendanceRecords: this.students.map(student => {
         return {
           studentID: student.id,
-          attendance: false
+          attendance: null
         }
       })
     }
@@ -91,6 +95,14 @@ export class AttdnceTchrComponent {
       }
     })
   }
+
+  checkIfAllMarked() {
+    this.isAllMarked = !this.attendanceSheet.attendanceRecords.some(rec=>{
+      return rec.attendance == null;
+    })
+  }
+
+  protected readonly console = console;
 }
 
 
