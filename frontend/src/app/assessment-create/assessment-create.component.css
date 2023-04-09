@@ -1,0 +1,58 @@
+.mdc-dialog__title {
+  font-size: large;
+  margin: 0;
+}
+
+.mdc-dialog__content {
+  color: black;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.margin-top {
+  margin-top: 5px;
+}
+
+ngx-file-drop >>> .file-drop-zone {
+  border: 2px dashed royalblue;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  height: 150px;
+}
+
+ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
+  display: grid;
+  place-items: center;
+}
+
+.drop-template {
+  color: royalblue;
+  place-items: center;
+  text-align: center;
+  grid-gap: 5px;
+}
+
+.file-list {
+  color: navy;
+  grid-gap: 5px;
+}
+
+.file-list > span {
+  grid-template-columns: 1fr min-content min-content;
+  grid-gap: 10px;
+}
+
+.grid{
+  display: grid;
+}
+
+button{
+  background-color: mediumspringgreen;
+}
+
+.mdc-dialog__actions{
+  padding: 0 20px 10px;
+}

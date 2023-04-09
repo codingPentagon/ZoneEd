@@ -7,9 +7,9 @@
         Teaching Classes
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let cls of clsAssessments; let i=index">
-          <div class="entry" (click)="selectedCls=i">
-            Class {{cls.class}}
+        <div *ngFor="let cls of classes; let i=index" [ngClass]="{selected:selectedCls==i}">
+          <div class="entry" (click)="selectedCls=i;getAssessments(cls.id,subjectID)">
+            Class {{cls.name}}
           </div>
           <mat-divider></mat-divider>
         </div>
@@ -18,18 +18,23 @@
     <mat-card class="right">
       <mat-card-header>
         Assessments
+        <span class="spacer"></span>
+        <mat-icon (click)="openDialog()">add</mat-icon>
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let assessment of clsAssessments[selectedCls].assessments">
+        <div *ngFor="let assessment of assessments">
           <div class="entry">
             <div class="flex">
-              {{assessment.fileName}}
+              {{assessment.name}}
               <span class="spacer"></span>
-              {{assessment.date}}
+              Available Date: {{assessment.availableDate}}
+              Uploaded Date: {{assessment.uploadedDate}}
             </div>
             <div class="flex">
+              <a *ngFor="let doc of assessment.documents" [href]="doc.downloadUrl" target="_blank">{{doc.name}},</a>
               <span class="spacer"></span>
-              {{assessment.time}}
+              Available Date: {{assessment.availableDate}}
+              Uploaded Date: {{assessment.uploadedDate}}
             </div>
           </div>
           <mat-divider></mat-divider>

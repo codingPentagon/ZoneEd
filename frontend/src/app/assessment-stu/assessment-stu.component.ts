@@ -9,28 +9,28 @@ export class AssessmentStuComponent {
 
   selectedSubject = 0;
   subjectAssessments = [
-    {subject:'9A',assessments:[
+    {subject:'Science',assessments:[
         {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"}
       ]
     },
-    {subject:'10A',assessments:[
+    {subject:'Maths',assessments:[
         {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"}
       ]
     },
-    {subject:'11A',assessments:[
+    {subject:'Sinhala',assessments:[
         {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"}
       ]
     },
-    {subject:'10B',assessments:[
+    {subject:'English',assessments:[
         {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},
         {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},

@@ -13,17 +13,26 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import { AssessmentStuComponent } from './assessment-stu/assessment-stu.component';
 import { AssessmentTchrComponent } from './assessment-tchr/assessment-tchr.component';
+import {ServicesModule} from "./services/services.module";
+import { AssessmentCreateDialog} from './assessment-create/assessment-create.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {NgxFileDropModule} from "ngx-file-drop";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     AssessmentStuComponent,
     AssessmentTchrComponent,
+    AssessmentCreateDialog,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
+    ServicesModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
@@ -32,6 +41,11 @@ import { AssessmentTchrComponent } from './assessment-tchr/assessment-tchr.compo
     MatSelectModule,
     MatButtonModule,
     MatChipsModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxFileDropModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

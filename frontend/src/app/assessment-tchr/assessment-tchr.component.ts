@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import {ClassesService} from "../services/classes.service";
+import {Class} from "../models/class.model";
+import {Assessment} from "../models/assessment.model";
+import {FilesService} from "../services/files.service";
+import {AssessmentsService} from "../services/assessments.service";
+import {MatDialog} from '@angular/material/dialog'
+import {AssessmentCreateDialog} from "../assessment-create/assessment-create.component";
 
 @Component({
   selector: 'app-assessment-tchr',
@@ -7,36 +14,47 @@ import { Component } from '@angular/core';
 })
 export class AssessmentTchrComponent {
 
+  sclId = 5555;
   selectedCls = 0;
-  clsAssessments = [
-    {class:'9A',assessments:[
-        {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"}
-      ]
-    },
-    {class:'10A',assessments:[
-        {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 2.pdf",date:"01/02/2023",time:"8.30"}
-      ]
-    },
-    {class:'11A',assessments:[
-        {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 3.pdf",date:"01/02/2023",time:"8.30"}
-      ]
-    },
-    {class:'10B',assessments:[
-        {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"},
-        {fileName:"Assessment 4.pdf",date:"01/02/2023",time:"8.30"}
-      ]
-    },
-  ];
+  assessments!:Assessment[];
+  classes!: Class[];
+  subjectID:number = 20;
+  userID:number = 222;
 
+  constructor(private classesService:ClassesService,private assessmentsService:AssessmentsService,public dialog: MatDialog) { }
+
+  ngOnInit() {
+    this.getClasses();
+  }
+
+  getClasses() {
+    this.classesService.fetchClasses(this.sclId).subscribe({
+      next:res=>{
+        this.classes = res;
+        this.getAssessments(res[0].id,this.subjectID)
+      }
+    })
+  }
+
+  getAssessments(clsID:number,subjectID:number) {
+    this.assessmentsService.fetchAssessments(this.sclId,clsID,subjectID).subscribe({
+      next:res=>{
+        this.assessments = res;
+      }
+    });
+    console.log(this.assessments);
+  }
+
+
+  //assessment creation dialog
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AssessmentCreateDialog, {
+      disableClose: true, data:{clsID:this.classes[this.selectedCls].id,subjectID:this.subjectID,sclID:this.sclId,teacherID:this.userID}
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      this.getAssessments(this.classes[this.selectedCls].id,this.subjectID);
+      console.log('The dialog was closed');
+    })
+  }
 }
