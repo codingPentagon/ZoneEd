@@ -22,6 +22,9 @@ mat-card-header{
 
 .entry{
   margin: 5px 0 5px 0;
+}
+
+.left .entry{
   cursor: pointer;
 }
 
@@ -44,4 +47,14 @@ mat-card{
 .selected{
   background-color: blue;
   color: white;
+}
+
+mat-card-header mat-icon{
+  cursor: pointer;
+  padding: 5px;
+}
+
+mat-card-header mat-icon:hover{
+  border-radius: 50%;
+  background-color: #e0e0e0;
 }

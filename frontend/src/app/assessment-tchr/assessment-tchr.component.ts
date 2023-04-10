@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {ClassesService} from "../services/classes.service";
 import {Class} from "../models/class.model";
 import {Assessment} from "../models/assessment.model";
-import {FilesService} from "../services/files.service";
 import {AssessmentsService} from "../services/assessments.service";
 import {MatDialog} from '@angular/material/dialog'
 import {AssessmentCreateDialog} from "../assessment-create/assessment-create.component";
@@ -40,9 +39,9 @@ export class AssessmentTchrComponent {
     this.assessmentsService.fetchAssessments(this.sclId,clsID,subjectID).subscribe({
       next:res=>{
         this.assessments = res;
+        console.log(res);
       }
     });
-    console.log(this.assessments);
   }
 
 
@@ -52,7 +51,7 @@ export class AssessmentTchrComponent {
       disableClose: true, data:{clsID:this.classes[this.selectedCls].id,subjectID:this.subjectID,sclID:this.sclId,teacherID:this.userID}
     });
 
-    dialogRef.afterClosed().subscribe(res => {
+    dialogRef.afterClosed().subscribe(() => {
       this.getAssessments(this.classes[this.selectedCls].id,this.subjectID);
       console.log('The dialog was closed');
     })
