@@ -28,14 +28,12 @@
             <div class="flex">
               {{assessment.name}}
               <span class="spacer"></span>
-              Available Date: {{assessment.availableDate}}
-              Uploaded Date: {{assessment.uploadedDate}}
+              Available From: {{assessment.availableDate | date:'dd/MM/yyyy'}}
             </div>
             <div class="flex">
-              <a *ngFor="let doc of assessment.documents" [href]="doc.downloadUrl" target="_blank">{{doc.name}},</a>
+              <mat-icon *ngFor="let doc of assessment.documents" (click)="doc.downloadUrl && window.open(doc.downloadUrl)">insert_drive_file</mat-icon>
               <span class="spacer"></span>
-              Available Date: {{assessment.availableDate}}
-              Uploaded Date: {{assessment.uploadedDate}}
+              Uploaded On: {{assessment.uploadedDate | date:'dd/MM/yyyy'}}
             </div>
           </div>
           <mat-divider></mat-divider>

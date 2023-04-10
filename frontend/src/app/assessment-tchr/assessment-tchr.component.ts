@@ -56,4 +56,6 @@ export class AssessmentTchrComponent {
       console.log('The dialog was closed');
     })
   }
+
+  protected readonly window = window;
 }
