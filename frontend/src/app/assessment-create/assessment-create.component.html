@@ -11,9 +11,9 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <ngx-file-drop (onFileDrop)="dropped($event)" dropZoneClassName="file-drop-zone"
-                 [directory]="false" contentClassName="file-drop-content" #drop (click)="drop.openFileSelector()">
+                 [directory]="false" contentClassName="file-drop-content" #drop>
     <ng-template ngx-file-drop-content-tmp>
-      <div *ngIf="!files.length" class="grid drop-template">
+      <div *ngIf="!files.length" class="grid drop-template" (click)="drop.openFileSelector()">
         <mat-icon>cloud_upload</mat-icon>
         <span>Drop files here</span>
         <span>or</span>
@@ -26,6 +26,7 @@
           <mat-icon (click)="deleteAssessment(file)">delete</mat-icon>
         </span>
       </div>
+      <div class="click-area" *ngIf="files.length" (click)="drop.openFileSelector()"></div>
     </ng-template>
   </ngx-file-drop>
 </form>

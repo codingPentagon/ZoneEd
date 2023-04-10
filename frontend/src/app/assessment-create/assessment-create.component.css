@@ -19,8 +19,8 @@ ngx-file-drop >>> .file-drop-zone {
   border: 2px dashed royalblue;
   border-radius: 10px;
   padding: 20px;
-  cursor: pointer;
   height: 150px;
+  overflow: hidden;
 }
 
 ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
@@ -31,7 +31,7 @@ ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
 .drop-template {
   color: royalblue;
   place-items: center;
-  text-align: center;
+  cursor: pointer;
   grid-gap: 5px;
 }
 
@@ -45,6 +45,15 @@ ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
   grid-gap: 10px;
 }
 
+.file-list mat-icon{
+  cursor: pointer;
+}
+
+.click-area{
+  height: 100%;
+  cursor: pointer;
+}
+
 .grid{
   display: grid;
 }
@@ -55,4 +64,10 @@ button:not([disabled]) {
 
 .mdc-dialog__actions{
   padding: 0 20px 10px;
+}
+
+ngx-file-drop>>>.file-drop-content{
+  width: 100%;
+  height: 100%;
+  display: contents;
 }
