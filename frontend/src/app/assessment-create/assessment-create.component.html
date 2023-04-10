@@ -22,11 +22,13 @@
       <div class="grid file-list" *ngIf="files.length">
         <span *ngFor="let file of files" class="grid">
          <span>{{file.name}}</span>
-         <span>{{file.size}}</span>
+         <span>{{(file.size/1024/1024).toFixed(2)+'MB'}}</span>
           <mat-icon (click)="deleteAssessment(file)">delete</mat-icon>
         </span>
       </div>
-      <div class="click-area" *ngIf="files.length" (click)="drop.openFileSelector()"></div>
+      <div class="click-area" *ngIf="files.length" (click)="drop.openFileSelector()">
+        <span *ngIf="!isComplete">Uploading {{uploadPercentage}}%</span>
+      </div>
     </ng-template>
   </ngx-file-drop>
 </form>

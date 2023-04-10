@@ -52,6 +52,10 @@ ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
 .click-area{
   height: 100%;
   cursor: pointer;
+  color: gray;
+  display: grid;
+  justify-items: center;
+  padding: 10px;
 }
 
 .grid{

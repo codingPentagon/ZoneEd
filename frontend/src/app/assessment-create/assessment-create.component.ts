@@ -22,6 +22,7 @@ export class AssessmentCreateDialog {
   assessmentDir: string = 'assessments/';
   today: Date = new Date();
   isComplete: boolean = false;
+  uploadPercentage!: string;
 
   constructor(
     public dialogRef: MatDialogRef<AssessmentCreateDialog>,
@@ -46,9 +47,10 @@ export class AssessmentCreateDialog {
       fileEntry.file((file: File) => {
         this.filesService.addFile(this.assessmentDir, file).percentageChanges().subscribe({
           next: res => {
-            console.log(res);
+            this.uploadPercentage = res?.toFixed(0) || '0';
           },
           complete: () => {
+            this.uploadPercentage = '100';
             this.isComplete = true;
           }
         });
