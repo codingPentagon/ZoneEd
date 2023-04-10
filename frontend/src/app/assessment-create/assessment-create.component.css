@@ -49,7 +49,7 @@ ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
   display: grid;
 }
 
-button{
+button:not([disabled]) {
   background-color: mediumspringgreen;
 }
 

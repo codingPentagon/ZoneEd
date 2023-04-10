@@ -21,6 +21,7 @@ interface DialogData {
 export class AssessmentCreateDialog {
   assessmentDir: string = 'assessments/';
   today: Date = new Date();
+  isComplete: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<AssessmentCreateDialog>,
@@ -39,6 +40,7 @@ export class AssessmentCreateDialog {
   files: FileMetadata[] = [];
 
   dropped(files: NgxFileDropEntry[]) {
+    this.isComplete = false;
     for (const droppedFile of files) {
       const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
       fileEntry.file((file: File) => {
@@ -47,19 +49,19 @@ export class AssessmentCreateDialog {
             console.log(res);
           },
           complete: () => {
-            this.filesService.fetchDownloadLinks();
+            this.isComplete = true;
           }
         });
       });
     }
-    this.files = this.filesService.filesMetadata;
+    this.files = this.filesService.getFilesMetadata();
   }
 
   icon: string = 'insert_drive_file';
 
   deleteAssessment(fileMeta: FileMetadata) {
     this.filesService.removeFile(fileMeta);
-    this.files = this.filesService.filesMetadata;
+    this.files = this.filesService.getFilesMetadata();
   }
 
   createAssessment(formValue: any) {
@@ -72,10 +74,10 @@ export class AssessmentCreateDialog {
       creatorID: this.data.teacherID,
       uploadedDate: this.today,
       availableDate: formValue.date,
-      documents: this.filesService.filesMetadata
+      documents: this.filesService.getFilesMetadata()
     }
     this.assessmentsService.addAssessment(assessment).subscribe();
-    this.filesService.filesMetadata.splice(0);
+    this.filesService.clearFilesMetadata();
     this.dialogRef.close();
   }
 }

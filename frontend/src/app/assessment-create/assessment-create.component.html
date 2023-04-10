@@ -2,11 +2,11 @@
 <form mat-dialog-content ngForm #form="ngForm">
   <mat-form-field appearance="outline" class="margin-top">
     <mat-label>Assessment Name</mat-label>
-    <input matInput placeholder="Enter assessment name" name="name" ngModel>
+    <input matInput placeholder="Enter assessment name" name="name" ngModel required>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Available From</mat-label>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="date" ngModel [min]="today">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="date" ngModel [min]="today" required>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -30,6 +30,6 @@
   </ngx-file-drop>
 </form>
 <div mat-dialog-actions [align]="'end'">
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button (click)="createAssessment(form.value)">Save</button>
+  <button mat-raised-button (click)="createAssessment(form.value)" [disabled]="!form.valid || !isComplete">Save</button>
+  <button mat-raised-button (click)="cancel()">Cancel</button>
 </div>
