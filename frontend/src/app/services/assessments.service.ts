@@ -18,4 +18,8 @@ export class AssessmentsService {
   addAssessment(assessment: Assessment) {
     return this.http.post(url,assessment);
   }
+
+  removeAssessments(assessmentsToDelete: number[]) {
+    return this.http.delete(url+assessmentsToDelete.toString());
+  }
 }

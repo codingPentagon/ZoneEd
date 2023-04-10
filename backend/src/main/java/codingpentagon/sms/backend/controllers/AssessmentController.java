@@ -23,4 +23,9 @@ public class AssessmentController {
     public void addAssessment(@RequestBody Assessment assessment) {
         this.assessmentService.saveAssessment(assessment);
     }
+
+    @DeleteMapping("/assessments/{ids}")
+    public void removeAssessments(@PathVariable List<Integer> ids) {
+        this.assessmentService.deleteAssessments(ids);
+    }
 }

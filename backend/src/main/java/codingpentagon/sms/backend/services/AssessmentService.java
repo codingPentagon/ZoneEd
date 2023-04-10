@@ -23,4 +23,8 @@ public class AssessmentService {
         assessment.setId(new Random().nextInt(5000));
         this.assessmentRepository.save(assessment);
     }
+
+    public void deleteAssessments(List<Integer> ids) {
+        this.assessmentRepository.deleteAllById(ids);
+    }
 }

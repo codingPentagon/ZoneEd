@@ -19,8 +19,8 @@
       <mat-card-header>
         Assessments
         <span class="spacer"></span>
-        <mat-icon (click)="openDialog()">add</mat-icon>
-        <mat-icon>delete</mat-icon>
+        <mat-icon (click)="openDialog();deleteToggle(false)" [ngClass]="{active:create}">add</mat-icon>
+        <mat-icon (click)="deleteToggle()" [ngClass]="{active:delete}">delete</mat-icon>
       </mat-card-header>
       <mat-card-content>
         <div *ngFor="let assessment of assessments">
@@ -37,10 +37,15 @@
               <span class="spacer"></span>
               Uploaded On: {{assessment.uploadedDate | date:'dd/MM/yyyy'}}
             </div>
+            <mat-checkbox *ngIf="delete" (change)="toggleDeleteItem(assessment)"></mat-checkbox>
           </div>
           <mat-divider></mat-divider>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end" *ngIf="delete">
+        <button mat-raised-button [disabled]="!assessmentsToDelete.length" (click)="deleteAssessments()">Delete</button>
+        <button mat-raised-button (click)="deleteToggle()">Cancel</button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

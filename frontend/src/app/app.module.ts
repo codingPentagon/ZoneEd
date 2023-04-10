@@ -20,6 +20,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {NgxFileDropModule} from "ngx-file-drop";
 import {FormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {FormsModule} from "@angular/forms";
     MatDatepickerModule,
     MatNativeDateModule,
     NgxFileDropModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

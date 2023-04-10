@@ -52,9 +52,18 @@ mat-card{
 mat-card-header mat-icon{
   cursor: pointer;
   padding: 5px;
+  border-radius: 50%;
 }
 
-mat-card-header mat-icon:hover{
-  border-radius: 50%;
+mat-card-header mat-icon:hover:not(.active){
   background-color: #e0e0e0;
+}
+
+.active{
+  background-color: mediumspringgreen;
+  color: darkblue;
+}
+
+button:not([disabled]) {
+  background-color: mediumspringgreen;
 }
