@@ -50,8 +50,8 @@ export class FilesService {
     }
   }
 
-  removeAllFiles() {
-    for (const meta of this.filesMetadata) {
+  removeAllFiles(filesMetadata?:FileMetadata[]){
+    for (const meta of filesMetadata!=undefined?filesMetadata:this.filesMetadata) {
       this.fireStorage.ref(meta.pathRef).delete();
     }
     this.filesMetadata.splice(0);
