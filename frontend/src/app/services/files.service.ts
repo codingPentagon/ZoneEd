@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {FileMetadata} from "../models/file.model";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 export class FilesService {
 
   private filesMetadata:FileMetadata[]=[];
+  private uploadTask!: AngularFireUploadTask;
 
   constructor(private fireStorage : AngularFireStorage) { }
 
@@ -22,25 +23,31 @@ export class FilesService {
       name:file.name,
       size:file.size,
       pathRef:path,
-      downloadUrl:''
+      downloadUrl:null
     });
 
-    const task = this.fireStorage.ref(path).put(file);
+    this.uploadTask = this.fireStorage.ref(path).put(file);
 
-    task.then(res=>{
+    this.uploadTask.then(res=>{
       res.ref.getDownloadURL().then(url=>{
         this.filesMetadata[this.filesMetadata.length-1].downloadUrl = url;
       });
     });
 
-    return task;
+    return this.uploadTask
   }
 
   removeFile(fileMeta:FileMetadata){
     this.filesMetadata = this.filesMetadata.filter(meta=>{
       return meta.name!=fileMeta.name;
     });
-    return this.fireStorage.ref(fileMeta.pathRef).delete();
+
+    if (fileMeta.downloadUrl){
+      this.fireStorage.ref(fileMeta.pathRef).delete();
+    }
+    else {
+      this.uploadTask.cancel();
+    }
   }
 
   removeAllFiles() {
