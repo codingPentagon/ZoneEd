@@ -28,10 +28,9 @@ public class StudentReg extends BaseUser {
     private String address1;
     private String address2;
     private String indexNo;
-    private String password;
-    private String email;
+
     private Date dob;
-    private String role;
+  
     private String gender;
     private String stuClass;
     private String admDate;
