@@ -19,7 +19,7 @@ import lombok.ToString;
 
 @Document (collection = "Teacher")
 
-public class TeacherReg {
+public class TeacherReg extends BaseUser {
 
     @Id
 
