@@ -5,16 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import codingpentagon.sms.backend.models.LeaveRecord;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class LeaveService {
     private final LeaveRecordRepository leaveRecordRepository;
 
     @Autowired
-    public LeaveService(LeaveRecordRepository leaveRecordRepository){
-        this.leaveRecordRepository=leaveRecordRepository;
+    public LeaveService(LeaveRecordRepository leaveRecordRepository) {
+        this.leaveRecordRepository = leaveRecordRepository;
     }
 
     public void saveLeaveRecord(LeaveRecord leaveRecord) {
@@ -22,7 +21,13 @@ public class LeaveService {
         this.leaveRecordRepository.save(leaveRecord);
     }
 
-    public List<LeaveRecord> findTodayLeaveRecord(int sclID) {
-        return this.leaveRecordRepository.findBySclID(sclID);
+    public List<Integer> findTodayLeaveRecord(int sclID) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.ZONE_OFFSET, 0);
+        return this.leaveRecordRepository.findBySclIDAndDatesContaining(sclID, calendar.getTime()).stream().map(LeaveRecord::getTeacherID).toList();
     }
 }

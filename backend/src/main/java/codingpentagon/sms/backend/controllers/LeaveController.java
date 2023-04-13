@@ -21,7 +21,7 @@ public class LeaveController {
     }
 
     @GetMapping("leaves/today/{sclID}")
-    public List<LeaveRecord> fetchTodayLeaveRecords(@PathVariable int sclID){
+    public List<Integer> fetchTodayLeaveRecords(@PathVariable int sclID){
         return this.leaveService.findTodayLeaveRecord(sclID);
     }
 }
