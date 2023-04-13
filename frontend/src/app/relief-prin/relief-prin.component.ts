@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Teacher} from "../models/teacher.model";
+import {ReliefService} from "../services/relief.service";
 
 @Component({
   selector: 'app-relief-prin',
@@ -7,26 +9,37 @@ import { Component } from '@angular/core';
 })
 export class ReliefPrinComponent {
 
-  availTeachers = ['Saduni Perera','Sachini Silva','Tharuka Bandara','Panchali Herath'];
-
-  teachersOnLeave = [
-    {teacher: 'Saduni Perera', subject: 'Science'},
-    {teacher: 'Sachini Silva', subject: 'Sinhala'},
-    {teacher: 'Tharuka Bandara', subject: 'English'},
-    {teacher: 'Panchali Herath', subject: 'Maths'}
-  ];
+  availTeachers = ['Saduni Perera', 'Sachini Silva', 'Tharuka Bandara', 'Panchali Herath'];
 
   reliefs = [
-    {class:'6A', period:2, allocatedTchr:null},
-    {class:'6A', period:2, allocatedTchr:null},
-    {class:'6A', period:2, allocatedTchr:null},
-    {class:'6A', period:2, allocatedTchr:null},
+    {class: '6A', period: 2, allocatedTchr: null},
+    {class: '6A', period: 2, allocatedTchr: null},
+    {class: '6A', period: 2, allocatedTchr: null},
+    {class: '6A', period: 2, allocatedTchr: null},
   ];
 
-  modify:boolean = false;
+  modify: boolean = false;
 
-  modifyToggle(){
+  modifyToggle() {
     this.modify = !this.modify;
     console.log(this.reliefs);
+  }
+
+  sclID: number = 5555;
+  teachersOnLeave:Teacher[] = [];
+
+  constructor(private reliefService:ReliefService) {
+  }
+
+  ngOnInit(): void {
+    this.getTeachersOnLeave();
+  }
+
+  getTeachersOnLeave() {
+    this.reliefService.fetchTeachersOnLeave(this.sclID).subscribe({
+      next: res => {
+        this.teachersOnLeave = res;
+      }
+    })
   }
 }
