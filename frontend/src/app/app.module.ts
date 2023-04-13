@@ -14,6 +14,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { ReliefPrinComponent } from './relief-prin/relief-prin.component';
 import { ReliefTchrComponent } from './relief-tchr/relief-tchr.component';
 import {FormsModule} from "@angular/forms";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FormsModule} from "@angular/forms";
     MatSelectModule,
     MatButtonModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
+    ServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
