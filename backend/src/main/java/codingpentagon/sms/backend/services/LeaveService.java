@@ -20,14 +20,4 @@ public class LeaveService {
         leaveRecord.setId(new Random().nextInt(999));
         this.leaveRecordRepository.save(leaveRecord);
     }
-
-    public List<Integer> findTodayLeaveRecord(int sclID) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.set(Calendar.ZONE_OFFSET, 0);
-        return this.leaveRecordRepository.findBySclIDAndDatesContaining(sclID, calendar.getTime()).stream().map(LeaveRecord::getTeacherID).toList();
-    }
 }
