@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {ReliefService} from "../services/relief.service";
-import {SlotDetail} from "../models/relief.model";
+import {ScheduleSlotDetail} from "../models/relief.model";
 
 @Component({
   selector: 'app-relief-prin',
@@ -20,7 +20,7 @@ export class ReliefPrinComponent {
   sclID: number = 5555;
   teachersOnLeave:Teacher[] = [];
   availableTeachers:Teacher[] = [];
-  vacantSlots: SlotDetail[] = [];
+  vacantSlots: ScheduleSlotDetail[] = [];
   selectedTeacherID: number = 0;
   relief:any;
 

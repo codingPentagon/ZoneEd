@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SlotDetail {
+public class ScheduleSlotDetail {
     private int period;
     private String className;
 }

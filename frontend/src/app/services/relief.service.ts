@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Teacher} from "../models/teacher.model";
-import {SlotDetail} from "../models/relief.model";
+import {ScheduleSlotDetail} from "../models/relief.model";
 
 const url = 'http://localhost:8080/relief/';
 @Injectable({
@@ -16,6 +16,6 @@ export class ReliefService {
   }
 
   fetchVacantSlots(teacherID: number) {
-    return this.http.get<SlotDetail[]>(url + 'vacantSlots/' + teacherID);
+    return this.http.get<ScheduleSlotDetail[]>(url + 'vacantSlots/' + teacherID);
   }
 }

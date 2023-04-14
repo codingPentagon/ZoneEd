@@ -1,4 +1,4 @@
-export interface SlotDetail {
+export interface ScheduleSlotDetail {
   period: number;
   className: string;
 }
