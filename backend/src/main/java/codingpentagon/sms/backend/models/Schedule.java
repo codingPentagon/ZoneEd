@@ -13,14 +13,3 @@ public class Schedule {
     private List<SchedulePeriod> schedule;
 }
 
-@Getter
-@Setter
-class SchedulePeriod{
-    private int period;
-    private String mon;
-    private String tue;
-    private String wed;
-    private String thu;
-    private String fri;
-}
-
