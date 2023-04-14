@@ -1,12 +1,19 @@
 package codingpentagon.sms.backend.services;
 
-import codingpentagon.sms.backend.models.*;
+import codingpentagon.sms.backend.models.LeaveRecord;
+import codingpentagon.sms.backend.models.Schedule;
+import codingpentagon.sms.backend.models.SchedulePeriod;
+import codingpentagon.sms.backend.models.ScheduleSlotDetail;
+import codingpentagon.sms.backend.models.Teacher;
 import codingpentagon.sms.backend.repositories.LeaveRecordRepository;
 import codingpentagon.sms.backend.repositories.ScheduleRepository;
 import codingpentagon.sms.backend.repositories.TeacherRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 @Service
 public class ReliefService {
@@ -33,8 +40,8 @@ public class ReliefService {
         return this.teacherRepository.findAllById(teacherIDs);
     }
 
-    public List<SlotDetail> findVacantSlots(int teacherID) {
-        List<SlotDetail> slotDetails = new ArrayList<>();
+    public List<ScheduleSlotDetail> findVacantSlots(int teacherID) {
+        List<ScheduleSlotDetail> slotDetails = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         String dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH).toLowerCase().substring(0,3);
 
@@ -43,7 +50,7 @@ public class ReliefService {
             schedule.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
                 String slot = schedulePeriod.getSlotByDay().get(dayName);
                 if (!slot.equals("---")) {
-                    slotDetails.add(new SlotDetail(schedulePeriod.getPeriod(), slot));
+                    slotDetails.add(new ScheduleSlotDetail(schedulePeriod.getPeriod(), slot));
                 }
             });
             return slotDetails;
@@ -51,5 +58,31 @@ public class ReliefService {
         catch (NullPointerException e){
             return null;
         }
+    }
+
+    public List<Teacher> fetchAvailableTeachers(int sclID,int period){
+        List<Integer> teachersOnLeaveIDs = this.findTeachersOnLeave(sclID).stream().map(Teacher::getId).toList();
+        List<Teacher> teachersPresent = this.teacherRepository.findBySclIDAndIdNotIn(sclID, teachersOnLeaveIDs);
+
+        List<Teacher> availableTeachers = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        String dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH).toLowerCase().substring(0,3);
+
+        for(Teacher teacher:teachersPresent){
+            Schedule schedule = this.scheduleRepository.findByTeacherID(teacher.getId());
+            try{
+                schedule.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
+                    if(schedulePeriod.getPeriod()==period){
+                        String slot = schedulePeriod.getSlotByDay().get(dayName);
+                        if (slot.equals("---")) {
+                            availableTeachers.add(teacher);
+                        }
+                    }
+                });
+            }
+            catch (NullPointerException ignored){
+            }
+        }
+        return availableTeachers;
     }
 }

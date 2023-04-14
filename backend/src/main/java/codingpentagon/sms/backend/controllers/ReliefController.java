@@ -1,6 +1,6 @@
 package codingpentagon.sms.backend.controllers;
 
-import codingpentagon.sms.backend.models.SlotDetail;
+import codingpentagon.sms.backend.models.ScheduleSlotDetail;
 import codingpentagon.sms.backend.models.Teacher;
 import codingpentagon.sms.backend.services.ReliefService;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,12 @@ public class ReliefController {
     }
 
     @GetMapping("/relief/vacantSlots/{teacherID}")
-    public List<SlotDetail> fetchVacantSlots(@PathVariable int teacherID) {
+    public List<ScheduleSlotDetail> fetchVacantSlots(@PathVariable int teacherID) {
         return this.reliefService.findVacantSlots(teacherID);
+    }
+
+    @GetMapping("/relief/availableTeachers/{sclID}/{period}")
+    public List<Teacher> fetchAvailableTeachers(@PathVariable int sclID,@PathVariable int period){
+        return this.reliefService.fetchAvailableTeachers(sclID,period);
     }
 }
