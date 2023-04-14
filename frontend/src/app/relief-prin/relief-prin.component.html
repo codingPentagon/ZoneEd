@@ -43,8 +43,8 @@
                             [ngStyle]="{'background-color':relief.allocatedTchr == null ? 'lightgrey' : 'blue'}"
                             [disabled]="!modify" [ngClass]="{'hide':!modify}">
                   <mat-option [value]=null class="remove">Remove Selection</mat-option>
-                  <mat-option *ngFor="let teacher of availTeachers" [value]="teacher">
-                    {{teacher}}
+                  <mat-option *ngFor="let teacher of availableTeachers" [value]="teacher.id">
+                    {{teacher.name }}
                   </mat-option>
                 </mat-select>
               </div>

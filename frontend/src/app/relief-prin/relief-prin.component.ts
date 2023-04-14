@@ -9,8 +9,6 @@ import {ReliefService} from "../services/relief.service";
 })
 export class ReliefPrinComponent {
 
-  availTeachers = ['Saduni Perera', 'Sachini Silva', 'Tharuka Bandara', 'Panchali Herath'];
-
   reliefs = [
     {class: '6A', period: 2, allocatedTchr: null},
     {class: '6A', period: 2, allocatedTchr: null},
@@ -22,11 +20,12 @@ export class ReliefPrinComponent {
 
   modifyToggle() {
     this.modify = !this.modify;
-    console.log(this.reliefs);
+    console.log(this.availableTeachers);
   }
 
   sclID: number = 5555;
   teachersOnLeave:Teacher[] = [];
+  availableTeachers:Teacher[] = [];
 
   constructor(private reliefService:ReliefService) {
   }
@@ -39,6 +38,7 @@ export class ReliefPrinComponent {
     this.reliefService.fetchTeachersOnLeave(this.sclID).subscribe({
       next: res => {
         this.teachersOnLeave = res;
+        this.availableTeachers = res;
       }
     })
   }
