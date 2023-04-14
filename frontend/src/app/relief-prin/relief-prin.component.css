@@ -37,6 +37,7 @@ button{
 mat-card-content{
   overflow: auto;
   height: 100%;
+  padding: 0;
 }
 
 mat-card-header{
@@ -46,7 +47,7 @@ mat-card-header{
 .allocate-entry,.teacher-entry{
   display: flex;
   align-items: center;
-  margin: 5px;
+  padding: 5px 15px;
 }
 
 mat-select{
@@ -67,4 +68,13 @@ mat-select{
 
 /deep/ .remove>*{
   color: rgb(150, 150, 150);    /*could not find the class of the text*/
+}
+
+.selected{
+  background-color: blue;
+  color: white;
+}
+
+.teacher-entry{
+  cursor: pointer;
 }
