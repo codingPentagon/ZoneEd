@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {ReliefService} from "../services/relief.service";
-import {ScheduleSlotDetail} from "../models/relief.model";
+import {ReliefSlotCandidates} from "../models/relief.model";
 
 @Component({
   selector: 'app-relief-prin',
@@ -14,17 +14,15 @@ export class ReliefPrinComponent {
 
   modifyToggle() {
     this.modify = !this.modify;
-    console.log(this.availableTeachers);
   }
 
   sclID: number = 5555;
-  teachersOnLeave:Teacher[] = [];
-  availableTeachers:Teacher[] = [];
-  vacantSlots: ScheduleSlotDetail[] = [];
+  teachersOnLeave: Teacher[]= [];
+  reliefSlotsWithCandidates:ReliefSlotCandidates[] = [];
   selectedTeacherID: number = 0;
-  relief:any;
+  relief: any;
 
-  constructor(private reliefService:ReliefService) {
+  constructor(private reliefService: ReliefService) {
   }
 
   ngOnInit(): void {
@@ -35,22 +33,18 @@ export class ReliefPrinComponent {
     this.reliefService.fetchTeachersOnLeave(this.sclID).subscribe({
       next: res => {
         this.teachersOnLeave = res;
-        this.selectedTeacherID = res[0].id;
-        this.availableTeachers = res;
-      },
-      complete: () => {
-        this.getVacantSlots();
+        this.selectedTeacherID = res[0]?.id;
+        res.length && this.getReliefSlotsCandidates(res[0]?.id);
       }
     })
   }
 
-  getVacantSlots(teacherID?:number) {
-    teacherID ? this.selectedTeacherID=teacherID : null;
-    this.reliefService.fetchVacantSlots(this.selectedTeacherID).subscribe({
+  getReliefSlotsCandidates(teacherID: number) {
+    this.selectedTeacherID = teacherID;
+    this.reliefService.fetchReliefSlotsCandidates(this.sclID, teacherID).subscribe({
       next: res => {
-        this.vacantSlots = res;
+        this.reliefSlotsWithCandidates = res;
       }
-    });
-    console.log(this.vacantSlots);
+    })
   }
 }
