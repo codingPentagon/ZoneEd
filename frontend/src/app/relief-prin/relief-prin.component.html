@@ -11,13 +11,14 @@
         </mat-card-header>
         <mat-card-content>
           <div *ngFor="let teacher of teachersOnLeave">
-            <div class="teacher-entry" [ngClass]="{selected:selectedTeacherID==teacher.id}" (click)="getVacantSlots(teacher.id)">
+            <div class="teacher-entry" [ngClass]="{selected:selectedTeacherID==teacher.id}" (click)="getReliefSlotsCandidates(teacher.id)">
               {{teacher.name}}
               <span class="spacer"></span>
               {{teacher.subject}}
             </div>
             <mat-divider></mat-divider>
           </div>
+          <span class="not-available" *ngIf="!teachersOnLeave.length">No Teachers are on Leave</span>
         </mat-card-content>
       </mat-card>
     </div>
@@ -33,18 +34,18 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content>
-          <div *ngFor="let slot of vacantSlots">
+          <div *ngFor="let reliefSlot of reliefSlotsWithCandidates;let i=index">
             <div class="allocate-entry">
-              Class {{slot.className}} Period {{slot.period}}
+              Class {{reliefSlot.className}} Period {{reliefSlot.period}}
               <span class="spacer"></span>
               <div>
                 <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
                             [(value)]="relief"
                             [ngStyle]="{'background-color':relief == null ? 'lightgrey' : 'blue'}"
                             [disabled]="!modify" [ngClass]="{'hide':!modify}">
-                  <mat-option [value]=null class="remove">Remove Selection</mat-option>
-                  <mat-option *ngFor="let teacher of availableTeachers" [value]="teacher.id">
-                    {{teacher.name }}
+                  <mat-option [value]=null class="remove">{{reliefSlot.availableTeachers.length?"Remove Selection":"No Available Teachers"}}</mat-option>
+                  <mat-option *ngFor="let teacher of reliefSlot.availableTeachers" [value]="teacher.id">
+                    {{teacher.name}}
                   </mat-option>
                 </mat-select>
               </div>

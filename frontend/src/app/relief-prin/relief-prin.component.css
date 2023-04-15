@@ -78,3 +78,9 @@ mat-select{
 .teacher-entry{
   cursor: pointer;
 }
+
+.not-available{
+  display: grid;
+  justify-content: center;
+  margin: 10px;
+}
