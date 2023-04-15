@@ -1,13 +1,14 @@
 package codingpentagon.sms.backend.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-@AllArgsConstructor
-public class ScheduleSlotDetail {
+public class ReliefSlotCandidates {
     private int period;
     private String className;
+    private List<Teacher> availableTeachers;
 }
