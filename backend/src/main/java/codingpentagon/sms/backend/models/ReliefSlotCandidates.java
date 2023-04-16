@@ -11,4 +11,5 @@ public class ReliefSlotCandidates {
     private int period;
     private String className;
     private List<Teacher> availableTeachers;
+    private Teacher allocatedTeacher;
 }

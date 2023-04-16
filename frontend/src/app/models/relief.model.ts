@@ -4,4 +4,5 @@ export interface ReliefSlotCandidates{
   period: number;
   className: string;
   availableTeachers: Teacher[];
+  allocatedTeacher: Teacher;
 }
