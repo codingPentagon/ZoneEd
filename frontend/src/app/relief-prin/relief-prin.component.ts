@@ -20,7 +20,6 @@ export class ReliefPrinComponent {
   teachersOnLeave: Teacher[]= [];
   reliefSlotsWithCandidates:ReliefSlotCandidates[] = [];
   selectedTeacherID: number = 0;
-  relief: any;
 
   constructor(private reliefService: ReliefService) {
   }

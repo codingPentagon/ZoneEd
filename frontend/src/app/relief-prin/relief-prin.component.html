@@ -40,8 +40,8 @@
               <span class="spacer"></span>
               <div>
                 <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
-                            [(value)]="relief"
-                            [ngStyle]="{'background-color':relief == null ? 'lightgrey' : 'blue'}"
+                            [(value)]="reliefSlot.allocatedTeacher"
+                            [ngStyle]="{'background-color':reliefSlot.allocatedTeacher == null ? 'lightgrey' : 'blue'}"
                             [disabled]="!modify" [ngClass]="{'hide':!modify}">
                   <mat-option [value]=null class="remove">{{reliefSlot.availableTeachers.length?"Remove Selection":"No Available Teachers"}}</mat-option>
                   <mat-option *ngFor="let teacher of reliefSlot.availableTeachers" [value]="teacher.id">
