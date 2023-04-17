@@ -15,7 +15,7 @@ export class ReliefPrinComponent {
 
   modifyToggle() {
     this.modify = !this.modify;
-    !this.modify && this.clearReliefAllocations();
+    this.modify && this.reliefAllocations.splice(0);
   }
 
   sclID: number = 5555;
@@ -72,11 +72,8 @@ export class ReliefPrinComponent {
     }
   }
 
-  clearReliefAllocations() {
-    this.reliefAllocations.splice(0);
-  }
-
   createReliefAllocations() {
+    console.log(this.reliefAllocations);
     this.reliefService.addReliefAllocations(this.reliefAllocations).subscribe({
       complete: () => {
         this.getReliefSlotsCandidates(this.selectedTeacher);

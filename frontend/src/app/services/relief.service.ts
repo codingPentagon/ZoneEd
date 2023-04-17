@@ -15,6 +15,7 @@ export class ReliefService {
   }
 
   addReliefAllocations(reliefAllocations: ReliefRecord[]) {
+    console.log(reliefAllocations);
     return this.http.post(url, reliefAllocations);
   }
 }
