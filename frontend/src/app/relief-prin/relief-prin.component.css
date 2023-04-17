@@ -84,3 +84,26 @@ mat-select{
   justify-content: center;
   margin: 10px;
 }
+
+.active{
+  background-color: mediumspringgreen;
+  color: darkblue;
+}
+
+mat-card-header mat-icon{
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+mat-card-header mat-icon:not(.active){
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+mat-card-header mat-icon:hover:not(.active){
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+button:not(.disabled){
+  background-color: mediumspringgreen;
+}
