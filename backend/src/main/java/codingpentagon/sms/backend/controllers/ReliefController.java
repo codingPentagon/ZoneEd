@@ -1,5 +1,6 @@
 package codingpentagon.sms.backend.controllers;
 
+import codingpentagon.sms.backend.models.ReliefRecord;
 import codingpentagon.sms.backend.models.ReliefSlotCandidates;
 import codingpentagon.sms.backend.services.ReliefService;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,10 @@ public class ReliefController {
     @GetMapping("/relief/reliefSlotsCandidates/{sclID}/{teacherID}")
     public List<ReliefSlotCandidates> fetchReliefSlotsCandidates(@PathVariable int sclID, @PathVariable int teacherID){
         return this.reliefService.findReliefSlotsCandidates(sclID,teacherID);
+    }
+
+    @PostMapping("/relief/")
+    public void addReliefAllocations(@RequestBody ReliefRecord[] reliefRecords){
+        this.reliefService.saveReliefAllocations(reliefRecords);
     }
 }
