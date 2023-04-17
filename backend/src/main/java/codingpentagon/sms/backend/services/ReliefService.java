@@ -29,9 +29,6 @@ public class ReliefService {
         Calendar calendar = Calendar.getInstance();
         String dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH).toLowerCase().substring(0, 3);
 
-        List<Integer> teachersOnLeaveIDs = this.leaveService.findLeavesToday(sclID).stream().map(Teacher::getId).toList();
-        List<Teacher> teachersPresent = this.teacherRepository.findBySclIDAndIdNotIn(sclID, teachersOnLeaveIDs);
-
         //getting vacant classes with periods
         Schedule schedule1 = this.scheduleRepository.findByTeacherID(teacherID);
         schedule1.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
@@ -40,17 +37,21 @@ public class ReliefService {
                 ReliefSlotCandidates reliefSlotCandidates = new ReliefSlotCandidates();
                 reliefSlotCandidates.setPeriod(schedulePeriod.getPeriod());
                 reliefSlotCandidates.setClassName(slot);
+                //finding if any allocated teacher for the vacant
                 reliefSlotCandidates.setAllocatedTeacherID(this.findAllocatedTeacher(sclID, schedulePeriod.getPeriod(), slot));
                 //finding available teachers for the vacant
-                reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(teachersPresent, dayName, schedulePeriod.getPeriod()));
+                reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(dayName, schedulePeriod.getPeriod(), sclID));
                 reliefSlotsWithCandidates.add(reliefSlotCandidates);
             }
         });
         return reliefSlotsWithCandidates;
     }
 
-    private List<Teacher> findAvailableTeachers(List<Teacher> teachersPresent, String dayName, int period) {
+    private List<Teacher> findAvailableTeachers(String dayName, int period, int sclID) {
         List<Teacher> availableTeachers = new ArrayList<>();
+
+        List<Integer> teachersOnLeaveIDs = this.leaveService.findLeavesToday(sclID).stream().map(Teacher::getId).toList();
+        List<Teacher> teachersPresent = this.teacherRepository.findBySclIDAndIdNotIn(sclID, teachersOnLeaveIDs);
 
         for (Teacher teacher : teachersPresent) {
             Schedule schedule = this.scheduleRepository.findByTeacherID(teacher.getId());
