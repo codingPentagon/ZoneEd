@@ -107,3 +107,11 @@ mat-card-header mat-icon:hover:not(.active){
 button:not(.disabled){
   background-color: mediumspringgreen;
 }
+
+.sub{
+  color: darkgray;
+}
+
+.allocate-entry mat-option{
+  justify-content: space-between;
+}

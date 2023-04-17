@@ -41,7 +41,7 @@
                             [disabled]="!modify" [ngClass]="{'hide':!modify}">
                   <mat-option [value]=null class="remove">{{reliefSlot.availableTeachers.length?"Remove Selection":"No Available Teachers"}}</mat-option>
                   <mat-option *ngFor="let teacher of reliefSlot.availableTeachers" [value]="teacher.id">
-                    {{teacher.name}}
+                    {{teacher.name}}&nbsp;<span class="sub">({{teacher.subject}})</span>
                   </mat-option>
                 </mat-select>
               </div>
