@@ -115,3 +115,7 @@ button:not(.disabled){
 .allocate-entry mat-option{
   justify-content: space-between;
 }
+
+.allocate-entry mat-select:not(.selected){
+  background-color: darkgray;
+}
