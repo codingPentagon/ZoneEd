@@ -13,11 +13,13 @@ import java.util.*;
 public class LeaveService {
     private final LeaveRecordRepository leaveRecordRepository;
     private final TeacherRepository teacherRepository;
+    private final DateTimeService dateTimeService;
 
     @Autowired
-    public LeaveService(LeaveRecordRepository leaveRecordRepository, TeacherRepository teacherRepository) {
+    public LeaveService(LeaveRecordRepository leaveRecordRepository, TeacherRepository teacherRepository, DateTimeService dateTimeService) {
         this.leaveRecordRepository = leaveRecordRepository;
         this.teacherRepository = teacherRepository;
+        this.dateTimeService = dateTimeService;
     }
 
     public void saveLeaveRecord(LeaveRecord leaveRecord) {
@@ -26,15 +28,8 @@ public class LeaveService {
     }
 
     public List<Teacher> findLeavesToday(int sclID) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR, 5);
-        calendar.set(Calendar.MINUTE, 30);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.set(Calendar.AM_PM, Calendar.AM);      //equals to 0:00 in UTC
-//        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 1);
-
-        List<Integer> teacherIDs = this.leaveRecordRepository.findBySclIDAndDatesContaining(sclID, calendar.getTime()).stream().map(LeaveRecord::getTeacherID).toList();
+        Date today = this.dateTimeService.getToday().getTime();
+        List<Integer> teacherIDs = this.leaveRecordRepository.findBySclIDAndDatesContaining(sclID, today).stream().map(LeaveRecord::getTeacherID).toList();
 
         return this.teacherRepository.findAllById(teacherIDs);
     }
