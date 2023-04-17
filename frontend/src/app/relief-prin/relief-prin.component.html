@@ -11,7 +11,7 @@
         </mat-card-header>
         <mat-card-content>
           <div *ngFor="let teacher of teachersOnLeave">
-            <div class="teacher-entry" [ngClass]="{selected:selectedTeacherID==teacher.id}" (click)="getReliefSlotsCandidates(teacher.id)">
+            <div class="teacher-entry" [ngClass]="{selected:selectedTeacher==teacher}" (click)="getReliefSlotsCandidates(teacher)">
               {{teacher.name}}
               <span class="spacer"></span>
               {{teacher.subject}}
@@ -37,8 +37,7 @@
               <div>
                 <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
                             [(value)]="reliefSlot.allocatedTeacher"
-                            [ngStyle]="{'background-color':reliefSlot.allocatedTeacher == null ? 'lightgrey' : 'blue'}"
-                            [disabled]="!modify" [ngClass]="{'hide':!modify}">
+                            [disabled]="!modify" [ngClass]="{hide:!modify,selected:reliefSlot.allocatedTeacher}">
                   <mat-option [value]=null class="remove">{{reliefSlot.availableTeachers.length?"Remove Selection":"No Available Teachers"}}</mat-option>
                   <mat-option *ngFor="let teacher of reliefSlot.availableTeachers" [value]="teacher.id">
                     {{teacher.name}}&nbsp;<span class="sub">({{teacher.subject}})</span>
