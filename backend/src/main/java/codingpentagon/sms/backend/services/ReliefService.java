@@ -1,11 +1,9 @@
 package codingpentagon.sms.backend.services;
 
-import codingpentagon.sms.backend.models.LeaveRecord;
 import codingpentagon.sms.backend.models.ReliefSlotCandidates;
 import codingpentagon.sms.backend.models.Schedule;
 import codingpentagon.sms.backend.models.SchedulePeriod;
 import codingpentagon.sms.backend.models.Teacher;
-import codingpentagon.sms.backend.repositories.LeaveRecordRepository;
 import codingpentagon.sms.backend.repositories.ScheduleRepository;
 import codingpentagon.sms.backend.repositories.TeacherRepository;
 import org.springframework.stereotype.Service;
@@ -17,28 +15,14 @@ import java.util.Locale;
 
 @Service
 public class ReliefService {
-    private final LeaveRecordRepository leaveRecordRepository;
+    private final LeaveService leaveService;
     private final TeacherRepository teacherRepository;
     private final ScheduleRepository scheduleRepository;
 
-    public ReliefService(LeaveRecordRepository leaveRecordRepository, TeacherRepository teacherRepository, ScheduleRepository scheduleRepository) {
-        this.leaveRecordRepository = leaveRecordRepository;
+    public ReliefService(LeaveService leaveService, TeacherRepository teacherRepository, ScheduleRepository scheduleRepository) {
+        this.leaveService = leaveService;
         this.teacherRepository = teacherRepository;
         this.scheduleRepository = scheduleRepository;
-    }
-
-    public List<Teacher> findTeachersOnLeave(int sclID) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR, 5);
-        calendar.set(Calendar.MINUTE, 30);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.set(Calendar.AM_PM, Calendar.AM);      //equals to 0:00 in UTC
-//        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 1);
-
-        List<Integer> teacherIDs = this.leaveRecordRepository.findBySclIDAndDatesContaining(sclID, calendar.getTime()).stream().map(LeaveRecord::getTeacherID).toList();
-
-        return this.teacherRepository.findAllById(teacherIDs);
     }
 
     public List<ReliefSlotCandidates> findReliefSlotsCandidates(int sclID, int teacherID){
@@ -46,7 +30,7 @@ public class ReliefService {
         Calendar calendar = Calendar.getInstance();
         String dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH).toLowerCase().substring(0,3);
 
-        List<Integer> teachersOnLeaveIDs = this.findTeachersOnLeave(sclID).stream().map(Teacher::getId).toList();
+        List<Integer> teachersOnLeaveIDs = this.leaveService.findLeavesToday(sclID).stream().map(Teacher::getId).toList();
         List<Teacher> teachersPresent = this.teacherRepository.findBySclIDAndIdNotIn(sclID, teachersOnLeaveIDs);
 
         //getting vacant classes with periods

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Teacher} from "../models/teacher.model";
 import {ReliefService} from "../services/relief.service";
 import {ReliefSlotCandidates} from "../models/relief.model";
+import {LeavesService} from "../services/leaves.service";
 
 @Component({
   selector: 'app-relief-prin',
@@ -21,7 +22,7 @@ export class ReliefPrinComponent {
   reliefSlotsWithCandidates:ReliefSlotCandidates[] = [];
   selectedTeacherID: number = 0;
 
-  constructor(private reliefService: ReliefService) {
+  constructor(private reliefService: ReliefService,private leavesService: LeavesService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class ReliefPrinComponent {
   }
 
   getTeachersOnLeave() {
-    this.reliefService.fetchTeachersOnLeave(this.sclID).subscribe({
+    this.leavesService.fetchLeavesToday(this.sclID).subscribe({
       next: res => {
         this.teachersOnLeave = res;
         this.selectedTeacherID = res[0]?.id;
