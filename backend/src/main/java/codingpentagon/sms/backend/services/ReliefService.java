@@ -4,6 +4,7 @@ import codingpentagon.sms.backend.models.*;
 import codingpentagon.sms.backend.repositories.ReliefRecordRepository;
 import codingpentagon.sms.backend.repositories.ScheduleRepository;
 import codingpentagon.sms.backend.repositories.TeacherRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -15,6 +16,7 @@ public class ReliefService {
     private final ScheduleRepository scheduleRepository;
     private final ReliefRecordRepository reliefRecordRepository;
 
+    @Autowired
     public ReliefService(LeaveService leaveService, TeacherRepository teacherRepository, ScheduleRepository scheduleRepository, ReliefRecordRepository reliefRecordRepository) {
         this.leaveService = leaveService;
         this.teacherRepository = teacherRepository;
@@ -32,21 +34,18 @@ public class ReliefService {
 
         //getting vacant classes with periods
         Schedule schedule1 = this.scheduleRepository.findByTeacherID(teacherID);
-        try {
-            schedule1.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
-                String slot = schedulePeriod.getSlotByDay().get(dayName);
-                if (!slot.equals("---")) {
-                    ReliefSlotCandidates reliefSlotCandidates = new ReliefSlotCandidates();
-                    reliefSlotCandidates.setPeriod(schedulePeriod.getPeriod());
-                    reliefSlotCandidates.setClassName(slot);
-                    //finding available teachers for the vacant
-                    reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(teachersPresent, dayName, schedulePeriod.getPeriod()));
-                    reliefSlotsWithCandidates.add(reliefSlotCandidates);
-                }
-            });
-        } catch (NullPointerException e) {
-            return null;
-        }
+        schedule1.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
+            String slot = schedulePeriod.getSlotByDay().get(dayName);
+            if (!slot.equals("---")) {
+                ReliefSlotCandidates reliefSlotCandidates = new ReliefSlotCandidates();
+                reliefSlotCandidates.setPeriod(schedulePeriod.getPeriod());
+                reliefSlotCandidates.setClassName(slot);
+                reliefSlotCandidates.setAllocatedTeacherID(this.findAllocatedTeacher(sclID, schedulePeriod.getPeriod(), slot));
+                //finding available teachers for the vacant
+                reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(teachersPresent, dayName, schedulePeriod.getPeriod()));
+                reliefSlotsWithCandidates.add(reliefSlotCandidates);
+            }
+        });
         return reliefSlotsWithCandidates;
     }
 
@@ -69,9 +68,27 @@ public class ReliefService {
     }
 
     public void saveReliefAllocations(ReliefRecord[] reliefRecords) {
-        for (ReliefRecord reliefRecord: reliefRecords) {
+        for (ReliefRecord reliefRecord : reliefRecords) {
             reliefRecord.setId(new Random().nextInt(100000));
         }
         this.reliefRecordRepository.saveAll(List.of(reliefRecords));
+    }
+
+    public int findAllocatedTeacher(int sclID, int period, String className) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 5);
+        calendar.set(Calendar.MINUTE, 30);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        Date date1 = calendar.getTime();
+        calendar.add(Calendar.DATE, 1);
+        Date date2 = calendar.getTime();
+
+        try {
+            return this.reliefRecordRepository.findBySclIDAndPeriodAndClassNameAndDateBetween(sclID, period, className, date1, date2).getAllocatedTeacherID();
+        } catch (NullPointerException e) {
+            return  0;
+        }
     }
 }

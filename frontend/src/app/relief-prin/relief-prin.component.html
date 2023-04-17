@@ -50,7 +50,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
-          <button mat-raised-button (click)="modifyToggle();createReliefAllocations()">Allocate</button>
+          <button mat-raised-button (click)="modifyToggle();createReliefAllocations()" [disabled]="reliefAllocations.length==0">Allocate</button>
           <button mat-raised-button (click)="modifyToggle();getReliefSlotsCandidates(selectedTeacher)">Discard</button>
         </mat-card-actions>
       </mat-card>

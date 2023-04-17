@@ -104,7 +104,7 @@ mat-card-header mat-icon:hover:not(.active){
   background-color: rgb(0, 0, 0, 0.3);
 }
 
-button:not(.disabled){
+button:not([disabled]){
   background-color: mediumspringgreen;
 }
 
