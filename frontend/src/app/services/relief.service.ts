@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ReliefSlotCandidates} from "../models/relief.model";
+import {ReliefRecord, ReliefSlotCandidates} from "../models/relief.model";
 
 const url = 'http://localhost:8080/relief/';
 @Injectable({
@@ -12,5 +12,9 @@ export class ReliefService {
 
   fetchReliefSlotsCandidates(sclID: number, teacherID: number) {
     return this.http.get<ReliefSlotCandidates[]>(url + 'reliefSlotsCandidates/' + sclID + '/' + teacherID);
+  }
+
+  addReliefAllocations(reliefAllocations: ReliefRecord[]) {
+    return this.http.post(url, reliefAllocations);
   }
 }

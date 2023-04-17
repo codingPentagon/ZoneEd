@@ -36,8 +36,9 @@
               <span class="spacer"></span>
               <div>
                 <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
-                            [(value)]="reliefSlot.allocatedTeacher"
-                            [disabled]="!modify" [ngClass]="{hide:!modify,selected:reliefSlot.allocatedTeacher}">
+                            [(value)]="reliefSlot.allocatedTeacherID"
+                            [disabled]="!modify" [ngClass]="{hide:!modify,selected:reliefSlot.allocatedTeacherID}"
+                            (valueChange)="toggleReliefAllocation(reliefSlot)">
                   <mat-option [value]=null class="remove">{{reliefSlot.availableTeachers.length?"Remove Selection":"No Available Teachers"}}</mat-option>
                   <mat-option *ngFor="let teacher of reliefSlot.availableTeachers" [value]="teacher.id">
                     {{teacher.name}}&nbsp;<span class="sub">({{teacher.subject}})</span>
@@ -49,8 +50,8 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
-          <button mat-raised-button>Allocate</button>
-          <button mat-raised-button (click)="modifyToggle()">Discard</button>
+          <button mat-raised-button (click)="modifyToggle();createReliefAllocations()">Allocate</button>
+          <button mat-raised-button (click)="modifyToggle();getReliefSlotsCandidates(selectedTeacher)">Discard</button>
         </mat-card-actions>
       </mat-card>
     </div>
