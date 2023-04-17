@@ -73,7 +73,6 @@ export class ReliefPrinComponent {
   }
 
   createReliefAllocations() {
-    console.log(this.reliefAllocations);
     this.reliefService.addReliefAllocations(this.reliefAllocations).subscribe({
       complete: () => {
         this.getReliefSlotsCandidates(this.selectedTeacher);
