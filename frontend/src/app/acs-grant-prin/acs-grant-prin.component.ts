@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AcsGrantRequest} from "../models/acs-grant-request.model";
 
 @Component({
   selector: 'app-acs-grant-prin',
@@ -15,9 +16,28 @@ export class AcsGrantPrinComponent {
   vicePrincipal=[{value:"Ranasinghe",viewValue:"Mr.Senarathna A.B.C"},{value:"Mr. Ranasinghe R.J.K",viewValue:"Mr.Senarathna A.B.C"}
   ];
   add:boolean = false;
-
+  userID:number=123;
+  AcsGrantRequest:AcsGrantRequest[] = [];
 
   addToggle(){
     this.add = !this.add;
+  }
+
+
+  createRequest(value: any) {
+    const request:AcsGrantRequest={
+      id:0,
+      submittedDate:new Date(),
+      principalID:this.userID,
+      teacherID:value.selectedTeacher,
+      note:value.note,
+      fromDate:new Date(value.fromDate),
+      toDate:new Date(value.toDate),
+      status:value.pending(),
+
+
+    }
+    console.log(parseInt((value.startTime.slice(0,2))))
+
   }
 }

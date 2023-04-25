@@ -45,10 +45,11 @@
 
 
         <mat-card-content *ngIf="add">
+          <form id="request-form" #request="ngForm" (ngSubmit)="createRequest(request.value)" >
 
           <mat-form-field appearance="outline" class="flex margin-top" >
             <mat-label>Select a teacher</mat-label>
-            <mat-select>
+            <mat-select ngModel name="selectedTeacher">
               <mat-option *ngFor="let vp of vicePrincipal" [value]="vp.value">{{vp.viewValue}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -57,7 +58,7 @@
           <div class="flex">
             <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker">
+              <input matInput [matDatepicker]="picker" ngModel name="startDate">
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -65,16 +66,8 @@
             <span class="spacer"></span>
 
             <mat-form-field appearance="outline">
-              <input matInput
-                     [format]="24"
-
-                     [ngxMatTimepicker]="pickerE"
-                     placeholder="12:00"
-                     readonly />
-              <mat-icon matSuffix
-                        (click)="pickerE.open()">
-                watch_later
-              </mat-icon>
+              <input matInput [format]="24" [ngxMatTimepicker]="pickerE" placeholder="12:00" readonly ngModel name="startTime" />
+              <mat-icon matSuffix (click)="pickerE.open()">watch_later</mat-icon>
             </mat-form-field>
             <div class="ngx-mtp-box-bordered" >
               <ngx-mat-timepicker appendToInput="true" #pickerE class="clock">
@@ -86,27 +79,19 @@
           <div class="flex">
             <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker1">
+              <input matInput [matDatepicker]="picker1" ngModel name="endDate">
               <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
 
-              <span class="spacer"></span>
+            <span class="spacer"></span>
 
             <mat-form-field appearance="outline">
-              <input matInput
-                     [format]="24"
-                     [ngxMatTimepicker]="pickerD"
-                     placeholder="12:00"
-                     readonly />
-              <mat-icon matSuffix
-                        (click)="pickerD.open()">
-                watch_later
-              </mat-icon>
+              <input matInput [format]="24" [ngxMatTimepicker]="pickerD" placeholder="12:00" readonly ngModel name="endTime" />
+              <mat-icon matSuffix (click)="pickerD.open()">watch_later</mat-icon>
             </mat-form-field>
             <div class="ngx-mtp-box-bordered">
-              <ngx-mat-timepicker appendToInput="true" #pickerD class="clock">
-              </ngx-mat-timepicker>
+              <ngx-mat-timepicker appendToInput="true" #pickerD class="clock"></ngx-mat-timepicker>
             </div>
 
           </div>
@@ -114,23 +99,25 @@
 
           <span>
             <mat-form-field appearance="outline" class="flex">
-              <input matInput placeholder="Note">
+              <input matInput placeholder="Note" ngModel name="note">
             </mat-form-field>
           </span>
 
 
+          </form>
+
         </mat-card-content>
 
         <mat-card-actions align="end" *ngIf="add">
-          <button mat-raised-button>Submit</button>
-          <button mat-raised-button>Discard</button>
+          <button mat-raised-button form="request-form">Submit</button>
+          <button mat-raised-button (click)="addToggle()" type="submit">Discard</button>
         </mat-card-actions>
 
 
       </mat-card>
-    </div>
+     </div>
       <div class="right">
-        <mat-card>
+          <mat-card>
 
           <mat-card-header >
             Grant Status
