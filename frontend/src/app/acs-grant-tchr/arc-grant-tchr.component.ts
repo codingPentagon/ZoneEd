@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+
+class AccessRequest {
+}
+
 @Component({
   selector: 'app-acs-grant-tchr',
   templateUrl: './acs-grant-tchr.component.html',
@@ -7,6 +11,8 @@ import { Component } from '@angular/core';
 })
 export class AcsGrantTchrComponent {
   add:boolean = false;
+  userID:number=0;
+  accessRequests:AccessRequest[]=[]
 
   addToggle() {
     this.add = !this.add;
@@ -14,5 +20,7 @@ export class AcsGrantTchrComponent {
   requestDetails=
     {fromDate:'31/12/2022',fromTime:'08.00',toDate:'01/01/2023',toTime:'08.00',
     note:'I grant access you to handle principal dashboard from 30th of December until 31st of December'}
+
+
 
 }
