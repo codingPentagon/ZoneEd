@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card>
 
     <mat-card-header>
         <h1>User Login</h1>
@@ -22,4 +22,34 @@
 </form>
     </mat-card-content>
 </mat-card>
-
+ -->
+ <img class="bg_img" src="assets/login_images/scl.png">
+ <img class="scl_childs" src="assets/login_images/scl_child.png">
+ <div class="popup-window">
+     <h2 class="powerd">powerd by</h2>
+     <h2 class="powerd01">Coding Pentagon</h2>
+     <div class="trnsparentPopup">
+         <h2>WELCOME TO </h2>
+         <img class="logo" src="assets/login_images/logo.png">
+         <h2>School Management System</h2>
+         <h3>Kandy Zone</h3>
+         <div class="input-group flex-nowrap">
+             <div class="input-group-prepend">
+               <span class="input-group-text" id="addon-wrapping"></span>
+             </div>
+             <form  class="example-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()" >
+             <input name="Username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"  [(ngModel)]="stu.email" > 
+         
+           <div class="input-group flex-nowrap">
+             <div class="input-group-prepend">
+               <span class="input-group-text" id="addon-wrapping"></span>
+             </div>
+             <input name="Password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping"  [(ngModel)]="stu.password">
+           </div>
+           <button type="submit" >Login</button>
+           <a href="google.com">Forget your password?</a>
+         </form>
+  
+     </div>
+  
+ </div>

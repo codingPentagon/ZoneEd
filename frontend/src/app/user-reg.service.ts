@@ -23,7 +23,7 @@ export class UserRegService {
 
   sendStuData(stu:Stu) {
     console.log(stu);
-    return this.httpClient.post("http://localhost:8080/api/v1/stu/regStu",stu);
+    return this.httpClient.post("http://localhost:8080/api/auth/reg/stu",stu);
   }
   
   sendTchData(tch:Tchr) {
@@ -34,12 +34,14 @@ export class UserRegService {
 
   apiurl='http://localhost:8080/api/v1/stu"';
 
+  // public proceedlogin(): Observable<any> {
+  //   return this.httpClient.get(`http://localhost:8080/api/v1/login/${this.fullName}`);
+  // }
+ 
+  
   public proceedlogin(): Observable<any> {
     return this.httpClient.get(`http://localhost:8080/api/v1/login/${this.fullName}`);
   }
-  
-  
-  
 
 
  

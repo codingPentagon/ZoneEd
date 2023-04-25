@@ -19,22 +19,22 @@ export class LoginComponent {
   stu: Stu=new Stu();
 
   loginform=this.builder.group({
-    fullName:this.builder.control('',Validators.required),
+    email:this.builder.control('',Validators.required),
     password :this.builder.control('',Validators.required),
   })
   
   proceedlogin(){
     
    
-    this.UserRegService.setUserData(this.loginform.value.fullName);
-    this.auth.testUserData(this.loginform.value.fullName);
+    this.UserRegService.setUserData(this.loginform.value.email);
+    this.auth.testUserData(this.loginform.value.email);
  //   console.log(this.loginform.value.fullName);
     this.UserRegService.proceedlogin().subscribe((res: any)=>{
       this.userdata=res;
     //  console.log(this.userdata.fullName);
       console.log(this.userdata.password);
       
-      if(this.userdata.fullName===this.loginform.value.fullName && this.userdata.password===this.loginform.value.password && this.userdata.role==="student"){
+      if(this.userdata.email===this.loginform.value.email && this.userdata.password===this.loginform.value.password && this.userdata.role==="student"){
         console.log("Hi");
         console.log(this.userdata);
         if(this.userdata.isactive){
@@ -43,7 +43,7 @@ export class LoginComponent {
           this.router.navigate(['']);
         }else{
           console.log('plz contact admin','in active user');
-          this.router.navigate([`dashboard1/${this.loginform.value.fullName}`]);
+          this.router.navigate([`dashboard1/${this.loginform.value.email}`]);
         }
         
       }else{
