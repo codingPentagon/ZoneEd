@@ -9,9 +9,11 @@ import {LeaveService} from "../services/leave.service";
 })
 export class LeaveTchrComponent {
 
-  userID:number=2000;
+  userID:number=39;
   add: boolean= false;
-  leaveRequests: LeaveRequest[] = []
+  leaveRequests: LeaveRequest[] = [];
+  today = new Date();
+  selectedStartDate:Date = this.today;
 
   constructor(private leaveService:LeaveService) {
 
@@ -33,7 +35,7 @@ export class LeaveTchrComponent {
       reason:form.reason,
       teacherID:this.userID,
       startDate:form.startDate,
-      endDate:form.endDate,
+      endDate:new Date(form.endDate-1),
       status:'Pending'
     }
     this.leaveService.addLeaveRequest(request).subscribe({

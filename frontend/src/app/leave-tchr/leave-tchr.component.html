@@ -61,7 +61,7 @@
             <div class="flex">
               <mat-form-field appearance="outline" class="width" >
                 <mat-label>Date of commencing leave </mat-label>
-                <input matInput [matDatepicker]="picker" ngModel name="startDate">
+                <input matInput [matDatepicker]="picker" [ngModel]="selectedStartDate" name="startDate" [min]="today" required>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -72,7 +72,7 @@
             <div class="flex">
               <mat-form-field appearance="outline" class="width">
                 <mat-label>Date of assuming duties</mat-label>
-                <input matInput [matDatepicker]="picker1" ngModel name="endDate">
+                <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="newRequest.value.startDate">
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
