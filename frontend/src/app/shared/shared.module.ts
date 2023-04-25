@@ -12,9 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {CalendarToggleService} from "./calendar/calendar-toggle.service";
-import {CalendarConnectorService} from "./calendar/calendar-connector.service";
-import {MbscEventcalendarModule, Notifications} from "@mobiscroll/angular";
-import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
+import {NgxEventCalendarModule} from "ngx-event-calendar";
 
 
 @NgModule({
@@ -23,19 +22,19 @@ import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
     HeaderComponent,
     CalendarComponent,
   ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    MatToolbarModule,
-    MbscEventcalendarModule,
-    HttpClientModule,
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        MatToolbarModule,
+        HttpClientModule,
+        NgxEventCalendarModule,
 
-  ],
+    ],
 
   exports: [
     NavComponent,
@@ -45,8 +44,6 @@ import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 
   providers: [
     CalendarToggleService,
-    CalendarConnectorService,
-    Notifications
   ]
 })
 export class SharedModule { }
