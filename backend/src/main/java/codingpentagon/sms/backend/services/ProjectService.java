@@ -28,4 +28,8 @@ public class ProjectService {
     public List<Project> findProjects(int sclID) {
         return this.projectRepository.findBySchoolID(sclID);
     }
+
+    public void saveProposal(Proposal proposal) {
+        this.proposalRepository.save(proposal);
+    }
 }

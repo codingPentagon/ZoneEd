@@ -5,9 +5,7 @@ import codingpentagon.sms.backend.models.Project;
 import codingpentagon.sms.backend.models.Proposal;
 import codingpentagon.sms.backend.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,8 @@ public class ProjectController {
     public List<Project> fetchProjects(@PathVariable int sclID){
         return this.projectService.findProjects(sclID);
     }
+
+    @PostMapping("projects/proposals/")
+    public void addProposal(@RequestBody Proposal proposal){this.projectService.saveProposal(proposal);}
 
 }
