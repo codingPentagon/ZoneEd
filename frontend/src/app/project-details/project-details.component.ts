@@ -22,7 +22,7 @@ export class ProjectDetailsComponent {
 
 
   getAcceptedProps():any[]{
-    return this.proposals.filter(acceptedPropCheck);
+    return this.proposals?.filter(acceptedPropCheck);
 
     function acceptedPropCheck(element:any) {
       return element.status == 'Accepted';
