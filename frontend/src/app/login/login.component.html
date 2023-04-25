@@ -38,13 +38,13 @@
                <span class="input-group-text" id="addon-wrapping"></span>
              </div>
              <form  class="example-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()" >
-             <input name="Username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"  [(ngModel)]="stu.email" > 
+             <input name="Username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"  formControlName="email" name="email"  [(ngModel)]="stu.email" > 
          
            <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                <span class="input-group-text" id="addon-wrapping"></span>
              </div>
-             <input name="Password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping"  [(ngModel)]="stu.password">
+             <input name="Password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping" formControlName="password" name="password"  [(ngModel)]="stu.password">
            </div>
            <button type="submit" >Login</button>
            <a href="google.com">Forget your password?</a>

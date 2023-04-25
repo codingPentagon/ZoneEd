@@ -24,7 +24,13 @@ export class LoginComponent {
   })
   
   proceedlogin(){
-    
+    console.log(this.loginform.value.email);
+    console.log(this.loginform.value.password);
+    console.log("hi");
+
+    console.log(this.userdata.email);
+    console.log(this.userdata.password);
+
    
     this.UserRegService.setUserData(this.loginform.value.email);
     this.auth.testUserData(this.loginform.value.email);
