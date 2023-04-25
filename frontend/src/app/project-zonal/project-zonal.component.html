@@ -8,10 +8,10 @@
        Schools
      </mat-card-header>
      <mat-card-content>
-       <div *ngFor="let school of schoolProjsProps;let i=index">
+       <div *ngFor="let school of schools;let i=index">
          <div class="entry pointer" (click)="selectedSchool=i">
            <div class="flex">
-             {{school.schoolname}}
+             {{school.name}}
            </div>
          </div>
          <mat-divider></mat-divider>

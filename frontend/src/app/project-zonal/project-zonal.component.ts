@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {School} from "../models/school.model";
+import {SchoolService} from "../services/school.service";
 
 @Component({
   selector: 'app-project-zonal',
@@ -6,6 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-zonal.component.css']
 })
 export class ProjectZonalComponent {
+  schools:School[]=[]
+
+  constructor(private schoolService:SchoolService) {
+  }
+
+  ngOnInit(){
+    this.getSchools();
+  }
+
+  getSchools(){
+    this.schoolService.fetchSchools().subscribe({
+      next:res=>{
+        this.schools=res;
+      }
+    })
+  }
 
 
   schoolProjsProps = [
