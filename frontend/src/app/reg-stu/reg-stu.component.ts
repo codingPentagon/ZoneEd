@@ -52,7 +52,7 @@ export class RegStuComponent {
         console.log('Data sent successfully!');
         console.log(this.sturegisterform.value);
         // Show success message using an alternative method
-        alert('Registered Successfully. Please contact admin for enable.');
+        alert('Registered Successfully.');
         this.router.navigate(['login']);
       });
     }else{
