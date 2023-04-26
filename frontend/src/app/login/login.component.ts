@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     
   }
   proceedlogin(){
-    console.log(this.stu.email);
+   // console.log(this.responsedata.email);
     if(this.loginform.valid){
       this.authServices.proceedlogin(this.loginform.value).subscribe((reult:any)=>{
 
@@ -41,14 +41,17 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('accessToken',this.responsedata.jwtToken);
           alert("login successfully");
           this.router.navigate([''])
-        }else
-        {
-          alert("Login Unsuccessfully");
         }
+
+       
 
       
       });
     }
+    else
+        {
+          alert("Please Enter data!");
+        }
   }
 
 
