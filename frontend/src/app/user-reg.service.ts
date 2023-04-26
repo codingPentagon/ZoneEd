@@ -28,7 +28,7 @@ export class UserRegService {
   
   sendTchData(tch:Tchr) {
     console.log(tch);
-    return this.httpClient.post("http://localhost:8080/api/v1/tch/regTch",tch);
+    return this.httpClient.post("http://localhost:8080/api/auth/reg/tch",tch);
   }
 
 

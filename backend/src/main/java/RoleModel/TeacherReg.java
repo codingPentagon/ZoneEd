@@ -29,7 +29,7 @@ public class TeacherReg extends BaseUser {
     private String address1;
     private String address2;
     private String email;
-    private String password;
+   // private String password;
     private Date tchDob;
     private int tchContNo;
     private String tchNic;
