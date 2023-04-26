@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([''])
         }else
         {
-          alert("Login Unsuccessfully")
+          alert("Login Unsuccessfully");
         }
 
       
