@@ -1,3 +1,5 @@
+
+
 import { Component } from '@angular/core';
 import {School} from "../models/school.model";
 import {SchoolService} from "../services/school.service";

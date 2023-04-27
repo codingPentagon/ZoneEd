@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ProjectService {
@@ -30,6 +31,7 @@ public class ProjectService {
     }
 
     public void saveProposal(Proposal proposal) {
+        proposal.setId(new Random().nextInt(5000));
         this.proposalRepository.save(proposal);
     }
 }
