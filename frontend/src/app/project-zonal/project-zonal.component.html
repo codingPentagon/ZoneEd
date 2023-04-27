@@ -8,7 +8,7 @@
        Schools
      </mat-card-header>
      <mat-card-content>
-       <div *ngFor="let school of schools;let i=index">
+       <div *ngFor="let school of schools;let i=index" [ngClass]="{selected:selectedSchool == i}">
          <div class="entry pointer" (click)="selectedSchool=i">
            <div class="flex">
              {{school.name}}

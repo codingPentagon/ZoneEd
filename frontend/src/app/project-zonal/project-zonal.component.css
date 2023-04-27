@@ -42,7 +42,7 @@ mat-card-header{
 }
 
 .entry{
-  margin: 5px 17px;
+  padding: 5px 17px;
 }
 
 .margin-top{
@@ -63,4 +63,9 @@ mat-card-content{
 
 mat-expansion-panel-header{
   padding: 5px 17px;
+}
+
+.selected{
+  background-color: blue;
+  color: white;
 }
