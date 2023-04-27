@@ -9,8 +9,8 @@ import {NoticeService} from "../services/notice.service";
   styleUrls: ['./notice.component.css']
 })
 export class NoticeComponent {
-  userID:number=55;
-  userRole :string='teacher';
+  userID:number=33;
+  userRole :string='principal';
   noticesToDelete : number[]=[];
   categories:any[] = [];
 
