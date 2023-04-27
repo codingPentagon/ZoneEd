@@ -47,4 +47,21 @@ projects=[
     })
   }
 
+  createProposal(formValue:any) {
+    const proposal:Proposal = {
+      id:0,
+      title:formValue.title,
+      status:'Pending',
+      createdDate:new Date(),
+      comment:formValue.comment,
+      feedback:'',
+      schoolID:this.sclID,
+      documents:[]
+    }
+    this.projectService.addProposal(proposal).subscribe({
+      complete:()=>{
+        this.proposalAddToggle()
+      }
+    })
+  }
 }

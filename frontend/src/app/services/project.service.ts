@@ -13,4 +13,8 @@ export class ProjectService {
   fetchProposals(sclID: number) {
     return this.http.get<Proposal[]>(url+'proposals/'+sclID.toString())
   }
+
+  addProposal(proposal: Proposal) {
+    return this.http.post(url+'proposals/',proposal);
+  }
 }

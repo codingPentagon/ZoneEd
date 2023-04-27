@@ -1,3 +1,5 @@
+import {FileMetadata} from "./file.model";
+
 export interface Proposal {
   id:number;
   title:String;
@@ -5,10 +7,8 @@ export interface Proposal {
   createdDate:Date;
   comment:String;
   feedback:String;
-  fileName:String;
   schoolID:number;
-  principalID:number;
-  documents:File[];
+  documents:FileMetadata[];
 }
 
 

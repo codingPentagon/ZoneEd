@@ -27,17 +27,19 @@
           </div>
         </mat-card-content>
         <mat-card-content *ngIf="proposalAdd">
-          <mat-form-field appearance="outline" class="margin-top width">
-            <mat-label>Project Title</mat-label>
-            <input matInput>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="width">
-            <mat-label>Comments</mat-label>
-            <input matInput>
-          </mat-form-field>
-          <input type="file">
+          <form id="new-proposal" #newProposal="ngForm" (ngSubmit)="createProposal(newProposal.value)">
+            <mat-form-field appearance="outline" class="margin-top width">
+              <mat-label>Project Title</mat-label>
+              <input matInput name="title" ngModel>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width">
+              <mat-label>Comments</mat-label>
+              <input matInput name="comment" ngModel>
+            </mat-form-field>
+            <input type="file" name="file" ngModel>
+          </form>
         </mat-card-content>
         <mat-action-row *ngIf="proposalAdd">
-          <button mat-raised-button>Submit</button>
-          <button mat-raised-button>Discard</button>
+          <button mat-raised-button type="submit" form="new-proposal">Submit</button>
+          <button mat-raised-button (click)="proposalAddToggle()">Discard</button>
         </mat-action-row>
