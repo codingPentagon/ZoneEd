@@ -1,49 +1,31 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Notification} from "../models/notification.model";
+import {Injectable} from '@angular/core';
+import {Notification, NotificationToken} from "../models/notification.model";
 import {HttpClient} from "@angular/common/http";
 import {AngularFireMessaging} from "@angular/fire/compat/messaging";
-import {BehaviorSubject} from "rxjs";
-
-
 
 const url = 'http://localhost:8080/notifications/'
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService implements OnInit{
-
+export class NotificationService{
   constructor(private http: HttpClient, private fireMessaging: AngularFireMessaging) {
-
-  }
-
-  ngOnInit(){
-    this.requestPermission();
-    this.listen();
   }
 
   requestPermission(){
-    this.fireMessaging.requestToken.subscribe({
-      next:(token)=>{
-        console.log("Permission granted!");
-        console.log(token);
-      },
-      error:(error)=>{console.error(error);}
-    })
+    return this.fireMessaging.requestToken
   }
-
 
   listen(){
-    this.fireMessaging.messages.subscribe({
-      next:message=>{
-        console.log(message);
-      }
-    });
+    return this.fireMessaging.messages
   }
 
+  addToken(token:NotificationToken){
+    return this.http.post(url+'token',token);
+  }
 
   createNotification(receiverID:number, content:string, event:string){
+
     const notif :Notification = {
       id : 0,
       receiverID : receiverID,
@@ -52,9 +34,19 @@ export class NotificationService implements OnInit{
       content : content,
       event : event,
       isRead : false,
-
     }
-    return this.http.post(url,notif)
+    return this.http.post(url,notif);
+  }
+
+  sendNotification(receiverID:number){
+    const tokens:NotificationToken[]=[];
+    this.fetchTokens(receiverID).subscribe({
+
+    })
+  }
+
+  fetchTokens(userID:number){
+    return this.http.get<NotificationToken[]>(url+userID.toString())
   }
 
   getNotifications(userID: number) {
@@ -64,7 +56,5 @@ export class NotificationService implements OnInit{
   updateNotification(notification:Notification){
     return this.http.put(url,notification);
   }
-
-
 }
 

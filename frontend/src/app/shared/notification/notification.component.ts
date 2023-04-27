@@ -1,7 +1,7 @@
 import {Component, HostBinding} from '@angular/core';
 import {NotificationConnectorService} from "./notification-connector.service";
 import {NotificationService} from "../../services/notification.service";
-import {Notification} from "../../models/notification.model";
+import {Notification, NotificationToken} from "../../models/notification.model";
 
 @Component({
   selector: 'app-notification',
@@ -26,10 +26,9 @@ export class NotificationComponent {
     });
     this.notifConService.getUnreadNotifCount();
     this.getNotifications();
-    this.notifService.requestPermission();
-
-
+    this.getToken();
   }
+
   getNotifications(){
     this.notifService.getNotifications(this.userID).subscribe({
       next: res => {
@@ -48,5 +47,19 @@ export class NotificationComponent {
     })
   }
 
-
+  getToken(){
+    this.notifService.requestPermission().subscribe({
+      next: token => {
+        if (token){
+          const notifToken : NotificationToken={
+            id :0,
+            token: token,
+            userID: this.userID
+          }
+          this.notifService.addToken(notifToken);
+        }
+      }
+    });
+    this.notifService.listen();
+  }
 }

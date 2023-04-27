@@ -1,5 +1,3 @@
-import {Time} from "@angular/common";
-
 export interface Notification {
   id : number;
   receiverID : number;
@@ -8,4 +6,10 @@ export interface Notification {
   content : string;
   event : string;
   isRead : boolean;
+}
+
+export interface NotificationToken{
+  userID : number;
+  token : string;
+  id : number;
 }
