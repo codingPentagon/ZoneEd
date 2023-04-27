@@ -1,8 +1,8 @@
-
-
 import { Component } from '@angular/core';
 import {School} from "../models/school.model";
 import {SchoolService} from "../services/school.service";
+import {Proposal} from "../models/proposal.model";
+import {ProjectService} from "../services/project.service";
 
 @Component({
   selector: 'app-project-zonal',
@@ -10,9 +10,10 @@ import {SchoolService} from "../services/school.service";
   styleUrls: ['./project-zonal.component.css']
 })
 export class ProjectZonalComponent {
-  schools:School[]=[]
+  schools:School[]=[];
+  proposals:Proposal[]=[]
 
-  constructor(private schoolService:SchoolService) {
+  constructor(private schoolService:SchoolService,private projectService:ProjectService) {
   }
 
   ngOnInit(){
@@ -23,6 +24,17 @@ export class ProjectZonalComponent {
     this.schoolService.fetchSchools().subscribe({
       next:res=>{
         this.schools=res;
+      },
+      complete:()=>{
+        this.getProposals()
+      }
+    })
+  }
+
+  getProposals(){
+    this.projectService.fetchProposals(this.schools[this.selectedSchool].id).subscribe({
+      next:res=>{
+        this.proposals=res;
       }
     })
   }
