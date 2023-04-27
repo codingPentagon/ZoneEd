@@ -22,7 +22,7 @@ export class NoticeComponent {
     this.getNotices();
     this.getCategories();
   }
-
+//getting the notices from backend
   getNotices(){
     this.noticeService.getNotices(this.userRole).subscribe({
       next:res=>{
@@ -32,7 +32,7 @@ export class NoticeComponent {
   }
 
   create:boolean = false;
-
+//toggle the notice creation form
   createToggle(){
     this.create = !this.create;
     if (this.delete){
@@ -41,7 +41,7 @@ export class NoticeComponent {
   }
 
   delete:boolean = false;
-
+//toggle the checkboxes for deleting notices
   deleteToggle(){
     this.noticesToDelete.splice(0);
     this.delete = !this.delete;
@@ -51,8 +51,7 @@ export class NoticeComponent {
   }
 
   noticeBox:string = 'all';
-
-
+//get posted notices from backend
   getPostedNotices() {
     this.noticeService.getPostedNotices(this.userID).subscribe({
       next:res=>{
@@ -60,7 +59,7 @@ export class NoticeComponent {
       }
     })
   }
-
+//create notice object and send to backend for saving
   createNotice(newNotice: NgForm) {
     const notice:Notice={
       id:0,
@@ -74,8 +73,8 @@ export class NoticeComponent {
     this.noticeService.createNotice(notice).subscribe({
       next:res=>{console.log(res)}
     })
-
   }
+//toggles the IDs of notices which are selected for deleting using checkbox
   toggleDeleteItems(noticeID:number) {
     const index=this.noticesToDelete.indexOf(noticeID);
     if (index===-1){
@@ -86,7 +85,7 @@ export class NoticeComponent {
     }
     console.log(this.noticesToDelete);
   }
-
+//delete selected notices from database
   deleteNotices(){
     this.noticeService.removeMails(this.noticesToDelete).subscribe({
       complete : () => {
@@ -94,7 +93,7 @@ export class NoticeComponent {
       }
     });
   }
-
+//fill the categories array with available user categories for the current user role
   getCategories(){
     if (this.userRole == 'admin' || this.userRole == 'zonal'){
       this.categories.push({value:'principal',viewValue:'Principal'})
