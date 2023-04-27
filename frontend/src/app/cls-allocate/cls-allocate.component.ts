@@ -3,7 +3,6 @@ import {Teacher} from "../models/teacher.model";
 import {Class} from "../models/class.model";
 import {ClassesService} from "../services/classes.service";
 import {TeachersService} from "../services/teachers.service";
-import {waitForAsync} from "@angular/core/testing";
 
 @Component({
   selector: 'app-cls-allocate',
@@ -14,6 +13,7 @@ export class ClsAllocateComponent {
 
   sclID = 5555;
   teachers: Teacher[] = [];
+  selectedTeachers:number[]=[];
   classes: Class[] = [{id:0,name:'',sclID:0,teacherID:0,allocatedDate:new Date(),boysCount:0,girlsCount:0}];
   selectedClass: number = 0;
   newClass: string = '';
@@ -52,7 +52,7 @@ export class ClsAllocateComponent {
       name: clsName,
       sclID: this.sclID,
       teacherID: 0,
-      allocatedDate: new Date(0, 0, 0),
+      allocatedDate: new Date(0),
       boysCount: 0,
       girlsCount: 0
     };
@@ -87,15 +87,26 @@ export class ClsAllocateComponent {
     } else {
       return this.teachers.filter(tchr=>{
         return tchr.id == teacherID;
-      })[0].name
+      })[0]?.name
     }
   }
 
   allocate() {
     console.log(this.tempClasses)
     this.tempClasses.forEach(cls=>{
-      this.classesService.storeClass(cls).subscribe()
+      this.classesService.storeClass(cls).subscribe({
+        complete:()=>{
+          this.getClasses()
+        }
+      })
     });
-    this.getClasses()
+  }
+
+  //filters not selected teachers
+  getSelectedTeacher(){
+    this.selectedTeachers.splice(0);
+    this.tempClasses.forEach(cls=>{
+      cls.teacherID && this.selectedTeachers.push(cls.teacherID);
+    })
   }
 }

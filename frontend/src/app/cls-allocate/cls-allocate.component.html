@@ -70,10 +70,11 @@
               <span class="spacer"></span>
               <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
                           [(value)]="cls.teacherID"
+                          (valueChange)="getSelectedTeacher()"
                           [ngStyle]="{'background-color':cls.teacherID == 0 ?'lightgrey' : 'blue'}"
                           [disabled]="!modify" [ngClass]="{'hide':!modify}">
                 <mat-option [value]=0 class="remove">Remove Selection</mat-option>
-                <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">
+                <mat-option *ngFor="let teacher of teachers" [value]="teacher.id" [disabled]="selectedTeachers.includes(teacher.id)">
                   {{teacher.name}}
                 </mat-option>
               </mat-select>
