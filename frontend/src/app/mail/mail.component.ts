@@ -4,11 +4,14 @@ import {FormControl, NgForm} from "@angular/forms";
 import { map, Observable, startWith} from "rxjs";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {NgxFileDropEntry} from "ngx-file-drop";
+
 import {MailService} from "../services/mail.service";
 import { Mail} from "../models/mail.model";
-import {NgxFileDropEntry} from "ngx-file-drop";
 import { FileMetadata} from "../models/file.model";
 import {FilesService} from "../services/files.service";
+import {User} from "../models/user.model";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-mail',
@@ -17,75 +20,82 @@ import {FilesService} from "../services/files.service";
 })
 
 export class MailComponent {
-  userID :number =80;
+  userID :number =60;
   sclID:number=555;
   userRole:string = 'student';
-
   categories : any[] = [];
+  users:User[]=[];
 
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  mailCtrl = new FormControl('');
-  filteredMails: Observable<string[]>;
-  mails: string[] = [];
-  allMails: string[] = ['herathhmtm.20@uom.lk', 'hitihamuhmcn.20@uom.lk', 'pemasirimptbs.20@uom.lk', 'batagallabghm.20@uom.lk', 'dissanayakedml.20@uom.lk'];
+  // separatorKeysCodes: number[] = [ENTER, COMMA];
+  // mailCtrl = new FormControl('');
+  // filteredMails: Observable<string[]>;
+  // mails: User[] = [];
+  // allMails: User[] = [];
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=this.filesService.filesMetadata;
   selectedCategory: string='';
 
-
-
-  constructor(private mailService:MailService,private filesService:FilesService) {//TODO
-    this.filteredMails = this.mailCtrl.valueChanges.pipe(
-      startWith(null),
-      map((mail: string | null) => (mail ? this._filter(mail) : this.allMails.slice())),
-    );
+  constructor(private mailService:MailService,private filesService:FilesService,private userService:UserService) {
   }
 
-
-
+  // constructor(private mailService:MailService,private filesService:FilesService) {
+  //   this.filteredMails = this.mailCtrl.valueChanges.pipe(
+  //     startWith(null),
+  //     map((mail: User | null) => (mail ? this._filter(mail) : this.allMails.slice())),
+  //   );
+  // }
+  //
   ngOnInit(){
     this.getInboxMails();
     this.getCategories();
+    this.getUsers();
   }
+  //
+  // add(event: MatChipInputEvent): void {
+  //   const value = (event.value || '').trim();
+  //
+  //   // Add our mail
+  //   if (value) {
+  //     this.mails.push(value);
+  //   }
+  //
+  //   // Clear the input value
+  //   event.chipInput!.clear();
+  //   this.mailCtrl.setValue(null);
+  // }
+  //
+  // remove(mail: string): void {
+  //   const index = this.mails.indexOf(mail);
+  //
+  //   if (index >= 0) {
+  //     this.mails.splice(index, 1);
+  //   }
+  // }
+  //
+  // selected(event: MatAutocompleteSelectedEvent): void {
+  //   this.mails.push(event.option.viewValue);
+  //   // @ts-ignore
+  //   this.mailInput.nativeElement.value = '';
+  //   this.mailCtrl.setValue(null);
+  // }
+  //
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //   return this.allMails.filter(mail => mail.toLowerCase().includes(filterValue));
+  // }
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  getUsers(){
+    this.userService.fetchUsers(this.sclID).subscribe({
+      next:res=>{
+        this.users = res;
+      }
 
-    // Add our mail
-    if (value) {
-      this.mails.push(value);
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-    this.mailCtrl.setValue(null);
-  }
-
-  remove(mail: string): void {
-    const index = this.mails.indexOf(mail);
-
-    if (index >= 0) {
-      this.mails.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.mails.push(event.option.viewValue);
-    // @ts-ignore
-    this.mailInput.nativeElement.value = '';
-    this.mailCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.allMails.filter(mail => mail.toLowerCase().includes(filterValue));
+    })
   }
 
   inboxmails: Mail[] = [];
   sentboxmails: Mail[] = [];
   mailsToDelete: Mail[] = [];
-
-
 
   getInboxMails(){
     this.mailService.getInboxMails(this.userID).subscribe({
@@ -110,7 +120,7 @@ export class MailComponent {
       senderID : this.userID,
       date :new Date(),
       time : "",
-      receiverID :newMail.value.receiverIDm,
+      receiverID :newMail.value.receiverID,
       subject : newMail.value.subject,
       content :newMail.value.content,
       attachments : this.attachments
@@ -120,7 +130,6 @@ export class MailComponent {
     this.mailService.createMail(mail).subscribe({
       next:res=>{console.log(res)}
     })
-
   }
   updateAsRead(mailID: number){
     this.mailService.patchAsRead(mailID).subscribe({
@@ -155,15 +164,10 @@ export class MailComponent {
 
   reply(recipientID: number) {
     this.createToggle();
-    this.mails = [];
-    //TODO:fetch name by user ID
-    this.mails.push(recipientID.toString());
   }
 
   //File drop module
-
   droppedFiles: NgxFileDropEntry[] = [];
-
 
   public dropped(droppedFiles: NgxFileDropEntry[]) {
     console.log(droppedFiles)
@@ -194,7 +198,6 @@ export class MailComponent {
   public fileLeave(event:any){
     console.log(event);
   }
-
 
   createAttachment(file: File) {
     this.filesService.addFile(this.fileDir,file).then(()=>{
@@ -230,18 +233,6 @@ export class MailComponent {
     }
   }
 
-  users : {name:string,id:number}[]=[];
-  getUsers(){
-    switch (this.selectedCategory) {
-      // case 'teacher' : this.teachersService.fetchTeachers(this.sclID).subscribe({next:res=>{this.users=res}});break;
-      // case 'principal' : this.principalsService.fetchPrincipals(this.sclID).subscribe({next:res=>{this.users=res}});break;
-      // case 'zonal' : this.zonalsService.fetchZonals(this.sclID).subscribe({next:res=>{this.users=res}});break;
-      // case 'admin' : this.adminsService.fetchAdmins(this.sclID).subscribe({next:res=>{this.users=res}});break;
-      // case 'parent' : this.parentService.fetchParents(this.sclID).subscribe({next:res=>{this.users=res}});break;
-      // case 'student' : this.studentsService.fetchStudents(this.sclID).subscribe({next:res=>{this.users=res}});break;
-    }
-  }
-
   toggleDeleteItems(mail:Mail) {
     const index=this.mailsToDelete.indexOf(mail);
     if (index===-1){
@@ -269,5 +260,4 @@ export class MailComponent {
       }
     });
   }
-
 }

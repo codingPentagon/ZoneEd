@@ -22,7 +22,6 @@
       <mat-card-content *ngIf="!create" class="mail-box">
         <div *ngIf="mailBox=='inbox'" >
             <mat-accordion>
-
                 <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
                   <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
                                               [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
@@ -33,9 +32,9 @@
                     </mat-panel-title>
                     <mat-panel-description>
 
-                      {{inboxmail.date}}
+                      {{inboxmail.date | date:'dd/MM/yyyy'}}
                       <br>
-                      {{inboxmail.time}}
+                      {{inboxmail.date | date: 'HH:mm'}}
                       <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(inboxmail)"></mat-checkbox>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
@@ -64,9 +63,9 @@
                     {{sentboxmail.subject}}
                   </mat-panel-title>
                   <mat-panel-description>
-                    {{sentboxmail.date}}
+                    {{sentboxmail.date | date: 'dd/MM/yyyy'}}
                     <br>
-                    {{sentboxmail.time}}
+                    {{sentboxmail.date | date: 'HH:mm'}}
                     <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(sentboxmail)"></mat-checkbox>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -89,50 +88,32 @@
       <mat-card-content *ngIf="create" class="new-mail">
         <form class="left" #newMail="ngForm"  (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
 
-            <mat-form-field appearance="outline" color="accent">
-              <mat-label>Category</mat-label>
-               <mat-select [(value)]="selectedCategory">
-                 <mat-option *ngFor="let category of categories" [value]="category.value">
-                   {{category.viewValue}}
-                 </mat-option>
-               </mat-select>
+<!--            <mat-form-field appearance="outline" color="accent" class="category">-->
+<!--              <mat-label>Category</mat-label>-->
+<!--               <mat-select [(value)]="selectedCategory">-->
+<!--                 <mat-option *ngFor="let category of categories" [value]="category.value">-->
+<!--                   {{category.viewValue}}-->
+<!--                 </mat-option>-->
+<!--               </mat-select>-->
 
-            </mat-form-field>
+<!--            </mat-form-field>-->
             <mat-form-field appearance="outline" color="accent">
               <mat-label>Recipient</mat-label>
-              <mat-chip-grid #chipGrid>
-                <mat-chip-row *ngFor="let mail of mails" (removed)="remove(mail)">
-                  {{mail}}
-                  <button matChipRemove [attr.aria-label]="'remove ' + mail">
-                    <mat-icon>cancel</mat-icon>
-                  </button>
-                </mat-chip-row>
-              </mat-chip-grid>
-              <input placeholder="New Mail..." #mailInput [formControl]="mailCtrl"
-                     [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     (matChipInputTokenEnd)="add($event)"/>
-              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let mail of filteredMails | async" [value]="mail">
-                  {{mail}}
-                </mat-option>
-              </mat-autocomplete>
+              <mat-select>
+                <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+              </mat-select>
             </mat-form-field>
-
 
             <mat-form-field appearance="outline" color="accent">
               <mat-label>Subject</mat-label>
               <input matInput placeholder="" ngModel name="subject">
             </mat-form-field>
 
-
             <mat-form-field appearance="outline" color="accent" class="mailbody">
               <mat-label>Content</mat-label>
               <textarea matInput placeholder="" ngModel name="content"></textarea>
             </mat-form-field>
-
         </form>
-
 
         <div class="right">
           <div class="att">
@@ -163,5 +144,4 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
 </div>

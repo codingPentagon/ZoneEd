@@ -114,3 +114,6 @@ mat-card-content{
 .attachment-list>mat-icon:hover{
   color: #3F4E4F;
 }
+.category{
+  margin: 5px 0 0;
+}

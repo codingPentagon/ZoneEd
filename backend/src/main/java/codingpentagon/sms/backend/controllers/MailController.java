@@ -5,7 +5,6 @@ import codingpentagon.sms.backend.repositories.MailRepository;
 import codingpentagon.sms.backend.services.MailService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
