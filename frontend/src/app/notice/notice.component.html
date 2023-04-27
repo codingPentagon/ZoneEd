@@ -57,9 +57,9 @@
                 {{notice.subject}}
               </mat-panel-title>
               <mat-panel-description>
-               {{notice.date}}
+               {{notice.date | date:'dd/mm/yyyy'}}
                 <br>
-                {{notice.time}}
+                {{notice.date | date: 'HH:mm'}}
                   <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(notice.id)"></mat-checkbox>
               </mat-panel-description>
             </mat-expansion-panel-header>
