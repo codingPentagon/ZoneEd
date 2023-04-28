@@ -17,17 +17,17 @@ import static codingpentagon.sms.backend.shared.Constant.ROLE_TEACHER;
 public class InitialRunner {
 
     @Autowired
-    private RoleRepo roleRepo;
+    private RoleRepo roleRepo; // Autowire the RoleRepo dependency for accessing and manipulating Role entities in the database.
 
 
     @PostConstruct
-    public void insertRoles() {
+    public void insertRoles() {     // add the initial roles to the database
         // Add ROLE_STUDENT and ROLE_TEACHER to the database
         addInitialRoles();
     }
 
 
-    public void addInitialRoles() {
+    public void addInitialRoles() {  //adds the initial roles ROLE_STUDENT and ROLE_TEACHER to the database.
         roleRepo.findByName(ROLE_STUDENT).ifPresentOrElse(role -> {
             Role studentRole = Role.builder()
                     .id(role.getId())

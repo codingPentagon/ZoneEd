@@ -16,7 +16,7 @@ public class TchRegService {
     private TchRegRepo tchRegRepo;
 
     public TeacherReg save(TeacherReg teacherReg){
-        return  tchRegRepo.save(teacherReg);
+        return  tchRegRepo.save(teacherReg);        // Saves the given TeacherReg object to the database using the TeacherReg and returns the saved object.
     }
 }
  

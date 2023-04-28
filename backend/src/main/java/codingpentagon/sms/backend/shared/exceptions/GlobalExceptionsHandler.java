@@ -34,7 +34,7 @@ public class GlobalExceptionsHandler extends ResponseEntityExceptionHandler {
             errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
         }
 
-        String message = errors.stream().reduce((s1, s2) -> s1 + "*" + s2).orElse("");
+        String message = errors.stream().reduce((s1, s2) -> s1 + "*" + s2).orElse(""); // Combine the error messages using "*" as a separator
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new MessageResponse(message));
@@ -47,14 +47,14 @@ public class GlobalExceptionsHandler extends ResponseEntityExceptionHandler {
                 .body(new MessageResponse(ex.getMessage()));
     }
 
-    @ExceptionHandler({UsernameNotFoundException.class})
+    @ExceptionHandler({UsernameNotFoundException.class})       // Return a ResponseEntity with a 401 status (Unauthorized) and a MessageResponse body containing the error message
     public ResponseEntity<?> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest request) {
         return ResponseEntity
                 .status(401)
                 .body(new MessageResponse(ex.getMessage()));
     }
 
-    @ExceptionHandler({Exception.class})
+    @ExceptionHandler({Exception.class}) // Return a ResponseEntity with a 500 status (Internal Server Error) and a MessageResponse body containing the error message
     public ResponseEntity<?> handleDefaultException(Exception ex, WebRequest request) {
         return ResponseEntity
                 .status(500)

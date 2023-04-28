@@ -10,5 +10,5 @@ import RoleModel.Role;
 @Repository
 
 public interface RoleRepo extends MongoRepository<Role,String> {
-    Optional<Role> findByName(String name);
+    Optional<Role> findByName(String name);// Method declaration to find an role entity by name.
 }

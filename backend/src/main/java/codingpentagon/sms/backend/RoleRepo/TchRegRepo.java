@@ -7,5 +7,5 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TchRegRepo extends MongoRepository<TeacherReg, String> {
-  Optional<TeacherReg> findById(String fullName);
+  Optional<TeacherReg> findById(String fullName);// Method declaration to find a TeacherReg entity by full name.
 }

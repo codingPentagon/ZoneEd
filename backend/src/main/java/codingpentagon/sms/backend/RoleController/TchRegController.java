@@ -21,18 +21,23 @@ import codingpentagon.sms.backend.RoleRepo.TchRegRepo;
 
 public class TchRegController {
     @Autowired
-    TchRegRepo tchRegRepo;
+    TchRegRepo tchRegRepo;   // Autowire the TchRegRepo dependency for accessing and manipulating TeacherReg entities in the database.
 
     @PostMapping("/regTch")
     public TeacherReg register(@RequestBody TeacherReg teachertReg){
 
-        return  tchRegRepo.save(teachertReg);
+               // Endpoint to register a teacher.
+        // It takes a TeacherReg object in the request body.
+
+        return  tchRegRepo.save(teachertReg);  // Save the provided TeacherReg object to the database using the tchRegRepo and return the saved object.
 
     }
 
     @GetMapping ("/regTchData/{fullName}")
     public Optional<TeacherReg> getStudentRegById(@PathVariable ("fullName") String fullName) {
-        return tchRegRepo.findById(fullName);
+        // Endpoint to retrieve a teacher's registration by their full name.
+        // It takes the full name as a path variable.
+        return tchRegRepo.findById(fullName);  // Retrieve the TeacherReg object from the database based on the provided full name using the tchRegRepo.
     }
     
 }

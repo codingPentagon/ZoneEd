@@ -15,20 +15,20 @@ import { Router } from '@angular/router';
 })
 export class RegStuComponent {
 
-  stu: Stu=new Stu();
+  stu: Stu=new Stu(); //student object
 
-  constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router){}
+  constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router){} //inject services and routes
 
- sturegisterform=this.builder.group({
-
-    fullName:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(5)])),
+ sturegisterform=this.builder.group({ //formgroup
+   //validate reg form data
+    fullName:this.builder.control('',Validators.compose([Validators.required,Validators.minLength(5)])), 
     initName:this.builder.control('',Validators.required),
     address1:this.builder.control('',Validators.required),
     address2:this.builder.control('',Validators.required),
     indexNo:this.builder.control('',Validators.required),
     dob:this.builder.control('',Validators.required),
     
-    password:this.builder.control('',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
+    password:this.builder.control('asAS12!@3'),//Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
     email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
     gender:this.builder.control(''),
     stuClass:this.builder.control('',Validators.required),
@@ -46,7 +46,7 @@ export class RegStuComponent {
 
 
 
-  sendStuData() {
+  sendStuData() { //after click submit to reg details implenment this method
     if (this.sturegisterform.valid) {
       this.UserRegService.sendStuData(this.stu).subscribe(response => {
         console.log('Data sent successfully!');

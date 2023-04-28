@@ -40,13 +40,13 @@ public class SecurityConfiguration  {
     // }
 
     @Autowired
-    AuthUserDetailsService userDetailsService;
+    AuthUserDetailsService userDetailsService;      // Autowire the AuthUserDetailsService for user details retrieval.
 
     @Autowired
-    private AuthEntryPointJwt unauthorizedHandler;
+    private AuthEntryPointJwt unauthorizedHandler;    // Autowire the AuthEntryPointJwt for handling unauthorized access.
 
     @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter() {
+    public AuthTokenFilter authenticationJwtTokenFilter() {  // Create and return a new instance of AuthTokenFilter as a bean.
         return new AuthTokenFilter();
     }
 
@@ -54,15 +54,15 @@ public class SecurityConfiguration  {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setUserDetailsService(userDetailsService); // Set the userDetailsService for retrieving user details and the passwordEncoder for password encoding
         authProvider.setPasswordEncoder(passwordEncoder());
 
-        return authProvider;
+        return authProvider; // Return the configured DaoAuthenticationProvider as a bean.
     }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
+        return authConfig.getAuthenticationManager(); // Retrieve the AuthenticationManager from the AuthenticationConfiguration.
     }
 
 
@@ -80,17 +80,17 @@ public class SecurityConfiguration  {
 //                        "/api/auth/tch/reg",
                         "/api/auth/account",
                         "/api/auth/signIn").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated();       // Configure the HTTP security settings, including CORS, CSRF, session management, and authorization rules.
 
-        http.authenticationProvider(authenticationProvider);
+        http.authenticationProvider(authenticationProvider);  // Set the authenticationProvider for the HTTP security.
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
+        return http.build(); // Build and return the configured SecurityFilterChain.
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();  // Create and return a new BCryptPasswordEncoder as a bean for password encoding
     }
 }

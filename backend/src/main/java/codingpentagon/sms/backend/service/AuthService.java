@@ -15,7 +15,7 @@ import RoleModel.dto.response.TeacherRegDto;
 
 
 public interface AuthService {
-   StudentReg createUser(StudentRegDto dto);
+   StudentReg createUser(StudentRegDto dto); // Declares a method createUser() that takes a StudentRegDto object as a parameter and returns a StudentReg object.
 
      TeacherReg createTeacher(TeacherRegDto dto);
 

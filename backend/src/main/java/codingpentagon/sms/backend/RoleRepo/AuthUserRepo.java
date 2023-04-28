@@ -9,9 +9,9 @@ import RoleModel.AuthUser;
 
 @Repository
 
-public interface AuthUserRepo extends MongoRepository<AuthUser,String> {
+public interface AuthUserRepo extends MongoRepository<AuthUser,String> {// Interface declaration for the AuthUserRepo repository that extends the MongoRepository interface.
     
-    Optional<AuthUser> findByEmail(String email);
+    Optional<AuthUser> findByEmail(String email);    // Method declaration to find an AuthUser entity by email.
 
-    Boolean existsByEmail(String email);
+    Boolean existsByEmail(String email);// Method declaration to check if an AuthUser entity exists with a given email.
 }

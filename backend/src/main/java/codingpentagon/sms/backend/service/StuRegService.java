@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class StuRegService {
 
     @Autowired
-    private StuRegRepo stuRegRepo;
+    private StuRegRepo stuRegRepo; // Autowires an instance of StuRegRepo for database operations.
 
     public StudentReg save(StudentReg studentReg){
-        return  stuRegRepo.save(studentReg);
+        return  stuRegRepo.save(studentReg);      // Saves the given StudentReg object to the database using the StuRegRepo and returns the saved object.
     }
 }

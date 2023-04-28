@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 
+//for handle unauth login
 public class UnAuthorizeException extends GeneralException {
     
 

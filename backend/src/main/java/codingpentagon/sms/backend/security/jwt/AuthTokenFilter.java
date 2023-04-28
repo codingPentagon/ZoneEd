@@ -19,45 +19,49 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import codingpentagon.sms.backend.services.AuthUserDetailsService;
 
 @Component
-public class AuthTokenFilter extends OncePerRequestFilter {
+public class AuthTokenFilter extends OncePerRequestFilter { // Class declaration for the AuthTokenFilter class that extends the OncePerRequestFilter class.
     
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;// Autowire the JwtUtils dependency for JWT-related operations.
 
     @Autowired
-    private AuthUserDetailsService userDetailsService;
+    private AuthUserDetailsService userDetailsService;  // Autowire the AuthUserDetailsService dependency for user details retrieval.
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+         // Method implementation for the doFilterInternal() method.
+        // It performs the filtering logic for each incoming request.
+
                 try {
-                    String jwt = parseJwt(request);
-                    if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+                    String jwt = parseJwt(request); // Parse the JWT token from the request.
+                    if (jwt != null && jwtUtils.validateJwtToken(jwt)) {   // If the JWT token is not null and is valid.
+                        String username = jwtUtils.getUserNameFromJwtToken(jwt);   // Extract the username from the JWT token.
         
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(username);     // Load the user details from the userDetailsService based on the username.
                         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
-                                userDetails.getAuthorities());
-                        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                                userDetails.getAuthorities());  // Create an authentication token with the user details and authorities.
+                        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));    // Set the authentication details for the token.
         
-                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                        SecurityContextHolder.getContext().setAuthentication(authentication);// Set the authentication object in the SecurityContextHolder.
                     }
                 } catch (Exception e) {
-                    logger.error("Cannot set user authentication: {}", e);
+                    logger.error("Cannot set user authentication: {}", e);//an exception while setting user authentication.
                 }
         
 
-                filterChain.doFilter(request, response);
+                filterChain.doFilter(request, response);// Proceed with the filter chain.
     }
 
-    private String parseJwt(HttpServletRequest request) {
-        String headerAuth = request.getHeader("Authorization");
+    private String parseJwt(HttpServletRequest request) {// Method to parse the JWT token from the request.
+        String headerAuth = request.getHeader("Authorization");    // Get the value of the "Authorization" header.
 
-        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            return headerAuth.substring(7);
+        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {     // If the header value is not empty and starts with "Bearer ".
+            return headerAuth.substring(7);// Return the token value after removing the "Bearer " prefix.
         }
 
-        return null;
+        return null;// Return null if the token is not found or is in an invalid format
     }
     
 }

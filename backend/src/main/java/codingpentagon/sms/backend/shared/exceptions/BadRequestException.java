@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 public class BadRequestException extends GeneralException {
     public BadRequestException(String message, Object... args){
-        super(400, String.format(message, args));
+        super(400, String.format(message, args));     // Call the constructor of the parent class (GeneralException) with a status code and formatted message
     }
 
 }

@@ -23,17 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class StuRegController {
 
     @Autowired
-    private StuRegRepo stuRegRepo;
+    private StuRegRepo stuRegRepo; // Autowire the StuRegRepo dependency for accessing and manipulating StudentReg entities in the database.
 
     @PostMapping("/regStu")
     public StudentReg register(@RequestBody StudentReg studentReg){
+          // Endpoint to register a student.
+          // It takes a StudentReg object in the request body.
 
-       return stuRegRepo.save(studentReg);
+       return stuRegRepo.save(studentReg); // Save the provided StudentReg object to the database using the stuRegRepo and return the saved object.
 
     }
-    @GetMapping("/regStuData")
+    @GetMapping("/regStuData")    // Endpoint to retrieve all student registrations.
     public List<StudentReg> getStudent(){
-        return stuRegRepo.findAll();
+        return stuRegRepo.findAll();  // Retrieve all StudentReg objects from the database using the stuRegRepo and return them as a list.
     }
 
     // @GetMapping("/regStuData/{fullName}")
