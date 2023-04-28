@@ -35,10 +35,7 @@ export class AcsGrantPrinComponent {
       fromDate:new Date(value.fromDate),
       toDate:new Date(value.toDate),
       status:value.pending(),
-
-
     }
-    console.log(parseInt((value.startTime.slice(0,2))))
-
+    
   }
 }
