@@ -34,6 +34,7 @@ export class MailComponent {
     this.getCategories();
     this.getUsers();
   }
+//get users from backend
   getUsers(){
     this.userService.fetchUsers(this.sclID).subscribe({
       next:res=>{
