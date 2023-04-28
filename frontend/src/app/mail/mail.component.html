@@ -87,19 +87,9 @@
 
       <mat-card-content *ngIf="create" class="new-mail">
         <form class="left" #newMail="ngForm"  (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
-
-<!--            <mat-form-field appearance="outline" color="accent" class="category">-->
-<!--              <mat-label>Category</mat-label>-->
-<!--               <mat-select [(value)]="selectedCategory">-->
-<!--                 <mat-option *ngFor="let category of categories" [value]="category.value">-->
-<!--                   {{category.viewValue}}-->
-<!--                 </mat-option>-->
-<!--               </mat-select>-->
-
-<!--            </mat-form-field>-->
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" color="accent"  class="receipientbox">
               <mat-label>Recipient</mat-label>
-              <mat-select>
+              <mat-select ngModel name="receiverID">
                 <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
               </mat-select>
             </mat-form-field>

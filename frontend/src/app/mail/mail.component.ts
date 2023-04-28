@@ -1,9 +1,5 @@
 import {Component} from '@angular/core';
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormControl, NgForm} from "@angular/forms";
-import { map, Observable, startWith} from "rxjs";
-import {MatChipInputEvent} from "@angular/material/chips";
-import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {NgxFileDropEntry} from "ngx-file-drop";
 
 import {MailService} from "../services/mail.service";
@@ -20,17 +16,12 @@ import {UserService} from "../services/user.service";
 })
 
 export class MailComponent {
-  userID :number =60;
+  userID :number =2860;
   sclID:number=555;
   userRole:string = 'student';
   categories : any[] = [];
   users:User[]=[];
 
-  // separatorKeysCodes: number[] = [ENTER, COMMA];
-  // mailCtrl = new FormControl('');
-  // filteredMails: Observable<string[]>;
-  // mails: User[] = [];
-  // allMails: User[] = [];
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=this.filesService.filesMetadata;
   selectedCategory: string='';
@@ -38,58 +29,16 @@ export class MailComponent {
   constructor(private mailService:MailService,private filesService:FilesService,private userService:UserService) {
   }
 
-  // constructor(private mailService:MailService,private filesService:FilesService) {
-  //   this.filteredMails = this.mailCtrl.valueChanges.pipe(
-  //     startWith(null),
-  //     map((mail: User | null) => (mail ? this._filter(mail) : this.allMails.slice())),
-  //   );
-  // }
-  //
   ngOnInit(){
     this.getInboxMails();
     this.getCategories();
     this.getUsers();
   }
-  //
-  // add(event: MatChipInputEvent): void {
-  //   const value = (event.value || '').trim();
-  //
-  //   // Add our mail
-  //   if (value) {
-  //     this.mails.push(value);
-  //   }
-  //
-  //   // Clear the input value
-  //   event.chipInput!.clear();
-  //   this.mailCtrl.setValue(null);
-  // }
-  //
-  // remove(mail: string): void {
-  //   const index = this.mails.indexOf(mail);
-  //
-  //   if (index >= 0) {
-  //     this.mails.splice(index, 1);
-  //   }
-  // }
-  //
-  // selected(event: MatAutocompleteSelectedEvent): void {
-  //   this.mails.push(event.option.viewValue);
-  //   // @ts-ignore
-  //   this.mailInput.nativeElement.value = '';
-  //   this.mailCtrl.setValue(null);
-  // }
-  //
-  // private _filter(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-  //   return this.allMails.filter(mail => mail.toLowerCase().includes(filterValue));
-  // }
-
   getUsers(){
     this.userService.fetchUsers(this.sclID).subscribe({
       next:res=>{
         this.users = res;
       }
-
     })
   }
 
@@ -138,7 +87,6 @@ export class MailComponent {
       }
     })
   }
-
 
   create:boolean = false;
 
