@@ -58,7 +58,7 @@
           <div class="flex">
             <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker" ngModel name="startDate">
+              <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" name="startDate" [min]="fromDate">
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -66,7 +66,7 @@
             <span class="spacer"></span>
 
             <mat-form-field appearance="outline">
-              <input matInput [format]="24" [ngxMatTimepicker]="pickerE" placeholder="12:00" readonly ngModel name="startTime" />
+              <input matInput [format]="24" [ngxMatTimepicker]="pickerE" placeholder="12:00" ngModel name="startTime"/>
               <mat-icon matSuffix (click)="pickerE.open()">watch_later</mat-icon>
             </mat-form-field>
             <div class="ngx-mtp-box-bordered" >
@@ -79,7 +79,7 @@
           <div class="flex">
             <mat-form-field appearance="outline">
               <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker1" ngModel name="endDate">
+              <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="fromDate">
               <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>

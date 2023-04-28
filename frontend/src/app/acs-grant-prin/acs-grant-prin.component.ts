@@ -18,6 +18,7 @@ export class AcsGrantPrinComponent {
   add:boolean = false;
   userID:number=123;
   AcsGrantRequest:AcsGrantRequest[] = [];
+  fromDate = new Date();
 
   addToggle(){
     this.add = !this.add;
