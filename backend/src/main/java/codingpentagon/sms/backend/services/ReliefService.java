@@ -135,4 +135,10 @@ public class ReliefService {
             }
         }
     }
+
+    public List<ReliefRecord> findReliefRecords(int teacherID) {
+        Date date1 = this.dateTimeService.getToday().getTime();
+        Date date2 = this.dateTimeService.getTomorrow().getTime();
+        return this.reliefRecordRepository.findByAllocatedTeacherIDAndDateBetween(teacherID, date1, date2);
+    }
 }

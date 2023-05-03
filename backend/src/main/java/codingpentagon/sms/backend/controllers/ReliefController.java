@@ -24,4 +24,9 @@ public class ReliefController {
     public void addReliefAllocations(@RequestBody ReliefRecord[] reliefRecords){
         this.reliefService.saveReliefAllocations(reliefRecords);
     }
+
+    @GetMapping("/relief/records/{teacherID}")
+    public List<ReliefRecord> fetchReliefRecords(@PathVariable int teacherID){
+        return this.reliefService.findReliefRecords(teacherID);
+    }
 }

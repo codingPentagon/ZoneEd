@@ -17,4 +17,8 @@ export class ReliefService {
   addReliefAllocations(reliefAllocations: ReliefRecord[]) {
     return this.http.post(url, reliefAllocations);
   }
+
+  fetchReliefRecords(teacherID: number) {
+    return this.http.get<ReliefRecord[]>(url + 'records/' + teacherID);
+  }
 }

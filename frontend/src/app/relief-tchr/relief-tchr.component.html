@@ -9,17 +9,18 @@
         Today
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let relief of reliefAllocation">
+        <div *ngIf="reliefRecords.length==0">No Allocations Today</div>
+        <div *ngFor="let relief of reliefRecords">
           <div class="entry">
             <div class="flex">
-              Class {{relief.class}} for {{relief.subject}}
+              Class {{relief.className}} for {{relief.reliefSubject}}
               <span class="spacer"></span>
-              {{relief.fromTime}} to {{relief.toTime}}
+              {{relief.period | periodTime}}
             </div>
             <div class="flex">
               Period: {{relief.period}}
               <span class="spacer"></span>
-              {{relief.assmntCount == 0 ? 'No':relief.assmntCount}} Assessments Available
+              {{relief.id == 0 ? 'No':relief.id}} Assessments Available
             </div>
           </div>
           <mat-divider></mat-divider>
