@@ -13,7 +13,7 @@ public class DateTimeService {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         calendar.set(Calendar.AM_PM, Calendar.AM);      //equals to 0:00 in UTC
-        calendar.set(Calendar.DATE, 17);
+        System.out.println(calendar.getTime());
         return calendar;
     }
 

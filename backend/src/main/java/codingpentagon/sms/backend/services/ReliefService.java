@@ -28,12 +28,11 @@ public class ReliefService {
 
     public List<ReliefSlotCandidates> findReliefSlotsCandidates(int sclID, int teacherID) {
         List<ReliefSlotCandidates> reliefSlotsWithCandidates = new ArrayList<>();
-        String dayName = this.dateTimeService.getTodayName().toLowerCase().substring(0, 3);
 
         //getting vacant classes with periods
         Schedule schedule1 = this.scheduleRepository.findByTeacherID(teacherID);
         schedule1.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
-            String slot = schedulePeriod.getSlotByDay().get(dayName);
+            String slot = this.findSlotToday(schedulePeriod);
             int period = schedulePeriod.getPeriod();
             if (!slot.equals("---")) {
                 ReliefSlotCandidates reliefSlotCandidates = new ReliefSlotCandidates();
@@ -43,14 +42,14 @@ public class ReliefService {
                 int allocatedTeacherID = this.findAllocatedTeacher(sclID, period, slot);
                 reliefSlotCandidates.setAllocatedTeacherID(allocatedTeacherID);
                 //finding available teachers for the vacant
-                reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(sclID ,dayName, period, allocatedTeacherID));
+                reliefSlotCandidates.setAvailableTeachers(this.findAvailableTeachers(sclID , period, allocatedTeacherID));
                 reliefSlotsWithCandidates.add(reliefSlotCandidates);
             }
         });
         return reliefSlotsWithCandidates;
     }
 
-    private List<Teacher> findAvailableTeachers(int sclID, String dayName, int period, int allocatedTeacherID) {
+    private List<Teacher> findAvailableTeachers(int sclID, int period, int allocatedTeacherID) {
         List<Teacher> availableTeachers = new ArrayList<>();
         List<Integer> unavailableTeacherIDs = new ArrayList<>();
 
@@ -63,9 +62,9 @@ public class ReliefService {
         for (Teacher teacher : teachersPresent) {
             Schedule schedule = this.scheduleRepository.findByTeacherID(teacher.getId());
 
-            schedule.getSchedule().forEach((SchedulePeriod schedulePeriod2) -> {
-                if (schedulePeriod2.getPeriod() == period) {
-                    String slot = schedulePeriod2.getSlotByDay().get(dayName);
+            schedule.getSchedule().forEach((SchedulePeriod schedulePeriod) -> {
+                if (schedulePeriod.getPeriod() == period) {
+                    String slot = this.findSlotToday(schedulePeriod);
                     if (slot.equals("---")) {
                         availableTeachers.add(teacher);
                     }
@@ -110,6 +109,30 @@ public class ReliefService {
         }
         catch (NullPointerException e) {
             return null;
+        }
+    }
+
+    public String findSlotToday(SchedulePeriod schedulePeriod){
+        String dayName = this.dateTimeService.getTodayName().toLowerCase().substring(0, 3);
+        switch (dayName) {
+            case "mon" -> {
+                return schedulePeriod.getMon();
+            }
+            case "tue" -> {
+                return schedulePeriod.getTue();
+            }
+            case "wed" -> {
+                return schedulePeriod.getWed();
+            }
+            case "thu" -> {
+                return schedulePeriod.getThu();
+            }
+            case "fri" -> {
+                return schedulePeriod.getFri();
+            }
+            default -> {
+                return "---";
+            }
         }
     }
 }
