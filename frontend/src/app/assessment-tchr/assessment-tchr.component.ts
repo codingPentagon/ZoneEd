@@ -15,7 +15,7 @@ import {FilesService} from "../services/files.service";
 export class AssessmentTchrComponent {
 
   sclId = 5555;
-  selectedCls = 0;
+  selectedClsID = 0;
   assessments!: Assessment[];
   classes!: Class[];
   subjectID: number = 20;
@@ -40,6 +40,7 @@ export class AssessmentTchrComponent {
     this.classesService.fetchClasses(this.sclId).subscribe({
       next: res => {
         this.classes = res;
+        this.selectedClsID = res[0].id;
         this.getAssessments(res[0].id, this.subjectID)
       }
     })
@@ -70,7 +71,7 @@ export class AssessmentTchrComponent {
 
     this.assessmentsService.removeAssessments(ids).subscribe({
       complete: () => {
-        this.getAssessments(this.classes[this.selectedCls].id, this.subjectID);
+        this.getAssessments(this.selectedClsID, this.subjectID);
         this.deleteToggle();
       }
     });
@@ -82,7 +83,7 @@ export class AssessmentTchrComponent {
     const dialogRef = this.dialog.open(AssessmentCreateDialog, {
       disableClose: true,
       data: {
-        clsID: this.classes[this.selectedCls].id,
+        clsID: this.selectedClsID,
         subjectID: this.subjectID,
         sclID: this.sclId,
         teacherID: this.userID
@@ -91,7 +92,7 @@ export class AssessmentTchrComponent {
 
     dialogRef.afterClosed().subscribe({
       complete: () => {
-        this.getAssessments(this.classes[this.selectedCls].id, this.subjectID);
+        this.getAssessments(this.selectedClsID, this.subjectID);
         this.create = false;
         console.log('The dialog was closed');
       }

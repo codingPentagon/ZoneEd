@@ -21,7 +21,7 @@ mat-card-header{
 }
 
 .entry{
-  margin: 5px 0 5px 0;
+  padding: 5px 16px;
 }
 
 .left .entry{
@@ -66,4 +66,8 @@ mat-card-header mat-icon:hover:not(.active){
 
 button:not([disabled]) {
   background-color: mediumspringgreen;
+}
+
+mat-card-content{
+  padding: 0;
 }

@@ -7,8 +7,8 @@
         Teaching Classes
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let cls of classes; let i=index" [ngClass]="{selected:selectedCls==i}">
-          <div class="entry" (click)="selectedCls=i;getAssessments(cls.id,subjectID)">
+        <div *ngFor="let cls of classes" [ngClass]="{selected:selectedClsID==cls.id}">
+          <div class="entry" (click)="selectedClsID=cls.id;getAssessments(cls.id,subjectID)">
             Class {{cls.name}}
           </div>
           <mat-divider></mat-divider>
