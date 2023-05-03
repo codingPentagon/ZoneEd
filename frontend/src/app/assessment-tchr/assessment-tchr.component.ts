@@ -18,7 +18,7 @@ export class AssessmentTchrComponent {
   selectedClsID = 0;
   assessments!: Assessment[];
   classes!: Class[];
-  subjectID: number = 20;
+  subjectID: number = 10;
   userID: number = 222;
   delete: boolean = false;
   create: boolean = false;
