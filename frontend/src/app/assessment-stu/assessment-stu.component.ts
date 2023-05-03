@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Subject} from "../models/subject.model";
+import {SubjectsService} from "../services/subjects.service";
 
 @Component({
   selector: 'app-assessment-stu',
@@ -7,7 +9,27 @@ import { Component } from '@angular/core';
 })
 export class AssessmentStuComponent {
 
-  selectedSubject = 0;
+  selectedSubjectID = 0;
+  userID:number = 3703;
+  takenSubjects:Subject[] = [];
+
+  constructor(private subjectsService:SubjectsService) {
+  }
+
+  ngOnInit(): void {
+    this.getTakenSubjects();
+  }
+
+  getTakenSubjects(){
+    this.subjectsService.fetchTakenSubjects(this.userID).subscribe({
+      next: res => {
+        this.takenSubjects = res;
+        this.selectedSubjectID = res[0].id;
+        console.log(res)
+      }
+    })
+  }
+
   subjectAssessments = [
     {subject:'Science',assessments:[
         {fileName:"Assessment 1.pdf",date:"01/02/2023",time:"8.30"},

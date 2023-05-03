@@ -7,9 +7,9 @@
         Subjects
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let subject of subjectAssessments; let i=index" [ngClass]="{selected:selectedSubject==i}" class="entry-wrap" (click)="selectedSubject=i">
+        <div *ngFor="let subject of takenSubjects" [ngClass]="{selected:selectedSubjectID==subject.id}" class="entry-wrap" (click)="selectedSubjectID=subject.id">
           <div class="entry" >
-            {{subject.subject}}
+            {{subject.name}}
             <span class="spacer"></span>
           </div>
           <mat-divider></mat-divider>
@@ -21,7 +21,7 @@
         Assessments
       </mat-card-header>
       <mat-card-content>
-        <div *ngFor="let assessment of subjectAssessments[selectedSubject].assessments">
+        <div *ngFor="let assessment of subjectAssessments[0].assessments">
           <div class="entry">
             <div class="flex">
               {{assessment.fileName}}
