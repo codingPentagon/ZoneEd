@@ -1,9 +1,27 @@
 <mat-drawer-container>
-  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false">
-    <ngx-event-calendar
-      [dataSource]="eventData"
-      language="en"
-    >
-    </ngx-event-calendar>
+  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" class="grid">
+    <mat-card>
+      <ngx-event-calendar
+        [dataSource]="eventData"
+        language="en"
+      >
+      </ngx-event-calendar>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        Events
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        Holidays
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
   </mat-drawer>
 </mat-drawer-container>

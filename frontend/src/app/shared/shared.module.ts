@@ -14,6 +14,7 @@ import {CalendarComponent} from "./calendar/calendar.component";
 import {CalendarToggleService} from "./calendar/calendar-toggle.service";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxEventCalendarModule} from "ngx-event-calendar";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {NgxEventCalendarModule} from "ngx-event-calendar";
         MatToolbarModule,
         HttpClientModule,
         NgxEventCalendarModule,
+        MatCardModule,
 
     ],
 
