@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Subject} from "../models/subject.model";
 import {SubjectsService} from "../services/subjects.service";
+import {Assessment} from "../models/assessment.model";
+import {AssessmentsService} from "../services/assessments.service";
 
 @Component({
   selector: 'app-assessment-stu',
@@ -11,9 +13,12 @@ export class AssessmentStuComponent {
 
   selectedSubjectID = 0;
   userID:number = 3703;
+  sclID:number = 5555;
+  classID:number = 416;
   takenSubjects:Subject[] = [];
+  assessments:Assessment[] = [];
 
-  constructor(private subjectsService:SubjectsService) {
+  constructor(private subjectsService:SubjectsService,private assessmentsService:AssessmentsService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +30,17 @@ export class AssessmentStuComponent {
       next: res => {
         this.takenSubjects = res;
         this.selectedSubjectID = res[0].id;
+      },
+      complete: () => {
+        this.getAssessments();
+      }
+    })
+  }
+
+  getAssessments(){
+    this.assessmentsService.fetchAssessments(this.sclID,this.classID,this.selectedSubjectID).subscribe({
+      next: res => {
+        this.assessments = res;
         console.log(res)
       }
     })
