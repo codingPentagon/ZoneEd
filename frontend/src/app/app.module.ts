@@ -15,12 +15,14 @@ import { ReliefPrinComponent } from './relief-prin/relief-prin.component';
 import { ReliefTchrComponent } from './relief-tchr/relief-tchr.component';
 import {FormsModule} from "@angular/forms";
 import {ServicesModule} from "./services/services.module";
+import { PeriodTimePipe } from './pipes/period-time.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReliefPrinComponent,
     ReliefTchrComponent,
+    PeriodTimePipe,
   ],
   imports: [
     BrowserModule,
