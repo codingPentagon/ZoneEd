@@ -1,11 +1,7 @@
 <mat-drawer-container>
   <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" class="grid">
     <mat-card>
-      <ngx-event-calendar
-        [dataSource]="eventData"
-        language="en"
-      >
-      </ngx-event-calendar>
+      <mat-calendar [dateClass]="dateClass" [(selected)]="selected"></mat-calendar>
     </mat-card>
     <mat-card>
       <mat-card-header>

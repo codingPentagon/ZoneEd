@@ -13,8 +13,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {CalendarToggleService} from "./calendar/calendar-toggle.service";
 import {HttpClientModule} from "@angular/common/http";
-import {NgxEventCalendarModule} from "ngx-event-calendar";
 import {MatCardModule} from "@angular/material/card";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -23,20 +24,20 @@ import {MatCardModule} from "@angular/material/card";
     HeaderComponent,
     CalendarComponent,
   ],
-    imports: [
-        CommonModule,
-        MatSidenavModule,
-        MatInputModule,
-        MatListModule,
-        MatIconModule,
-        MatButtonModule,
-        RouterLink,
-        MatToolbarModule,
-        HttpClientModule,
-        NgxEventCalendarModule,
-        MatCardModule,
-
-    ],
+  imports: [
+    CommonModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink,
+    MatToolbarModule,
+    HttpClientModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
 
   exports: [
     NavComponent,
