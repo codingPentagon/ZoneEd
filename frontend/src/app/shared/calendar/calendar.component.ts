@@ -19,15 +19,15 @@ export class CalendarComponent {
   ngOnInit() {
     this.calToggleService.change.subscribe(isOpen => {
       this.isOpen = isOpen;
-      console.log(this.isOpen);
+      console.log(new Date().toLocaleDateString());
     });
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate) => {
-    const holiday = new Date().getDate();
-    const event = new Date().getDate();
-    if (cellDate.getDate()==holiday+1) {return 'holiday'}
-    if (cellDate.getDate()==event+10) {return 'event'}
+    const holiday = new Date(2023,4,10).toLocaleDateString();
+    const event = new Date(2023,4,15).toLocaleDateString();
+    if (cellDate.toLocaleDateString()==holiday) {return 'holiday'}
+    if (cellDate.toLocaleDateString()==event) {return 'event'}
     return '';
   };
 }
