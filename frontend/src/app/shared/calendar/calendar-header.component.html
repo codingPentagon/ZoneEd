@@ -1,0 +1,15 @@
+<div class="calendar-header">
+  <button mat-icon-button (click)="toPreviousYear()">
+    <mat-icon>keyboard_double_arrow_left</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toPreviousMonth()">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <span class="calendar-header-label">{{periodLabel}}</span>
+  <button mat-icon-button (click)="toNextMonth()">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toNextYear()">
+    <mat-icon>keyboard_double_arrow_right</mat-icon>
+  </button>
+</div>

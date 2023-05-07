@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Inject } from '@angular/core';
 import {CalendarToggleService} from "./calendar-toggle.service";
-import {MatCalendarCellClassFunction} from "@angular/material/datepicker";
+import {MatCalendar, MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {SchoolHoliday,SchoolEvent} from "../../models/calendar.model";
+import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from "@angular/material/core";
 
 @Component({
   selector: 'app-calendar',
@@ -63,4 +64,42 @@ export class CalendarComponent {
 
     return '';
   };
+  protected readonly calendarHeaderComponent = CalendarHeaderComponent;
+}
+
+
+
+@Component({
+  selector: 'app-calendar-header',
+  styleUrls: ['./calendar-header.component.css'],
+  templateUrl: './calendar-header.component.html',
+})
+export class CalendarHeaderComponent {
+
+  constructor(
+    private calendar:MatCalendar<Date>,
+    private dateAdapter:DateAdapter<Date>,
+    @Inject(MAT_DATE_FORMATS) private dateFormats:MatDateFormats
+  ) {
+  }
+
+  get periodLabel(){
+    return this.dateAdapter.format(this.calendar.activeDate, this.dateFormats.display.monthYearLabel).toLocaleUpperCase()
+  }
+
+  toNextYear(){
+    this.calendar.activeDate = this.dateAdapter.addCalendarYears(this.calendar.activeDate,1)
+  }
+
+  toPreviousYear(){
+    this.calendar.activeDate = this.dateAdapter.addCalendarYears(this.calendar.activeDate,-1)
+  }
+
+  toNextMonth(){
+    this.calendar.activeDate = this.dateAdapter.addCalendarMonths(this.calendar.activeDate,1)
+  }
+
+  toPreviousMonth(){
+    this.calendar.activeDate = this.dateAdapter.addCalendarMonths(this.calendar.activeDate,-1)
+  }
 }

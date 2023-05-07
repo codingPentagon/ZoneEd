@@ -10,12 +10,12 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {CalendarComponent} from "./calendar/calendar.component";
 import {CalendarToggleService} from "./calendar/calendar-toggle.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {CalendarHeaderComponent, CalendarComponent} from './calendar/calendar.component'
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     NavComponent,
     HeaderComponent,
     CalendarComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     CommonModule,
