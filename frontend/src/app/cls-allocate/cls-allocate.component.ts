@@ -14,9 +14,10 @@ export class ClsAllocateComponent {
   sclID = 5555;
   teachers: Teacher[] = [];
   selectedTeachers:number[]=[];
-  classes: Class[] = [{id:0,name:'',sclID:0,teacherID:0,allocatedDate:new Date(),boysCount:0,girlsCount:0}];
+  classes: Class[] = [{id:0,name:'',sclID:0,teacherID:null,allocatedDate:null,boysCount:0,girlsCount:0}];
   selectedClass: number = 0;
   newClass: string = '';
+  //unless card 1 updates before allocating
   tempClasses:Class[]=[];
 
   constructor(private classesService: ClassesService, private teachersService: TeachersService) {
@@ -40,7 +41,6 @@ export class ClsAllocateComponent {
     this.modify = !this.modify;
     if (this.modify){
       this.tempClasses.splice(0);
-      //no any other way worked for deep copy
       this.tempClasses = JSON.parse(JSON.stringify(this.classes));
     }
   }
@@ -51,8 +51,8 @@ export class ClsAllocateComponent {
       id: 0,
       name: clsName,
       sclID: this.sclID,
-      teacherID: 0,
-      allocatedDate: new Date(0),
+      teacherID: null,
+      allocatedDate: null,
       boysCount: 0,
       girlsCount: 0
     };
@@ -81,19 +81,26 @@ export class ClsAllocateComponent {
     })
   }
 
-  findTeacherName(teacherID: any) {
-    if (teacherID == 0 || teacherID == null) {
-      return 'Not Allocated';
-    } else {
+  get findTeacherName() {
+    const teacherID = this.classes[this.selectedClass]?.teacherID;
+    if (teacherID) {
       return this.teachers.filter(tchr=>{
         return tchr.id == teacherID;
       })[0]?.name
+    } else {
+      return 'Not Allocated';
     }
   }
 
+  get findAllocatedDate(){
+    const date = this.classes[this.selectedClass].allocatedDate;
+    return date ? new Date(date).toLocaleDateString() : 'N/A';
+  }
+
   allocate() {
-    console.log(this.tempClasses)
+    // console.log(this.tempClasses)
     this.tempClasses.forEach(cls=>{
+      cls.allocatedDate = (cls.teacherID ? new Date() : null);
       this.classesService.storeClass(cls).subscribe({
         complete:()=>{
           this.getClasses()

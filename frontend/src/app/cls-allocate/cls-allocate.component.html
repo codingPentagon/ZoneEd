@@ -20,24 +20,24 @@
          <table>
            <tr>
              <td class="width">Class Teacher</td>
-             <td>{{findTeacherName(classes[selectedClass].teacherID)}}</td>
+             <td>{{findTeacherName}}</td>
            </tr>
            <tr>
              <td>Allocated Date</td>
-             <td>{{classes[selectedClass].allocatedDate | date:'dd/mm/yyyy'}}</td>
+             <td>{{findAllocatedDate}}</td>
            </tr>
-           <tr>
-             <td>Girls</td>
-             <td>{{classes[selectedClass].girlsCount}}</td>
-           </tr>
-           <tr>
-             <td>Boys</td>
-             <td>{{classes[selectedClass].boysCount}}</td>
-           </tr>
-           <tr>
-             <td>Total Students</td>
-             <td>{{classes[selectedClass].girlsCount+classes[selectedClass].boysCount}}</td>
-           </tr>
+<!--           <tr>-->
+<!--             <td>Girls</td>-->
+<!--             <td>{{classes[selectedClass].girlsCount}}</td>-->
+<!--           </tr>-->
+<!--           <tr>-->
+<!--             <td>Boys</td>-->
+<!--             <td>{{classes[selectedClass].boysCount}}</td>-->
+<!--           </tr>-->
+<!--           <tr>-->
+<!--             <td>Total Students</td>-->
+<!--             <td>{{classes[selectedClass].girlsCount+classes[selectedClass].boysCount}}</td>-->
+<!--           </tr>-->
          </table>
        </mat-card-content>
        <mat-card-content *ngIf="create">
@@ -71,9 +71,9 @@
               <mat-select [placeholder]="modify ? 'Select a Teacher':'Not Allocated'"
                           [(value)]="cls.teacherID"
                           (valueChange)="getSelectedTeacher()"
-                          [ngStyle]="{'background-color':cls.teacherID == 0 ?'lightgrey' : 'blue'}"
+                          [ngStyle]="{'background-color':cls.teacherID == null || cls.teacherID == 0 ?'lightgrey' : 'blue'}"
                           [disabled]="!modify" [ngClass]="{'hide':!modify}">
-                <mat-option [value]=0 class="remove">Remove Selection</mat-option>
+                <mat-option [value]=null class="remove">Remove Selection</mat-option>
                 <mat-option *ngFor="let teacher of teachers" [value]="teacher.id" [disabled]="selectedTeachers.includes(teacher.id)">
                   {{teacher.name}}
                 </mat-option>
