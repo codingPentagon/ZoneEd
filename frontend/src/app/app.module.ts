@@ -26,10 +26,7 @@ import { GradesStuComponent } from './grades-stu/grades-stu.component';
 import { AttdnceStuComponent } from './attdnce-stu/attdnce-stu.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ServicesModule} from "./services/services.module";
-import { StuYearlyAttendenceComponent } from './charts/stu-yearly-attendence/stu-yearly-attendence.component';
-import { StuGradesOverviewComponent } from './charts/stu-grades-overview/stu-grades-overview.component';
-import { TchrSubjectsPerfComponent } from './charts/tchr-subjects-perf/tchr-subjects-perf.component';
-import { TchrLeaveOverviewComponent } from './charts/tchr-leave-overview/tchr-leave-overview.component';
+import {ChartsModule} from "./charts/charts.module";
 
 
 
@@ -42,10 +39,7 @@ import { TchrLeaveOverviewComponent } from './charts/tchr-leave-overview/tchr-le
     GradesTchrComponent,
     GradesStuComponent,
     AttdnceStuComponent,
-    StuYearlyAttendenceComponent,
-    StuGradesOverviewComponent,
-    TchrSubjectsPerfComponent,
-    TchrLeaveOverviewComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,7 +62,7 @@ import { TchrLeaveOverviewComponent } from './charts/tchr-leave-overview/tchr-le
     MatButtonToggleModule,
     ServicesModule,
     MatNativeDateModule,
-
+    ChartsModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

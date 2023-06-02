@@ -4,7 +4,7 @@ import { StuYearlyAttendenceComponent } from './stu-yearly-attendence/stu-yearly
 import { StuGradesOverviewComponent } from './stu-grades-overview/stu-grades-overview.component';
 import { TchrSubjectsPerfComponent } from './tchr-subjects-perf/tchr-subjects-perf.component';
 import { TchrLeaveOverviewComponent } from './tchr-leave-overview/tchr-leave-overview.component';
-
+import { TchrClassAttendanceComponent } from './tchr-class-attendance/tchr-class-attendance.component';
 
 
 @NgModule({
@@ -12,10 +12,18 @@ import { TchrLeaveOverviewComponent } from './tchr-leave-overview/tchr-leave-ove
     StuYearlyAttendenceComponent,
     StuGradesOverviewComponent,
     TchrSubjectsPerfComponent,
-    TchrLeaveOverviewComponent
+    TchrLeaveOverviewComponent,
+    TchrClassAttendanceComponent
+  ],
+  exports: [
+    TchrClassAttendanceComponent,
+    TchrLeaveOverviewComponent,
+    TchrSubjectsPerfComponent,
+    StuGradesOverviewComponent,
+    StuYearlyAttendenceComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class ChartsModule { }
