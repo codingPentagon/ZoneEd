@@ -3,7 +3,7 @@ export interface Class {
   name:string | null;
   sclID:number;
   teacherID:number | null;
-  allocatedDate:Date;
+  allocatedDate:Date | null;
   girlsCount:number;
   boysCount:number;
 
