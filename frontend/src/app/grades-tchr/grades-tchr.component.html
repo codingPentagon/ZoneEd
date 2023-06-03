@@ -49,8 +49,12 @@
             <mat-divider></mat-divider>
           </div>
         </mat-card-content>
+        <mat-card-actions align="end" *ngIf="modify">
+          <button mat-raised-button>Save</button>
+          <button mat-raised-button (click)="modifyToggle()">Discard</button>
+        </mat-card-actions>
       </mat-card>
-      </mat-grid-tile>
+    </mat-grid-tile>
     <mat-grid-tile rowspan="1">
       <mat-card class="grades-summary-card">
         <mat-card-header>

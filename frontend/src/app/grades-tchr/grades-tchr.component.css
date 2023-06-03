@@ -29,8 +29,11 @@ mat-card-header{
   display: flex;
   align-items: center;
   height: 40px;
-  cursor: pointer;
   padding: 0 15px;
+}
+
+.names-card .grades-entry{
+  cursor: pointer;
 }
 
 .grades-names{
@@ -96,4 +99,10 @@ mat-select{
 
 mat-card-content{
   padding: 0;
+  height: 70%;
+}
+
+button:not([disabled]){
+  background-color: mediumspringgreen;
+  color: navy;
 }
