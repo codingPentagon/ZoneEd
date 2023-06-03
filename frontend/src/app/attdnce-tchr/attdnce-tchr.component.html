@@ -20,7 +20,7 @@
            <span class="attend-entry">
              {{ getStudentName(attendance.studentID) }}
              <span class="spacer"></span>
-             <mat-checkbox color="primary" [disabled]="marked" [checked]="attendance.attendance" #checkbox
+             <mat-checkbox color="primary" [disabled]="marked" [checked]="attendance.attendance || false" #checkbox
                            (click)="attendance.attendance=checkbox.checked;getAttendanceCount();checkIfAllMarked()"
                            [indeterminate]="attendance.attendance!=null && !attendance.attendance">
              </mat-checkbox>
@@ -40,6 +40,7 @@
           Attendance Summary
         </mat-card-header>
         <mat-card-content>
+          <app-tchr-class-attendance [total]="totalCount" [present]="presentCount"></app-tchr-class-attendance>
           Present: {{presentCount}}
           Absent:{{absentCount}}
         </mat-card-content>

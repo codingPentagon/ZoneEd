@@ -20,6 +20,7 @@ export class AttdnceTchrComponent {
   isAllMarked: boolean = false;
   presentCount!: number;
   absentCount!: number;
+  totalCount!: number;
 
   constructor(private studentsService: StudentsService, private attendanceService: AttendanceService) {
   }
@@ -61,6 +62,8 @@ export class AttdnceTchrComponent {
   }
 
   getAttendanceCount() {
+    this.totalCount = this.attendanceSheet?.attendanceRecords.length;
+
     this.presentCount = this.attendanceSheet?.attendanceRecords.filter(rec => {
       return rec.attendance
     }).length;
