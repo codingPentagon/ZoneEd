@@ -108,6 +108,15 @@ export class GradesTchrComponent {
     }
   }
 
+  saveMarksheet(){
+    this.currentMarksheet.totalMarks = this.totalMarks;
+    this.marksheetService.addMarksheet(this.currentMarksheet).subscribe({
+      complete:()=>{
+        this.getMarksheets();
+      }
+    })
+  }
+
   getSubjectName(subjectID:number){
     return this.subjects.find((sub)=>{
       return sub.id==subjectID;

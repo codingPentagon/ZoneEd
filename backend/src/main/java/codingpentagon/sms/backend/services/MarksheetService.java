@@ -21,7 +21,9 @@ public class MarksheetService {
     }
 
     public void saveMarksheet(Marksheet marksheet) {
-        marksheet.setId(new Random().nextInt(50000));
+        if (marksheet.getId() == 0) {
+            marksheet.setId(new Random().nextInt(10000));
+        }
         this.marksheetRepository.save(marksheet);
     }
 
