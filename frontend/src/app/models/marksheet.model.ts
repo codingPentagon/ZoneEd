@@ -12,5 +12,5 @@ export interface Marksheet {
 
 interface SubjectMark {
   subjectID:number;
-  mark:number;
+  mark:number | null;
 }
