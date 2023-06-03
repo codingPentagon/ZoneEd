@@ -50,7 +50,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
-          <button mat-raised-button>Save</button>
+          <button mat-raised-button (click)="saveMarksheet()">Save</button>
           <button mat-raised-button (click)="modifyToggle()">Discard</button>
         </mat-card-actions>
       </mat-card>
