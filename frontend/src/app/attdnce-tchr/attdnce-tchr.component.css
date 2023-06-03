@@ -79,7 +79,6 @@ p{
 mat-divider.mat-divider-vertical{
   height: 70px;
   border-right-width: 5px;
-  color: red;
   margin: auto 20px;
   border-radius: 10px;
 }
