@@ -7,17 +7,17 @@
         <mat-card-header>
           Students
           <span class="spacer"></span>
-          <mat-button-toggle-group [(value)]="selectedOption">
-            <mat-button-toggle value="all">All</mat-button-toggle>
-            <mat-button-toggle value="incomplete">Incomplete</mat-button-toggle>
-          </mat-button-toggle-group>
+<!--          <mat-button-toggle-group [(value)]="selectedOption">-->
+<!--            <mat-button-toggle value="all">All</mat-button-toggle>-->
+<!--            <mat-button-toggle value="incomplete">Incomplete</mat-button-toggle>-->
+<!--          </mat-button-toggle-group>-->
         </mat-card-header>
         <mat-card-content class="grades-names">
           <div *ngFor="let student of (selectedOption=='all'?students:students);let i = index" [ngClass]="{'selected':i==selectedStudent}">
             <div class="grades-entry" (click)="selectedStudent=i;getSubjects()">
               {{ student.name }}
               <span class="spacer"></span>
-<!--              {{name.isCompleted==true ? "Complete":"Incomplete"}}-->
+<!--              {{student.isCompleted==true ? "Complete":"Incomplete"}}-->
             </div>
             <mat-divider></mat-divider>
           </div>
@@ -44,14 +44,14 @@
               {{ getSubjectName(mark.subjectID) }}
               <span class="spacer"></span>
               <span *ngIf="!modify">{{mark.mark==null ? 'N/A':mark.mark}}</span>
-              <input *ngIf="modify" matInput type="number" [max]="100" [(ngModel)]="mark.mark"/>
+              <input *ngIf="modify" matInput type="number" [min]="0" [max]="100" [(ngModel)]="mark.mark"/>
             </div>
             <mat-divider></mat-divider>
           </div>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="modify">
           <button mat-raised-button (click)="saveMarksheet()">Save</button>
-          <button mat-raised-button (click)="modifyToggle()">Discard</button>
+          <button mat-raised-button (click)="getMarksheets();modifyToggle()">Discard</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

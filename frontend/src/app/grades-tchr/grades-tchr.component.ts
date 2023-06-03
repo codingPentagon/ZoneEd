@@ -110,6 +110,9 @@ export class GradesTchrComponent {
 
   saveMarksheet(){
     this.currentMarksheet.totalMarks = this.totalMarks;
+    this.currentMarksheet.isCompleted = !this.currentMarksheet.marks.some(mark=>{
+      return mark.mark == null;
+    })
     this.marksheetService.addMarksheet(this.currentMarksheet).subscribe({
       complete:()=>{
         this.getMarksheets();
