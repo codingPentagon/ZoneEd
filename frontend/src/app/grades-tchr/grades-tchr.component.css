@@ -96,4 +96,10 @@ mat-select{
 
 mat-card-content{
   padding: 0;
+  height: 70%;
+}
+
+button:not([disabled]){
+  background-color: mediumspringgreen;
+  color: navy;
 }
