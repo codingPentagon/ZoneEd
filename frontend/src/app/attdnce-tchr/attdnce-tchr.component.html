@@ -41,8 +41,25 @@
         </mat-card-header>
         <mat-card-content>
           <app-tchr-class-attendance [total]="totalCount" [present]="presentCount"></app-tchr-class-attendance>
-          Present: {{presentCount}}
-          Absent:{{absentCount}}
+          <div class="attendance-summary">
+            <div class="box">
+              <div class="inline-block">
+                <p class="big-text">{{presentCount}}</p>
+                <p class="sub-header">Present</p>
+              </div>
+              <mat-divider class="inline-block" [vertical]="true"></mat-divider>
+              <div class="inline-block">
+                <p class="big-text">{{absentCount}}</p>
+                <p class="sub-header">Absent</p>
+              </div>
+            </div>
+          </div>
+          <div class="attendance-summary">
+            <div class="inline-block">
+              <p class="big-text">{{totalCount}}</p>
+              <p class="sub-header">Total Students</p>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

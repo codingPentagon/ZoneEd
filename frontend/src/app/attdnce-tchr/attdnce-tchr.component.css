@@ -27,11 +27,6 @@ mat-card{
   height: 85vh;
 }
 
-mat-checkbox{
-  float-displace: block;
-
-}
-
 button{
   margin: 5px;
 }
@@ -54,5 +49,41 @@ mat-card-header{
   align-items: center;
 }
 
+.inline-block{
+  display: inline-block;
+}
 
+.box{
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
 
+p{
+  margin: 10px 0;
+}
+
+.big-text{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.attendance-summary{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+mat-divider.mat-divider-vertical{
+  height: 70px;
+  border-right-width: 5px;
+  color: red;
+  margin: auto 20px;
+  border-radius: 10px;
+}
+
+.sub-header{
+  color: gray;
+}
