@@ -12,6 +12,7 @@ public class Marksheet {
     private int year;
     private int term;
     private int rank;
+    private boolean isCompleted;
     private SubjectMark[] marks;
 
     public int getId() {
@@ -70,6 +71,14 @@ public class Marksheet {
         this.rank = rank;
     }
 
+    public boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(boolean completed) {
+        isCompleted = completed;
+    }
+
     public SubjectMark[] getMarks() {
         return marks;
     }
@@ -81,7 +90,7 @@ public class Marksheet {
 
 class SubjectMark{
     private int subjectID;
-    private int mark;
+    private Integer mark;
     public int getSubjectID() {
         return subjectID;
     }
@@ -90,11 +99,11 @@ class SubjectMark{
         this.subjectID = subjectID;
     }
 
-    public int getMark() {
+    public Integer getMark() {
         return mark;
     }
 
-    public void setMark(int mark) {
+    public void setMark(Integer mark) {
         this.mark = mark;
     }
 }
