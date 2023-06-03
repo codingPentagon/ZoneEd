@@ -24,6 +24,9 @@
             <mat-divider></mat-divider>
           </div>
         </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button  (click)="rankStudents()">Rank Students</button>
+        </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
@@ -65,12 +68,12 @@
         <mat-card-content class="grades-summary">
             <div class="box">
               <div class="inline-block">
-                <p class="big-text">{{totalMarks}}</p>
+                <p class="big-text">{{currentMarksheet?.totalMarks}}</p>
                 <p>Total Marks</p>
               </div>
               <mat-divider class="inline-block" [vertical]="true"></mat-divider>
               <div class="inline-block">
-                <p class="big-text">0</p>
+                <p class="big-text">{{currentMarksheet?.rank}}</p>
                 <p>Rank</p>
               </div>
             </div>

@@ -17,4 +17,8 @@ export class MarksheetService {
   addMarksheet(marksheet:Marksheet) {
     return this.http.post(url,marksheet)
   }
+
+  rankMarksheets(clsID: number, year: number, term: number) {
+    return this.http.get(url+'rank/'+clsID.toString()+'/'+year.toString()+'/'+term.toString());
+  }
 }

@@ -4,7 +4,6 @@ import codingpentagon.sms.backend.services.MarksheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -30,4 +29,8 @@ public class MarksheetController{
         return this.marksheetService.findStudentClassIDs(studentID);
     }
 
+    @GetMapping("marksheets/rank/{classID}/{year}/{term}")
+    public void rankMarksheets(@PathVariable int classID, @PathVariable int year, @PathVariable int term){
+        this.marksheetService.rankMarksheets(classID,year,term);
+    }
 }

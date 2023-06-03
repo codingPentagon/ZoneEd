@@ -55,13 +55,6 @@ export class GradesTchrComponent {
     })
   }
 
-  getTotalMarks(){
-    this.totalMarks=0;
-    this.marksheets[this.selectedStudent]?.marks.forEach(mark=>{
-      this.totalMarks+=(mark.mark == null ? 0 : mark.mark);
-    })
-  }
-
   getSubjects(){
     this.modify && this.modifyToggle();
     const subjectIDs:number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
@@ -73,14 +66,12 @@ export class GradesTchrComponent {
         },
         complete:()=>{
           this.getCurrentMarksheet();
-          this.getTotalMarks();
         }
       });
     }
     else{
       this.subjects = [];
       this.getCurrentMarksheet();
-      this.getTotalMarks();
     }
   }
 
@@ -110,11 +101,13 @@ export class GradesTchrComponent {
     }
   }
 
-  saveMarksheet(){
-    this.currentMarksheet.totalMarks = this.totalMarks;
-    this.currentMarksheet.isCompleted = !this.currentMarksheet.marks.some(mark=>{
-      return mark.mark == null;
-    })
+  saveMarksheet(marksheet?:Marksheet){
+    if(!marksheet){
+      this.currentMarksheet.totalMarks = this.totalMarks;
+      this.currentMarksheet.isCompleted = !this.currentMarksheet.marks.some(mark=>{
+        return mark.mark == null;
+      })
+    }
     this.marksheetService.addMarksheet(this.currentMarksheet).subscribe({
       complete:()=>{
         this.getMarksheets();
@@ -141,6 +134,15 @@ export class GradesTchrComponent {
     }).map((student)=>{
       return student.id;
     })
+  }
+
+  rankStudents(){
+    //rank marksheets according to total marks
+    this.marksheetService.rankMarksheets(this.clsID,this.year,this.term).subscribe({
+      complete:()=>{
+        this.getMarksheets();
+      }
+    });
   }
 
   modify:boolean = false;
