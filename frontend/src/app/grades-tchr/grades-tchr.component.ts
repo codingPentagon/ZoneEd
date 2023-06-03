@@ -61,6 +61,7 @@ export class GradesTchrComponent {
   }
 
   getSubjects(){
+    this.modify && this.modifyToggle();
     const subjectIDs:number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
 
     if(subjectIDs?.length){
