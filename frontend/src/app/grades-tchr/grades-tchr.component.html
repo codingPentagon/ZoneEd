@@ -39,11 +39,11 @@
           </mat-chip-listbox>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <div *ngFor="let mark of marksheets[selectedStudent]?.marks">
+          <div *ngFor="let mark of currentMarksheet?.marks">
             <div class="grades-entry">
               {{ getSubjectName(mark.subjectID) }}
               <span class="spacer"></span>
-              <span *ngIf="!modify">{{mark.mark}}</span>
+              <span *ngIf="!modify">{{mark.mark==null ? 'N/A':mark.mark}}</span>
               <input *ngIf="modify" matInput type="number" [max]="100" [(ngModel)]="mark.mark"/>
             </div>
             <mat-divider></mat-divider>

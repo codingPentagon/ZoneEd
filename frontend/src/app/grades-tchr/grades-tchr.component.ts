@@ -21,6 +21,7 @@ export class GradesTchrComponent {
   selectedStudent:number=0;
   subjects:Subject[] = [];
   totalMarks:number = 0;
+  currentMarksheet!:Marksheet;
 
   constructor(private studentService:StudentsService, private marksheetService:MarksheetService,private subjectService:SubjectService) {
   }
@@ -55,18 +56,55 @@ export class GradesTchrComponent {
   getTotalMarks(){
     this.totalMarks=0;
     this.marksheets[this.selectedStudent]?.marks.forEach(mark=>{
-      this.totalMarks+=mark.mark;
+      this.totalMarks+=(mark.mark == null ? 0 : mark.mark);
     })
   }
 
   getSubjects(){
     const subjectIDs:number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
-    subjectIDs.length && this.subjectService.fetchSubjects(subjectIDs).subscribe({
-      next:res=>{
-        this.subjects=res;
+
+    if(subjectIDs?.length){
+      this.subjectService.fetchSubjects(subjectIDs).subscribe({
+        next:res=>{
+          this.subjects=res;
+        },
+        complete:()=>{
+          this.getCurrentMarksheet();
+          this.getTotalMarks();
+        }
+      });
+    }
+    else{
+      this.subjects = [];
+      this.getCurrentMarksheet();
+      this.getTotalMarks();
+    }
+  }
+
+  getCurrentMarksheet(){
+    this.currentMarksheet = this.marksheets.find((marksheet)=>{
+      return marksheet.studentID == this.students[this.selectedStudent]?.id;
+    })!;
+
+    if(this.currentMarksheet == undefined){
+      this.currentMarksheet = {
+        id:0,
+        studentID:this.students[this.selectedStudent]?.id,
+        marks:[],
+        year:this.year,
+        term:this.term,
+        classID:this.clsID,
+        totalMarks:0,
+        rank:0,
+        isCompleted:false
       }
-    });
-    this.getTotalMarks();
+      this.subjects.forEach(subject=>{
+        this.currentMarksheet.marks.push({
+          subjectID:subject.id,
+          mark:null
+        })
+      })
+    }
   }
 
   getSubjectName(subjectID:number){
