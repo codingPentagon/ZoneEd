@@ -1,0 +1,62 @@
+<div>
+<!--  <ngx-gauge-->
+<!--    [max]="100"-->
+<!--    [min]="0"-->
+<!--    [value]="50"-->
+<!--    [type]="'semi'"-->
+<!--    [cap]="'round'"-->
+<!--    [thick]="20"-->
+<!--    [label]="'Present'"-->
+<!--    [foregroundColor]="'mediumblue'"-->
+<!--    [margin]="20"-->
+<!--  >-->
+<!--  </ngx-gauge>-->
+  <igx-radial-gauge
+    height="300px" width="300px"
+    minimumValue=0
+    [maximumValue]="total"
+    scaleStartAngle=180
+    scaleEndAngle=0
+    scaleBrush="#c6c6c6"
+    scaleSweepDirection="Clockwise"
+    scaleOversweep=1
+    scaleOversweepShape="fitted"
+    scaleStartExtent=0.48
+    scaleEndExtent=0.575
+
+    [value]="present"
+    isNeedleDraggingEnabled=false
+    needleBrush="DodgerBlue"
+    needleShape="needle"
+    needleEndExtent=0.475
+    needleStrokeThickness=0
+    needlePivotShape="CircleOverlay"
+    needlePivotBrush="dodgerBlue"
+    needlePivotWidthRatio=0.2
+    needlePivotStrokeThickness=0
+
+    interval=5
+    tickStartExtent=0.48
+    tickEndExtent=0.575
+    tickStrokeThickness=2
+    tickBrush="Black"
+    minorTickCount=4
+    minorTickEndExtent=0.54
+    minorTickStartExtent=0.575
+    minorTickStrokeThickness=1
+    minorTickBrush="Black"
+
+    labelExtent=0.65
+    labelInterval=5
+    font="11px Verdana"
+    fontBrush="navy"
+
+    backingShape="Fitted"
+    backingBrush="transparent"
+    backingOutline="transparent"
+
+    transitionDuration="500"
+    transitionProgress="0.6"
+  >
+  </igx-radial-gauge>
+</div>

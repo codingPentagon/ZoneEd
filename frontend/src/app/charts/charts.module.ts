@@ -5,6 +5,8 @@ import { StuGradesOverviewComponent } from './stu-grades-overview/stu-grades-ove
 import { TchrSubjectsPerfComponent } from './tchr-subjects-perf/tchr-subjects-perf.component';
 import { TchrLeaveOverviewComponent } from './tchr-leave-overview/tchr-leave-overview.component';
 import { TchrClassAttendanceComponent } from './tchr-class-attendance/tchr-class-attendance.component';
+import {NgxGaugeModule} from "ngx-gauge";
+import {IgxRadialGaugeModule} from "igniteui-angular-gauges";
 
 
 @NgModule({
@@ -22,8 +24,10 @@ import { TchrClassAttendanceComponent } from './tchr-class-attendance/tchr-class
     StuGradesOverviewComponent,
     StuYearlyAttendenceComponent
   ],
-  imports: [
-    CommonModule,
-  ]
+    imports: [
+        CommonModule,
+        NgxGaugeModule,
+        IgxRadialGaugeModule,
+    ]
 })
 export class ChartsModule { }
