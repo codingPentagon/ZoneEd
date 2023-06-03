@@ -17,7 +17,9 @@
             <div class="grades-entry" (click)="selectedStudent=i;getSubjects()">
               {{ student.name }}
               <span class="spacer"></span>
-<!--              {{student.isCompleted==true ? "Complete":"Incomplete"}}-->
+              <span class="sub-header">
+                {{incompleteStudentIDs.includes(student.id) ? "Incomplete":"Complete"}}
+              </span>
             </div>
             <mat-divider></mat-divider>
           </div>

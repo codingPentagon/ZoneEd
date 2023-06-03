@@ -22,6 +22,7 @@ export class GradesTchrComponent {
   subjects:Subject[] = [];
   totalMarks:number = 0;
   currentMarksheet!:Marksheet;
+  incompleteStudentIDs:number[] = [];
 
   constructor(private studentService:StudentsService, private marksheetService:MarksheetService,private subjectService:SubjectService) {
   }
@@ -49,6 +50,7 @@ export class GradesTchrComponent {
       },
       complete:()=>{
         this.getSubjects();
+        this.getIncompleteStudentIDs();
       }
     })
   }
@@ -126,6 +128,21 @@ export class GradesTchrComponent {
     })?.name
   }
 
+  getIncompleteStudentIDs(){
+    const completeStudentIDs = this.marksheets.filter((marksheet)=>{
+      return marksheet.isCompleted;
+    }).map((marksheet)=>{
+      return marksheet.studentID;
+    });
+
+    //to avoid getting students without marksheets as complete
+    this.incompleteStudentIDs = this.students.filter((student)=>{
+      return !completeStudentIDs.includes(student.id);
+    }).map((student)=>{
+      return student.id;
+    })
+  }
+
   modify:boolean = false;
 
   modifyToggle(){
@@ -133,12 +150,6 @@ export class GradesTchrComponent {
   }
 
   selectedOption='all'
-
-  // getIncompleteNames() {
-  //   return this.students.filter(student=>{
-  //     return !name.isCompleted
-  //   })
-  // }
 
   terms: any[] = [
     {value: 1, viewValue: '1st Term'},

@@ -106,3 +106,7 @@ button:not([disabled]){
   background-color: mediumspringgreen;
   color: navy;
 }
+
+.sub-header{
+  color: darkgray;
+}
