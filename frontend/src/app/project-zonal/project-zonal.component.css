@@ -28,9 +28,9 @@
   flex: 1 1 auto;
 }
 
-.milestone{
+.milestones{
   margin: 15px 15px 15px 0;
-  height: 87vh;
+  height: 43vh;
 }
 
 mat-card-header{
@@ -68,4 +68,9 @@ mat-expansion-panel-header{
 .selected{
   background-color: blue;
   color: white;
+}
+
+.project-details{
+  margin: 15px 15px 15px 0;
+  height: 42vh;
 }
