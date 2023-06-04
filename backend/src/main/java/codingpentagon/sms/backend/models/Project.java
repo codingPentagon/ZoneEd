@@ -12,10 +12,10 @@ public class Project {
     private int proposalID;
     private Date startDate;
     private Date endDate;
-    private int responsiblePersonIDs;
+    private String responsiblePerson;
     private int schoolID;
     private int principalID;
-    private Milestone milestones;
+    private Milestone[] milestones;
 
     public int getId() {
         return id;
@@ -65,12 +65,12 @@ public class Project {
         this.endDate = endDate;
     }
 
-    public int getResponsiblePersonIDs() {
-        return responsiblePersonIDs;
+    public String getResponsiblePerson() {
+        return responsiblePerson;
     }
 
-    public void setResponsiblePersonIDs(int responsiblePersonIDs) {
-        this.responsiblePersonIDs = responsiblePersonIDs;
+    public void setResponsiblePerson(String responsiblePersonIDs) {
+        this.responsiblePerson = responsiblePersonIDs;
     }
 
     public int getSchoolID() {
@@ -89,11 +89,11 @@ public class Project {
         this.principalID = principalID;
     }
 
-    public Milestone getMilestones() {
+    public Milestone[] getMilestones() {
         return milestones;
     }
 
-    public void setMilestones(Milestone milestones) {
+    public void setMilestones(Milestone[] milestones) {
         this.milestones = milestones;
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, SimpleChanges} from '@angular/core';
 import {Proposal} from "../models/proposal.model";
 import {Project} from "../models/project.model";
 import {ProjectService} from "../services/project.service";
@@ -12,10 +12,15 @@ export class ProjectDetailsComponent {
 
   projectAdd:boolean = false;
   projects:Project[]=[];
-  proposals: Proposal[]=[];
-  sclID!: number;
+  @Input() proposals!: Proposal[];
+  @Input() sclID!: number;
+  @Input() principalID!: number;
 
   constructor(private projectService:ProjectService) {
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    changes['sclID'] && this.getProjects();
   }
 
 
@@ -31,11 +36,33 @@ export class ProjectDetailsComponent {
     })
   }
 
-  getAcceptedProps():any[]{
+  get findAcceptedProps(){
     return this.proposals?.filter(acceptedPropCheck);
 
     function acceptedPropCheck(element:any) {
-      return element.status == 'Accepted';
+      return element.status.toLowerCase() == 'accepted';
     }
+  }
+
+  createProject(value: any) {
+    const project:Project = {
+      id:0,
+      createdDate:new Date(),
+      title:value.acceptedProposal.title,
+      proposalID:value.acceptedProposal.id,
+      startDate:value.startDate,
+      endDate:value.endDate,
+      responsiblePerson:value.responsiblePerson,
+      schoolID:this.sclID,
+      principalID:this.principalID,
+      milestones:[]
+    }
+
+    this.projectService.addProject(project).subscribe({
+      complete:()=>{
+        this.getProjects();
+        this.projectAddToggle();
+      }
+    });
   }
 }

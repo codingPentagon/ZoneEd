@@ -20,6 +20,10 @@ export class ProjectService {
   }
 
   fetchProjects(sclID: number) {
-    return this.http.get<Project[]>(url+'projects/'+sclID.toString())
+    return this.http.get<Project[]>(url+sclID.toString())
+  }
+
+  addProject(project: Project) {
+    return this.http.post(url,project);
   }
 }

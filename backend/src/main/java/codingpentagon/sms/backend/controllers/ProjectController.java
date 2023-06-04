@@ -31,4 +31,8 @@ public class ProjectController {
     @PostMapping("projects/proposals/")
     public void addProposal(@RequestBody Proposal proposal){this.projectService.saveProposal(proposal);}
 
+    @PostMapping("projects/")
+    public void addProject(@RequestBody Project project){
+        this.projectService.saveProject(project);
+    }
 }

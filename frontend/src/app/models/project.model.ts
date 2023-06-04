@@ -7,7 +7,7 @@ export interface Project {
   proposalID:number;
   startDate:Date;
   endDate:Date;
-  responsiblePersonIDs:number;
+  responsiblePerson:string;
   schoolID:number;
   principalID:number;
   milestones:Milestone[];

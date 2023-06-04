@@ -31,7 +31,16 @@ public class ProjectService {
     }
 
     public void saveProposal(Proposal proposal) {
-        proposal.setId(new Random().nextInt(5000));
+        if (proposal.getId() == 0) {
+            proposal.setId(new Random().nextInt(5000));
+        }
         this.proposalRepository.save(proposal);
+    }
+
+    public void saveProject(Project project) {
+        if (project.getId() == 0) {
+            project.setId(new Random().nextInt(50000));
+        }
+        this.projectRepository.save(project);
     }
 }
