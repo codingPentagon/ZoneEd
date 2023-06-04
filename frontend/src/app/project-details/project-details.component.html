@@ -2,7 +2,7 @@
         <mat-card-header>
           Project Details
           <span class="spacer"></span>
-          <mat-chip-listbox>
+          <mat-chip-listbox *ngIf="!disableEdit">
             <mat-chip [ngStyle]="{'background-color':projectAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="projectAddToggle()">
               <mat-icon [ngStyle]="{'color':projectAdd ? 'white' : 'black'}">add</mat-icon>
             </mat-chip>

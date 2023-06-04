@@ -15,6 +15,7 @@ export class ProjectDetailsComponent {
   @Input() proposals!: Proposal[];
   @Input() sclID!: number;
   @Input() principalID!: number;
+  @Input() disableEdit: boolean = false;
 
   constructor(private projectService:ProjectService) {
   }
