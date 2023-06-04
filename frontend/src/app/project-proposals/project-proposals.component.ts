@@ -9,6 +9,7 @@ import {Proposal} from "../models/proposal.model";
 })
 export class ProjectProposalsComponent {
   @Input() sclID!: number;
+  @Input() disableCreation: boolean = false;
   proposals: Proposal[] = [];
   proposalAdd: boolean = false;
   selectedOption='all'

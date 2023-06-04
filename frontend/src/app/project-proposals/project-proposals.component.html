@@ -5,17 +5,16 @@
     <mat-button-toggle value="all">All</mat-button-toggle>
     <mat-button-toggle value="pending">Pending</mat-button-toggle>
   </mat-button-toggle-group>
-  <mat-chip-listbox>
+  <mat-chip-listbox *ngIf="!disableCreation">
     <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
               (click)="proposalAddToggle()">
       <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
     </mat-chip>
   </mat-chip-listbox>
 </mat-card-header>
-<mat-card-content>
+<mat-card-content *ngIf="!proposalAdd">
   <mat-accordion>
-    <mat-expansion-panel [hideToggle]="proposal.status.toLowerCase() != 'pending'"
-                         *ngFor="let proposal of findProposalByStatus">
+    <mat-expansion-panel *ngFor="let proposal of findProposalByStatus">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{proposal.title}}<br>
@@ -26,7 +25,7 @@
           {{proposal.status}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-action-row *ngIf="proposal.status.toLowerCase() == 'pending'">
+      <mat-action-row *ngIf="disableCreation && proposal.status.toLowerCase() == 'pending'">
         <button mat-raised-button (click)="updateProposalApproval(proposal,true)">Accept</button>
         <button mat-raised-button (click)="updateProposalApproval(proposal,false)">Reject</button>
       </mat-action-row>
