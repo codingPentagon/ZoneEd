@@ -15,7 +15,6 @@ export class FileDropComponent {
   uploadPercentage!: string;
   filesMetadata:FileMetadata[]=[];
   uploadTask!:AngularFireUploadTask;
-  icon: string = 'insert_drive_file';
 
   constructor(private filesService: FilesService) {
   }
