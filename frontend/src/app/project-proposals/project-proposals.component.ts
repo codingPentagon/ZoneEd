@@ -46,7 +46,7 @@ export class ProjectProposalsComponent {
       comment: formValue.comment,
       feedback: '',
       schoolID: this.sclID,
-      documents: []
+      documents: this.fileDrop.filesMetadata
     }
     this.projectService.addProposal(proposal).subscribe({
       complete: () => {

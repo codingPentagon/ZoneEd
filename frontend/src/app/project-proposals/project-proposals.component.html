@@ -26,7 +26,12 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 <!--      <span>comment: {{proposal.comment}}</span><br>-->
-      <mat-form-field appearance="outline" class="width" *ngIf="proposal.status.toLowerCase() == 'pending'">
+      <div>
+        <a *ngFor="let doc of proposal.documents" href="{{doc.downloadUrl}}" target="_blank">
+          <mat-icon>insert_drive_file</mat-icon>
+        </a>
+      </div>
+      <mat-form-field appearance="outline" class="width" *ngIf="disableCreation && proposal.status.toLowerCase() == 'pending'">
         <mat-label>Feedback</mat-label>
         <input matInput name="feedback" [(ngModel)]="currentFeedback">
       </mat-form-field>

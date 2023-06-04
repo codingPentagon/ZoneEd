@@ -29,3 +29,7 @@ mat-card-content{
   padding: 0;
   overflow: auto;
 }
+
+.width{
+  width: 100%;
+}
