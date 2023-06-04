@@ -1,0 +1,21 @@
+<ngx-file-drop (onFileDrop)="dropped($event)" dropZoneClassName="file-drop-zone"
+               [directory]="false" contentClassName="file-drop-content" #drop>
+  <ng-template ngx-file-drop-content-tmp>
+    <div *ngIf="!filesMetadata.length" class="grid drop-template" (click)="drop.openFileSelector()">
+      <mat-icon>cloud_upload</mat-icon>
+      <span>Drop files here</span>
+      <span>or</span>
+      <span>Browse</span>
+    </div>
+    <div class="grid file-list" *ngIf="filesMetadata.length">
+        <span *ngFor="let file of filesMetadata" class="grid">
+         <span>{{file.name}}</span>
+         <span>{{(file.size/1024/1024).toFixed(2)+'MB'}}</span>
+          <mat-icon (click)="deleteFile(file)">delete</mat-icon>
+        </span>
+    </div>
+    <div class="click-area" *ngIf="filesMetadata.length" (click)="drop.openFileSelector()">
+      <span *ngIf="!isComplete">Uploading {{uploadPercentage}}%</span>
+    </div>
+  </ng-template>
+</ngx-file-drop>

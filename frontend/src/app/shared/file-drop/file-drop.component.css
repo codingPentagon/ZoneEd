@@ -1,0 +1,56 @@
+ngx-file-drop >>> .file-drop-zone {
+  border: 2px dashed royalblue;
+  border-radius: 10px;
+  padding: 20px;
+  height: 150px;
+  overflow: hidden;
+}
+
+ngx-file-drop >>> .file-drop-zone:has(.drop-template) {
+  display: grid;
+  place-items: center;
+}
+
+.drop-template {
+  color: royalblue;
+  place-items: center;
+  cursor: pointer;
+  grid-gap: 5px;
+}
+
+.file-list {
+  color: navy;
+  grid-gap: 5px;
+}
+
+.file-list > span {
+  grid-template-columns: 1fr min-content min-content;
+  grid-gap: 10px;
+}
+
+.file-list mat-icon{
+  cursor: pointer;
+}
+
+.click-area{
+  height: 100%;
+  cursor: pointer;
+  color: gray;
+  display: grid;
+  justify-items: center;
+  padding: 10px;
+}
+
+.grid{
+  display: grid;
+}
+
+button:not([disabled]) {
+  background-color: mediumspringgreen;
+}
+
+ngx-file-drop>>>.file-drop-content{
+  width: 100%;
+  height: 100%;
+  display: contents;
+}
