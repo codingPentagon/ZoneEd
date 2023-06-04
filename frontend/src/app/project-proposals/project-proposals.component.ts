@@ -1,6 +1,7 @@
-import {Component, Input, SimpleChanges} from '@angular/core';
+import {Component, Input, SimpleChanges, ViewChild} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {Proposal} from "../models/proposal.model";
+import {FileDropComponent} from "../shared/file-drop/file-drop.component";
 
 @Component({
   selector: 'app-project-proposals',
@@ -10,6 +11,7 @@ import {Proposal} from "../models/proposal.model";
 export class ProjectProposalsComponent {
   @Input() sclID!: number;
   @Input() disableCreation: boolean = false;
+  @ViewChild('fileDrop') fileDrop!:FileDropComponent;
   proposals: Proposal[] = [];
   proposalAdd: boolean = false;
   selectedOption='all'
@@ -25,15 +27,6 @@ export class ProjectProposalsComponent {
 
   proposalAddToggle() {
     this.proposalAdd = !this.proposalAdd;
-  }
-
-
-  getAcceptedProps(): any[] {
-    return this.proposals.filter(acceptedPropCheck);
-
-    function acceptedPropCheck(element: any) {
-      return element.status == 'Accepted';
-    }
   }
 
   getProposals() {
@@ -81,5 +74,10 @@ export class ProjectProposalsComponent {
         this.getProposals();
       }
     });
+  }
+
+  discard() {
+    this.fileDrop.deleteAll();
+    this.proposalAddToggle();
   }
 }

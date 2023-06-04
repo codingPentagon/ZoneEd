@@ -47,10 +47,10 @@
       <mat-label>Comments</mat-label>
       <input matInput name="comment" ngModel>
     </mat-form-field>
-    <input type="file" name="file" ngModel>
+    <app-file-drop parentDir="projects/proposals/" #fileDrop></app-file-drop>
   </form>
 </mat-card-content>
 <mat-action-row *ngIf="proposalAdd">
   <button mat-raised-button type="submit" form="new-proposal">Submit</button>
-  <button mat-raised-button (click)="proposalAddToggle()">Discard</button>
+  <button mat-raised-button (click)="discard()">Discard</button>
 </mat-action-row>
