@@ -115,11 +115,14 @@ export class ProjectZonalComponent {
 
   selectedOption='all'
 
-  // getPendingProposals(){
-  //   return this.schoolProjsProps[this.selectedSchool].proposals.filter(prop=>{
-  //     return prop.status=='Pending'
-  //   })
-  // }
+  get findProposalByStatus(){
+    if (this.selectedOption == 'pending'){
+      return this.proposals.filter(prop=>{
+        return prop.status.toLowerCase()=='pending'
+      })
+    }
+    return this.proposals;
+  }
 
 
   updateProposalApproval(proposal:Proposal,approval: boolean) {
