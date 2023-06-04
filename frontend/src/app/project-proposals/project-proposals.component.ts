@@ -13,6 +13,7 @@ export class ProjectProposalsComponent {
   proposals: Proposal[] = [];
   proposalAdd: boolean = false;
   selectedOption='all'
+  currentFeedback!: string;
 
   constructor(private projectService: ProjectService) {
   }
@@ -73,6 +74,7 @@ export class ProjectProposalsComponent {
 
 
   updateProposalApproval(proposal:Proposal,approval: boolean) {
+    proposal.feedback = this.currentFeedback;
     proposal.status = approval ? 'Accepted' : 'Rejected';
     this.projectService.addProposal(proposal).subscribe({
       complete:()=>{

@@ -14,7 +14,7 @@
 </mat-card-header>
 <mat-card-content *ngIf="!proposalAdd">
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let proposal of findProposalByStatus">
+    <mat-expansion-panel *ngFor="let proposal of findProposalByStatus" (closed)="currentFeedback=''">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{proposal.title}}<br>
@@ -25,6 +25,11 @@
           {{proposal.status}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+<!--      <span>comment: {{proposal.comment}}</span><br>-->
+      <mat-form-field appearance="outline" class="width" *ngIf="proposal.status.toLowerCase() == 'pending'">
+        <mat-label>Feedback</mat-label>
+        <input matInput name="feedback" [(ngModel)]="currentFeedback">
+      </mat-form-field>
       <mat-action-row *ngIf="disableCreation && proposal.status.toLowerCase() == 'pending'">
         <button mat-raised-button (click)="updateProposalApproval(proposal,true)">Accept</button>
         <button mat-raised-button (click)="updateProposalApproval(proposal,false)">Reject</button>
