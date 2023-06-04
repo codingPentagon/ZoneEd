@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {Project} from "../models/project.model";
 import {NgForm} from "@angular/forms";
+import {FileDropComponent} from "../shared/file-drop/file-drop.component";
 
 @Component({
   selector: 'app-project-milestones',
@@ -12,6 +13,7 @@ export class ProjectMilestonesComponent {
 
   @Input() project!:Project;
   @Input() disableCreation:boolean = false;
+  @ViewChild('fileDrop') fileDrop!:FileDropComponent;
   milestoneAdd:boolean = false;
   proofAdd:boolean = false;
   feedbackAdd:boolean = false;
@@ -55,6 +57,20 @@ export class ProjectMilestonesComponent {
     this.projectService.addProject(this.project).subscribe({
       complete:()=>{
         this.feedbackAddToggle();
+      }
+    })
+  }
+
+  discard() {
+    this.fileDrop.deleteAll();
+    this.proofAddToggle();
+  }
+
+  updateProofs(index: number) {
+    this.project.milestones[index].proofs.push(...this.fileDrop.filesMetadata);
+    this.projectService.addProject(this.project).subscribe({
+      complete:()=>{
+        this.proofAddToggle();
       }
     })
   }

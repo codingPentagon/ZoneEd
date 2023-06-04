@@ -23,7 +23,9 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div class="flex">
-        <mat-icon class="big-icon" *ngFor="let proof of milestone?.proofs">{{proof}}</mat-icon>
+        <a *ngFor="let proof of milestone.proofs" href="{{proof.downloadUrl}}" target="_blank">
+          <mat-icon>insert_drive_file</mat-icon>
+        </a>
         <span class="spacer"></span>
 
         <mat-chip-listbox *ngIf="!disableCreation">
@@ -41,11 +43,10 @@
         </mat-chip-listbox>
       </div>
 
-
-      <input type="file" *ngIf="proofAdd">
+      <app-file-drop parentDir="projects/milestones/" #fileDrop *ngIf="proofAdd"></app-file-drop>
       <mat-action-row *ngIf="proofAdd">
-        <button mat-raised-button>Submit</button>
-        <button mat-raised-button (click)="proofAddToggle()">Discard</button>
+        <button mat-raised-button (click)="updateProofs(i)">Submit</button>
+        <button mat-raised-button (click)="discard()">Discard</button>
       </mat-action-row>
 
       <mat-form-field *ngIf="feedbackAdd" appearance="outline" class="full-width">
