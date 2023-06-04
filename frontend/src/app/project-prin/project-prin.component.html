@@ -4,10 +4,10 @@
   <div class="workspace">
     <div class="left">
       <mat-card class="proposal">
-        <app-project-proposals [sclID]="sclID"></app-project-proposals>
+        <app-project-proposals [sclID]="sclID" #proposalComp></app-project-proposals>
       </mat-card>
       <mat-card class="projects">
-        <app-project-details [sclID]="sclID" [proposals]="proposals" [principalID]="userID"></app-project-details>
+        <app-project-details [sclID]="sclID" [principalID]="userID" [proposals]="proposalComp.proposals"></app-project-details>
       </mat-card>
     </div>
     <div class="right">

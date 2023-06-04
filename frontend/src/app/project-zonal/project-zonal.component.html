@@ -9,7 +9,7 @@
      </mat-card-header>
      <mat-card-content>
        <div *ngFor="let school of schools" [ngClass]="{selected:selectedSchoolID == school.id}">
-         <div class="entry pointer" (click)="selectedSchoolID=school.id; getProposals()">
+         <div class="entry pointer" (click)="selectedSchoolID=school.id">
            <div class="flex">
              {{school.name}}
            </div>
@@ -19,34 +19,7 @@
      </mat-card-content>
    </mat-card>
       <mat-card class="projprop">
-        <mat-card-header>
-          Project Proposals
-          <span class="spacer"></span>
-          <mat-button-toggle-group [(value)]="selectedOption">
-            <mat-button-toggle value="all">All</mat-button-toggle>
-            <mat-button-toggle value="pending">Pending</mat-button-toggle>
-          </mat-button-toggle-group>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-accordion>
-            <mat-expansion-panel [hideToggle]="proposal.status.toLowerCase() != 'pending'" *ngFor="let proposal of findProposalByStatus">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{proposal.title}}<br>
-                  {{proposal.feedback}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{proposal.createdDate | date:'dd/MM/yyyy'}}<br>
-                  {{proposal.status}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-action-row *ngIf="proposal.status.toLowerCase() == 'pending'">
-                <button mat-raised-button (click)="updateProposalApproval(proposal,true)">Accept</button>
-                <button mat-raised-button (click)="updateProposalApproval(proposal,false)">Reject</button>
-              </mat-action-row>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </mat-card-content>
+        <app-project-proposals [sclID]="selectedSchoolID"></app-project-proposals>
       </mat-card>
     </div>
     <div class="right">

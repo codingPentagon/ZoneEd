@@ -1,45 +1,52 @@
-
-
-        <mat-card-header>
-          Project Proposals
-          <span class="spacer"></span>
-          <mat-chip-listbox>
-            <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="proposalAddToggle()">
-              <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
-            </mat-chip>
-          </mat-chip-listbox>
-        </mat-card-header>
-        <mat-card-content *ngIf="!proposalAdd">
-          <div *ngFor="let proposal of proposals">
-            <div class="entry">
-              <div class="flex">
-                {{proposal.title}}
-                <span class="spacer"></span>
-                {{proposal.createdDate | date:'dd/MM/yyyy'}}
-              </div>
-              <div class="flex">
-                {{proposal.feedback}}
-                <span class="spacer"></span>
-                {{proposal.status}}
-              </div>
-            </div>
-            <mat-divider></mat-divider>
-          </div>
-        </mat-card-content>
-        <mat-card-content *ngIf="proposalAdd">
-          <form id="new-proposal" #newProposal="ngForm" (ngSubmit)="createProposal(newProposal.value)">
-            <mat-form-field appearance="outline" class="margin-top width">
-              <mat-label>Project Title</mat-label>
-              <input matInput name="title" ngModel>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="width">
-              <mat-label>Comments</mat-label>
-              <input matInput name="comment" ngModel>
-            </mat-form-field>
-            <input type="file" name="file" ngModel>
-          </form>
-        </mat-card-content>
-        <mat-action-row *ngIf="proposalAdd">
-          <button mat-raised-button type="submit" form="new-proposal">Submit</button>
-          <button mat-raised-button (click)="proposalAddToggle()">Discard</button>
-        </mat-action-row>
+<mat-card-header>
+  Project Proposals
+  <span class="spacer"></span>
+  <mat-button-toggle-group [(value)]="selectedOption">
+    <mat-button-toggle value="all">All</mat-button-toggle>
+    <mat-button-toggle value="pending">Pending</mat-button-toggle>
+  </mat-button-toggle-group>
+  <mat-chip-listbox>
+    <mat-chip [ngStyle]="{'background-color':proposalAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+              (click)="proposalAddToggle()">
+      <mat-icon [ngStyle]="{'color':proposalAdd ? 'white' : 'black'}">add</mat-icon>
+    </mat-chip>
+  </mat-chip-listbox>
+</mat-card-header>
+<mat-card-content>
+  <mat-accordion>
+    <mat-expansion-panel [hideToggle]="proposal.status.toLowerCase() != 'pending'"
+                         *ngFor="let proposal of findProposalByStatus">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{proposal.title}}<br>
+          {{proposal.feedback}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{proposal.createdDate | date:'dd/MM/yyyy'}}<br>
+          {{proposal.status}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-action-row *ngIf="proposal.status.toLowerCase() == 'pending'">
+        <button mat-raised-button (click)="updateProposalApproval(proposal,true)">Accept</button>
+        <button mat-raised-button (click)="updateProposalApproval(proposal,false)">Reject</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card-content>
+<mat-card-content *ngIf="proposalAdd">
+  <form id="new-proposal" #newProposal="ngForm" (ngSubmit)="createProposal(newProposal.value)">
+    <mat-form-field appearance="outline" class="margin-top width">
+      <mat-label>Project Title</mat-label>
+      <input matInput name="title" ngModel>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="width">
+      <mat-label>Comments</mat-label>
+      <input matInput name="comment" ngModel>
+    </mat-form-field>
+    <input type="file" name="file" ngModel>
+  </form>
+</mat-card-content>
+<mat-action-row *ngIf="proposalAdd">
+  <button mat-raised-button type="submit" form="new-proposal">Submit</button>
+  <button mat-raised-button (click)="proposalAddToggle()">Discard</button>
+</mat-action-row>

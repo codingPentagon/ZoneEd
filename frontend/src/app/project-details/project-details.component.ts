@@ -21,7 +21,7 @@ export class ProjectDetailsComponent {
   }
 
   ngOnChanges(changes:SimpleChanges){
-    changes['sclID'] && this.getProjects();
+    this.sclID!=undefined && this.getProjects();
   }
 
 

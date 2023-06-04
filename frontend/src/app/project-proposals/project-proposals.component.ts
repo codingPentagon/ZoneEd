@@ -9,60 +9,74 @@ import {Proposal} from "../models/proposal.model";
 })
 export class ProjectProposalsComponent {
   @Input() sclID!: number;
+  proposals: Proposal[] = [];
+  proposalAdd: boolean = false;
+  selectedOption='all'
 
-  constructor(private projectService:ProjectService) {
+  constructor(private projectService: ProjectService) {
   }
 
-  ngOnChanges(changes:SimpleChanges){
-    changes['sclID'] && this.getProposals()
+  ngOnChanges(changes: SimpleChanges) {
+    this.sclID!=undefined && this.getProposals()
   }
 
-  proposalAdd:boolean = false;
 
-  proposalAddToggle(){
+  proposalAddToggle() {
     this.proposalAdd = !this.proposalAdd;
   }
 
-proposals: Proposal[]=[];
 
-projects=[
-  {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-  {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-  {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-];
-
-  getAcceptedProps():any[]{
+  getAcceptedProps(): any[] {
     return this.proposals.filter(acceptedPropCheck);
 
-    function acceptedPropCheck(element:any) {
+    function acceptedPropCheck(element: any) {
       return element.status == 'Accepted';
     }
   }
 
-  getProposals(){
+  getProposals() {
     this.projectService.fetchProposals(this.sclID).subscribe({
-      next:res=>{
-        this.proposals=res;
+      next: res => {
+        this.proposals = res;
       }
     })
   }
 
-  createProposal(formValue:any) {
-    const proposal:Proposal = {
-      id:0,
-      title:formValue.title,
-      status:'Pending',
-      createdDate:new Date(),
-      comment:formValue.comment,
-      feedback:'',
-      schoolID:this.sclID,
-      documents:[]
+  createProposal(formValue: any) {
+    const proposal: Proposal = {
+      id: 0,
+      title: formValue.title,
+      status: 'Pending',
+      createdDate: new Date(),
+      comment: formValue.comment,
+      feedback: '',
+      schoolID: this.sclID,
+      documents: []
     }
     this.projectService.addProposal(proposal).subscribe({
-      complete:()=>{
+      complete: () => {
         this.proposalAddToggle();
         this.getProposals();
       }
     })
+  }
+
+  get findProposalByStatus(){
+    if (this.selectedOption == 'pending'){
+      return this.proposals.filter(prop=>{
+        return prop.status.toLowerCase()=='pending'
+      })
+    }
+    return this.proposals;
+  }
+
+
+  updateProposalApproval(proposal:Proposal,approval: boolean) {
+    proposal.status = approval ? 'Accepted' : 'Rejected';
+    this.projectService.addProposal(proposal).subscribe({
+      complete:()=>{
+        this.getProposals();
+      }
+    });
   }
 }

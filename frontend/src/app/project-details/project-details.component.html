@@ -1,66 +1,67 @@
-
-        <mat-card-header>
-          Project Details
-          <span class="spacer"></span>
-          <mat-chip-listbox *ngIf="!disableEdit">
-            <mat-chip [ngStyle]="{'background-color':projectAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="projectAddToggle()">
-              <mat-icon [ngStyle]="{'color':projectAdd ? 'white' : 'black'}">add</mat-icon>
-            </mat-chip>
-          </mat-chip-listbox>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-accordion *ngIf="!projectAdd">
-            <mat-expansion-panel *ngFor="let project of projects">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{project.title}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{project.createdDate | date:'dd/MM/yyyy'}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="flex">
-                Start Date : <span class="spacer"></span>{{project.startDate | date:'dd/MM/yyyy'}}
-              </div>
-              <div class="flex">
-                End Date : <span class="spacer"></span>{{project.endDate | date:'dd/MM/yyyy'}}
-              </div>
-              <div class="flex">
-                Responsible Person : <span class="spacer"></span>{{project.responsiblePerson}}
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </mat-card-content>
-        <mat-card-content *ngIf="projectAdd">
-          <form id="new-project" #newProject="ngForm" (ngSubmit)="createProject(newProject.value)">
-            <mat-form-field appearance="outline" class="width">
-              <mat-label>Accepted Proposal</mat-label>
-              <mat-select ngModel name="acceptedProposal">
-                <mat-option *ngFor="let acceptedProp of findAcceptedProps" [value]="acceptedProp">{{acceptedProp.title}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div class="flex">
-              <mat-form-field appearance="outline" class="margin-top">
-                <mat-label>Start Date</mat-label>
-                <input matInput ngModel name="startDate" [matDatepicker]="picker1">
-                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-              </mat-form-field>
-              <span class="spacer"></span>
-              <mat-form-field appearance="outline" class="margin-top">
-                <mat-label>End Date</mat-label>
-                <input matInput ngModel name="endDate" [matDatepicker]="picker2">
-                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
-            </div>
-            <mat-form-field appearance="outline" class="margin-top width">
-              <mat-label>Responsible Person</mat-label>
-              <input matInput ngModel name="responsiblePerson">
-            </mat-form-field>
-          </form>
-        </mat-card-content>
-        <mat-action-row *ngIf="projectAdd">
-          <button mat-raised-button form="new-project" type="submit">Create</button>
-          <button mat-raised-button (click)="projectAddToggle()">Discard</button>
-        </mat-action-row>
+<mat-card-header>
+  Project Details
+  <span class="spacer"></span>
+  <mat-chip-listbox *ngIf="!disableEdit">
+    <mat-chip [ngStyle]="{'background-color':projectAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+              (click)="projectAddToggle()">
+      <mat-icon [ngStyle]="{'color':projectAdd ? 'white' : 'black'}">add</mat-icon>
+    </mat-chip>
+  </mat-chip-listbox>
+</mat-card-header>
+<mat-card-content>
+  <mat-accordion *ngIf="!projectAdd">
+    <mat-expansion-panel *ngFor="let project of projects">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{project.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{project.createdDate | date:'dd/MM/yyyy'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="flex">
+        Start Date : <span class="spacer"></span>{{project.startDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="flex">
+        End Date : <span class="spacer"></span>{{project.endDate | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="flex">
+        Responsible Person : <span class="spacer"></span>{{project.responsiblePerson}}
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card-content>
+<mat-card-content *ngIf="projectAdd">
+  <form id="new-project" #newProject="ngForm" (ngSubmit)="createProject(newProject.value)">
+    <mat-form-field appearance="outline" class="width">
+      <mat-label>Accepted Proposal</mat-label>
+      <mat-select ngModel name="acceptedProposal">
+        <mat-option *ngFor="let acceptedProp of findAcceptedProps"
+                    [value]="acceptedProp">{{acceptedProp.title}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="flex">
+      <mat-form-field appearance="outline" class="margin-top">
+        <mat-label>Start Date</mat-label>
+        <input matInput ngModel name="startDate" [matDatepicker]="picker1">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <span class="spacer"></span>
+      <mat-form-field appearance="outline" class="margin-top">
+        <mat-label>End Date</mat-label>
+        <input matInput ngModel name="endDate" [matDatepicker]="picker2">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" class="margin-top width">
+      <mat-label>Responsible Person</mat-label>
+      <input matInput ngModel name="responsiblePerson">
+    </mat-form-field>
+  </form>
+</mat-card-content>
+<mat-action-row *ngIf="projectAdd">
+  <button mat-raised-button form="new-project" type="submit">Create</button>
+  <button mat-raised-button (click)="projectAddToggle()">Discard</button>
+</mat-action-row>
