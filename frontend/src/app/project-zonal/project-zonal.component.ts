@@ -122,4 +122,12 @@ export class ProjectZonalComponent {
   // }
 
 
+  updateProposalApproval(proposal:Proposal,approval: boolean) {
+    proposal.status = approval ? 'Accepted' : 'Rejected';
+    this.projectService.addProposal(proposal).subscribe({
+      complete:()=>{
+        this.getProposals();
+      }
+    });
+  }
 }
