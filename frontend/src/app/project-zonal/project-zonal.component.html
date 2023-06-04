@@ -8,8 +8,8 @@
        Schools
      </mat-card-header>
      <mat-card-content>
-       <div *ngFor="let school of schools;let i=index" [ngClass]="{selected:selectedSchool == i}">
-         <div class="entry pointer" (click)="selectedSchool=i; getProposals()">
+       <div *ngFor="let school of schools" [ngClass]="{selected:selectedSchoolID == school.id}">
+         <div class="entry pointer" (click)="selectedSchoolID=school.id; getProposals()">
            <div class="flex">
              {{school.name}}
            </div>

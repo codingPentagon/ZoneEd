@@ -32,7 +32,7 @@ export class ProjectZonalComponent {
   }
 
   getProposals(){
-    this.projectService.fetchProposals(this.schools[this.selectedSchool].id).subscribe({
+    this.projectService.fetchProposals(this.selectedSchoolID).subscribe({
       next:res=>{
         this.proposals=res;
       }
@@ -104,7 +104,7 @@ export class ProjectZonalComponent {
     }
   ];
 
-  selectedSchool = 0;
+  selectedSchoolID = 0;
   selectedProject = 0;
 
   feedbackAdd=false;
@@ -115,11 +115,11 @@ export class ProjectZonalComponent {
 
   selectedOption='all'
 
-  getPendingProposals(){
-    return this.schoolProjsProps[this.selectedSchool].proposals.filter(prop=>{
-      return prop.status=='Pending'
-    })
-  }
+  // getPendingProposals(){
+  //   return this.schoolProjsProps[this.selectedSchool].proposals.filter(prop=>{
+  //     return prop.status=='Pending'
+  //   })
+  // }
 
 
 }
