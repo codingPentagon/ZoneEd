@@ -1,7 +1,7 @@
 <mat-card-header>
   Project Milestones
   <span class="spacer"></span>
-  <mat-chip-listbox>
+  <mat-chip-listbox *ngIf="!disableCreation">
     <mat-chip [ngStyle]="{'background-color':milestoneAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
               (click)="milestoneAddToggle()">
       <mat-icon [ngStyle]="{'color':milestoneAdd ? 'white' : 'black'}">add</mat-icon>
@@ -25,18 +25,38 @@
       <div class="flex">
         <mat-icon class="big-icon" *ngFor="let proof of milestone?.proofs">{{proof}}</mat-icon>
         <span class="spacer"></span>
-        <mat-chip-listbox>
+
+        <mat-chip-listbox *ngIf="!disableCreation">
           <mat-chip [ngStyle]="{'background-color':proofAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
                     (click)="proofAddToggle()">
             <mat-icon [ngStyle]="{'color':proofAdd ? 'white' : 'black'}">add</mat-icon>
           </mat-chip>
         </mat-chip-listbox>
+
+        <mat-chip-listbox *ngIf="disableCreation">
+          <mat-chip [ngStyle]="{'background-color':feedbackAdd ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+                    (click)="feedbackAddToggle()">
+            <mat-icon [ngStyle]="{'color':feedbackAdd ? 'white' : 'black'}">comment</mat-icon>
+          </mat-chip>
+        </mat-chip-listbox>
       </div>
-      <input type="file" *ngIf="milestoneAdd">
-      <mat-action-row *ngIf="milestoneAdd">
+
+
+      <input type="file" *ngIf="proofAdd">
+      <mat-action-row *ngIf="proofAdd">
         <button mat-raised-button>Submit</button>
         <button mat-raised-button>Discard</button>
       </mat-action-row>
+
+      <mat-form-field *ngIf="feedbackAdd" appearance="outline" class="full-width">
+        <mat-label>Feedback</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-action-row *ngIf="feedbackAdd">
+        <button mat-raised-button>Submit</button>
+        <button mat-raised-button>Discard</button>
+      </mat-action-row>
+
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card-content>

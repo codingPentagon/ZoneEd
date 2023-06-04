@@ -11,8 +11,10 @@ import {NgForm} from "@angular/forms";
 export class ProjectMilestonesComponent {
 
   @Input() project!:Project;
+  @Input() disableCreation:boolean = false;
   milestoneAdd:boolean = false;
   proofAdd:boolean = false;
+  feedbackAdd:boolean = false;
 
   constructor(private projectService: ProjectService) {
   }
@@ -24,6 +26,10 @@ export class ProjectMilestonesComponent {
 
   proofAddToggle(){
     this.proofAdd = !this.proofAdd;
+  }
+
+  feedbackAddToggle(){
+    this.feedbackAdd = !this.feedbackAdd;
   }
 
   createMilestone(newMilestone: NgForm) {

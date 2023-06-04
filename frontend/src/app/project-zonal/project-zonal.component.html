@@ -27,7 +27,7 @@
         <app-project-details [sclID]="selectedSchoolID" [disableEdit]="true" #projectComp></app-project-details>
       </mat-card>
       <mat-card class="milestones">
-        <app-project-milestones [project]="projectComp.selectedProject"></app-project-milestones>
+        <app-project-milestones [project]="projectComp.selectedProject" [disableCreation]="true"></app-project-milestones>
       </mat-card>
     </div>
   </div>
