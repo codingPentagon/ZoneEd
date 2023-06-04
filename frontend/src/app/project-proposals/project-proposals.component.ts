@@ -60,7 +60,8 @@ projects=[
     }
     this.projectService.addProposal(proposal).subscribe({
       complete:()=>{
-        this.proposalAddToggle()
+        this.proposalAddToggle();
+        this.getProposals();
       }
     })
   }

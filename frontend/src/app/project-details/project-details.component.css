@@ -19,3 +19,6 @@ mat-panel-description{
   text-align: end;
 }
 
+mat-card-content{
+  padding: 0;
+}

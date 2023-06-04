@@ -10,13 +10,13 @@
         </mat-card-header>
         <mat-card-content>
           <mat-accordion *ngIf="!projectAdd">
-            <mat-expansion-panel hideToggle *ngFor="let project of projects">
+            <mat-expansion-panel *ngFor="let project of projects">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   {{project.title}}
                 </mat-panel-title>
                 <mat-panel-description>
-                  {{project.createdDate}}
+                  {{project.createdDate | date:'dd/MM/yyyy'}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div class="flex">
