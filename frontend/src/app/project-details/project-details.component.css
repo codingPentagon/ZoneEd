@@ -22,3 +22,12 @@ mat-panel-description{
 mat-card-content{
   padding: 0;
 }
+
+.selected{
+  background-color: blue;
+  color: white;
+}
+
+.selected .mat-expansion-panel-header-title, .selected .mat-expansion-panel-header-description, .selected /deep/.mat-expansion-indicator:after{
+  color: white;
+}

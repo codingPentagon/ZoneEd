@@ -12,6 +12,7 @@ export class ProjectDetailsComponent {
 
   projectAdd:boolean = false;
   projects:Project[]=[];
+  selectedProject!:Project;
   @Input() proposals!: Proposal[];
   @Input() sclID!: number;
   @Input() principalID!: number;
@@ -32,6 +33,7 @@ export class ProjectDetailsComponent {
   getProjects(){
     this.projectService.fetchProjects(this.sclID).subscribe({
       next:res=>{
+        this.selectedProject = res[0];
         this.projects=res;
       }
     })
