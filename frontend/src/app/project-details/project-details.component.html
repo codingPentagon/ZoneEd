@@ -9,6 +9,7 @@
   </mat-chip-listbox>
 </mat-card-header>
 <mat-card-content>
+  <p *ngIf="!projects || projects.length == 0">No Projects Available</p>
   <mat-accordion *ngIf="!projectAdd">
     <mat-expansion-panel *ngFor="let project of projects" (click)="selectedProject=project" [ngClass]="{selected:selectedProject==project}">
       <mat-expansion-panel-header>

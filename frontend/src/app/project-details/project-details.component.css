@@ -31,3 +31,10 @@ mat-card-content{
 .selected .mat-expansion-panel-header-title, .selected .mat-expansion-panel-header-description, .selected /deep/.mat-expansion-indicator:after{
   color: white;
 }
+
+mat-card-content>p{
+  display: flex;
+  justify-content: center;
+  color: gray;
+  margin: 10px auto;
+}
