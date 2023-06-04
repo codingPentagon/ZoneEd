@@ -38,5 +38,13 @@ mat-panel-description{
   white-space: nowrap;
 }
 
+mat-card-content>p{
+  display: flex;
+  justify-content: center;
+  color: gray;
+  margin: 10px auto;
+}
 
-
+.full-width{
+  width: 100%;
+}

@@ -24,10 +24,10 @@
     </div>
     <div class="right">
       <mat-card class="project-details">
-        <app-project-details [sclID]="selectedSchoolID" [disableEdit]="true"></app-project-details>
+        <app-project-details [sclID]="selectedSchoolID" [disableEdit]="true" #projectComp></app-project-details>
       </mat-card>
       <mat-card class="milestones">
-        <app-project-milestones></app-project-milestones>
+        <app-project-milestones [project]="projectComp.selectedProject"></app-project-milestones>
       </mat-card>
     </div>
   </div>

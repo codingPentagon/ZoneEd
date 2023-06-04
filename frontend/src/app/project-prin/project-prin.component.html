@@ -7,12 +7,12 @@
         <app-project-proposals [sclID]="sclID" #proposalComp></app-project-proposals>
       </mat-card>
       <mat-card class="projects">
-        <app-project-details [sclID]="sclID" [principalID]="userID" [proposals]="proposalComp.proposals"></app-project-details>
+        <app-project-details [sclID]="sclID" [principalID]="userID" [proposals]="proposalComp.proposals" #projectComp></app-project-details>
       </mat-card>
     </div>
     <div class="right">
       <mat-card class="milestones">
-        <app-project-milestones></app-project-milestones>
+        <app-project-milestones [project]="projectComp.selectedProject"></app-project-milestones>
       </mat-card>
     </div>
   </div>

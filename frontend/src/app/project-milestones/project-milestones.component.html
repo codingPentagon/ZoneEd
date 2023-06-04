@@ -1,35 +1,61 @@
+<mat-card-header>
+  Project Milestones
+  <span class="spacer"></span>
+  <mat-chip-listbox>
+    <mat-chip [ngStyle]="{'background-color':milestoneAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+              (click)="milestoneAddToggle()">
+      <mat-icon [ngStyle]="{'color':milestoneAdd ? 'white' : 'black'}">add</mat-icon>
+    </mat-chip>
+  </mat-chip-listbox>
+</mat-card-header>
+<mat-card-content *ngIf="!milestoneAdd">
+  <p *ngIf="!project?.milestones || project.milestones.length == 0">No Milestones Available</p>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let milestone of project?.milestones">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{milestone.title}}<br>
+          {{milestone.feedback}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{milestone.dueDate | date:'dd/MM/yyyy'}}<br>
+          {{milestone.proofs.length}} Proofs Available
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="flex">
+        <mat-icon class="big-icon" *ngFor="let proof of milestone?.proofs">{{proof}}</mat-icon>
+        <span class="spacer"></span>
+        <mat-chip-listbox>
+          <mat-chip [ngStyle]="{'background-color':proofAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+                    (click)="proofAddToggle()">
+            <mat-icon [ngStyle]="{'color':proofAdd ? 'white' : 'black'}">add</mat-icon>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+      <input type="file" *ngIf="milestoneAdd">
+      <mat-action-row *ngIf="milestoneAdd">
+        <button mat-raised-button>Submit</button>
+        <button mat-raised-button>Discard</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card-content>
 
-        <mat-card-header>
-          Project Milestones
-          <span class="spacer"></span>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let milestone of milestones">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{milestone.title}}<br>
-                  {{milestone.feedback}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{milestone.dueDate}}<br>
-                  {{milestone.proofs.length}} Proofs Available
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="flex">
-                <mat-icon class="big-icon" *ngFor="let proof of milestone.proofs">{{proof.fileType}}</mat-icon>
-                <span class="spacer"></span>
-                <mat-chip-listbox>
-                  <mat-chip [ngStyle]="{'background-color':milestoneAdd? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="milestoneAddToggle()">
-                    <mat-icon [ngStyle]="{'color':milestoneAdd ? 'white' : 'black'}">add</mat-icon>
-                  </mat-chip>
-                </mat-chip-listbox>
-              </div>
-              <input type="file" *ngIf="milestoneAdd">
-              <mat-action-row *ngIf="milestoneAdd">
-                <button mat-raised-button>Submit</button>
-                <button mat-raised-button>Discard</button>
-              </mat-action-row>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </mat-card-content>
+<mat-card-content *ngIf="milestoneAdd">
+  <form #newMilestone="ngForm" id="new-milestone" (ngSubmit)="createMilestone(newMilestone)">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Milestone Title</mat-label>
+      <input matInput name="title" ngModel>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Due Date</mat-label>
+      <input matInput name="dueDate" ngModel [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-card-content>
+<mat-action-row *ngIf="milestoneAdd">
+  <button mat-raised-button form="new-milestone" type="submit">Create</button>
+  <button mat-raised-button (click)="milestoneAddToggle()">Discard</button>
+</mat-action-row>
