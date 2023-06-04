@@ -15,6 +15,7 @@ export class ProjectMilestonesComponent {
   milestoneAdd:boolean = false;
   proofAdd:boolean = false;
   feedbackAdd:boolean = false;
+  currentFeedback!: string;
 
   constructor(private projectService: ProjectService) {
   }
@@ -30,6 +31,7 @@ export class ProjectMilestonesComponent {
 
   feedbackAddToggle(){
     this.feedbackAdd = !this.feedbackAdd;
+    this.currentFeedback = '';
   }
 
   createMilestone(newMilestone: NgForm) {
@@ -46,5 +48,14 @@ export class ProjectMilestonesComponent {
         this.milestoneAddToggle();
       }
     });
+  }
+
+  updateFeedback(index: number) {
+    this.project.milestones[index].feedback = this.currentFeedback;
+    this.projectService.addProject(this.project).subscribe({
+      complete:()=>{
+        this.feedbackAddToggle();
+      }
+    })
   }
 }

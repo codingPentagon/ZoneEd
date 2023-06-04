@@ -48,3 +48,7 @@ mat-card-content>p{
 .full-width{
   width: 100%;
 }
+
+mat-card-content{
+  padding: 0;
+}

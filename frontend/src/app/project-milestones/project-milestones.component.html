@@ -11,7 +11,7 @@
 <mat-card-content *ngIf="!milestoneAdd">
   <p *ngIf="!project?.milestones || project.milestones.length == 0">No Milestones Available</p>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let milestone of project?.milestones">
+    <mat-expansion-panel *ngFor="let milestone of project?.milestones;let i=index" (closed)="feedbackAdd=proofAdd=false">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{milestone.title}}<br>
@@ -45,16 +45,16 @@
       <input type="file" *ngIf="proofAdd">
       <mat-action-row *ngIf="proofAdd">
         <button mat-raised-button>Submit</button>
-        <button mat-raised-button>Discard</button>
+        <button mat-raised-button (click)="proofAddToggle()">Discard</button>
       </mat-action-row>
 
       <mat-form-field *ngIf="feedbackAdd" appearance="outline" class="full-width">
         <mat-label>Feedback</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="currentFeedback">
       </mat-form-field>
       <mat-action-row *ngIf="feedbackAdd">
-        <button mat-raised-button>Submit</button>
-        <button mat-raised-button>Discard</button>
+        <button mat-raised-button (click)="updateFeedback(i)">Submit</button>
+        <button mat-raised-button (click)="feedbackAddToggle()">Discard</button>
       </mat-action-row>
 
     </mat-expansion-panel>
