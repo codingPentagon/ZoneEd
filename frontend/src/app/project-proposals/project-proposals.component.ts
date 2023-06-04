@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, SimpleChanges} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {Proposal} from "../models/proposal.model";
 
@@ -8,13 +8,13 @@ import {Proposal} from "../models/proposal.model";
   styleUrls: ['./project-proposals.component.css']
 })
 export class ProjectProposalsComponent {
-  sclID: number = 1;
+  @Input() sclID!: number;
 
   constructor(private projectService:ProjectService) {
   }
 
-  ngOnInit(){
-    this.getProposals()
+  ngOnChanges(changes:SimpleChanges){
+    changes['sclID'] && this.getProposals()
   }
 
   proposalAdd:boolean = false;

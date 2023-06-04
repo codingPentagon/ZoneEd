@@ -8,7 +8,8 @@ import {ProjectService} from "../services/project.service";
   styleUrls: ['./project-prin.component.css']
 })
 export class ProjectPrinComponent {
-  sclID:number=555;
+  sclID:number=1;
+  userID:number=222;
 
   constructor(private projectService:ProjectService) {
   }
