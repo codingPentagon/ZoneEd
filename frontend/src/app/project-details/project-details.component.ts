@@ -37,11 +37,11 @@ export class ProjectDetailsComponent {
   }
 
   get findAcceptedProps(){
-    return this.proposals?.filter(acceptedPropCheck);
-
-    function acceptedPropCheck(element:any) {
-      return element.status.toLowerCase() == 'accepted';
-    }
+    return this.proposals.filter(prop=> {
+      return prop.status.toLowerCase() == "accepted" && !this.projects.some(proj=>{
+        return proj.proposalID==prop.id
+      })
+    });
   }
 
   createProject(value: any) {
