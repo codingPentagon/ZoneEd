@@ -29,6 +29,8 @@ import {ServicesModule} from "./services/services.module";
 import { ProjectProposalsComponent } from './project-proposals/project-proposals.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectMilestonesComponent } from './project-milestones/project-milestones.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { ProjectMilestonesComponent } from './project-milestones/project-milesto
         BrowserModule,
         SharedModule,
         AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
         ServicesModule,
         BrowserAnimationsModule,
         MatInputModule,
