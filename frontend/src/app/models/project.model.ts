@@ -1,3 +1,5 @@
+import {FileMetadata} from "./file.model";
+
 export interface Project {
   id:number;
   createdDate:Date;
@@ -16,6 +18,6 @@ interface Milestone {
   dueDate:Date;
   createdDate:Date;
   title:string;
-  proofs:File[];
+  proofs:FileMetadata[];
 }
 

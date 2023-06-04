@@ -103,7 +103,7 @@ class Milestone {
     private Date dueDate;
     private Date createdDate;
     private String title;
-    private String[] proofs;
+    private FileMetadata[] proofs;
 
     public String getFeedback() {
         return feedback;
@@ -137,11 +137,11 @@ class Milestone {
         this.title = title;
     }
 
-    public String[] getProofs() {
+    public FileMetadata[] getProofs() {
         return proofs;
     }
 
-    public void setProofs(String[] proofs) {
+    public void setProofs(FileMetadata[] proofs) {
         this.proofs = proofs;
     }
 }
