@@ -8,7 +8,7 @@ import {Proposal} from "../models/proposal.model";
   styleUrls: ['./project-proposals.component.css']
 })
 export class ProjectProposalsComponent {
-  sclID: number = 555;
+  sclID: number = 1;
 
   constructor(private projectService:ProjectService) {
   }

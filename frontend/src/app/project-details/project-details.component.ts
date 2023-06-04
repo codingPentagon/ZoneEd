@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Proposal} from "../models/proposal.model";
+import {Project} from "../models/project.model";
+import {ProjectService} from "../services/project.service";
 
 @Component({
   selector: 'app-project-details',
@@ -8,18 +11,25 @@ import { Component } from '@angular/core';
 export class ProjectDetailsComponent {
 
   projectAdd:boolean = false;
-  private proposals: any;
+  projects:Project[]=[];
+  proposals: Proposal[]=[];
+  sclID!: number;
+
+  constructor(private projectService:ProjectService) {
+  }
+
 
   projectAddToggle(){
     this.projectAdd = !this.projectAdd;
   }
 
-  projects=[
-    {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-    {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-    {title:"Ruk Ropanaya",createdDate:"01/02/2023",startDate:"03/02/2023",endDate:"03/04/2023",responsiblePersons:"M.D.Gunasena"},
-  ];
-
+  getProjects(){
+    this.projectService.fetchProjects(this.sclID).subscribe({
+      next:res=>{
+        this.projects=res;
+      }
+    })
+  }
 
   getAcceptedProps():any[]{
     return this.proposals?.filter(acceptedPropCheck);
