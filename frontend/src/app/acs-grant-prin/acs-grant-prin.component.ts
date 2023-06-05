@@ -9,17 +9,17 @@ import {AcsGrantService} from "../services/acs-grant.service";
   styleUrls: ['./acs-grant-prin.component.css']
 })
 export class AcsGrantPrinComponent {
-  grantDetails={grantee:"Nimal",fromDate:"30/12/2023",toDate:"31/12/2023",fromTime:"02.20",toTime:"01.30", isGranted:false}
-
   vicePrincipal=[{value:1,viewValue:"Mr.Senarathna A.B.C"},{value:2,viewValue:"Mr.Senarathna A.B.C"}
   ];
+
   add:boolean = false;
   sclID:number=555;
   acsGrantRequests:AcsGrantRequest[] = [];
   fromDate = new Date();
   toDate!:Date;
-  fromTime:number=8;
+  fromTime!:number;
   times:{value:number,viewValue:string}[] = [];
+  recentRequestStatus:string = '';
   @ViewChild('request') requestForm!:NgForm;
 
   constructor(private acsGrantService:AcsGrantService) {
@@ -50,7 +50,8 @@ export class AcsGrantPrinComponent {
       fromDate:new Date(this.fromDate.setHours(value.fromTime,0,0,0)).toISOString(),
       toDate:new Date(this.toDate.setHours(value.toTime,0,0,0)).toISOString(),
       status:'Pending',
-      sclID:this.sclID
+      sclID:this.sclID,
+      comment:''
     }
     this.acsGrantService.addRequest(request).subscribe({
       complete:()=>{
@@ -64,13 +65,19 @@ export class AcsGrantPrinComponent {
     this.acsGrantService.fetchRequests(this.sclID).subscribe({
       next:res=>{
         this.acsGrantRequests = res;
+      },
+      complete:()=>{
+        this.getRecentRequestStatus();
       }
     });
   }
 
-  get checkPendingRequests(){
-    return this.acsGrantRequests.some(request=>
-      request.status.toLowerCase()=='pending'
-    );
+  getRecentRequestStatus(){
+    if(this.acsGrantRequests.length>0 && this.acsGrantRequests[0].toDate>=new Date()){
+      this.recentRequestStatus = this.acsGrantRequests[0].status.toLowerCase();
+    }
+    else {
+      this.recentRequestStatus = '';
+    }
   }
 }
