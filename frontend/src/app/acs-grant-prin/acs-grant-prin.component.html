@@ -126,7 +126,7 @@
           <span class="flex center">{{acsGrantRequests[0].comment}}</span>
 
           <div class="center flex height1">
-            <button mat-raised-button color="primary" class="Bwidth">Grant Permissions</button>
+            <button mat-raised-button color="primary" class="Bwidth" (click)="updateGrantStatus(true)">Grant Permissions</button>
           </div>
 
           <div>
@@ -139,6 +139,34 @@
               {{acsGrantRequests[0].fromDate | date:'HH:mm'}}
               <span class="spacer"></span>{{acsGrantRequests[0].toDate | date:'HH:mm'}}
             </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-content *ngIf="recentRequestStatus=='granted'">
+          <div class="center flex height">
+            <span class="bold">{{acsGrantRequests[0].teacherID}}</span>&nbsp;currently has access
+          </div>
+
+          <div class="center flex height1">
+            <button mat-raised-button color="accent" class="Bwidth" (click)="updateGrantStatus(false)">Revoke Permissions</button>
+          </div>
+
+          <div>
+            <div class="flex">From <span class="spacer"></span>To</div>
+            <div class="flex">
+              {{acsGrantRequests[0].fromDate | date:'dd/MM/yyyy'}}
+              <span class="spacer"></span>{{acsGrantRequests[0].toDate | date:'dd/MM/yyyy'}}
+            </div>
+            <div class="flex">
+              {{acsGrantRequests[0].fromDate | date:'HH:mm'}}
+              <span class="spacer"></span>{{acsGrantRequests[0].toDate | date:'HH:mm'}}
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-content *ngIf="recentRequestStatus=='revoked'">
+          <div class="center flex height">
+            Access has been revoked from&nbsp;<span class="bold">{{acsGrantRequests[0].teacherID}}</span>
           </div>
         </mat-card-content>
 

@@ -80,4 +80,13 @@ export class AcsGrantPrinComponent {
       this.recentRequestStatus = '';
     }
   }
+
+  updateGrantStatus(grant: boolean) {
+    this.acsGrantRequests[0].status = grant ? 'Granted':'Revoked';
+    this.acsGrantService.addRequest(this.acsGrantRequests[0]).subscribe({
+      complete:()=>{
+        this.getRequests();
+      }
+    });
+  }
 }
