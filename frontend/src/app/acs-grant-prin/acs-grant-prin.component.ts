@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AcsGrantRequest} from "../models/acs-grant-request.model";
+import {AcsGrantRequest} from "../models/acs-grant.model";
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -43,12 +43,12 @@ export class AcsGrantPrinComponent {
     const request:AcsGrantRequest={
       id:0,
       submittedDate:new Date(),
-      principalID:this.userID,
       teacherID:value.selectedTeacher,
       note:value.note,
       fromDate:new Date(value.fromDate),
       toDate:new Date(value.toDate),
       status:value.pending(),
+      sclID:this.userID
     }
   }
 }
