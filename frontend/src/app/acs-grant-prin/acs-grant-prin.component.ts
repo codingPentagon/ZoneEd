@@ -67,4 +67,10 @@ export class AcsGrantPrinComponent {
       }
     });
   }
+
+  get checkPendingRequests(){
+    return this.acsGrantRequests.some(request=>
+      request.status.toLowerCase()=='pending'
+    );
+  }
 }
