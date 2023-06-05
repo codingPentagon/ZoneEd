@@ -15,6 +15,7 @@ export class LeavesOverviewComponent {
   other: number = 0;
 
   constructor(private leaveService: LeaveService) {
+    this.leaveService.getLeaveRecords = this.getLeaveRecords.bind(this);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -31,6 +32,7 @@ export class LeavesOverviewComponent {
         this.sick = this.getLeavesCount('sick')
         this.duty = this.getLeavesCount('duty')
         this.other = this.getLeavesCount('other')
+        this.leaveService.leaveCount = {sick: this.sick, other: this.other}
       }
 
     })

@@ -9,6 +9,8 @@ const url='http://localhost:8080/leaves/'
   providedIn: 'root'
 })
 export class LeaveService {
+  getLeaveRecords!:()=>void;
+  leaveCount!: { sick: number; other: number; };
 
   constructor(private http:HttpClient) { }
 

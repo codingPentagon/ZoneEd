@@ -49,16 +49,16 @@
   </mat-card-content>
   <mat-card-content *ngIf="add">
     <form id="request-form" #newRequest="ngForm" (ngSubmit)="createLeaveRequest(newRequest.value);">
-      <mat-radio-group color="primary" ngModel name="type">
-        <mat-radio-button value="sick">Sick Leave</mat-radio-button>
+      <mat-radio-group color="primary" ngModel name="type" required>
+        <mat-radio-button value="sick" [disabled]="leaveCount.sick>=21">Sick Leave</mat-radio-button>
         <mat-radio-button value="duty">Duty Leave</mat-radio-button>
-        <mat-radio-button value="other">Other Leave</mat-radio-button>
+        <mat-radio-button value="other" [disabled]="leaveCount.other>=20">Other Leave</mat-radio-button>
 
       </mat-radio-group>
 
       <span>
             <mat-form-field appearance="outline" class="width">
-              <input matInput placeholder="Reason for leave" ngModel name="reason">
+              <input matInput placeholder="Reason for leave" ngModel name="reason" required>
             </mat-form-field>
           </span>
 
@@ -77,7 +77,7 @@
       <div class="flex">
         <mat-form-field appearance="outline" class="width">
           <mat-label>Date of assuming duties</mat-label>
-          <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="newRequest.value.startDate">
+          <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="newRequest.value.startDate" required>
           <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
@@ -88,7 +88,7 @@
 
   </mat-card-content>
   <mat-card-actions align="end" *ngIf="add">
-    <button mat-raised-button type="submit" form="request-form">Submit</button>
+    <button mat-raised-button type="submit" form="request-form" [disabled]="!(requestForm?.valid == true)">Submit</button>
     <button mat-raised-button (click)="addToggle()">Discard</button>
   </mat-card-actions>
 </mat-card>

@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {LeaveRequest} from "../models/leave-request.model";
 import {LeaveRecord} from "../models/leave-record.model";
 import {LeaveService} from "../services/leave.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-leave-requests',
@@ -11,6 +12,8 @@ import {LeaveService} from "../services/leave.service";
 export class LeaveRequestsComponent {
   @Input() teacherID!: number;
   @Input() disableCreation: boolean = false;
+  @ViewChild('newRequest') requestForm!: NgForm;
+  leaveCount!: { sick: number; other: number; };
   leaveRequests: LeaveRequest[] = [];
   selectedOption = 'All'
   pendingLeaveRequests: LeaveRequest[] = [];
@@ -55,7 +58,7 @@ export class LeaveRequestsComponent {
     this.leaveService.addLeaveRecord(leaveRecord).subscribe({
       complete:()=>{
         this.getLeaveRequests();
-        // this.overview.getLeaveRecords()
+        this.leaveService.getLeaveRecords();
       }
     })
 
@@ -84,6 +87,7 @@ export class LeaveRequestsComponent {
   }
 
   addToggle() {
+    this.leaveCount = this.leaveService.leaveCount;
     this.add=!this.add;
   }
 
