@@ -19,6 +19,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {FormsModule} from "@angular/forms";
 import { AcsGrantTchrComponent } from './acs-grant-tchr/arc-grant-tchr.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ServicesModule,
     MatInputModule,
     MatCardModule,
     MatSelectModule,
