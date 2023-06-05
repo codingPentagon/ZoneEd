@@ -18,4 +18,8 @@ export class AcsGrantService {
   fetchRequests(sclID: number) {
     return this.http.get<AcsGrantRequest[]>(url+'requests/'+sclID);
   }
+
+  fetchSentRequest(teacherID: number) {
+    return this.http.get<AcsGrantRequest>(url+'requests/sent/'+teacherID);
+  }
 }

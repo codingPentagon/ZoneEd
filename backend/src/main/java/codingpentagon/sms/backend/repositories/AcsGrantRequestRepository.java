@@ -6,5 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface AcsGrantRequestRepository extends MongoRepository<AcsGrantRequest, Integer> {
-    List<AcsGrantRequest> findBySclID(int sclID);
+    List<AcsGrantRequest> findBySclIDOrderBySubmittedDateDesc(int sclID);
+    AcsGrantRequest findByTeacherIDAndStatusIgnoreCase(int teacherID, String status);
 }

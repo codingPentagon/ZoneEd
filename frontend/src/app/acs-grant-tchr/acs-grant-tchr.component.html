@@ -3,7 +3,7 @@
   <app-header></app-header>
   <div class="workspace">
 
-      <mat-card >
+      <mat-card *ngIf="acsGrantRequest!=undefined">
         <mat-card-header>
           Handover principal dashboard
         </mat-card-header>
@@ -11,26 +11,37 @@
 
 
         <mat-card-content>
-          <div class="req-box">
+          <div class="req-box flex center" *ngIf="acsGrantRequest.status.toLowerCase()!='pending'">
+            Request Successfully {{acsGrantRequest.status}}
+          </div>
+          <div class="req-box" *ngIf="acsGrantRequest.status.toLowerCase()=='pending'">
             <div class="details">
 
-              <div class="flex margin-top-bottom">From <span class="spacer"></span>To</div>
-              <div class="flex margin-top-bottom"> {{requestDetails.fromDate}}<span class="spacer"></span>{{requestDetails.toDate}}</div>
-              <div class="flex margin-top-bottom"> {{requestDetails.fromTime}}<span class="spacer"></span>{{requestDetails.toTime}}</div>
-              <div class="center flex note">{{requestDetails.note}}</div>
+              <div class="flex margin-top-bottom">
+                From <span class="spacer"></span>To
+              </div>
+              <div class="flex margin-top-bottom">
+                {{acsGrantRequest?.fromDate | date:'dd/MM/yyyy'}}<span class="spacer"></span>{{acsGrantRequest?.toDate | date:'dd/MM/yyyy'}}
+              </div>
+              <div class="flex margin-top-bottom">
+                {{acsGrantRequest?.fromDate | date:'HH:mm'}}<span class="spacer"></span>{{acsGrantRequest?.toDate | date:'HH:mm'}}
+              </div>
+              <div class="center flex note">
+                {{acsGrantRequest?.note}}
+              </div>
 
             </div>
             <mat-form-field appearance="outline" class="flex comment">
               <mat-label>Comment</mat-label>
-              <input matInput placeholder="I accept...">
+              <input matInput placeholder="I accept..." [(ngModel)]="comment">
             </mat-form-field>
 
           </div>
         </mat-card-content>
 
-        <mat-card-actions align="end">
-          <button mat-raised-button class="margin-right">Accept</button>
-          <button mat-raised-button class="margin-right">Reject</button>
+        <mat-card-actions align="end" *ngIf="acsGrantRequest!=undefined && acsGrantRequest.status.toLowerCase()=='pending'">
+          <button mat-raised-button class="margin-right" (click)="updateRequest(true)">Accept</button>
+          <button mat-raised-button class="margin-right" (click)="updateRequest(false)">Reject</button>
         </mat-card-actions>
       </mat-card>
 

@@ -25,4 +25,9 @@ public class AcsGrantController {
     public void addAcsGrantRequest(@RequestBody AcsGrantRequest acsGrantRequest) {
         acsGrantService.saveAcsGrantRequest(acsGrantRequest);
     }
+
+    @GetMapping("acs-grant/requests/sent/{teacherID}")
+    public AcsGrantRequest fetchSentAcsGrantRequest(@PathVariable int teacherID) {
+        return acsGrantService.findSentAcsGrantRequest(teacherID);
+    }
 }

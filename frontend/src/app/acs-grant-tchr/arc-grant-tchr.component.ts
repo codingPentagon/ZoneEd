@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
-
-class AccessRequest {
-}
+import {AcsGrantService} from "../services/acs-grant.service";
+import {AcsGrantRequest} from "../models/acs-grant.model";
 
 @Component({
   selector: 'app-acs-grant-tchr',
@@ -10,17 +8,27 @@ class AccessRequest {
   styleUrls: ['./acs-grant-tchr.component.css']
 })
 export class AcsGrantTchrComponent {
-  add:boolean = false;
-  userID:number=0;
-  accessRequests:AccessRequest[]=[]
+  userID:number=1;
+  acsGrantRequest!:AcsGrantRequest;
+  comment!: string;
 
-  addToggle() {
-    this.add = !this.add;
+  constructor(private acsGrantService:AcsGrantService) { }
+
+  ngOnInit(): void {
+    this.getSentRequest();
   }
-  requestDetails=
-    {fromDate:'31/12/2022',fromTime:'08.00',toDate:'01/01/2023',toTime:'08.00',
-    note:'I grant access you to handle principal dashboard from 30th of December until 31st of December'}
 
+  getSentRequest() {
+    this.acsGrantService.fetchSentRequest(this.userID).subscribe({
+      next:res=>{
+        this.acsGrantRequest = res;
+      }
+    })
+  }
 
-
+  updateRequest(approval:boolean) {
+    this.acsGrantRequest.status = approval?'Accepted':'Rejected';
+    this.acsGrantRequest.comment = this.comment;
+    this.acsGrantService.addRequest(this.acsGrantRequest).subscribe();
+  }
 }

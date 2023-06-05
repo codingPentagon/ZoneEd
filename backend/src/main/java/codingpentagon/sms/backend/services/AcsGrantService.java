@@ -19,7 +19,7 @@ public class AcsGrantService {
     }
 
     public List<AcsGrantRequest> findAcsGrantRequests(int sclID) {
-        return acsGrantRequestRepository.findBySclID(sclID);
+        return acsGrantRequestRepository.findBySclIDOrderBySubmittedDateDesc(sclID);
     }
 
     public void saveAcsGrantRequest(AcsGrantRequest acsGrantRequest) {
@@ -27,5 +27,9 @@ public class AcsGrantService {
             acsGrantRequest.setId(new Random().nextInt(500));
         }
         acsGrantRequestRepository.save(acsGrantRequest);
+    }
+
+    public AcsGrantRequest findSentAcsGrantRequest(int teacherID) {
+        return acsGrantRequestRepository.findByTeacherIDAndStatusIgnoreCase(teacherID,"pending");
     }
 }
