@@ -20,6 +20,7 @@ export class AcsGrantPrinComponent {
   fromTime!:number;
   times:{value:number,viewValue:string}[] = [];
   recentRequestStatus:string = '';
+  today = new Date();
   @ViewChild('request') requestForm!:NgForm;
 
   constructor(private acsGrantService:AcsGrantService) {
