@@ -3,102 +3,98 @@
   <app-header></app-header>
   <div class="workspace">
     <div class="left">
-      <mat-card >
+      <mat-card>
         <mat-card-header>
           Request History
           <span class="spacer"></span>
           <mat-chip-listbox>
-            <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="addToggle()">
+            <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+                      (click)="addToggle()">
               <mat-icon [ngStyle]="{'color':add ? 'white' : 'black'}">add</mat-icon>
             </mat-chip>
           </mat-chip-listbox>
         </mat-card-header>
-    <mat-divider></mat-divider>
-
+        <mat-divider></mat-divider>
 
 
         <mat-card-content *ngIf="!add">
-           <div *ngFor="let request of requests">
-             <div  class="req-list">
-               <div class="req-entry">
-                 <span>To: {{request.recipient}}</span>
-                 <span class="spacer"></span>
-                 <span>{{request.sentDate}}</span>
-               </div>
-               <div class="req-entry">
-                 <span>From :- {{request.fromDate}}</span>
-                 <span class="spacer"></span>
-                 <span>{{request.sentTime}}</span>
-               </div>
-               <div class="req-entry">
-                 <span>To :- {{request.toDate}}</span>
-                 <span class="spacer"></span>
-                 <span>{{request.status}}</span>
-               </div>
+          <div *ngFor="let request of requests">
+            <div class="req-list">
+              <div class="req-entry">
+                <span>To: {{request.recipient}}</span>
+                <span class="spacer"></span>
+                <span>{{request.sentDate}}</span>
+              </div>
+              <div class="req-entry">
+                <span>From :- {{request.fromDate}}</span>
+                <span class="spacer"></span>
+                <span>{{request.sentTime}}</span>
+              </div>
+              <div class="req-entry">
+                <span>To :- {{request.toDate}}</span>
+                <span class="spacer"></span>
+                <span>{{request.status}}</span>
+              </div>
 
-             </div>
-             <mat-divider></mat-divider>
-           </div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
 
 
-
         <mat-card-content *ngIf="add">
-          <form id="request-form" #request="ngForm" (ngSubmit)="createRequest(request.value)" >
+          <form id="request-form" #request="ngForm" (ngSubmit)="createRequest(request.value)">
 
-          <mat-form-field appearance="outline" class="flex margin-top" >
-            <mat-label>Select a teacher</mat-label>
-            <mat-select ngModel name="selectedTeacher">
-              <mat-option *ngFor="let vp of vicePrincipal" [value]="vp.value">{{vp.viewValue}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-
-          <div class="flex">
-            <mat-form-field appearance="outline">
-              <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" name="startDate" [min]="fromDate">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field appearance="outline" class="flex margin-top">
+              <mat-label>Select a teacher</mat-label>
+              <mat-select ngModel name="selectedTeacher" required>
+                <mat-option *ngFor="let vp of vicePrincipal" [value]="vp.value">{{vp.viewValue}}</mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <span class="spacer"></span>
 
-            <mat-form-field appearance="outline">
-              <input matInput [format]="24" [ngxMatTimepicker]="pickerE" placeholder="12:00" ngModel name="startTime"/>
-              <mat-icon matSuffix (click)="pickerE.open()">watch_later</mat-icon>
-            </mat-form-field>
-            <div class="ngx-mtp-box-bordered" >
-              <ngx-mat-timepicker appendToInput="true" #pickerE class="clock">
-              </ngx-mat-timepicker>
-            </div>
-          </div>
+            <div class="flex">
+              <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="fromDate" name="startDate" [min]="fromDate"
+                       required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
 
+              <span class="spacer"></span>
 
-          <div class="flex">
-            <mat-form-field appearance="outline">
-              <mat-label>Date</mat-label>
-              <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="fromDate">
-              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-
-            <span class="spacer"></span>
-
-            <mat-form-field appearance="outline">
-              <input matInput [format]="24" [ngxMatTimepicker]="pickerD" placeholder="12:00" readonly ngModel name="endTime" />
-              <mat-icon matSuffix (click)="pickerD.open()">watch_later</mat-icon>
-            </mat-form-field>
-            <div class="ngx-mtp-box-bordered">
-              <ngx-mat-timepicker appendToInput="true" #pickerD class="clock"></ngx-mat-timepicker>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Time" [(value)]="fromTime" required>
+                  <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
 
-          </div>
+
+            <div class="flex">
+              <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="fromDate" required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <span class="spacer"></span>
+
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Time" ngModel name="toTime" required>
+                  <mat-option *ngFor="let time of times" [value]="time.value"
+                              [disabled]="time.value<=fromTime">{{time.viewValue}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
 
 
-          <span>
+            <span>
             <mat-form-field appearance="outline" class="flex">
-              <input matInput placeholder="Note" ngModel name="note">
+              <input matInput placeholder="Note" ngModel name="note" required>
             </mat-form-field>
           </span>
 
@@ -108,43 +104,41 @@
         </mat-card-content>
 
         <mat-card-actions align="end" *ngIf="add">
-          <button mat-raised-button form="request-form">Submit</button>
+          <button mat-raised-button form="request-form" [disabled]="!(requestForm?.valid == true)">Submit</button>
           <button mat-raised-button (click)="addToggle()" type="submit">Discard</button>
         </mat-card-actions>
 
 
       </mat-card>
-     </div>
-      <div class="right">
-          <mat-card>
+    </div>
+    <div class="right">
+      <mat-card>
 
-          <mat-card-header >
-            Grant Status
-          </mat-card-header>
-
-
+        <mat-card-header>
+          Grant Status
+        </mat-card-header>
 
 
-          <mat-card-content >
-           <div class="center flex height">
-             <span class="bold">{{grantDetails.grantee}}</span>&nbsp;accepted the request
-           </div>
+        <mat-card-content>
+          <div class="center flex height">
+            <span class="bold">{{grantDetails.grantee}}</span>&nbsp;accepted the request
+          </div>
 
-            <div class="center flex height1">
-              <button mat-raised-button color="primary" class="Bwidth" >Grant Permissions</button>
-            </div>
+          <div class="center flex height1">
+            <button mat-raised-button color="primary" class="Bwidth">Grant Permissions</button>
+          </div>
 
-            <div>
+          <div>
 
-              <div class="flex">From <span class="spacer"></span>To</div>
-              <div class="flex"> {{grantDetails.fromDate}}<span class="spacer"></span>{{grantDetails.toDate}}</div>
-              <div class="flex"> {{grantDetails.fromTime}}<span class="spacer"></span>{{grantDetails.toTime}}</div>
+            <div class="flex">From <span class="spacer"></span>To</div>
+            <div class="flex"> {{grantDetails.fromDate}}<span class="spacer"></span>{{grantDetails.toDate}}</div>
+            <div class="flex"> {{grantDetails.fromTime}}<span class="spacer"></span>{{grantDetails.toTime}}</div>
 
-            </div>
-          </mat-card-content>
+          </div>
+        </mat-card-content>
 
-        </mat-card>
-      </div>
+      </mat-card>
+    </div>
 
   </div>
 </div>

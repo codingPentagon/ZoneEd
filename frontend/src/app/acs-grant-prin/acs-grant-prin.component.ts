@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {AcsGrantRequest} from "../models/acs-grant-request.model";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-acs-grant-prin',
@@ -19,6 +20,19 @@ export class AcsGrantPrinComponent {
   userID:number=123;
   AcsGrantRequest:AcsGrantRequest[] = [];
   fromDate = new Date();
+  fromTime:number=8;
+  times:{value:number,viewValue:string}[] = [];
+  @ViewChild('request') requestForm!:NgForm;
+
+  ngOnInit(): void {
+    this.loadTimes();
+  }
+
+  loadTimes(){
+    for(let i=0;i<24;i++){
+      this.times.push({value:i,viewValue:i+':00'});
+    }
+  }
 
   addToggle(){
     this.add = !this.add;
@@ -36,6 +50,5 @@ export class AcsGrantPrinComponent {
       toDate:new Date(value.toDate),
       status:value.pending(),
     }
-    
   }
 }

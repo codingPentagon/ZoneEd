@@ -16,7 +16,6 @@ import {MatTableModule} from "@angular/material/table";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {FormsModule} from "@angular/forms";
 import { AcsGrantTchrComponent } from './acs-grant-tchr/arc-grant-tchr.component';
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -42,7 +41,6 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMatTimepickerModule,
     FormsModule,
     MatExpansionModule
   ],

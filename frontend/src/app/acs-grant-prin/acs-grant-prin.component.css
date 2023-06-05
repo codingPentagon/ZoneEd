@@ -34,7 +34,7 @@ mat-card{
 }
 mat-card-content{
   height: 100%;
-
+  overflow: auto;
 }
 .bold{
   font-weight: bold;
