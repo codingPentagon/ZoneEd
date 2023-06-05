@@ -20,3 +20,13 @@ mat-divider{
   font-weight: bold;
   font-size: xx-large;
 }
+
+:host {
+  display: block;
+}
+
+mat-card {
+  margin: 15px 15px 15px 0;
+  height: 100%;
+}
+

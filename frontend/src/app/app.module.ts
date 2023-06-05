@@ -24,6 +24,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import { LeavesOverviewComponent } from './leaves-overview/leaves-overview.component';
+import { LeaveRequestsComponent } from './leave-requests/leave-requests.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LeavesOverviewComponent } from './leaves-overview/leaves-overview.compo
     LeaveTchrComponent,
     LeavePrinComponent,
     LeavesOverviewComponent,
+    LeaveRequestsComponent,
   ],
     imports: [
         BrowserModule,

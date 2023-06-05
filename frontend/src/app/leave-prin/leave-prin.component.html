@@ -23,56 +23,8 @@
 
 
     <div class="right">
-      <mat-card class="req_history">
-        <mat-card-header>
-          Leave Requests
-          <span class="spacer"></span>
-          <mat-button-toggle-group [(value)]="selectedOption">
-            <mat-button-toggle value="All">
-              All
-            </mat-button-toggle>
-            <mat-button-toggle value="Pending" (click)="getPendingLeaveRequest()">
-              Pending
-            </mat-button-toggle>
-          </mat-button-toggle-group>
-        </mat-card-header>
-
-        <mat-card-content>
-          <mat-accordion>
-            <mat-expansion-panel *ngFor="let request of (selectedOption=='All'?leaveRequests:pendingLeaveRequests)">
-              <mat-expansion-panel-header>
-                {{request.reason}}
-                {{request.submittedDate}}
-                {{request.startDate}}
-                {{request.endDate}}
-                {{request.leaveType}}
-                {{request.id}}
-                {{request.teacherID}}
-                {{request.status}}
-
-              </mat-expansion-panel-header>
-              <mat-action-row *ngIf="request.status.toLowerCase() =='pending'">
-                <button mat-raised-button (click)="createLeaveRecord(request);modifyLeaveRequest(request.id,true)">
-                  Accept
-                </button>
-                <button mat-raised-button (click)="modifyLeaveRequest(request.id,false)">
-                  Reject
-                </button>
-              </mat-action-row>
-            </mat-expansion-panel>
-          </mat-accordion>
-
-
-        </mat-card-content>
-
-      </mat-card>
-
-      <mat-card class="leave_overview">
-
-        <app-leaves-overview [teacherID]="selectedTeacherID"></app-leaves-overview>
-
-
-      </mat-card>
+      <app-leave-requests [teacherID]="selectedTeacherID" [disableCreation]="true" class="req_history"></app-leave-requests>
+      <app-leaves-overview [teacherID]="selectedTeacherID" class="leave_overview"></app-leaves-overview>
     </div>
 
   </div>

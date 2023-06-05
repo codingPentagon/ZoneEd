@@ -1,34 +1,37 @@
-<mat-card-header>
+<mat-card>
+  <mat-card-header>
 
-  <span>Leaves Overview</span>
-  <span class="spacer"></span>
-  <span>This Year</span>
-</mat-card-header>
+    <span>Leaves Overview</span>
+    <span class="spacer"></span>
+    <span>This Year</span>
+  </mat-card-header>
 
-<mat-card-content>
-  <div class="grid values">
-    <div class="grid">
-      <span class="big-text" >{{duty}}</span>
-      <span>Duty</span>
+  <mat-card-content>
+    <div class="grid values">
+      <div class="grid">
+        <span class="big-text" >{{duty}}</span>
+        <span>Duty</span>
+
+      </div>
+      <mat-divider vertical></mat-divider>
+
+      <div class="grid">
+        <span class="big-text">{{sick}}</span>
+        <span >Sick</span>
+
+      </div>
+      <mat-divider vertical></mat-divider>
+
+      <div class="grid">
+        <span class="big-text">{{other}}</span>
+        <span>Other</span>
+
+      </div>
+
 
     </div>
-    <mat-divider vertical></mat-divider>
-
-    <div class="grid">
-      <span class="big-text">{{sick}}</span>
-      <span >Sick</span>
-
-    </div>
-    <mat-divider vertical></mat-divider>
-
-    <div class="grid">
-      <span class="big-text">{{other}}</span>
-      <span>Other</span>
-
-    </div>
 
 
-  </div>
+  </mat-card-content>
 
-
-</mat-card-content>
+</mat-card>

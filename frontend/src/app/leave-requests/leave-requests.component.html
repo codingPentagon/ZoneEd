@@ -1,0 +1,94 @@
+<mat-card>
+  <mat-card-header>
+    Leave Requests
+    <span class="spacer"></span>
+    <mat-button-toggle-group [(value)]="selectedOption">
+      <mat-button-toggle value="All">
+        All
+      </mat-button-toggle>
+      <mat-button-toggle value="Pending" (click)="getPendingLeaveRequest()">
+        Pending
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-chip-listbox *ngIf="!disableCreation">
+      <mat-chip [ngStyle]="{'background-color':add ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="addToggle()">
+        <mat-icon [ngStyle]="{'color':add ? 'white' : 'black'}">add</mat-icon>
+      </mat-chip>
+    </mat-chip-listbox>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="!add">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let request of (selectedOption=='All'?leaveRequests:pendingLeaveRequests)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="grid">
+            <span *ngIf="disableCreation">{{request.teacherID}}</span>
+            <span>{{request.reason}}</span>
+          </mat-panel-title>
+          <mat-panel-description class="grid align-right">
+            <span>{{request.submittedDate | date:'dd/MM/yyyy HH:mm'}}</span>
+            <span>{{request.status}}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="flex space-between">
+          {{request.startDate  | date:'dd/MM/yyyy'}} - {{request.endDate | date:'dd/MM/yyyy'}}
+          <span>{{request.leaveType}} leave</span>
+        </div>
+        <mat-action-row *ngIf="disableCreation && request.status.toLowerCase() =='pending'">
+          <button mat-raised-button (click)="createLeaveRecord(request);modifyLeaveRequest(request.id,true)">
+            Accept
+          </button>
+          <button mat-raised-button (click)="modifyLeaveRequest(request.id,false)">
+            Reject
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+  </mat-card-content>
+  <mat-card-content *ngIf="add">
+    <form id="request-form" #newRequest="ngForm" (ngSubmit)="createLeaveRequest(newRequest.value);">
+      <mat-radio-group color="primary" ngModel name="type">
+        <mat-radio-button value="sick">Sick Leave</mat-radio-button>
+        <mat-radio-button value="duty">Duty Leave</mat-radio-button>
+        <mat-radio-button value="other">Other Leave</mat-radio-button>
+
+      </mat-radio-group>
+
+      <span>
+            <mat-form-field appearance="outline" class="width">
+              <input matInput placeholder="Reason for leave" ngModel name="reason">
+            </mat-form-field>
+          </span>
+
+
+      <div class="flex">
+        <mat-form-field appearance="outline" class="width" >
+          <mat-label>Date of commencing leave </mat-label>
+          <input matInput [matDatepicker]="picker" [ngModel]="selectedStartDate" name="startDate" [min]="today" required>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <span class="spacer"></span>
+      </div>
+
+      <div class="flex">
+        <mat-form-field appearance="outline" class="width">
+          <mat-label>Date of assuming duties</mat-label>
+          <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="newRequest.value.startDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </form>
+
+
+  </mat-card-content>
+  <mat-card-actions align="end" *ngIf="add">
+    <button mat-raised-button type="submit" form="request-form">Submit</button>
+    <button mat-raised-button (click)="addToggle()">Discard</button>
+  </mat-card-actions>
+</mat-card>
