@@ -18,4 +18,5 @@ public class AcsGrantRequest {
     private Date toDate;
     private String status;
     private int sclID;
+    private String comment;
 }

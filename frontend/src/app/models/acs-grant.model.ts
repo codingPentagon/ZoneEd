@@ -7,4 +7,5 @@ export interface AcsGrantRequest {
    toDate:string | Date;
    status:String;
    sclID:number;
+   comment:String;
 }
