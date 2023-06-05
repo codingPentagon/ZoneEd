@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {AcsGrantRequest} from "../models/acs-grant.model";
 import {NgForm} from "@angular/forms";
+import {AcsGrantService} from "../services/acs-grant.service";
 
 @Component({
   selector: 'app-acs-grant-prin',
@@ -8,24 +9,25 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./acs-grant-prin.component.css']
 })
 export class AcsGrantPrinComponent {
-  requests=[
-    {recipient:"Nimal", sentDate:"02/05/2023", fromDate:"03/05/2023", sentTime:"08.30p.m", toDate:"04/05/2023", status:"Pending"},
-    {recipient:"Nimal", sentDate:"02/05/2023", fromDate:"03/05/2023", sentTime:"08.30p.m", toDate:"04/05/2023", status:"Pending"},
-  ]
   grantDetails={grantee:"Nimal",fromDate:"30/12/2023",toDate:"31/12/2023",fromTime:"02.20",toTime:"01.30", isGranted:false}
 
-  vicePrincipal=[{value:"Ranasinghe",viewValue:"Mr.Senarathna A.B.C"},{value:"Mr. Ranasinghe R.J.K",viewValue:"Mr.Senarathna A.B.C"}
+  vicePrincipal=[{value:1,viewValue:"Mr.Senarathna A.B.C"},{value:2,viewValue:"Mr.Senarathna A.B.C"}
   ];
   add:boolean = false;
-  userID:number=123;
-  AcsGrantRequest:AcsGrantRequest[] = [];
+  sclID:number=555;
+  acsGrantRequests:AcsGrantRequest[] = [];
   fromDate = new Date();
+  toDate!:Date;
   fromTime:number=8;
   times:{value:number,viewValue:string}[] = [];
   @ViewChild('request') requestForm!:NgForm;
 
-  ngOnInit(): void {
+  constructor(private acsGrantService:AcsGrantService) {
     this.loadTimes();
+  }
+
+  ngOnInit(): void {
+    this.getRequests();
   }
 
   loadTimes(){
@@ -42,13 +44,27 @@ export class AcsGrantPrinComponent {
   createRequest(value: any) {
     const request:AcsGrantRequest={
       id:0,
-      submittedDate:new Date(),
-      teacherID:value.selectedTeacher,
+      submittedDate:new Date().toISOString(),
+      teacherID:value.selectedTeacherID,
       note:value.note,
-      fromDate:new Date(value.fromDate),
-      toDate:new Date(value.toDate),
-      status:value.pending(),
-      sclID:this.userID
+      fromDate:new Date(this.fromDate.setHours(value.fromTime,0,0,0)).toISOString(),
+      toDate:new Date(this.toDate.setHours(value.toTime,0,0,0)).toISOString(),
+      status:'Pending',
+      sclID:this.sclID
     }
+    this.acsGrantService.addRequest(request).subscribe({
+      complete:()=>{
+        this.addToggle();
+        this.getRequests();
+      }
+    });
+  }
+
+  getRequests() {
+    this.acsGrantService.fetchRequests(this.sclID).subscribe({
+      next:res=>{
+        this.acsGrantRequests = res;
+      }
+    });
   }
 }

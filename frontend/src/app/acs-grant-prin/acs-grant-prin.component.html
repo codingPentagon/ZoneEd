@@ -18,20 +18,20 @@
 
 
         <mat-card-content *ngIf="!add">
-          <div *ngFor="let request of requests">
+          <div *ngFor="let request of acsGrantRequests">
             <div class="req-list">
               <div class="req-entry">
-                <span>To: {{request.recipient}}</span>
+                <span>To: {{request.teacherID}}</span>
                 <span class="spacer"></span>
-                <span>{{request.sentDate}}</span>
+                <span>{{request.submittedDate | date:'dd/MM/yyyy'}}</span>
               </div>
               <div class="req-entry">
-                <span>From :- {{request.fromDate}}</span>
+                <span>From :- {{request.fromDate | date:'dd/MM/yyyy HH:mm'}}</span>
                 <span class="spacer"></span>
-                <span>{{request.sentTime}}</span>
+                <span>{{request.submittedDate | date:'HH:mm'}}</span>
               </div>
               <div class="req-entry">
-                <span>To :- {{request.toDate}}</span>
+                <span>To :- {{request.toDate | date:'dd/MM/yyyy HH:mm'}}</span>
                 <span class="spacer"></span>
                 <span>{{request.status}}</span>
               </div>
@@ -47,7 +47,7 @@
 
             <mat-form-field appearance="outline" class="flex margin-top">
               <mat-label>Select a teacher</mat-label>
-              <mat-select ngModel name="selectedTeacher" required>
+              <mat-select ngModel name="selectedTeacherID" required>
                 <mat-option *ngFor="let vp of vicePrincipal" [value]="vp.value">{{vp.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -65,7 +65,7 @@
               <span class="spacer"></span>
 
               <mat-form-field appearance="outline">
-                <mat-select placeholder="Time" [(value)]="fromTime" required>
+                <mat-select placeholder="Time" [(value)]="fromTime" required ngModel name="fromTime">
                   <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -75,7 +75,7 @@
             <div class="flex">
               <mat-form-field appearance="outline">
                 <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="picker1" ngModel name="endDate" [min]="fromDate" required>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="toDate" name="endDate" [min]="fromDate" required>
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
@@ -104,7 +104,7 @@
         </mat-card-content>
 
         <mat-card-actions align="end" *ngIf="add">
-          <button mat-raised-button form="request-form" [disabled]="!(requestForm?.valid == true)">Submit</button>
+          <button mat-raised-button form="request-form" [disabled]="requestForm?.invalid==true">Submit</button>
           <button mat-raised-button (click)="addToggle()" type="submit">Discard</button>
         </mat-card-actions>
 
