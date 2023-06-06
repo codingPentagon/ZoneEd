@@ -40,7 +40,7 @@ export class MailComponent {
   }
 
   ngOnInit(){
-    this.getInboxMails();
+    this.getMails(true);
   }
 
   getUserTypes(){
@@ -85,18 +85,33 @@ export class MailComponent {
     }
   }
 
-  getInboxMails(){
-    this.mailService.getInboxMails(this.userID).subscribe({
-      next:res=>{
-        this.inboxmails=res;
-      }
-    })
+  getMails(isInbox:boolean){
+    if (isInbox){
+      this.mailService.getInboxMails(this.userID).subscribe({
+        next:res=>{
+          this.inboxmails=res;
+          this.getMailUsers(isInbox);
+        }
+      })
+    }
+    else {
+      this.mailService.getSentBoxMails(this.userID).subscribe({
+        next:res=>{
+          this.sentboxmails=res;
+          this.getMailUsers(isInbox);
+        }
+      })
+    }
   }
-  getSentBoxMails(){
-    this.mailService.getSentBoxMails(this.userID).subscribe({
-      next:res=>{
-        this.sentboxmails=res;
-      }
+
+  getMailUsers(isInbox:boolean){
+    const mails = isInbox ? this.inboxmails : this.sentboxmails;
+    mails.forEach((mail:Mail)=>{
+      this.userService.fetchUser(isInbox ? mail.senderID : mail.receiverID).subscribe({
+        next:res=>{
+          isInbox ? mail.sender=res : mail.receiver=res;
+        }
+      })
     })
   }
 
@@ -117,11 +132,12 @@ export class MailComponent {
       mail.receiverID=recipient;
       this.mailService.createMail(mail).subscribe();
     });
+    this.getMails(false);
   }
   updateAsRead(mailID: number){
     this.mailService.patchAsRead(mailID).subscribe({
       complete:()=>{
-        this.getInboxMails();
+        this.getMails(true);
       }
     })
   }
@@ -133,8 +149,8 @@ export class MailComponent {
     if (this.delete){
       this.delete = false;
     }
-    this.getInboxMails();
-    this.getSentBoxMails();
+    this.getMails(true);
+    this.getMails(false);
   }
 
   delete:boolean = false;
@@ -223,8 +239,8 @@ export class MailComponent {
     });
     this.mailService.removeMails(mailIDs).subscribe({
       complete : () => {
-        this.getInboxMails();
-        this.getSentBoxMails();
+        this.getMails(true);
+        this.getMails(false);
       }
     });
   }

@@ -36,9 +36,6 @@ mat-button-toggle-group{
   margin: 20px;
   border: 1px solid #3F4E4F;
 }
-mat-expansion-panel{
-  margin: 15px;
-}
 
 mat-chip-option{
   display: inline;
@@ -119,3 +116,10 @@ mat-card-content{
   margin-top: 5px;
 }
 
+.sub-header{
+  color: gray;
+}
+
+.grid{
+  display: grid;
+}

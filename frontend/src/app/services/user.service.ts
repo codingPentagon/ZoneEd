@@ -14,4 +14,8 @@ export class UserService {
   fetchUsersByTypeOnRole(sclID:number,role:string,type:string,clsID:number){
     return this.http.get<User[]>(url+'byTypeOnRole/'+sclID+'/'+role+'/'+type+'/'+clsID);
   }
+
+  fetchUser(id: number) {
+    return this.http.get<User>(url+id);
+  }
 }

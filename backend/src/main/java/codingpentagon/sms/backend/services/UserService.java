@@ -5,6 +5,7 @@ import codingpentagon.sms.backend.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -17,8 +18,8 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public List<User> findUser(int sclID) {
-        return this.userRepository.findBySclID(sclID);
+    public Optional<User> findUser(int userID) {
+        return this.userRepository.findById(userID);
     }
 
     public List<User> findUsersByTypeOnRole(int sclID, String role, String type, int clsID) {

@@ -7,8 +7,8 @@
         <h2>{{create ? 'New Mail' : "Mails"}}</h2>
         <span class="spacer"></span>
         <mat-button-toggle-group *ngIf="!create" [(value)]="mailBox">
-          <mat-button-toggle value="inbox" (click)="getInboxMails()">Inbox</mat-button-toggle>
-          <mat-button-toggle value="sent" (click)="getSentBoxMails()">Sent Mail</mat-button-toggle>
+          <mat-button-toggle value="inbox" (click)="getMails(true)">Inbox</mat-button-toggle>
+          <mat-button-toggle value="sent" (click)="getMails(false)">Sent Mail</mat-button-toggle>
         </mat-button-toggle-group>
         <mat-chip-listbox>
           <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
@@ -28,11 +28,10 @@
             <mat-expansion-panel *ngFor="let inboxmail of inboxmails"
                                  (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
               <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
-                                          [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
-                <mat-panel-title>
-                  {{inboxmail.senderID}}
-                  <br>
-                  {{inboxmail.subject}}
+                                          [ngStyle]="{'font-weight': !inboxmail.isRead ? 'bold' : ''}">
+                <mat-panel-title class="grid">
+                  <span>{{inboxmail.sender?.name}}&nbsp;<span class="sub-header">({{inboxmail.sender?.role}})</span></span>
+                  <span>{{inboxmail.subject}}</span>
                 </mat-panel-title>
                 <mat-panel-description>
 
@@ -62,10 +61,9 @@
             <mat-accordion>
               <mat-expansion-panel *ngFor="let sentboxmail of sentboxmails">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
-                  <mat-panel-title>
-                    {{sentboxmail.senderID}}
-                    <br>
-                    {{sentboxmail.subject}}
+                  <mat-panel-title class="grid">
+                    <span>{{sentboxmail.receiver?.name}}&nbsp;<span class="sub-header">({{sentboxmail.receiver?.role}})</span></span>
+                    <span>{{sentboxmail.subject}}</span>
                   </mat-panel-title>
                   <mat-panel-description>
                     {{sentboxmail.date | date: 'dd/MM/yyyy'}}
