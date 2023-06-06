@@ -75,7 +75,7 @@ public class SecurityConfiguration  {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers(
-//                        "/api/v1/stu/regStu",
+                        "/getmarks",
                         "/api/auth/reg/**",
 //                        "/api/auth/tch/reg",
                         "/api/auth/account",
