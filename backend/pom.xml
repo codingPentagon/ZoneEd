@@ -29,6 +29,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
@@ -64,6 +66,11 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.1</version>
         </dependency>
+           <dependency>
+        <groupId>net.sf.jasperreports</groupId>
+        <artifactId>jasperreports</artifactId>
+        <version>6.17.0</version>
+    </dependency>
     </dependencies>
 
     <build>
