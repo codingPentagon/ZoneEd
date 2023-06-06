@@ -7,4 +7,7 @@ export interface Notice{
   time : string;
   subject : string;
   content : string;
+  sclID : number;
+
+  // sender?:User;
 }

@@ -19,7 +19,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule} from "@angular/forms";
-import {ServicesModule} from "./services/services/services.module";
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
