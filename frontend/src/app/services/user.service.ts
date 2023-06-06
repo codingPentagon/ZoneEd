@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  fetchUsers(sclID:number){
-    return this.http.get<User[]>(url+sclID.toString());
+  fetchUsersByTypeOnRole(sclID:number,role:string,type:string,clsID:number){
+    return this.http.get<User[]>(url+'byTypeOnRole/'+sclID+'/'+role+'/'+type+'/'+clsID);
   }
 }

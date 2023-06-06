@@ -17,8 +17,9 @@ public class UserController {
         this.userService.saveUser(user);
     }
 
-    @GetMapping("user/{sclID}")
-    public List<User> getUser(@PathVariable int sclID) {
-        return this.userService.findUser(sclID);
+    @GetMapping("user/byTypeOnRole/{sclID}/{role}/{type}/{clsID}")
+    public List<User> fetchUsersByTypeOnRole(@PathVariable int sclID, @PathVariable String role, @PathVariable String type, @PathVariable int clsID) {
+        return this.userService.findUsersByTypeOnRole(sclID,role,type,clsID);
     }
+
 }
