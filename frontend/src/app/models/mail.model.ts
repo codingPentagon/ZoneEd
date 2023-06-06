@@ -1,4 +1,5 @@
 import {FileMetadata} from "./file.model";
+import {User} from "./user.model";
 
 export interface Mail {
   isRead: boolean;
@@ -10,6 +11,9 @@ export interface Mail {
   subject : string;
   content : string;
   attachments : FileMetadata[];
+
+  sender?:User;
+  receiver?:User;
 }
 
 

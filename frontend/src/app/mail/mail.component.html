@@ -1,59 +1,64 @@
 <app-nav></app-nav>
 <div class="content">
-<app-header headerTitle="Mail Management"></app-header>
+  <app-header headerTitle="Mail Management"></app-header>
   <div class="workspace">
     <mat-card>
       <mat-card-header>
         <h2>{{create ? 'New Mail' : "Mails"}}</h2>
         <span class="spacer"></span>
         <mat-button-toggle-group *ngIf="!create" [(value)]="mailBox">
-          <mat-button-toggle value="inbox" (click)="getInboxMails()" >Inbox</mat-button-toggle>
+          <mat-button-toggle value="inbox" (click)="getInboxMails()">Inbox</mat-button-toggle>
           <mat-button-toggle value="sent" (click)="getSentBoxMails()">Sent Mail</mat-button-toggle>
         </mat-button-toggle-group>
         <mat-chip-listbox>
-          <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
+          <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+                    (click)="createToggle()">
             <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">post_add</mat-icon>
           </mat-chip>
-          <mat-chip *ngIf="!create" [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="deleteToggle()">
+          <mat-chip *ngIf="!create"
+                    [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}"
+                    (click)="deleteToggle()">
             <mat-icon [ngStyle]="{'color':delete ? 'white' : 'black'}">delete</mat-icon>
           </mat-chip>
         </mat-chip-listbox>
       </mat-card-header>
       <mat-card-content *ngIf="!create" class="mail-box">
-        <div *ngIf="mailBox=='inbox'" >
-            <mat-accordion>
-                <mat-expansion-panel  *ngFor="let inboxmail of inboxmails" (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
-                  <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
-                                              [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
-                    <mat-panel-title>
-                      {{inboxmail.senderID}}
-                      <br>
-                      {{inboxmail.subject}}
-                    </mat-panel-title>
-                    <mat-panel-description>
+        <div *ngIf="mailBox=='inbox'">
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let inboxmail of inboxmails"
+                                 (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
+              <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
+                                          [ngStyle]="{'font-weight': inboxmail.isRead == false ? 'bold' : ''}">
+                <mat-panel-title>
+                  {{inboxmail.senderID}}
+                  <br>
+                  {{inboxmail.subject}}
+                </mat-panel-title>
+                <mat-panel-description>
 
-                      {{inboxmail.date | date:'dd/MM/yyyy'}}
-                      <br>
-                      {{inboxmail.date | date: 'HH:mm'}}
-                      <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(inboxmail)"></mat-checkbox>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <p>
-                    {{inboxmail.content}}
-                  </p>
-                  <div class="attachment-list">
-                    <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
-                  </div>
-                  <button mat-icon-button (click)="reply(inboxmail.senderID)">
-                    <mat-icon>
-                      reply
-                    </mat-icon>
-                  </button>
-                </mat-expansion-panel>
-            </mat-accordion>
+                  {{inboxmail.date | date:'dd/MM/yyyy'}}
+                  <br>
+                  {{inboxmail.date | date: 'HH:mm'}}
+                  <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(inboxmail)"></mat-checkbox>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>
+                {{inboxmail.content}}
+              </p>
+              <div class="attachment-list">
+                <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}}
+                  )</a>
+              </div>
+              <button mat-icon-button (click)="reply(inboxmail.senderID)">
+                <mat-icon>
+                  reply
+                </mat-icon>
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
         <div *ngIf="mailBox=='sent'">
-          <div class="sentbox" >
+          <div class="sentbox">
             <mat-accordion>
               <mat-expansion-panel *ngFor="let sentboxmail of sentboxmails">
                 <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
@@ -73,7 +78,8 @@
                   {{sentboxmail.content}}
                 </p>
                 <div class="attachment-list">
-                  <a *ngFor="let file of sentboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}})</a>
+                  <a *ngFor="let file of sentboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}}
+                    )</a>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>
@@ -86,40 +92,61 @@
       </mat-card-actions>
 
       <mat-card-content *ngIf="create" class="new-mail">
-        <form class="left" #newMail="ngForm"  (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
-            <mat-form-field appearance="outline" color="accent"  class="receipientbox">
-              <mat-label>Recipient</mat-label>
-              <mat-select ngModel name="receiverID">
-                <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
-              </mat-select>
-            </mat-form-field>
+        <form class="left" #newMail="ngForm" (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select [(value)]="selectedType" (valueChange)="getUsersByTypeOnRole()">
+              <mat-option *ngFor="let type of userTypes" [value]="type.toLowerCase()">{{type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline" color="accent">
-              <mat-label>Subject</mat-label>
-              <input matInput placeholder="" ngModel name="subject">
-            </mat-form-field>
+          <mat-form-field *ngIf="selectedType=='student' || selectedType=='parent'" appearance="outline">
+            <mat-label>Class</mat-label>
+            <mat-select (valueChange)="getUsersByTypeOnRole()" [(value)]="selectedCls">
+              <mat-option *ngFor="let cls of classes" [value]="cls.id">{{cls.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="userRole=='zonal' && selectedType=='teacher'" appearance="outline">
+            <mat-label>School</mat-label>
+            <mat-select [(value)]="selectedScl" (valueChange)="getUsersByTypeOnRole()">
+              <mat-option *ngFor="let scl of schools" [value]="scl.id">{{scl.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline" color="accent" class="mailbody">
-              <mat-label>Content</mat-label>
-              <textarea matInput placeholder="" ngModel name="content"></textarea>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Recipient</mat-label>
+            <mat-select multiple [disabled]="users.length==0" ngModel name="recipients">
+              <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <input matInput placeholder="" ngModel name="subject">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="mailbody">
+            <mat-label>Content</mat-label>
+            <textarea matInput placeholder="" ngModel name="content"></textarea>
+          </mat-form-field>
         </form>
 
         <div class="right">
           <div class="att">
             <ngx-file-drop [multiple]="true" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
-                           (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
+                           (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
               <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                 <button type="button" (click)="openFileSelector()">Browse Files</button>
               </ng-template>
-            </ngx-file-drop><br><br>
+            </ngx-file-drop>
+            <br><br>
 
             <div *ngFor="let attachment of attachments;" class="attachment-list">
               <a download [href]="attachment.downloadUrl">
                 {{attachment.name}}
                 ({{attachment.size}})
               </a>
-             <mat-icon (click)="deleteAttachment(attachment)">delete</mat-icon>
+              <mat-icon (click)="deleteAttachment(attachment)">delete</mat-icon>
             </div>
           </div>
         </div>

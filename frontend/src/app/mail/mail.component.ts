@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {FormControl, NgForm} from "@angular/forms";
+import {NgForm} from "@angular/forms";
 import {NgxFileDropEntry} from "ngx-file-drop";
 
 import {MailService} from "../services/mail.service";
 import { Mail} from "../models/mail.model";
 import { FileMetadata} from "../models/file.model";
 import {FilesService} from "../services/files.service";
-import {User} from "../models/user.model";
 import {UserService} from "../services/user.service";
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-mail',
@@ -18,34 +18,72 @@ import {UserService} from "../services/user.service";
 export class MailComponent {
   userID :number =2860;
   sclID:number=555;
-  userRole:string = 'student';
-  categories : any[] = [];
-  users:User[]=[];
+  userRole:string = 'zonal';
+  users:User[] = [];
 
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=this.filesService.filesMetadata;
-  selectedCategory: string='';
-
-  constructor(private mailService:MailService,private filesService:FilesService,private userService:UserService) {
-  }
-
-  ngOnInit(){
-    this.getInboxMails();
-    this.getCategories();
-    this.getUsers();
-  }
-//get users from backend
-  getUsers(){
-    this.userService.fetchUsers(this.sclID).subscribe({
-      next:res=>{
-        this.users = res;
-      }
-    })
-  }
+  selectedType: string='';
+  userTypes: string[] = [];
 
   inboxmails: Mail[] = [];
   sentboxmails: Mail[] = [];
   mailsToDelete: Mail[] = [];
+
+  classes: any = [{id:1,name:'6A'},{id:2,name:'8A'}];
+  selectedCls!: number;
+  schools: any = [{id:100,name:'Poramadulla'},{id:200,name:'Padiyapelella'}];
+  selectedScl: number = 0;
+
+  constructor(private mailService:MailService,private filesService:FilesService,private userService:UserService) {
+    this.getUserTypes();
+  }
+
+  ngOnInit(){
+    this.getInboxMails();
+  }
+
+  getUserTypes(){
+    switch (this.userRole.toLowerCase()) {
+      case 'admin':
+        this.userTypes.push('zonal','principal');
+        break;
+      case 'zonal':
+        this.userTypes.push('principal','teacher','admin');
+        break;
+      case 'principal':
+        this.userTypes.push('zonal','teacher','student','parent','admin');
+        break;
+      case 'teacher':
+        this.userTypes.push('principal','student','parent','zonal');
+        break;
+      case 'student' || 'parent':
+        this.userTypes.push('principal','teacher');
+        break;
+    }
+  }
+
+
+  //get users from backend
+  getUsersByTypeOnRole(){
+    const sclCheck = this.userRole=='zonal' && this.selectedType=='teacher' && this.selectedScl==undefined;
+    const clsCheck = this.selectedType=='student' || this.selectedType=='parent' && this.selectedCls==undefined;
+
+    const sclID = this.userRole=='admin' || this.userRole=='zonal' ? this.selectedScl : this.sclID;
+    const clsID = this.selectedCls==undefined ? 0 : this.selectedCls;
+
+    if (!sclCheck && !clsCheck){
+      this.userService.fetchUsersByTypeOnRole(sclID, this.userRole, this.selectedType, clsID).subscribe({
+        next: res => {
+          this.users = res;
+          console.log(res);
+        }
+      })
+    }
+    else {
+      this.users.splice(0);
+    }
+  }
 
   getInboxMails(){
     this.mailService.getInboxMails(this.userID).subscribe({
@@ -58,7 +96,6 @@ export class MailComponent {
     this.mailService.getSentBoxMails(this.userID).subscribe({
       next:res=>{
         this.sentboxmails=res;
-        console.log(res)
       }
     })
   }
@@ -70,16 +107,16 @@ export class MailComponent {
       senderID : this.userID,
       date :new Date(),
       time : "",
-      receiverID :newMail.value.receiverID,
+      receiverID :0,
       subject : newMail.value.subject,
       content :newMail.value.content,
       attachments : this.attachments
     }
 
-    console.log(mail);
-    this.mailService.createMail(mail).subscribe({
-      next:res=>{console.log(res)}
-    })
+    newMail.value.recipients.forEach((recipient:number)=>{
+      mail.receiverID=recipient;
+      this.mailService.createMail(mail).subscribe();
+    });
   }
   updateAsRead(mailID: number){
     this.mailService.patchAsRead(mailID).subscribe({
@@ -95,7 +132,7 @@ export class MailComponent {
     this.create = !this.create;
     if (this.delete){
       this.delete = false;
-    };
+    }
     this.getInboxMails();
     this.getSentBoxMails();
   }
@@ -164,23 +201,6 @@ export class MailComponent {
     this.filesService.removeAllFiles();
   }
 
-  getCategories(){
-    if (this.userRole == 'zonal' || this.userRole == 'principal' || this.userRole == 'teacher' || this.userRole == 'student' || this.userRole == 'parent'){
-      this.categories.push({viewValue:"Teacher", value:"teacher"})
-    }
-    if (this.userRole == 'zonal' || this.userRole == 'admin' || this.userRole == 'teacher' || this.userRole == 'student' || this.userRole == 'parent'){
-      this.categories.push({viewValue:"Principal", value:"principal"})
-    }
-    if (this.userRole == 'principal' || this.userRole == 'admin' || this.userRole == 'teacher'){
-      this.categories.push({viewValue:"Zonal Director", value:"zonal"})
-    }
-    if (this.userRole == 'principal' || this.userRole == 'zonal'){
-      this.categories.push({viewValue:"Admin", value:"admin"})
-    }
-    if (this.userRole == 'principal' || this.userRole == 'teacher'){
-      this.categories.push({viewValue:"Parent", value:"parent"},{viewValue:"Student", value:"student"})
-    }
-  }
 
   toggleDeleteItems(mail:Mail) {
     const index=this.mailsToDelete.indexOf(mail);
@@ -190,7 +210,6 @@ export class MailComponent {
     else{
       this.mailsToDelete.splice(index,1);
     }
-    console.log(this.mailsToDelete);
   }
 
   deleteMails(){
