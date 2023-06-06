@@ -12,8 +12,14 @@ public class NoticeService {
     public NoticeService(NoticeRepository noticeRepo) {
         this.noticeRepository = noticeRepo;
     }
-    public List<Notice> findNotices(String category) {
-        return this.noticeRepository.findByReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(category);
+    public List<Notice> findNotices(String category,int sclID) {
+        if(sclID == 0) {
+            return this.noticeRepository.findByReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(category);
+        }
+        else {
+            List<Integer> sclIDs = List.of(sclID,0);
+            return this.noticeRepository.findBySclIDInAndReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(sclIDs, category);
+        }
     }
 
     public List<Notice> findPostedNotices(int userID) {

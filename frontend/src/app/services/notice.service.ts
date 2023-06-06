@@ -19,8 +19,8 @@ export class NoticeService {
     return this.http.get<Notice[]>(url+'posted/'+userID.toString());
   }
 
-  getNotices(category: string) {
-    return this.http.get<Notice[]>(url+category);
+  getNotices(category: string,sclID:number|null) {
+    return this.http.get<Notice[]>(url+category+'/'+sclID);
   }
 
   removeMails(noticesToDelete: number[]) {

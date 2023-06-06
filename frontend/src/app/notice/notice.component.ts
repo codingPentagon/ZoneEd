@@ -11,20 +11,25 @@ import {NoticeService} from "../services/notice.service";
 export class NoticeComponent {
   userID:number=33;
   userRole :string='principal';
+  sclID:number=555;
   noticesToDelete : number[]=[];
   categories:any[] = [];
+  subject:string = '';
+  content:string = '';
 
   constructor(private noticeService:NoticeService) {
+    this.userRole == 'zonal' ? this.sclID = 0 : null;
   }
 
   notices :Notice[] = [];
   ngOnInit(){
-    this.getNotices();
+    this.userRole != 'admin' ? this.getNotices() : this.getPostedNotices();
     this.getCategories();
   }
+
 //getting the notices from backend
   getNotices(){
-    this.noticeService.getNotices(this.userRole).subscribe({
+    this.noticeService.getNotices(this.userRole,this.sclID).subscribe({
       next:res=>{
         this.notices=res;
       }
@@ -61,19 +66,23 @@ export class NoticeComponent {
   }
 //create notice object and send to backend for saving
   createNotice(newNotice: NgForm) {
+    const categories:string[]=this.userRole=='admin' ? ['zonal','principal','teacher','student','parent']:newNotice.value.categories;
+
     const notice:Notice={
       id:0,
       senderID : this.userID,
       date :new Date(),
       time : "",
-      receiverCategories :newNotice.value.categories,
+      receiverCategories :categories,
       subject : newNotice.value.subject,
       content :newNotice.value.content,
+      sclID : this.sclID
     }
     this.noticeService.createNotice(notice).subscribe({
       next:res=>{console.log(res)}
     })
   }
+
 //toggles the IDs of notices which are selected for deleting using checkbox
   toggleDeleteItems(noticeID:number) {
     const index=this.noticesToDelete.indexOf(noticeID);
@@ -95,11 +104,8 @@ export class NoticeComponent {
   }
 //fill the categories array with available user categories for the current user role
   getCategories(){
-    if (this.userRole == 'admin' || this.userRole == 'zonal'){
+    if (this.userRole == 'zonal'){
       this.categories.push({value:'principal',viewValue:'Principal'})
-    }
-    if (this.userRole == 'admin'){
-      this.categories.push({value:'zonal',viewValue:'Zonal Director'})
     }
     if (this.userRole == 'teacher' || this.userRole == 'principal'){
       this.categories.push({value:'parent',viewValue:'Parent'},{value:'student',viewValue:'Student'})
@@ -107,5 +113,11 @@ export class NoticeComponent {
     if (this.userRole == 'principal'){
       this.categories.push({value:'teacher',viewValue:'Teacher'})
     }
+  }
+
+  forward(notice: Notice) {
+    this.subject = 'Fwd from '+notice.senderID+': '+notice.subject;
+    this.content = notice.content;
+    this.createToggle();
   }
 }

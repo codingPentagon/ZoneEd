@@ -15,9 +15,9 @@ public class NoticeController {
         this.noticeService = new NoticeService(noticeRepo);
     }
 
-    @GetMapping("notices/{category}")
-    public List<Notice> getNotices(@PathVariable String category) {
-        return this.noticeService.findNotices(category);
+    @GetMapping("notices/{category}/{sclID}")
+    public List<Notice> getNotices(@PathVariable String category, @PathVariable int sclID) {
+        return this.noticeService.findNotices(category,sclID);
     }
 
     @GetMapping("notices/posted/{userID}")

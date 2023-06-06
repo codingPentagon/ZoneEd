@@ -8,6 +8,5 @@ import java.util.List;
 public interface NoticeRepository extends MongoRepository<Notice,Integer> {
     List<Notice> findBySenderIDOrderByDateDesc(int userID);
     List<Notice> findByReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(String category);
-
-
+    List<Notice> findBySclIDInAndReceiverCategoriesContainsIgnoreCaseOrderByDateDesc(List<Integer> sclID, String category);
 }

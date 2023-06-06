@@ -5,7 +5,7 @@
     <mat-card-header *ngIf="!(userRole=='parent'|| userRole=='student' )">
       {{create? 'New Notice': 'Notice Board'}}
       <span class="spacer"></span>
-          <mat-button-toggle-group *ngIf="!create" [(value)]="noticeBox">
+          <mat-button-toggle-group *ngIf="userRole!='admin' && !create" [(value)]="noticeBox">
             <mat-button-toggle value="all" (click)="getNotices(); delete?deleteToggle():null">All</mat-button-toggle>
             <mat-button-toggle value="post" (click)="getPostedNotices()">Post</mat-button-toggle>
           </mat-button-toggle-group>
@@ -13,17 +13,17 @@
             <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
               <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">post_add</mat-icon>
             </mat-chip>
-            <mat-chip *ngIf="!create  && noticeBox=='post'" [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="deleteToggle()">
+            <mat-chip *ngIf="!create  && (noticeBox=='post' || userRole=='admin')" [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="deleteToggle()">
               <mat-icon [ngStyle]="{'color':delete ? 'white' : 'black'}">delete</mat-icon>
             </mat-chip>
           </mat-chip-listbox>
     </mat-card-header>
-    <mat-card-header *ngIf="userRole=='parent'|| userRole=='student' ">
+    <mat-card-header *ngIf="userRole=='parent'|| userRole=='student'">
       Notice Board
     </mat-card-header>
     <mat-card-content *ngIf="create">
       <form #newNotice="ngForm" (ngSubmit)="createNotice(newNotice);createToggle()" id="newNotice">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" *ngIf="userRole!='admin'">
           <mat-label>Select category</mat-label>
           <mat-select multiple ngModel name="categories">
             <mat-option *ngFor="let category of categories" [value]="category.value">
@@ -35,13 +35,13 @@
           <mat-label >
            Subject
           </mat-label>
-          <input matInput ngModel name="subject" >
+          <input matInput [(ngModel)]="subject" name="subject" >
         </mat-form-field>
         <mat-form-field class="body" appearance="outline">
           <mat-label>
             Content
           </mat-label>
-          <textarea matInput ngModel name="content"></textarea>
+          <textarea matInput [(ngModel)]="content" name="content"></textarea>
         </mat-form-field>
       </form>
     </mat-card-content>
@@ -67,6 +67,9 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{notice.content}}</p>
+            <button mat-icon-button *ngIf="(userRole=='principal' || userRole=='teacher') && noticeBox=='all'" (click)="forward(notice)">
+              <mat-icon>reply</mat-icon>
+            </button>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card-content>
