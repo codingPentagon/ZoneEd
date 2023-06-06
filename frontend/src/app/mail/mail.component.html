@@ -26,7 +26,7 @@
         <div *ngIf="mailBox=='inbox'">
           <mat-accordion>
             <mat-expansion-panel *ngFor="let inboxmail of inboxmails"
-                                 (closed)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
+                                 (opened)="inboxmail.isRead?null:updateAsRead(inboxmail.id)">
               <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'"
                                           [ngStyle]="{'font-weight': !inboxmail.isRead ? 'bold' : ''}">
                 <mat-panel-title class="grid">
@@ -48,7 +48,7 @@
                 <a *ngFor="let file of inboxmail.attachments" [href]="file.downloadUrl">{{file.name}} ({{file.size}}
                   )</a>
               </div>
-              <button mat-icon-button (click)="reply(inboxmail.senderID)">
+              <button mat-icon-button (click)="reply(inboxmail)">
                 <mat-icon>
                   reply
                 </mat-icon>
@@ -113,14 +113,14 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Recipient</mat-label>
-            <mat-select multiple [disabled]="users.length==0" ngModel name="recipients">
+            <mat-select multiple [disabled]="users.length==0" name="recipients" [(ngModel)]="recepientIDs">
               <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Subject</mat-label>
-            <input matInput placeholder="" ngModel name="subject">
+            <input matInput placeholder="" name="subject" [(ngModel)]="subject">
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="mailbody">

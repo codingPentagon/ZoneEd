@@ -16,10 +16,12 @@ import {User} from "../models/user.model";
 })
 
 export class MailComponent {
-  userID :number =2860;
+  userID :number =4240;
   sclID:number=555;
   userRole:string = 'zonal';
   users:User[] = [];
+  recepientIDs :number[] = [];
+  subject :string='';
 
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=this.filesService.filesMetadata;
@@ -32,7 +34,7 @@ export class MailComponent {
 
   classes: any = [{id:1,name:'6A'},{id:2,name:'8A'}];
   selectedCls!: number;
-  schools: any = [{id:100,name:'Poramadulla'},{id:200,name:'Padiyapelella'}];
+  schools: any = [{id:555,name:'Poramadulla'},{id:200,name:'Padiyapelella'}];
   selectedScl: number = 0;
 
   constructor(private mailService:MailService,private filesService:FilesService,private userService:UserService) {
@@ -135,11 +137,7 @@ export class MailComponent {
     this.getMails(false);
   }
   updateAsRead(mailID: number){
-    this.mailService.patchAsRead(mailID).subscribe({
-      complete:()=>{
-        this.getMails(true);
-      }
-    })
+    this.mailService.patchAsRead(mailID).subscribe()
   }
 
   create:boolean = false;
@@ -164,7 +162,13 @@ export class MailComponent {
 
   mailBox:string = 'inbox';
 
-  reply(recipientID: number) {
+  reply(mail:Mail) {
+    this.selectedType = mail.sender!.role;
+    this.selectedScl = mail.sender!.sclID;
+    this.selectedCls = mail.sender!.clsID;
+    this.users = [mail.sender!];
+    this.recepientIDs.push(mail.senderID);
+    this.subject = 'Re: '+mail.subject;
     this.createToggle();
   }
 
