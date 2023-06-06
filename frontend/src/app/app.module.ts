@@ -28,6 +28,7 @@ import { RegPrinComponent } from './reg-prin/reg-prin.component';
 
 @NgModule({
   declarations: [
+    //created components for implementation
     AppComponent,
     RegStuComponent,
     RegTchrComponent,
@@ -37,6 +38,7 @@ import { RegPrinComponent } from './reg-prin/reg-prin.component';
 
   ],
     imports: [
+      //import modules for app functions
         BrowserModule,
         SharedModule,
         AppRoutingModule,
@@ -47,12 +49,12 @@ import { RegPrinComponent } from './reg-prin/reg-prin.component';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule,
-        FormsModule,
+        ReactiveFormsModule,//use reactive form modules
+        FormsModule,//for handle forms
         MatSelectModule,
         MatSidenavModule,
         MatButtonModule,
-        HttpClientModule,
+        HttpClientModule,//for handale http request
         MatCardModule,
         MatStepperModule
 

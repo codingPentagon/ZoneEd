@@ -12,10 +12,11 @@ import { RegPrinComponent } from './reg-prin/reg-prin.component';
 
 
 const routes: Routes = [
+  //set route name for each navigation 
   { path: '', component: NavComponent },
-  { path: 'studentreg', component: RegStuComponent },
-  {path:'teacherreg',component:RegTchrComponent },
-  {path:'login',component:LoginComponent},
+  { path: 'studentreg', component: RegStuComponent },//for reg student
+  {path:'teacherreg',component:RegTchrComponent },//for reg teacher
+  {path:'login',component:LoginComponent},  //for login
   {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]},
   {path:'principalreg',component:RegPrinComponent}
 
@@ -30,6 +31,6 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers:[AuthGuard]
+  providers:[AuthGuard] //use auth guard for restrict direct navigate
 })
 export class AppRoutingModule { }

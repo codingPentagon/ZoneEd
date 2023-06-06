@@ -21,17 +21,17 @@ export class AuthGuard implements CanActivate {
   testUserData(fullName: any) {
     this.fullName=fullName;
   }
-  canActivate(
+  canActivate(  // The canActivate method is used as a guard to determine if a route can be activated.
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(this.fullName);
-    if(this.userRegService.fullName===this.fullName){
-      console.log(this.userRegService.fullName,this.fullName);
-      return true;
+    if(this.userRegService.fullName===this.fullName){ //if this is true,user can route to dashboard,used authGuard for secure route
+      console.log(this.userRegService.fullName,this.fullName); //check values on the console
+      return true;  //if true,can route
     }
       else{
       
-        return false;
+        return false; //if false,can't route
       }
       }
     

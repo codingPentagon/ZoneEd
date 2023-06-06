@@ -15,12 +15,14 @@ import { trigger } from '@angular/animations';
 })
 export class LoginComponent implements OnInit {
 
-  responsedata:any;
+  responsedata:any; //used to assign login data
 
   loginform!: FormGroup;
+
+  //use this constructor to inject services and route
   constructor(private  UserRegService:UserRegService,private builder:FormBuilder,private router:Router,private auth:AuthGuard,private authServices:AuthServicesService){}
   ngOnInit(): void {
-    this.initForm();
+    this.initForm(); //use this method to validate  and assign login data
   }
 
   initForm(){
@@ -31,16 +33,16 @@ export class LoginComponent implements OnInit {
     });
     
   }
-  proceedlogin(){
+  proceedlogin(){ //method for implenting login process
    // console.log(this.responsedata.email);
     if(this.loginform.valid){
-      this.authServices.proceedlogin(this.loginform.value).subscribe((reult:any)=>{
+      this.authServices.proceedlogin(this.loginform.value).subscribe((result:any)=>{  //cordinate backend data and login form data
 
-        if(reult!=null){
-          this.responsedata=reult;
-          localStorage.setItem('accessToken',this.responsedata.jwtToken);
+        if(result!=null){
+          this.responsedata=result; 
+          localStorage.setItem('accessToken',this.responsedata.jwtToken);//store jwt token values in local storage
           alert("login successfully");
-          this.router.navigate([''])
+          this.router.navigate(['']) //after login success,navigate to home
         }
 
        
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
 
 
 //   userdata:any;
-   stu: Stu=new Stu();
+   stu: Stu=new Stu(); //onject for student
 
 //   loginform=this.builder.group({
 //     email:this.builder.control('',Validators.required),

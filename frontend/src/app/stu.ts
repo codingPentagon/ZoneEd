@@ -1,5 +1,5 @@
 export class Stu {
- 
+   //student data takes from frotend
        fullName!: String;
     initName!: String;
     address1!:String;
