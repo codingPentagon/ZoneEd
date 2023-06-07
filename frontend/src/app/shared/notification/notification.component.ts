@@ -49,11 +49,12 @@ export class NotificationComponent {
         if (token){
           const notifToken : NotificationToken={
             id :0,
-            token: token,
+            tokens: [token],
             userID: this.userID
           }
-          this.notifService.addToken(notifToken);
+          this.notifService.addToken(notifToken).subscribe();
         }
+        console.log(token)
       }
     });
     this.notifService.listen();
@@ -89,11 +90,6 @@ export class NotificationComponent {
   notifCount: number = 0;
 
   getUnreadNotifCount() {
-    this.notifCount = 0;
-    for (let notif of this.notifs) {
-      if (!notif.read) {
-        this.notifCount++;
-      }
-    }
+    this.notifCount = this.notifs.filter((notif: { read: boolean; }) => !notif.read).length;
   }
 }

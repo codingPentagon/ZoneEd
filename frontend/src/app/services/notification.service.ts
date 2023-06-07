@@ -8,52 +8,64 @@ const url = 'http://localhost:8080/notifications/'
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService{
+export class NotificationService {
   constructor(private http: HttpClient, private fireMessaging: AngularFireMessaging) {
   }
 
-  requestPermission(){
+  requestPermission() {
     return this.fireMessaging.requestToken
   }
 
-  listen(){
+  listen() {
     return this.fireMessaging.messages
   }
 
-  addToken(token:NotificationToken){
-    return this.http.post(url+'token',token);
+  addToken(token: NotificationToken) {
+    return this.http.post(url + 'tokens', token);
   }
 
-  createNotification(receiverID:number, content:string, event:string){
+  createNotification(receiverID: number, content: string, event: string) {
+    this.fetchTokenSet(receiverID).subscribe({
+      next: res => {
+        res.tokens.forEach(token => {
+          this.sendNotification(token, content, event);
+        })
+      }
+    })
 
-    const notif :Notification = {
-      id : 0,
-      receiverID : receiverID,
-      date : new Date(),
-      content : content,
-      event : event,
-      isRead : false,
+    const notif: Notification = {
+      id: 0,
+      receiverID: receiverID,
+      date: new Date(),
+      content: content,
+      event: event,
+      isRead: false,
     }
-    return this.http.post(url,notif);
-  }
-
-  sendNotification(receiverID:number){
-    const tokens:NotificationToken[]=[];
-    this.fetchTokens(receiverID).subscribe({
-
+    this.addNotification(notif).subscribe({
+      next: () => {
+        console.log("notification saved")
+      }
     })
   }
 
-  fetchTokens(userID:number){
-    return this.http.get<NotificationToken[]>(url+userID.toString())
+  addNotification(notif: Notification) {
+    return this.http.post(url, notif);
+  }
+
+  sendNotification(token: string, content: string, event: string) {
+
+  }
+
+  fetchTokenSet(userID: number) {
+    return this.http.get<NotificationToken>(url + userID.toString())
   }
 
   getNotifications(userID: number) {
-    return this.http.get<Notification[]>(url+userID.toString());
+    return this.http.get<Notification[]>(url + userID.toString());
   }
 
-  updateNotification(notification:Notification){
-    return this.http.put(url,notification);
+  updateNotification(notification: Notification) {
+    return this.http.put(url, notification);
   }
 }
 
