@@ -9,6 +9,11 @@ export interface Notification {
 
 export interface NotificationToken{
   userID : number;
-  token : string;
+  tokens : string[];
   id : number;
+}
+
+export interface NotificationMsg{
+  event : string;
+  content : string;
 }
