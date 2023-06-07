@@ -43,7 +43,8 @@ public class NotificationService {
                 return;
             }
             String[] currentTokens = notifToken.getTokens();
-            String[] newTokens = new String[]{Arrays.toString(currentTokens), token.getTokens()[0]};
+            String[] newTokens = Arrays.copyOf(currentTokens, currentTokens.length + 1);
+            newTokens[newTokens.length - 1] = token.getTokens()[0];
             notifToken.setTokens(newTokens);
             this.notificationTokenRepository.save(notifToken);
         }
