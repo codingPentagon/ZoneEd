@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="markssheet" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3771846c-e00b-488d-9b33-7c14672426a2">
-    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+   
     <parameter name="term" class="java.lang.Integer"/>
     <parameter name="stu_id" class="java.lang.String"/>
     <parameter name="stu_name" class="java.lang.String"/>
     <parameter name="stu_grade" class="java.lang.String"/>
     <parameter name="year" class="java.lang.Integer"/>
-    <queryString language="SQL">
-        <![CDATA[SELECT * FROM ORDERS]]>
-    </queryString>
-    <field name="ORDERID" class="java.lang.Integer">
-        <property name="com.jaspersoft.studio.field.name" value="ORDERID"/>
-        <property name="com.jaspersoft.studio.field.label" value="ORDERID"/>
-        <property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+ 
+    <field name="subject" class="java.lang.String">
+     
     </field>
-    <field name="CUSTOMERID" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="CUSTOMERID"/>
-        <property name="com.jaspersoft.studio.field.label" value="CUSTOMERID"/>
-        <property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+    <field name="mark" class="java.lang.Integer">
+   
     </field>
-    <field name="EMPLOYEEID" class="java.lang.Integer">
-        <property name="com.jaspersoft.studio.field.name" value="EMPLOYEEID"/>
-        <property name="com.jaspersoft.studio.field.label" value="EMPLOYEEID"/>
-        <property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+    <field name="avg_mark" class="java.lang.Double">
+      
     </field>
     <background>
         <band/>
@@ -69,7 +60,7 @@
                     <textFieldExpression><![CDATA[$P{stu_name}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement x="508" y="67" width="100" height="30" uuid="23b8c8f3-69fa-425b-ac0a-888c8476b181"/>
+                    <reportElement x="490" y="67" width="100" height="30" uuid="23b8c8f3-69fa-425b-ac0a-888c8476b181"/>
                     <textElement markup="rtf">
                         <font size="12"/>
                     </textElement>
@@ -104,7 +95,7 @@
                     <text><![CDATA[Year:]]></text>
                 </staticText>
                 <textField>
-                    <reportElement x="512" y="9" width="100" height="30" uuid="c995e9bd-9a0b-47f5-8c25-92294f8e399d"/>
+                    <reportElement x="490" y="9" width="100" height="30" uuid="c995e9bd-9a0b-47f5-8c25-92294f8e399d"/>
                     <textElement>
                         <font size="12"/>
                     </textElement>
@@ -155,32 +146,32 @@
             <line>
                 <reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b7e263f0-eca6-4ba2-8323-814aa2248565"/>
             </line>
-            <textField textAdjust="StretchHeight">
+            <textField >
                 <reportElement x="0" y="0" width="185" height="20" uuid="cecbd7ec-12dc-488b-9d50-de2cc80c1b4a">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94b53aeb-452f-4d68-9961-59b243136d20"/>
                 </reportElement>
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{subject}]]></textFieldExpression>
             </textField>
-            <textField textAdjust="StretchHeight">
+            <textField >
                 <reportElement x="185" y="0" width="185" height="20" uuid="8ceaa9ab-68eb-4081-8020-3b58fec7ba0e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc7554b3-61f5-44df-9498-80a835e230bd"/>
                 </reportElement>
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{CUSTOMERID}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{mark}]]></textFieldExpression>
             </textField>
-            <textField textAdjust="StretchHeight">
+            <textField >
                 <reportElement x="370" y="0" width="185" height="20" uuid="6b3c966d-1de0-4596-a251-081901961901">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34809212-f202-42b9-a717-012be7e8c514"/>
                 </reportElement>
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{EMPLOYEEID}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{avg_mark}]]></textFieldExpression>
             </textField>
         </band>
     </detail>

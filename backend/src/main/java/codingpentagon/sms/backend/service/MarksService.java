@@ -51,7 +51,7 @@ public class MarksService {
   }
 
   public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
-    String path = "C:\\Users\\nuwan\\Desktop\\reports";
+    String path = "C:\\Users\\nuwan\\OneDrive\\Desktop\\reports";
     List<Stud_marks> employees = marksRepo.findAll();
     //load file and compile it
     File file = ResourceUtils.getFile("classpath:marksheet.jrxml");
