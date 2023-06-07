@@ -13,17 +13,13 @@ export class NotificationComponent {
   isOpen:boolean = false;
 
   constructor(private notifService : NotificationService) {
+    this.getNotifications();
+    setInterval(() => this.getNotifications(), 5000);
+    this.getToken();
   }
 
   toggleNotif(){
     this.isOpen = !this.isOpen;
-  }
-
-  ngOnInit() {
-    this.getUnreadNotifCount();
-    this.getNotifications();
-    this.getToken();
-    this.notifService.createNotification(this.userID,'content','event');
   }
 
   getNotifications(){
@@ -31,6 +27,9 @@ export class NotificationComponent {
       next: res => {
         this.notifs=res
         console.log(res)
+      },
+      complete:()=>{
+        this.getUnreadNotifCount();
       }
     })
   }
@@ -61,36 +60,11 @@ export class NotificationComponent {
     this.notifService.listen();
   }
 
-  notifs: any = [
-    {
-      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
-      date: "31/01/2023",
-      time: "5 min ago",
-      read: false
-    },
-    {
-      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
-      date: "31/01/2023",
-      time: "5 min ago",
-      read: false
-    },
-    {
-      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
-      date: "31/01/2023",
-      time: "5 min ago",
-      read: false
-    },
-    {
-      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
-      date: "31/01/2023",
-      time: "5 min ago",
-      read: false
-    }
-  ]
+  notifs: Notification[] = [];
 
   notifCount: number = 0;
 
   getUnreadNotifCount() {
-    this.notifCount = this.notifs.filter((notif: { read: boolean; }) => !notif.read).length;
+    this.notifCount = this.notifs.filter(notif => !notif.isRead).length;
   }
 }
