@@ -30,7 +30,6 @@ export class NotificationService{
       id : 0,
       receiverID : receiverID,
       date : new Date(),
-      time : new Date().getHours().toString()+ new Date().getMinutes().toString(),
       content : content,
       event : event,
       isRead : false,
