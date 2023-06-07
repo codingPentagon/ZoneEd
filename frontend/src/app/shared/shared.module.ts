@@ -10,7 +10,6 @@ import { NavComponent } from './nav/nav.component';
 import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {CalendarToggleService} from "./calendar/calendar-toggle.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -46,8 +45,5 @@ import {CalendarHeaderComponent, CalendarComponent} from './calendar/calendar.co
     CalendarComponent
   ],
 
-  providers: [
-    CalendarToggleService,
-  ]
 })
 export class SharedModule { }

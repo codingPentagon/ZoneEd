@@ -1,5 +1,4 @@
 import {Component, Inject } from '@angular/core';
-import {CalendarToggleService} from "./calendar-toggle.service";
 import {MatCalendar, MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {SchoolHoliday,SchoolEvent} from "../../models/calendar.model";
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from "@angular/material/core";
@@ -34,13 +33,15 @@ export class CalendarComponent {
     },
   ];
 
-  constructor(private calToggleService:CalendarToggleService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.calToggleService.change.subscribe(isOpen => {
-      this.isOpen = isOpen;
-    });
+
+  }
+
+  toggle(){
+    this.isOpen = !this.isOpen;
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate) => {

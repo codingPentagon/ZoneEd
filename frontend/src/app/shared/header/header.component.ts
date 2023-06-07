@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {CalendarToggleService} from "../calendar/calendar-toggle.service";
+import {Component, EventEmitter, Output} from '@angular/core';
 
 
 @Component({
@@ -9,10 +8,11 @@ import {CalendarToggleService} from "../calendar/calendar-toggle.service";
 })
 export class HeaderComponent {
 
-  constructor(private calToggleService:CalendarToggleService) {
+  @Output() calendarToggle:EventEmitter<null> = new EventEmitter<null>();
+  constructor() {
   }
 
-  calendarToggle(){
-    this.calToggleService.toggle();
+  calToggle(){
+    this.calendarToggle.emit();
   }
 }
