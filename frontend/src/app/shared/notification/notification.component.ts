@@ -23,6 +23,7 @@ export class NotificationComponent {
     this.getUnreadNotifCount();
     this.getNotifications();
     this.getToken();
+    this.notifService.createNotification(this.userID,'content','event');
   }
 
   getNotifications(){

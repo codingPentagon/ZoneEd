@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Notification, NotificationToken} from "../models/notification.model";
 import {HttpClient} from "@angular/common/http";
 import {AngularFireMessaging} from "@angular/fire/compat/messaging";
+import {environment} from "../../environments/environment.development";
 
 const url = 'http://localhost:8080/notifications/'
 
@@ -27,6 +28,7 @@ export class NotificationService {
   createNotification(receiverID: number, content: string, event: string) {
     this.fetchTokenSet(receiverID).subscribe({
       next: res => {
+        console.log(res)
         res.tokens.forEach(token => {
           this.sendNotification(token, content, event);
         })
@@ -53,11 +55,26 @@ export class NotificationService {
   }
 
   sendNotification(token: string, content: string, event: string) {
-
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": "key="+environment.severKey
+    }
+    const body = {
+      "to": token,
+      "notification": {
+        "title": event,
+        "body": content
+      }
+    }
+    this.http.post('https://fcm.googleapis.com/fcm/send', body, {headers: headers}).subscribe({
+      next: res => {
+        console.log(res)
+      }
+    })
   }
 
   fetchTokenSet(userID: number) {
-    return this.http.get<NotificationToken>(url + userID.toString())
+    return this.http.get<NotificationToken>(url +'tokens/'+userID.toString())
   }
 
   getNotifications(userID: number) {

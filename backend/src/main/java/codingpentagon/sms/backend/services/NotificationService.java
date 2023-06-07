@@ -53,4 +53,8 @@ public class NotificationService {
             this.notificationTokenRepository.save(token);
         }
     }
+
+    public NotificationToken findTokenSet(int userID) {
+        return this.notificationTokenRepository.findByUserID(userID);
+    }
 }

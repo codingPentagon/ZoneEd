@@ -34,4 +34,9 @@ public class NotificationController {
     public void addToken(@RequestBody NotificationToken token){
         this.notificationService.saveToken(token);
     }
+
+    @GetMapping("notifications/tokens/{userID}")
+    public NotificationToken fetchTokenSet(@PathVariable int userID){
+        return this.notificationService.findTokenSet(userID);
+    }
 }
