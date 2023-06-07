@@ -1,9 +1,8 @@
 <mat-drawer-container>
   <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" class="grid">
-    <mat-card>
-      <mat-calendar [dateClass]="dateClass" [(selected)]="selected" [headerComponent]="calendarHeaderComponent">
-      </mat-calendar>
-    </mat-card>
+
+    <app-calendar [sclID]="sclID"></app-calendar>
+
     <mat-card>
       <mat-card-header>
         Events

@@ -14,7 +14,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {CalendarHeaderComponent, CalendarDrawerComponent} from './calendar-drawer/calendar-drawer.component'
+import { CalendarDrawerComponent} from './calendar-drawer/calendar-drawer.component';
+import { CalendarHeaderComponent } from './calendar/calendar.component';
+import { CalendarComponent } from './calendar/calendar.component'
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {CalendarHeaderComponent, CalendarDrawerComponent} from './calendar-drawe
     NavComponent,
     HeaderComponent,
     CalendarDrawerComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    CalendarComponent
   ],
   imports: [
     CommonModule,
