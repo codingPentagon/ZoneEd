@@ -1,3 +1,3 @@
 <app-nav></app-nav>
-<app-header></app-header>
-<app-notification></app-notification>
+<app-header (toggleNotif)="notif.toggleNotif()" [notifCount]="notif.notifCount"></app-header>
+<app-notification #notif></app-notification>

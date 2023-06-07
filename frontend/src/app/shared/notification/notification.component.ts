@@ -1,5 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
-import {NotificationConnectorService} from "./notification-connector.service";
+import {Component} from '@angular/core';
 import {NotificationService} from "../../services/notification.service";
 import {Notification, NotificationToken} from "../../models/notification.model";
 
@@ -11,20 +10,17 @@ import {Notification, NotificationToken} from "../../models/notification.model";
 export class NotificationComponent {
 
   userID = 3333;
-  notifs : Notification[]= [];
-
-  @HostBinding('class.is-open')
   isOpen:boolean = false;
 
-  constructor(public notifConService:NotificationConnectorService,
-              private notifService : NotificationService) {
+  constructor(private notifService : NotificationService) {
+  }
+
+  toggleNotif(){
+    this.isOpen = !this.isOpen;
   }
 
   ngOnInit() {
-    this.notifConService.change.subscribe(isOpen => {
-      this.isOpen = isOpen;
-    });
-    this.notifConService.getUnreadNotifCount();
+    this.getUnreadNotifCount();
     this.getNotifications();
     this.getToken();
   }
@@ -61,5 +57,43 @@ export class NotificationComponent {
       }
     });
     this.notifService.listen();
+  }
+
+  notifs: any = [
+    {
+      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
+      date: "31/01/2023",
+      time: "5 min ago",
+      read: false
+    },
+    {
+      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
+      date: "31/01/2023",
+      time: "5 min ago",
+      read: false
+    },
+    {
+      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
+      date: "31/01/2023",
+      time: "5 min ago",
+      read: false
+    },
+    {
+      notification: "Mr Prasad(Zonal Director) approve for the project proposal.",
+      date: "31/01/2023",
+      time: "5 min ago",
+      read: false
+    }
+  ]
+
+  notifCount: number = 0;
+
+  getUnreadNotifCount() {
+    this.notifCount = 0;
+    for (let notif of this.notifs) {
+      if (!notif.read) {
+        this.notifCount++;
+      }
+    }
   }
 }

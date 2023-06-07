@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {NotificationConnectorService} from "../notification/notification-connector.service";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 
 @Component({
@@ -9,11 +8,13 @@ import {NotificationConnectorService} from "../notification/notification-connect
 })
 export class HeaderComponent {
 
-  constructor(public notifConService: NotificationConnectorService) {
+  @Output() toggleNotif: EventEmitter<null> = new EventEmitter<null>();
+  @Input() notifCount: number = 0;
+
+  constructor() {
   }
 
   notifToggle() {
-    this.notifConService.toggle();
-    this.notifConService.getUnreadNotifCount();
+    this.toggleNotif.emit();
   }
 }

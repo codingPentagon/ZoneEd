@@ -11,7 +11,6 @@ import {RouterLink} from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {NotificationComponent} from "./notification/notification.component";
-import {NotificationConnectorService} from "./notification/notification-connector.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatBadgeModule} from "@angular/material/badge";
@@ -42,10 +41,6 @@ import {MatBadgeModule} from "@angular/material/badge";
     NavComponent,
     HeaderComponent,
     NotificationComponent,
-  ],
-
-  providers: [
-    NotificationConnectorService
   ]
 })
 export class SharedModule { }
