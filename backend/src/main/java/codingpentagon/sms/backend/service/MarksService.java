@@ -59,6 +59,11 @@ public class MarksService {
     JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
     Map<String, Object> parameters = new HashMap<>();
     parameters.put("createdBy", "Java Techie");
+    parameters.put("year",2023);
+    parameters.put("term", 2);
+    parameters.put("stu_id", "123A");
+    parameters.put("stu_name", "Thilina");
+    parameters.put("stu_grade", "12A");
     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
     if (reportFormat.equalsIgnoreCase("html")) {
         JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\employees.html");

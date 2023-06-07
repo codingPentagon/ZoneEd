@@ -32,8 +32,8 @@
                     <text><![CDATA[Student Progress Report]]></text>
                 </staticText>
                 <textField>
-                    <reportElement x="113" y="63" width="100" height="16" uuid="7c2401fc-b962-4183-8e6e-1951c58269d1"/>
-                    <textElement markup="rtf">
+                    <reportElement x="113" y="64" width="100" height="16" forecolor="#000000" uuid="7c2401fc-b962-4183-8e6e-1951c58269d1"/>
+                    <textElement textAlignment="Left"  >
                         <font size="12"/>
                     </textElement>
                     <textFieldExpression><![CDATA[$P{stu_id}]]></textFieldExpression>
@@ -46,22 +46,22 @@
                     <text><![CDATA[Academic Term:]]></text>
                 </staticText>
                 <textField>
-                    <reportElement x="335" y="32" width="100" height="30" uuid="90cac71c-6e5b-4937-8afe-aaf0e3ddf414"/>
-                    <textElement markup="rtf">
+                    <reportElement x="335" y="32" width="100" height="30" forecolor="#000000" uuid="90cac71c-6e5b-4937-8afe-aaf0e3ddf414"/>
+                    <textElement textAlignment="Left"  >
                         <font size="14"/>
                     </textElement>
                     <textFieldExpression><![CDATA[$P{term}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement x="263" y="65" width="100" height="30" uuid="ffad5960-a37f-4d17-91f2-d0738420d1a5"/>
-                    <textElement markup="rtf">
+                    <reportElement x="263" y="65" width="100" height="30" forecolor="#000000" uuid="ffad5960-a37f-4d17-91f2-d0738420d1a5"/>
+                    <textElement textAlignment="Left"  >
                         <font size="12"/>
                     </textElement>
                     <textFieldExpression><![CDATA[$P{stu_name}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement x="490" y="67" width="100" height="30" uuid="23b8c8f3-69fa-425b-ac0a-888c8476b181"/>
-                    <textElement markup="rtf">
+                    <reportElement x="495" y="67" width="100" height="30" forecolor="#000000" uuid="23b8c8f3-69fa-425b-ac0a-888c8476b181"/>
+                    <textElement textAlignment="Left" >
                         <font size="12"/>
                     </textElement>
                     <textFieldExpression><![CDATA[$P{stu_grade}]]></textFieldExpression>
@@ -81,22 +81,22 @@
                     <text><![CDATA[Name:]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement x="462" y="65" width="48" height="30" forecolor="#FFFFFF" uuid="d614e13e-3b66-42fa-a841-0f4470ca66b4"/>
+                    <reportElement x="450" y="65" width="48" height="30" forecolor="#FFFFFF" uuid="d614e13e-3b66-42fa-a841-0f4470ca66b4"/>
                     <textElement>
                         <font size="14"/>
                     </textElement>
                     <text><![CDATA[Grade:]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement x="480" y="9" width="100" height="30" forecolor="#FFFFFF" uuid="f638953a-3c26-474f-8195-4f1323fa2b31"/>
+                    <reportElement x="450" y="9" width="100" height="30" forecolor="#FFFFFF" uuid="f638953a-3c26-474f-8195-4f1323fa2b31"/>
                     <textElement>
                         <font size="12"/>
                     </textElement>
                     <text><![CDATA[Year:]]></text>
                 </staticText>
                 <textField>
-                    <reportElement x="490" y="9" width="100" height="30" uuid="c995e9bd-9a0b-47f5-8c25-92294f8e399d"/>
-                    <textElement>
+                    <reportElement x="490" y="9" width="100" height="30" forecolor="#000000" uuid="c995e9bd-9a0b-47f5-8c25-92294f8e399d"/>
+                    <textElement textAlignment="Left">
                         <font size="12"/>
                     </textElement>
                     <textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
@@ -150,7 +150,7 @@
                 <reportElement x="0" y="0" width="185" height="20" uuid="cecbd7ec-12dc-488b-9d50-de2cc80c1b4a">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94b53aeb-452f-4d68-9961-59b243136d20"/>
                 </reportElement>
-                <textElement>
+                <textElement textAlignment="Center">
                     <font size="14"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{subject}]]></textFieldExpression>
@@ -159,7 +159,7 @@
                 <reportElement x="185" y="0" width="185" height="20" uuid="8ceaa9ab-68eb-4081-8020-3b58fec7ba0e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc7554b3-61f5-44df-9498-80a835e230bd"/>
                 </reportElement>
-                <textElement>
+                <textElement textAlignment="Center">
                     <font size="14"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{mark}]]></textFieldExpression>
@@ -168,9 +168,9 @@
                 <reportElement x="370" y="0" width="185" height="20" uuid="6b3c966d-1de0-4596-a251-081901961901">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34809212-f202-42b9-a717-012be7e8c514"/>
                 </reportElement>
-                <textElement>
+                <textElement textAlignment="Center">
                     <font size="14"/>
-                </textElement>
+                </textElement >
                 <textFieldExpression><![CDATA[$F{avg_mark}]]></textFieldExpression>
             </textField>
         </band>
