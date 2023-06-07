@@ -45,7 +45,8 @@ import { CalendarComponent } from './calendar/calendar.component'
   exports: [
     NavComponent,
     HeaderComponent,
-    CalendarDrawerComponent
+    CalendarDrawerComponent,
+    CalendarComponent
   ],
 
 })

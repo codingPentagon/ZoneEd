@@ -16,15 +16,28 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
+import { CalendarPrinComponent } from './calendar-prin/calendar-prin.component';
+import { CalendarZonalComponent } from './calendar-zonal/calendar-zonal.component';
+import { SchoolEventsComponent } from './school-events/school-events.component';
+import { HolidaysComponent } from './holidays/holidays.component';
+import { CalendarTemplatesComponent } from './calendar-templates/calendar-templates.component';
+import {ServicesModule} from "./services/services.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalendarPrinComponent,
+    CalendarZonalComponent,
+    SchoolEventsComponent,
+    HolidaysComponent,
+    CalendarTemplatesComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
+    ServicesModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
@@ -36,7 +49,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatDatepickerModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

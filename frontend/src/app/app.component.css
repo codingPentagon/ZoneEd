@@ -2,7 +2,7 @@
   display: flex;
 }
 
-app-header{
+app-header,div{
   flex: 1;
 }
 
