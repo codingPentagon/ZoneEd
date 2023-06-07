@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationComponent } from './calendar.component';
+import { CalendarCommonComponent } from './calendar-drawer.component';
 
-describe('NotificationComponent', () => {
-  let component: NotificationComponent;
-  let fixture: ComponentFixture<NotificationComponent>;
+describe('CalendarCommonComponent', () => {
+  let component: CalendarCommonComponent;
+  let fixture: ComponentFixture<CalendarCommonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationComponent ]
+      declarations: [ CalendarCommonComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NotificationComponent);
+    fixture = TestBed.createComponent(CalendarCommonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
