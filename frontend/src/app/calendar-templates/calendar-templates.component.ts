@@ -50,11 +50,11 @@ export class CalendarTemplatesComponent {
       status: ''
     }
 
-    this.calendarService.addTemplate(template).subscribe();
+    this.calendarService.addCalendar(template).subscribe();
   }
 
   deleteTemplate() {
-    this.calendarService.removeTemplates(this.deleteItemIDs).subscribe();
+    this.calendarService.removeCalendars(this.deleteItemIDs).subscribe();
   }
 
   toggleDeleteItem(id: number) {

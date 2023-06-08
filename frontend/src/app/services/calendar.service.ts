@@ -15,11 +15,11 @@ export class CalendarService {
     return this.http.get<CalendarDetail[]>(url + 'templates/' + sclID);
   }
 
-  addTemplate(template: CalendarDetail) {
+  addCalendar(template: CalendarDetail) {
     return this.http.post(url + 'templates/', template);
   }
 
-  removeTemplates(deleteItemIDs: number[]) {
+  removeCalendars(deleteItemIDs: number[]) {
     return this.http.delete(url + 'templates/'+deleteItemIDs.toString());
   }
 
