@@ -34,4 +34,12 @@ export class CalendarService {
   fetchActiveCalendar(sclID: number) {
     return this.http.get<CalendarDetail>(url + 'active/' + sclID);
   }
+
+  deleteEvents(deleteItems: number[]) {
+    return this.http.delete(url + 'events/'+deleteItems.toString());
+  }
+
+  addEvent(event: SchoolEvent) {
+    return this.http.post(url + 'events/', event);
+  }
 }

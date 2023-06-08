@@ -3,21 +3,45 @@
     <span>School Events</span>
     <span class="spacer"></span>
     <span *ngIf="!disableCreation" class="flex gap">
-      <mat-icon (click)="createToggle()" [ngClass]="{active:create}">create</mat-icon>
-      <mat-icon (click)="deleteToggle()" [ngClass]="{active:delete}">delete</mat-icon>
+      <mat-icon (click)="createToggle()" [ngClass]="{'active':create,'header-disabled':headerDisabled}">create</mat-icon>
+      <mat-icon (click)="deleteToggle()" [ngClass]="{'active':delete,'header-disabled':headerDisabled}">delete</mat-icon>
     </span>
   </mat-card-header>
   <mat-card-content *ngIf="!create">
-<!--    <div *ngFor="let template of templates" class="grid column space-between entry"-->
-<!--         [ngClass]="{selected:selectedTemplateID==template.id}" (click)="selectedTemplateID=template.id">-->
-<!--      <span>{{template.name}}</span>-->
-<!--      <span class="sub-header">-->
-<!--        {{userRole == 'zonal' ? template.sclID : template.name}}-->
-<!--        <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(template.id)"></mat-checkbox>-->
-<!--      </span>-->
-<!--    </div>-->
+    <div *ngFor="let event of events" class="grid column space-between entry">
+      <span class="grid sub-header">
+        {{event.title}}
+        {{event.dates[0] | date:'dd/MM/yyyy' }} - {{event.dates.length > 1 && (event.dates[event.dates.length - 1] | date:'dd/MM/yyyy')}}
+      </span>
+      <span class="sub-header">
+        {{event.lastUpdated | date:'dd/MM/yyyy'}}
+      </span>
+      <mat-checkbox (click)="toggleDeleteItem(event.id)"></mat-checkbox>
+    </div>
   </mat-card-content>
   <mat-card-content *ngIf="create">
-
+    <form (ngSubmit)="createEvent(newEvent)" id="new-event" #newEvent="ngForm">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Event Title</mat-label>
+        <input matInput ngModel name="title" required>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="picker" ngModel name="startDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="picker2" ngModel name="endDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </form>
   </mat-card-content>
+  <mat-card-actions align="end" *ngIf="create || delete">
+    <button mat-button *ngIf="create" form="new-event" type="submit">Create</button>
+    <button mat-button *ngIf="delete" (click)="deleteEvents()">Delete</button>
+    <button mat-button (click)="create=delete=false">Cancel</button>
+  </mat-card-actions>
 </mat-card>

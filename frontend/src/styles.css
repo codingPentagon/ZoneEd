@@ -33,3 +33,7 @@ mat-card-header mat-icon{
 .flex{
   display: flex;
 }
+
+.full-width{
+  width: 100%;
+}

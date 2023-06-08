@@ -18,4 +18,5 @@ export interface SchoolEvent{
   dates:Date[];
   title:string;
   calendarID:number
+  lastUpdated:Date;
 }
