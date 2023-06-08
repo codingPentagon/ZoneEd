@@ -1,5 +1,10 @@
 :host{
-  display: block;
+  display: flex;
+}
+
+mat-card{
+  height: 100%;
+  width: 100%;
 }
 
 mat-calendar >>> .mat-calendar-controls{
