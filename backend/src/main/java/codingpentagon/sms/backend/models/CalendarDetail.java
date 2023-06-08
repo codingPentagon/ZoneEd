@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CalendarDetail {
-    private String id;
-    private String year;
+    private int id;
+    private int year;
     private String name;
     private int sclID;
     private String status;

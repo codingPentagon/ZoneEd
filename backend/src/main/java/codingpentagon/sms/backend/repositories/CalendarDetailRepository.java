@@ -1,6 +1,12 @@
 package codingpentagon.sms.backend.repositories;
 
+import codingpentagon.sms.backend.models.CalendarDetail;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface CalendarDetailRepository extends MongoRepository<CalendarDetailRepository, Integer> {
+import java.util.List;
+
+public interface CalendarDetailRepository extends MongoRepository<CalendarDetail, Integer> {
+    List<CalendarDetail> findBySclIDOrderByYearDesc(int sclID);
+
+    CalendarDetail findBySclIDAndStatus(int sclID, String active);
 }
