@@ -59,7 +59,7 @@ public class MarksService {
     JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
     Map<String, Object> parameters = new HashMap<>();
     parameters.put("createdBy", "Java Techie");
-    parameters.put("year",2023);
+    parameters.put("year","2023");
     parameters.put("term", 2);
     parameters.put("stu_id", "123A");
     parameters.put("stu_name", "Thilina");
