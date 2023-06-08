@@ -76,7 +76,9 @@ public class SecurityConfiguration  {
                 .authorizeRequests()
                 .antMatchers(
                         "/getmarks",
+                        "/getmarkss",
                         "/report/{format}",
+                        "/reports/{format}",
                         "/api/auth/reg/**",
 //                        "/api/auth/tch/reg",
                         "/api/auth/account",
