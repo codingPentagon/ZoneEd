@@ -27,6 +27,7 @@ export class CalendarTemplatesComponent {
   createToggle(){
     this.create = !this.create;
     this.delete = false;
+    console.log(this.selectedTemplate)
   }
 
   deleteToggle(){
@@ -47,14 +48,24 @@ export class CalendarTemplatesComponent {
       name: form.value.name,
       sclID: this.sclID,
       year: form.value.year,
-      status: ''
+      status: 'Not Submitted'
     }
 
-    this.calendarService.addCalendar(template).subscribe();
+    this.calendarService.addCalendar(template).subscribe({
+      complete: () => {
+        this.getTemplates();
+        this.createToggle();
+      }
+    });
   }
 
   deleteTemplate() {
-    this.calendarService.removeCalendars(this.deleteItemIDs).subscribe();
+    this.calendarService.removeCalendars(this.deleteItemIDs).subscribe({
+      complete: () => {
+        this.getTemplates();
+        this.deleteToggle();
+      }
+    });
   }
 
   toggleDeleteItem(id: number) {

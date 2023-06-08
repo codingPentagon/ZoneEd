@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar-prin.component.css']
 })
 export class CalendarPrinComponent {
-
+  sclID:number = 5555;
 }

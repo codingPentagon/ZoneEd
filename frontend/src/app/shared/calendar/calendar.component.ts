@@ -61,7 +61,8 @@ export class CalendarComponent {
   }
 
   refresh(){
-    const activeDate = this.calendar==undefined ? new Date() : this.calendar.activeDate;
+    // const activeDate = this.calendar==undefined ? new Date() : this.calendar.activeDate;
+    const activeDate = this.calendar.activeDate;
     this.calendarTemplate != undefined && this.getSchoolEvents(activeDate)
     this.getHolidays(activeDate);
   }

@@ -12,7 +12,7 @@
          [ngClass]="{selected:selectedTemplate==template}" (click)="selectedTemplate=template">
       <span>{{template.name}}</span>
       <span class="sub-header">
-        {{disableCreation ? template.sclID : template.name}}
+        {{disableCreation ? template.sclID : template.status}}
         <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(template.id)"></mat-checkbox>
       </span>
     </div>

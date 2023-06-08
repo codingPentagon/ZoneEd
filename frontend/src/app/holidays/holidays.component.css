@@ -39,3 +39,11 @@ mat-card-content{
 .margin-top-bottom{
   margin: 20px 0;
 }
+
+.column{
+  grid-auto-flow: column;
+}
+
+.space-between{
+  justify-content: space-between;
+}

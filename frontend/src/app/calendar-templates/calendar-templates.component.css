@@ -30,6 +30,7 @@ mat-card{
 
 .entry{
   margin: 5px 0;
+  height: min-content;
 }
 
 .full-width{
@@ -42,6 +43,7 @@ mat-card{
 
 mat-card-content{
   overflow: auto;
+  height: 100%;
 }
 
 mat-card-actions{
@@ -50,4 +52,8 @@ mat-card-actions{
 
 .gap{
   gap: 5px;
+}
+
+button:not([disabled]){
+  background-color: mediumspringgreen;
 }

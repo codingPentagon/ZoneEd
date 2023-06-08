@@ -24,8 +24,9 @@ export class SchoolEventsComponent {
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    this.headerDisabled = changes['calendar'].currentValue == undefined;
-    console.log(this.headerDisabled)
+    if (changes['calendar']) {
+      this.headerDisabled = changes['calendar'].currentValue == undefined;
+    }
   }
 
 
@@ -43,6 +44,7 @@ export class SchoolEventsComponent {
     this.calendarService.deleteEvents(this.deleteItems).subscribe({
       complete: () => {
         this.refresh.emit();
+        this.deleteToggle();
       }
     });
   }
@@ -62,7 +64,9 @@ export class SchoolEventsComponent {
     };
     this.calendarService.addEvent(event).subscribe({
       complete: () => {
+        console.log(event)
         this.refresh.emit();
+        this.createToggle();
       }
     });
   }

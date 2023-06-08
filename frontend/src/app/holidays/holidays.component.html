@@ -1,21 +1,21 @@
 <mat-card>
   <mat-card-header class="space-between">
-    <span>School Events</span>
+    <span>Holidays</span>
     <span class="spacer"></span>
-    <span *ngIf="disableCreation" class="flex gap">
+    <span *ngIf="!disableCreation" class="flex gap">
       <mat-icon (click)="createToggle()" [ngClass]="{'active':create,'header-disabled':headerDisabled}">create</mat-icon>
       <mat-icon (click)="deleteToggle()" [ngClass]="{'active':delete,'header-disabled':headerDisabled}">delete</mat-icon>
     </span>
   </mat-card-header>
   <mat-card-content *ngIf="!create">
-    <div *ngFor="let holiday of holidays" class="grid column space-between entry">
+    <div *ngFor="let holiday of holidays" class="flex space-between entry">
       <span class="grid sub-header">
         {{holiday.title}}
       </span>
       <span class="sub-header">
         {{holiday.date | date:'dd/MM/yyyy'}}
+        <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(holiday.id)"></mat-checkbox>
       </span>
-      <mat-checkbox (click)="toggleDeleteItem(holiday.id)"></mat-checkbox>
     </div>
   </mat-card-content>
   <mat-card-content *ngIf="create">

@@ -24,7 +24,9 @@ export class HolidaysComponent {
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    this.headerDisabled = changes['calendar']?.currentValue == undefined;
+    if (changes['calendar']) {
+      this.headerDisabled = changes['calendar'].currentValue == undefined;
+    }
   }
 
 
@@ -42,6 +44,7 @@ export class HolidaysComponent {
     this.calendarService.deleteHolidays(this.deleteItems).subscribe({
       complete: () => {
         this.refresh.emit();
+        this.deleteToggle();
       }
     });
   }
@@ -56,6 +59,7 @@ export class HolidaysComponent {
     this.calendarService.addHoliday(holiday).subscribe({
       complete: () => {
         this.refresh.emit();
+        this.createToggle();
       }
     });
   }

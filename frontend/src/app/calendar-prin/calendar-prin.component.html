@@ -1,1 +1,4 @@
-<p>calendar-prin works!</p>
+<app-calendar-templates [sclID]="sclID" #template></app-calendar-templates>
+<app-school-events [events]="calendar.events" (refresh)="calendar.refresh()" [calendar]="template.selectedTemplate"></app-school-events>
+<app-calendar [calendarTemplate]="template.selectedTemplate" #calendar></app-calendar>
+<app-holidays [holidays]="calendar.holidays" (refresh)="calendar.refresh()" [calendar]="template.selectedTemplate"></app-holidays>

@@ -1,0 +1,32 @@
+:host{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(16, 1fr);
+  height: 88vh;
+  grid-gap: 15px;
+  margin: 15px;
+}
+
+app-calendar-templates{
+  grid-row: span 6;
+}
+
+app-calendar{
+  grid-row: span 10;
+}
+
+app-school-events,app-holidays{
+  grid-row: span 8;
+}
+
+.grid{
+  display:grid;
+}
+
+.column{
+  flex-direction: column;
+}
+
+.right{
+  justify-content: right;
+}

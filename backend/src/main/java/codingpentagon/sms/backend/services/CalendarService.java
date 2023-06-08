@@ -55,7 +55,9 @@ public class CalendarService {
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
         Date endDate = calendar.getTime();
 
-        return this.holidayRepository.findByCalendarIDOrCalendarIDAndDateBetween(calendarID, 0, startDate, endDate);
+        List<Integer> calendarIDs = List.of(calendarID,0);
+
+        return this.holidayRepository.findByCalendarIDInAndDateBetween(calendarIDs, startDate, endDate);
     }
 
     public void removeHolidays(List<Integer> deleteItemIDs) {
