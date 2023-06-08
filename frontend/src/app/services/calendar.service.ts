@@ -42,4 +42,12 @@ export class CalendarService {
   addEvent(event: SchoolEvent) {
     return this.http.post(url + 'events/', event);
   }
+
+  addHoliday(holiday: Holiday) {
+    return this.http.post(url + 'holidays/', holiday);
+  }
+
+  deleteHolidays(deleteItems: number[]) {
+    return this.http.delete(url + 'holidays/'+deleteItems.toString());
+  }
 }

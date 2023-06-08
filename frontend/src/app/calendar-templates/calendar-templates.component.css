@@ -7,10 +7,6 @@ mat-card{
   height: 100%;
 }
 
-button:not([disabled]){
-  background-color: mediumspringgreen;
-}
-
 .grid{
   display:grid;
 }

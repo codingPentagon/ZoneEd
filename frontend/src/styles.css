@@ -37,3 +37,11 @@ mat-card-header mat-icon{
 .full-width{
   width: 100%;
 }
+
+mat-card-actions button:not([disabled]){
+  background-color: mediumspringgreen;
+}
+
+mat-card-actions{
+  gap: 10px;
+}

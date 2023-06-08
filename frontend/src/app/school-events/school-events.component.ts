@@ -40,8 +40,10 @@ export class SchoolEventsComponent {
   }
 
   deleteEvents() {
-    this.calendarService.deleteEvents(this.deleteItems).subscribe(() => {
-      this.refresh.emit();
+    this.calendarService.deleteEvents(this.deleteItems).subscribe({
+      complete: () => {
+        this.refresh.emit();
+      }
     });
   }
 
@@ -58,8 +60,10 @@ export class SchoolEventsComponent {
       calendarID: this.calendar.id,
       lastUpdated: new Date()
     };
-    this.calendarService.addEvent(event).subscribe(() => {
-      this.refresh.emit();
+    this.calendarService.addEvent(event).subscribe({
+      complete: () => {
+        this.refresh.emit();
+      }
     });
   }
 

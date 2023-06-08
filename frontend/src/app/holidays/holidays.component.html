@@ -1,1 +1,44 @@
-<p>holidays works!</p>
+<mat-card>
+  <mat-card-header class="space-between">
+    <span>School Events</span>
+    <span class="spacer"></span>
+    <span *ngIf="disableCreation" class="flex gap">
+      <mat-icon (click)="createToggle()" [ngClass]="{'active':create,'header-disabled':headerDisabled}">create</mat-icon>
+      <mat-icon (click)="deleteToggle()" [ngClass]="{'active':delete,'header-disabled':headerDisabled}">delete</mat-icon>
+    </span>
+  </mat-card-header>
+  <mat-card-content *ngIf="!create">
+    <div *ngFor="let holiday of holidays" class="grid column space-between entry">
+      <span class="grid sub-header">
+        {{holiday.title}}
+      </span>
+      <span class="sub-header">
+        {{holiday.date | date:'dd/MM/yyyy'}}
+      </span>
+      <mat-checkbox (click)="toggleDeleteItem(holiday.id)"></mat-checkbox>
+    </div>
+  </mat-card-content>
+  <mat-card-content *ngIf="create">
+    <form (ngSubmit)="createHoliday(newHoliday)" id="new-holiday" #newHoliday="ngForm">
+      <mat-radio-group name="type" ngModel required color="primary" class="flex space-evenly margin-top-bottom">
+        <mat-radio-button value="public">Public Holiday</mat-radio-button>
+        <mat-radio-button value="school">School Holiday</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Holiday Title</mat-label>
+        <input matInput ngModel name="title" required>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" ngModel name="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end" *ngIf="create || delete">
+    <button mat-button *ngIf="create" form="new-holiday" type="submit">Submit</button>
+    <button mat-button *ngIf="delete" (click)="deleteHolidays()">Delete</button>
+    <button mat-button (click)="create=delete=false">Cancel</button>
+  </mat-card-actions>
+</mat-card>

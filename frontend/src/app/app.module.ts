@@ -23,6 +23,7 @@ import { HolidaysComponent } from './holidays/holidays.component';
 import { CalendarTemplatesComponent } from './calendar-templates/calendar-templates.component';
 import {ServicesModule} from "./services/services.module";
 import {FormsModule} from "@angular/forms";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -33,25 +34,26 @@ import {FormsModule} from "@angular/forms";
     HolidaysComponent,
     CalendarTemplatesComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    ServicesModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatChipsModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatDatepickerModule,
-    MatCheckboxModule,
-    MatDividerModule,
-    MatIconModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        ServicesModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatCardModule,
+        MatChipsModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatExpansionModule,
+        MatDatepickerModule,
+        MatCheckboxModule,
+        MatDividerModule,
+        MatIconModule,
+        FormsModule,
+        MatRadioModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
