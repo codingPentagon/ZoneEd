@@ -24,7 +24,7 @@ export class HolidaysComponent {
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    this.headerDisabled = changes['calendar'].currentValue == undefined;
+    this.headerDisabled = changes['calendar']?.currentValue == undefined;
   }
 
 

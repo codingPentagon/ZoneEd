@@ -12,23 +12,23 @@ export class CalendarService {
   constructor(private http:HttpClient) { }
 
   fetchCalendars(sclID: number) {
-    return this.http.get<CalendarDetail[]>(url + 'templates/' + sclID);
+    return this.http.get<CalendarDetail[]>(url + sclID);
   }
 
-  addCalendar(template: CalendarDetail) {
-    return this.http.post(url + 'templates/', template);
+  addCalendar(calendar: CalendarDetail) {
+    return this.http.post(url, calendar);
   }
 
   removeCalendars(deleteItemIDs: number[]) {
-    return this.http.delete(url + 'templates/'+deleteItemIDs.toString());
+    return this.http.delete(url +deleteItemIDs.toString());
   }
 
-  fetchHolidays(id: number, activeDate:Date) {
-    return this.http.get<Holiday[]>(url + 'holidays/' + activeDate);
+  fetchHolidays(calendarID: number, activeDate:Date) {
+    return this.http.get<Holiday[]>(url + 'holidays/' + calendarID + '/' +activeDate);
   }
 
-  fetchSchoolEvents(id: number, activeDate:Date) {
-    return this.http.get<SchoolEvent[]>(url + 'events/' + activeDate);
+  fetchSchoolEvents(calendarID: number, activeDate:Date) {
+    return this.http.get<SchoolEvent[]>(url + 'events/' + calendarID + '/' +activeDate);
   }
 
   fetchActiveCalendar(sclID: number) {
