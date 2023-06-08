@@ -51,7 +51,7 @@ export class HolidaysComponent {
       id: 0,
       date: newHoliday.value.date,
       title: newHoliday.value.title,
-      calendarID: this.calendar.id,
+      calendarID: newHoliday.value.type == 'school' ? this.calendar.id : 0,
     };
     this.calendarService.addHoliday(holiday).subscribe({
       complete: () => {
