@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar-zonal.component.css']
 })
 export class CalendarZonalComponent {
-
+  sclID: number = 0;
 }

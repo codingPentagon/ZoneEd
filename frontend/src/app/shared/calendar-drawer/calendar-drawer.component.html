@@ -1,7 +1,7 @@
 <mat-drawer-container>
   <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" class="grid">
 
-    <app-calendar [sclID]="sclID"></app-calendar>
+    <app-calendar [calendarTemplate]="calendar"></app-calendar>
 
     <mat-card>
       <mat-card-header>

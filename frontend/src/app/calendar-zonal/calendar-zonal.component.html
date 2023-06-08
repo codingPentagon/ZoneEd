@@ -1,1 +1,4 @@
-<app-calendar-templates></app-calendar-templates>
+<app-calendar-templates [disableCreation]="true" #template></app-calendar-templates>
+<app-school-events  [disableCreation]="true" [events]="calendar.events" (refresh)="calendar.refresh()"></app-school-events>
+<app-calendar [calendarTemplate]="template.selectedTemplate" #calendar></app-calendar>
+<app-holidays [holidays]="calendar.holidays" (refresh)="calendar.refresh()"></app-holidays>

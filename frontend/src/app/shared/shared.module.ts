@@ -48,6 +48,5 @@ import { CalendarComponent } from './calendar/calendar.component'
     CalendarDrawerComponent,
     CalendarComponent
   ],
-
 })
 export class SharedModule { }

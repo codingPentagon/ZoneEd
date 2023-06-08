@@ -10,11 +10,11 @@ import {NgForm} from "@angular/forms";
 })
 export class CalendarTemplatesComponent {
   @Input() sclID:number = 0;
-  @Input() userRole:string = 'zonal';
+  @Input() disableCreation:boolean = false;
   create:boolean = false;
   delete:boolean = false;
   templates: CalendarDetail[] = [];
-  selectedTemplateID:number = 0;
+  selectedTemplate!:CalendarDetail;
   deleteItemIDs:number[] = [];
 
   constructor(private calendarService:CalendarService) {
@@ -35,9 +35,9 @@ export class CalendarTemplatesComponent {
   }
 
   getTemplates(){
-    this.calendarService.fetchTemplates(this.sclID).subscribe(res => {
+    this.calendarService.fetchCalendars(this.sclID).subscribe(res => {
       this.templates = res;
-      this.selectedTemplateID = this.templates[0].id;
+      this.selectedTemplate = this.templates[0];
     })
   }
 
