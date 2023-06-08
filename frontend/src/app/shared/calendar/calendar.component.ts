@@ -11,7 +11,7 @@ import {Holiday, SchoolEvent} from "../../models/calendar.model";
 export class CalendarComponent {
 
   holidays: Holiday[] = [];
-  selected: Date | null = new Date();
+  // selected: Date | null = new Date();
   events: SchoolEvent[] = [];
   @Input() sclID!: number;
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate) => {
