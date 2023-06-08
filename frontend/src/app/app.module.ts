@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { RegPrinComponent } from './reg-prin/reg-prin.component';
+import { ResetPassComponent } from './reset/reset-pass/reset-pass.component';
 
 
 
@@ -35,6 +36,7 @@ import { RegPrinComponent } from './reg-prin/reg-prin.component';
     LoginComponent,
     StuDashboardComponent,
     RegPrinComponent,
+    ResetPassComponent,
 
   ],
     imports: [
