@@ -80,6 +80,7 @@ public class CalendarService {
     }
 
     public CalendarDetail fetchActiveCalendar(int sclID) {
-        return this.calendarDetailRepository.findBySclIDAndStatus(sclID, "active");
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        return this.calendarDetailRepository.findBySclIDAndStatusAndYear(sclID, "active",year);
     }
 }

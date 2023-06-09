@@ -8,5 +8,5 @@ import java.util.List;
 public interface CalendarDetailRepository extends MongoRepository<CalendarDetail, Integer> {
     List<CalendarDetail> findBySclIDOrderByYearDesc(int sclID);
 
-    CalendarDetail findBySclIDAndStatus(int sclID, String active);
+    CalendarDetail findBySclIDAndStatusAndYear(int sclID, String active, int year);
 }
