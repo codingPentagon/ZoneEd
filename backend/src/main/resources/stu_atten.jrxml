@@ -50,9 +50,9 @@
 	<field name="test29" class="java.lang.String"/>
 	<field name="test30" class="java.lang.String"/>
 	<field name="test31" class="java.lang.String"/>
-	<field name="totaldays" class="java.lang.Integer"/>
-	<field name="absentdays" class="java.lang.Integer"/>
-	<field name="presentdays" class="java.lang.Integer"/>
+	<field name="totaldays" class="java.lang.String"/>
+	<field name="absentdays" class="java.lang.String"/>
+	<field name="presentdays" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
