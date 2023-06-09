@@ -10,6 +10,7 @@ import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegPrinComponent } from './reg-prin/reg-prin.component';
 import { ResetPassComponent } from './reset/reset-pass/reset-pass.component';
+import { PutNewPassComponent } from './reset/put-new-pass/put-new-pass.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},  //for login
   {path:'dashboard1/:fullName',component:StuDashboardComponent,canActivate:[AuthGuard]},
   {path:'principalreg',component:RegPrinComponent},
-  {path:'resetPassword',component:ResetPassComponent}
+  {path:'resetPassword',component:ResetPassComponent},
+  {path: 'putNewpassword',component:PutNewPassComponent}
 
 ]
 

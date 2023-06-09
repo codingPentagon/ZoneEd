@@ -24,6 +24,7 @@ import { StuDashboardComponent } from './stu-dashboard/stu-dashboard.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { RegPrinComponent } from './reg-prin/reg-prin.component';
 import { ResetPassComponent } from './reset/reset-pass/reset-pass.component';
+import { PutNewPassComponent } from './reset/put-new-pass/put-new-pass.component';
 
 
 
@@ -37,6 +38,7 @@ import { ResetPassComponent } from './reset/reset-pass/reset-pass.component';
     StuDashboardComponent,
     RegPrinComponent,
     ResetPassComponent,
+    PutNewPassComponent,
 
   ],
     imports: [
