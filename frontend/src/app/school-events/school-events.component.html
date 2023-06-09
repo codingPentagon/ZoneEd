@@ -9,14 +9,14 @@
   </mat-card-header>
   <mat-card-content *ngIf="!create">
     <div *ngFor="let event of events" class="grid column space-between entry">
-      <span class="grid sub-header">
-        {{event.title}}
+      <span class="grid">
+        <span>{{event.title}}</span>
         {{event.dates[0] | date:'dd/MM/yyyy' }} - {{event.dates.length > 1 && (event.dates[event.dates.length - 1] | date:'dd/MM/yyyy')}}
       </span>
       <span class="sub-header">
-        {{event.lastUpdated | date:'dd/MM/yyyy'}}
+<!--        {{event.lastUpdated | date:'dd/MM/yyyy'}}-->
       </span>
-      <mat-checkbox (click)="toggleDeleteItem(event.id)"></mat-checkbox>
+      <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(event.id)"></mat-checkbox>
     </div>
   </mat-card-content>
   <mat-card-content *ngIf="create">

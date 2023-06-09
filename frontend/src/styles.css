@@ -45,3 +45,7 @@ mat-card-actions button:not([disabled]){
 mat-card-actions{
   gap: 10px;
 }
+
+.sub-header{
+  color: gray;
+}

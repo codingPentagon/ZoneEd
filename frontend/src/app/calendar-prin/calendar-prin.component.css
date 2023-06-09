@@ -1,6 +1,6 @@
 :host{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-template-rows: repeat(16, 1fr);
   height: 88vh;
   grid-gap: 15px;

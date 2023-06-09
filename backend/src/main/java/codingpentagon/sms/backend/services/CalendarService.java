@@ -72,7 +72,8 @@ public class CalendarService {
     }
 
     public List<SchoolEvent> fetchEvents(int calendarID, Date date) {
-        return this.schoolEventRepository.findByCalendarIDAndDatesContaining(calendarID, date);
+//        return this.schoolEventRepository.findByCalendarIDAndDatesContaining(calendarID, date);
+        return this.schoolEventRepository.findAll();
     }
 
     public void removeEvents(List<Integer> deleteItemIDs) {
