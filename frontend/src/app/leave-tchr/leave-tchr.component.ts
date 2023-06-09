@@ -9,7 +9,7 @@ import {LeaveService} from "../services/leave.service";
 })
 export class LeaveTchrComponent {
 
-  userID:number=2000;
+  userID:number=1647;
   add: boolean= false;
   leaveRequests: LeaveRequest[] = [];
   today = new Date();
