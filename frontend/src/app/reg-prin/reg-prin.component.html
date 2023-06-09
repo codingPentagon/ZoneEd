@@ -1,1 +1,151 @@
-<p>reg-prin works!</p>
+<app-nav></app-nav>
+<div>
+  
+  <app-header></app-header>
+  <mat-stepper>
+    <mat-step [stepControl]=" prinRegisterform">
+  <form class="form_container" [formGroup]=" prinRegisterform"  (ngSubmit)="sendPriData()">
+    <ng-template matStepLabel>Fill Principal Information</ng-template>
+    <div>
+      <label class="required" for="fullName">Full Name</label>
+      <mat-form-field class="fullName" appearance="outline">
+        <mat-label>Enter full name</mat-label>
+        <input matInput id="fullName" name="fullName" formControlName="fullName" [(ngModel)]="prin.fullName" required>
+      </mat-form-field><br>
+    </div>
+    <div>
+      <label class="required" for="initName">Name with Initials</label>
+      <mat-form-field class="fullName" appearance="outline">
+        <mat-label>Enter name with initials</mat-label>
+        <input matInput placeholder="" id="initName" name="initName" formControlName="initName" [(ngModel)]="prin.initName" required>
+      </mat-form-field><br>
+    </div>
+    <div>
+      <label class="required" for="initName">Title</label>
+      <mat-radio-group aria-label="Select an option" >
+        <mat-radio-button value="1" class="titileRadio">Mr</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Mrs</mat-radio-button>
+        <mat-radio-button value="1" class="titileRadio">Ms</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Miss</mat-radio-button>
+        <mat-radio-button value="2" class="titileRadio">Dr</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <label class="required" for="address1">Address</label>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter address line 1</mat-label>
+      <input matInput placeholder="" id="address1" name="address1"  formControlName="address1" [(ngModel)]="prin.address1" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter address line 2</mat-label>
+      <input matInput placeholder="" id="address2" name="address2"  formControlName="address2" [(ngModel)]="prin.address2" required>
+    </mat-form-field><br>
+    <div class="main-sec">
+      <div class="sec-01">
+        <label class="required" for="email">Email</label>
+        <mat-form-field class="email" appearance="outline">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="" id="email" name="email"  formControlName="email" [(ngModel)]="prin.email" required>
+        </mat-form-field><br>
+
+<div class="container-left">
+        
+        <!-- <label class="required" for="password">Password</label>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enter default password</mat-label>
+          <input matInput id="password" formControlName="password"  type="password"  [(ngModel)]="tch.password" required >
+        </mat-form-field><br> -->
+
+        <label class="required" for="contNo">Contact No</label>
+        <mat-form-field  class="size-02" appearance="outline">
+          <mat-label>Enter contact number</mat-label>
+          <input matInput placeholder="" id="tchContNo" name="tchContNo"  formControlName="tchContNo" [(ngModel)]="prin.tchContNo" required>
+        </mat-form-field><br>
+     
+       
+    
+       
+        <label class="required" for="nic"> NIC No</label>
+          <mat-form-field  class="size-02" appearance="outline">
+            <mat-label>Enter father's NIC</mat-label>
+            <input matInput placeholder=""  id="tchNic" name="tchNic" formControlName="tchNic" [(ngModel)]="prin.tchNic" required >
+          </mat-form-field><br>
+
+        <label class="required" for="dob">Date of Birth</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Select date of birth</mat-label>
+          <input matInput [matDatepicker]="picker" id="tchDob" name="tchDob" formControlName="tchDob" [(ngModel)]="prin.tchDob" required>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field><br>
+      </div>
+      <div class="container-right-side">
+        <label class="required" for="datee">Admission Date</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker2" [max]=" " id="tchAdmDate" name="tchAdmDate" formControlName="tchAdmDate" [(ngModel)]="prin.tchAdmDate" required >
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field><br>
+
+        <label class="required" for="indexNo">Principal ID</label>
+        <mat-form-field class="size-02" appearance="outline">
+          <mat-label>Enter index No</mat-label>
+          <input matInput placeholder="" type="text" id="tchId" name="tchId" formControlName="tchId" [(ngModel)]="prin.tchId" required>
+        </mat-form-field><br>
+
+        <label class="required" for="gender">Gender</label>
+        <mat-radio-group aria-label="Select an option" id="tchGender" name="tchGender" formControlName="tchGender" [(ngModel)]="prin.tchGender" required>
+          <mat-radio-button value="m">male</mat-radio-button>
+          <mat-radio-button value="f">female</mat-radio-button>
+        </mat-radio-group><br>
+
+      
+
+
+        <!--  <label class="required" for="initName">StudentID</label>
+          <mat-form-field  class="size-02" appearance="outline">
+            <mat-label>Enter address line 1</mat-label>
+            <input matInput placeholder="">
+          </mat-form-field><br>-->
+        
+<div class="pic">
+        <label  for="myfile">Picture</label>
+        <input type="file" id="myfile" name="myfile"><br>
+      </div>
+      <button class="nextStepperButton" mat-button matStepperNext  mat-raised-button color="primary">Next</button>
+      
+      </div>
+    </div>
+  </div>
+  
+  </form>
+
+  </mat-step>
+     
+   
+  <mat-step [stepControl]="prinRegisterform">
+    <form class="form_container" [formGroup]="prinRegisterform"  (ngSubmit)="sendPriData()">
+      <ng-template matStepLabel>Fill Principal's Experience</ng-template>
+  
+       <div class="sec-01">
+
+        <div class="sec-02-container">
+          <p>Experiences Section</p>
+          <label class="required"  id="fatherName" for="fatherName1">Subjects</label>
+          <mat-form-field  class="size-03" appearance="outline">
+            <mat-label>What are the subjects you can teach,separate with comma</mat-label>
+            <input matInput placeholder="" type="text" id="subDetails" name="subDetails" formControlName="subDetails" [(ngModel)]="prin.subDetails" required>
+          </mat-form-field><br>
+          <button mat-button matStepperPrevious  mat-raised-button color="primary">Back</button>
+          <button class="btton" mat-raised-button color="primary" type="submit">Save and Submit</button>
+        </div>
+      </div> 
+
+   
+    </form>
+    </mat-step>
+</mat-stepper>
+</div>
+
+

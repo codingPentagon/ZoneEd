@@ -28,6 +28,7 @@ import { PutNewPassComponent } from './reset/put-new-pass/put-new-pass.component
 
 
 
+
 @NgModule({
   declarations: [
     //created components for implementation
@@ -39,6 +40,7 @@ import { PutNewPassComponent } from './reset/put-new-pass/put-new-pass.component
     RegPrinComponent,
     ResetPassComponent,
     PutNewPassComponent,
+  
 
   ],
     imports: [

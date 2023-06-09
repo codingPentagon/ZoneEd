@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Stu } from './stu';
 import { Tchr } from './tchr';
+import { Prin } from './prin';
 
 
 @Injectable({
@@ -30,6 +31,12 @@ export class UserRegService {
     console.log(tch);
     return this.httpClient.post("http://localhost:8080/api/auth/reg/tch",tch);//rest api for reg teacher
   }
+
+  sendPriData(prin:Prin) {//when reg teacher this method will invoke and send post request to backend
+    console.log(prin);
+    return this.httpClient.post("http://localhost:8080/api/auth/reg/prin",prin);//rest api for reg teacher
+  }
+
 
 
   apiurl='http://localhost:8080/api/v1/stu"';
