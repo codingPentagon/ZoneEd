@@ -14,7 +14,7 @@ import lombok.ToString;
 @Document (collection = "stu_attend")
 public class Stu_atten {
 
-    @Id
+  
    private String indexNo;
     private String name;
     private String test1="p";

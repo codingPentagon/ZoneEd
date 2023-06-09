@@ -12,7 +12,8 @@ import lombok.ToString;
 
 @Document(collection = "stu_marks")
 public class Stud_marks {
-    @Id
+
+   
     private String subject;
     private double mark;
     private double subAvgMark;

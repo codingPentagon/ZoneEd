@@ -52,24 +52,24 @@ public class MarksService {
 
   public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
     String path = "C:\\Users\\nuwan\\OneDrive\\Desktop\\reports";
-    List<Stud_marks> employees = marksRepo.findAll();
+    List<Stud_marks> marksheet = marksRepo.findAll();
     //load file and compile it
     File file = ResourceUtils.getFile("classpath:marksheet.jrxml");
     JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
+    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(marksheet);
     Map<String, Object> parameters = new HashMap<>();
     parameters.put("createdBy", "Java Techie");
     parameters.put("year","2023");
     parameters.put("term", 2);
-    parameters.put("stu_id", "123A");
+    parameters.put("stuId", "204095D");
     parameters.put("stu_name", "Thilina");
-    parameters.put("stu_grade", "12A");
+    parameters.put("grade", "10A");
     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
     if (reportFormat.equalsIgnoreCase("html")) {
-        JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\employees.html");
+        JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\marksheet.html");
     }
     if (reportFormat.equalsIgnoreCase("pdf")) {
-        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\employees.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\marksheet.pdf");
     }
 
     return "report generated in path : " + path;
