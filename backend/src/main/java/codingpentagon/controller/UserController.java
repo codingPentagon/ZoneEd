@@ -1,18 +1,21 @@
 package codingpentagon.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import codingpentagon.Repo.UserRepository;
 import codingpentagon.service.UserService;
 
 @RestController
 
 public class UserController {
 
-
+  @Autowired
     private UserService userService;
+
 
     @PostMapping("/forget-password")
 	public String forgotPassword(@RequestParam("email") String email) {
