@@ -11,11 +11,12 @@ import codingpentagon.service.UserService;
 
 public class UserController {
 
+
     private UserService userService;
 
-    @PostMapping("/forgot-password")
-	public String forgotPassword(@RequestParam String email) {
-
+    @PostMapping("/forget-password")
+	public String forgotPassword(@RequestParam("email") String email) {
+		System.out.println("fsfsdf");
 		String response = userService.forgotPassword(email);
 
 		if (!response.startsWith("Invalid")) {
