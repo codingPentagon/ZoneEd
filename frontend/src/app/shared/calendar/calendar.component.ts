@@ -1,4 +1,4 @@
-import {Component, Inject, Input, ViewChild} from '@angular/core';
+import {Component, Inject, Input, SimpleChanges, ViewChild} from '@angular/core';
 import {MatCalendar, MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from "@angular/material/core";
 import {CalendarDetail, Holiday, SchoolEvent} from "../../models/calendar.model";
@@ -11,8 +11,8 @@ import {CalendarService} from "../../services/calendar.service";
 })
 export class CalendarComponent {
 
-  holidays: Holiday[] = [];
-  events: SchoolEvent[] = [];
+  holidays!: Holiday[];
+  events!: SchoolEvent[];
   calendarHeaderComponent = CalendarHeaderComponent;
   @Input() calendarTemplate!: CalendarDetail;
   @ViewChild(MatCalendar<Date>) calendar!: MatCalendar<Date>
@@ -20,51 +20,67 @@ export class CalendarComponent {
   constructor(private calendarService:CalendarService) {
   }
 
-  ngOnChanges() {
-    this.refresh();
+  ngOnChanges(changes:SimpleChanges) {
+    if (changes['calendarTemplate'].currentValue ) {
+      this.refresh();
+    }
   }
 
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate) => {
-    let holidayCheck = this.holidays.some(holiday => {
-      return holiday.date.toLocaleDateString() == cellDate.toLocaleDateString();
-    })
 
-    if (holidayCheck) {
-      return 'holiday'
-    }
-
-    let eventCheck:boolean = false;
-    for (const event of this.events) {
-      eventCheck = event.dates.some(date => {
-        return date.toLocaleDateString() == cellDate.toLocaleDateString();
-      });
-      if (eventCheck) {
-        return 'event';
-      }
-    }
-
-    return '';
-  };
-
-
-  getHolidays(date:Date){
+  getHolidays(date:Date) {
     const templateID = this.calendarTemplate == undefined ? 0 : this.calendarTemplate.id;
-    this.calendarService.fetchHolidays(templateID,date).subscribe(res => {
-      this.holidays = res;
+    this.calendarService.fetchHolidays(templateID, date).subscribe({
+      next: res => {
+        this.holidays = res;
+      },
+      complete: () => {
+        this.calendar.updateTodaysDate();
+      }
     })
   }
 
   getSchoolEvents(date:Date){
-    this.calendarService.fetchSchoolEvents(this.calendarTemplate.id,date).subscribe(res => {
-      this.events = res;
+    this.calendarService.fetchSchoolEvents(this.calendarTemplate.id,date).subscribe({
+      next: res => {
+        this.events = res;
+      },
+      complete: () => {
+        this.calendar.updateTodaysDate();
+      }
     })
   }
 
   refresh(){
-    // const activeDate = this.calendar==undefined ? new Date() : this.calendar.activeDate;
     const activeDate = this.calendar.activeDate;
-    this.calendarTemplate != undefined && this.getSchoolEvents(activeDate)
+    this.getSchoolEvents(activeDate)
     this.getHolidays(activeDate);
+  }
+
+  dateClass:MatCalendarCellClassFunction<Date> = (cellDate:Date) => {
+    if (this.holidays && this.events){
+      let holidayCheck = this.holidays.some(holiday => {
+        return new Date(cellDate).toLocaleDateString() == new Date(holiday.date).toLocaleDateString();
+      })
+
+      if (holidayCheck) {
+        return 'holiday'
+      }
+
+
+      let eventCheck:boolean = false;
+      for (const event of this.events) {
+        eventCheck = event.dates.some(date => {
+          return new Date(cellDate).toLocaleDateString() == new Date(date).toLocaleDateString();
+        });
+        if (eventCheck) {
+          return 'event';
+        }
+      }
+      return '';
+    }
+    else {
+      return '';
+    }
   }
 }
 

@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface HolidayRepository extends MongoRepository<Holiday, Integer> {
-    List<Holiday> findByCalendarIDInAndDateBetween(List<Integer> calendarID, Date startDate, Date endDate);
+    List<Holiday> findByCalendarIDInAndDateBetween(List<Integer> calendarIDs, Date startDate, Date endDate);
 }
