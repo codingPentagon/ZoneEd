@@ -25,6 +25,9 @@
           <button mat-raised-button (click)="updateApproval(true)">Approve</button>
           <button mat-raised-button (click)="updateApproval(false)">Reject</button>
         </mat-action-row>
+        <mat-action-row *ngIf="!disableCreation && template.status.toLowerCase()=='approved'">
+          <button mat-raised-button (click)="makeActive()">Make Active Calendar</button>
+        </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>

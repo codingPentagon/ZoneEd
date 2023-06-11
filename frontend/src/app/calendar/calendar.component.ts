@@ -45,6 +45,7 @@ export class CalendarComponent {
         this.events = res;
       },
       complete: () => {
+        //to trigger dateClass function
         this.calendar.updateTodaysDate();
       }
     })

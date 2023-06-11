@@ -103,4 +103,13 @@ export class CalendarTemplatesComponent {
       }
     })
   }
+
+  makeActive() {
+    this.selectedTemplate.status = 'Active'
+    this.calendarService.addCalendar(this.selectedTemplate).subscribe({
+      complete: () => {
+        this.getTemplates();
+      }
+    })
+  }
 }
