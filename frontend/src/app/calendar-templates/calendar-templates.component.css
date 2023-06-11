@@ -29,8 +29,7 @@ mat-card{
 }
 
 .entry{
-  margin: 5px 0;
-  height: min-content;
+  padding: 5px 15px;
 }
 
 .full-width{
@@ -44,6 +43,7 @@ mat-card{
 mat-card-content{
   overflow: auto;
   height: 100%;
+  padding: 10px 0 0 0;
 }
 
 mat-card-actions{
@@ -56,4 +56,8 @@ mat-card-actions{
 
 button:not([disabled]){
   background-color: mediumspringgreen;
+}
+
+mat-checkbox{
+  margin: 0;
 }

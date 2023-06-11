@@ -3,20 +3,24 @@
     <span>School Events</span>
     <span class="spacer"></span>
     <span *ngIf="!disableCreation" class="flex gap">
-      <mat-icon (click)="createToggle()" [ngClass]="{'active':create,'header-disabled':headerDisabled}">create</mat-icon>
-      <mat-icon (click)="deleteToggle()" [ngClass]="{'active':delete,'header-disabled':headerDisabled}">delete</mat-icon>
+      <mat-icon (click)="createToggle()"
+                [ngClass]="{'active':create,'header-disabled':headerDisabled}">create</mat-icon>
+      <mat-icon (click)="deleteToggle()"
+                [ngClass]="{'active':delete,'header-disabled':headerDisabled}">delete</mat-icon>
     </span>
   </mat-card-header>
   <mat-card-content *ngIf="!create">
-    <div *ngFor="let event of events" class="grid column space-between entry">
-      <span class="grid">
-        <span>{{event.title}}</span>
-        {{event.dates[0] | date:'dd/MM/yyyy' }} - {{event.dates.length > 1 && (event.dates[event.dates.length - 1] | date:'dd/MM/yyyy')}}
-      </span>
-      <span class="sub-header">
-<!--        {{event.lastUpdated | date:'dd/MM/yyyy'}}-->
-      </span>
+    <div *ngFor="let event of events" class="grid">
+      <div class="flex">
+        {{event.title}}
+        <span class="spacer"></span>
+        <span class="sub-header">{{event.lastUpdated | date:'dd/MM/yyyy'}}</span>
+      </div>
+      <div>
+        {{event.dates[0] | date: 'dd/MM/yyyy'}} - {{event.dates[1] | date: 'dd/MM/yyyy'}}
+      </div>
       <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(event.id)"></mat-checkbox>
+      <mat-divider></mat-divider>
     </div>
   </mat-card-content>
   <mat-card-content *ngIf="create">

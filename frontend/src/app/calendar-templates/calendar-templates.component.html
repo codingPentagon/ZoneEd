@@ -7,14 +7,17 @@
       <mat-icon (click)="deleteToggle()" [ngClass]="{active:delete}">delete</mat-icon>
     </span>
   </mat-card-header>
-  <mat-card-content class="grid" *ngIf="!create">
-    <div *ngFor="let template of templates" class="grid column space-between entry"
-         [ngClass]="{selected:selectedTemplate==template}" (click)="selectedTemplate=template">
-      <span>{{template.name}}</span>
-      <span class="sub-header">
+  <mat-card-content class="" *ngIf="!create">
+    <div *ngFor="let template of templates">
+      <div class="grid column space-between entry"
+           [ngClass]="{selected:selectedTemplate==template}" (click)="selectedTemplate=template">
+        <span>{{template.name}}</span>
+        <span class="sub-header">
         {{disableCreation ? template.sclID : template.status}}
-        <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(template.id)"></mat-checkbox>
+          <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(template.id)"></mat-checkbox>
       </span>
+      </div>
+      <mat-divider></mat-divider>
     </div>
   </mat-card-content>
   <mat-card-content *ngIf="create">

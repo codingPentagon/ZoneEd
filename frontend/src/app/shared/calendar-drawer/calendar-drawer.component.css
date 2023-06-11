@@ -29,4 +29,3 @@ mat-drawer-container:not(:has(.mat-drawer-opened))  {
 mat-drawer>>>.mat-drawer-inner-container{
   display:contents;
 }
-

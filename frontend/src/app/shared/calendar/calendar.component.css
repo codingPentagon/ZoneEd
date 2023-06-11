@@ -38,12 +38,12 @@ mat-calendar>>> button.event:before{
   border-radius: 100%;
   top: 5px;
   left: 44%;
-  z-index: 100;
 }
 
 mat-calendar>>> .mat-calendar-body-today{
   border-width: 3px;
   border-color: royalblue !important;
+  z-index: auto;
 }
 
 .mat-calendar >>> button:hover{
@@ -56,4 +56,13 @@ mat-calendar>>>.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.m
 
 mat-calendar>>>.mat-calendar-body-cell{
   cursor: auto;
+}
+
+mat-calendar{
+
+}
+
+mat-card{
+  overflow: auto;
+  padding: 10px
 }

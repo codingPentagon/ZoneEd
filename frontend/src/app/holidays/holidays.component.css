@@ -9,6 +9,7 @@ mat-card{
 
 mat-card-content{
   overflow: auto;
+  padding: 10px 15px;
 }
 
 .gap{
