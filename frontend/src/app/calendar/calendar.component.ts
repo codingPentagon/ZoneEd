@@ -1,8 +1,8 @@
 import {Component, Inject, Input, SimpleChanges, ViewChild} from '@angular/core';
 import {MatCalendar, MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from "@angular/material/core";
-import {CalendarDetail, Holiday, SchoolEvent} from "../../models/calendar.model";
-import {CalendarService} from "../../services/calendar.service";
+import {CalendarDetail, Holiday, SchoolEvent} from "../models/calendar.model";
+import {CalendarService} from "../services/calendar.service";
 
 @Component({
   selector: 'app-calendar',

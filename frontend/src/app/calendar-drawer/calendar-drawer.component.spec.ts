@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarCommonComponent } from './calendar-drawer.component';
+import { CalendarDrawerComponent } from './calendar-drawer.component';
 
-describe('CalendarCommonComponent', () => {
-  let component: CalendarCommonComponent;
-  let fixture: ComponentFixture<CalendarCommonComponent>;
+describe('CalendarDrawerComponent', () => {
+  let component: CalendarDrawerComponent;
+  let fixture: ComponentFixture<CalendarDrawerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarCommonComponent ]
+      declarations: [ CalendarDrawerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CalendarCommonComponent);
+    fixture = TestBed.createComponent(CalendarDrawerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,6 +18,7 @@ export class HolidaysComponent {
   delete: boolean = false;
   deleteItems: number[] = [];
   headerDisabled: boolean = false;
+  userRole: string = 'principal'
 
   constructor(private calendarService: CalendarService) {
 
@@ -54,7 +55,7 @@ export class HolidaysComponent {
       id: 0,
       date: newHoliday.value.date,
       title: newHoliday.value.title,
-      calendarID: newHoliday.value.type == 'school' ? this.calendar.id : 0,
+      calendarID: this.userRole == 'principal' ? this.calendar.id : 0,
     };
     this.calendarService.addHoliday(holiday).subscribe({
       complete: () => {

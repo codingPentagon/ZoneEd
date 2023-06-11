@@ -14,39 +14,31 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import { CalendarDrawerComponent} from './calendar-drawer/calendar-drawer.component';
-import { CalendarHeaderComponent } from './calendar/calendar.component';
-import { CalendarComponent } from './calendar/calendar.component'
 
 
 @NgModule({
   declarations: [
     NavComponent,
     HeaderComponent,
-    CalendarDrawerComponent,
-    CalendarHeaderComponent,
-    CalendarComponent
   ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    MatToolbarModule,
-    HttpClientModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        MatToolbarModule,
+        HttpClientModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
 
   exports: [
     NavComponent,
     HeaderComponent,
-    CalendarDrawerComponent,
-    CalendarComponent
   ],
 })
 export class SharedModule { }

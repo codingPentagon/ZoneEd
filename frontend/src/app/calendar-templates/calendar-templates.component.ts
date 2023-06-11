@@ -36,10 +36,18 @@ export class CalendarTemplatesComponent {
   }
 
   getTemplates(){
-    this.calendarService.fetchCalendars(this.sclID).subscribe(res => {
-      this.templates = res;
-      this.selectedTemplate = this.templates[0];
-    })
+    if (this.disableCreation){
+      this.calendarService.fetchPendingCalendars().subscribe(res => {
+        this.templates = res;
+        this.selectedTemplate = res[0];
+      })
+    }
+    else {
+      this.calendarService.fetchCalendars(this.sclID).subscribe(res => {
+        this.templates = res;
+        this.selectedTemplate = res[0];
+      })
+    }
   }
 
   createTemplate(form: NgForm) {
@@ -76,5 +84,23 @@ export class CalendarTemplatesComponent {
     else {
       this.deleteItemIDs.push(id);
     }
+  }
+
+  updateApproval(isApproved: boolean) {
+    this.selectedTemplate.status = isApproved ? 'Approved' : 'Rejected';
+    this.calendarService.addCalendar(this.selectedTemplate).subscribe({
+      complete: () => {
+        this.getTemplates();
+      }
+    })
+  }
+
+  submitTemplate() {
+    this.selectedTemplate.status = 'Pending'
+    this.calendarService.addCalendar(this.selectedTemplate).subscribe({
+      complete: () => {
+        this.getTemplates();
+      }
+    })
   }
 }

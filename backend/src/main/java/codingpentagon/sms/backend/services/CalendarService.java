@@ -84,4 +84,8 @@ public class CalendarService {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         return this.calendarDetailRepository.findBySclIDAndStatusAndYear(sclID, "active",year);
     }
+
+    public List<CalendarDetail> findPendingCalendars() {
+        return this.calendarDetailRepository.findByStatus("Pending");
+    }
 }

@@ -61,3 +61,12 @@ button:not([disabled]){
 mat-checkbox{
   margin: 0;
 }
+
+mat-panel-description{
+  justify-content: right;
+  text-align: end;
+}
+
+.selected .mat-expansion-panel-header-title, .selected .mat-expansion-panel-header-description, .selected /deep/.mat-expansion-indicator:after{
+  color: white;
+}

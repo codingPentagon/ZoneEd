@@ -9,4 +9,6 @@ public interface CalendarDetailRepository extends MongoRepository<CalendarDetail
     List<CalendarDetail> findBySclIDOrderByYearDesc(int sclID);
 
     CalendarDetail findBySclIDAndStatusAndYear(int sclID, String active, int year);
+
+    List<CalendarDetail> findByStatus(String status);
 }

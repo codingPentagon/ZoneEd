@@ -67,4 +67,9 @@ public class CalendarController {
     public void removeEvents(@PathVariable List<Integer> deleteItemIDs) {
         calendarService.removeEvents(deleteItemIDs);
     }
+
+    @GetMapping("calendar/pending")
+    public List<CalendarDetail> fetchPendingCalendars() {
+        return calendarService.findPendingCalendars();
+    }
 }

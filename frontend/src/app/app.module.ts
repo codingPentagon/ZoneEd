@@ -24,6 +24,9 @@ import { CalendarTemplatesComponent } from './calendar-templates/calendar-templa
 import {ServicesModule} from "./services/services.module";
 import {FormsModule} from "@angular/forms";
 import {MatRadioModule} from "@angular/material/radio";
+import {CalendarComponent, CalendarHeaderComponent} from "./calendar/calendar.component";
+import {CalendarDrawerComponent} from "./calendar-drawer/calendar-drawer.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -33,27 +36,31 @@ import {MatRadioModule} from "@angular/material/radio";
     SchoolEventsComponent,
     HolidaysComponent,
     CalendarTemplatesComponent,
+    CalendarComponent,
+    CalendarDrawerComponent,
+    CalendarHeaderComponent
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        ServicesModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatCardModule,
-        MatChipsModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatExpansionModule,
-        MatDatepickerModule,
-        MatCheckboxModule,
-        MatDividerModule,
-        MatIconModule,
-        FormsModule,
-        MatRadioModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    ServicesModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatIconModule,
+    FormsModule,
+    MatRadioModule,
+    MatSidenavModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

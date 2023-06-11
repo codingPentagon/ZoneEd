@@ -59,7 +59,7 @@ mat-calendar>>>.mat-calendar-body-cell{
 }
 
 mat-calendar{
-
+  z-index: auto;
 }
 
 mat-card{

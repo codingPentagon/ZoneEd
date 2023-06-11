@@ -1,0 +1,8 @@
+<mat-drawer-container>
+  <mat-drawer position="end" [opened]="isOpen" (closed)="isOpen=false" class="grid">
+
+    <app-calendar [calendarTemplate]="calendar" #calendarComp></app-calendar>
+    <app-school-events [events]="calendarComp.events" [disableCreation]="true"></app-school-events>
+    <app-holidays [holidays]="calendarComp.holidays" [disableCreation]="true"></app-holidays>
+  </mat-drawer>
+</mat-drawer-container>

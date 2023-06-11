@@ -50,4 +50,8 @@ export class CalendarService {
   deleteHolidays(deleteItems: number[]) {
     return this.http.delete(url + 'holidays/'+deleteItems.toString());
   }
+
+  fetchPendingCalendars() {
+    return this.http.get<CalendarDetail[]>(url + 'pending');
+  }
 }
