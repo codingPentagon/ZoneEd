@@ -67,4 +67,8 @@ export class NotificationComponent {
   getUnreadNotifCount() {
     this.notifCount = this.notifs.filter(notif => !notif.isRead).length;
   }
+
+  go(){
+    this.notifService.createNotification(3333, "new Project created by Mr. Ranil", "Project management");
+  }
 }
