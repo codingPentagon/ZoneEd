@@ -1,12 +1,10 @@
 package codingpentagon.sms.backend.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,12 +15,15 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import RoleModel.AuthUser;
 import RoleModel.Role;
 import RoleModel.StudentReg;
 import RoleModel.TeacherReg;
+import RoleModel.dto.request.PasswordResetDto;
 import RoleModel.dto.request.SignInReqDto;
+import RoleModel.dto.response.MessageResponse;
 import RoleModel.dto.response.SignInResponse;
 import RoleModel.dto.response.StudentRegDto;
 import RoleModel.dto.response.TeacherRegDto;
@@ -34,13 +35,22 @@ import codingpentagon.sms.backend.security.jwt.JwtUtils;
 import codingpentagon.sms.backend.service.AuthService;
 import codingpentagon.sms.backend.services.AuthUserDetailsService;
 import codingpentagon.sms.backend.shared.exceptions.BadRequestException;
+import codingpentagon.sms.backend.shared.exceptions.GeneralException;
 import codingpentagon.sms.backend.shared.exceptions.UnAuthorizeException;
+import lombok.var;
+
 import static codingpentagon.sms.backend.shared.Constant.ROLE_STUDENT;
 import static codingpentagon.sms.backend.shared.Constant.ROLE_TEACHER;
 
 @Service
 
 public class AuthServiceImpl implements AuthService {
+
+     @Value("${mail.activationUrl}")
+    private String accountActivationUrl;
+
+    @Value("${zone_ed.app.resetPasswordCodeExpireInHours}")
+    private int resetPasswordCodeExpireInHours;
     @Autowired
     private StuRegRepo stuRegRepo;
 
@@ -68,6 +78,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private AuthUserDetailsService authUserDetailsService;
+        @Autowired
+    private MailServiceImpl mailService;
 
     @Override
     public StudentReg createUser(StudentRegDto dto) {
@@ -167,5 +179,60 @@ public class AuthServiceImpl implements AuthService {
         return roleRepo.findByName(roleName)
                 .orElseThrow(() -> new RuntimeException("Cannot find role " + ROLE_STUDENT));
     }
+
+    @Override
+    public MessageResponse resetPasswordInit(String email) {
+
+        Optional<AuthUser> optionalUser = authUserRepo.findByEmail(email);
+        if (optionalUser.isEmpty()) {
+            throw new BadRequestException("Cannot find user for email %s", email);
+        }
+
+        var user = optionalUser.get();
+
+        user.setResetPasswordCode(UUID.randomUUID().toString());
+        user.setResetPasswordCodeExpire(LocalDateTime.now().plusHours(resetPasswordCodeExpireInHours));
+
+        authUserRepo.save(user);
+
+        try {
+            mailService.sendResetInitMail(user);
+            return MessageResponse.builder()
+                    .message("Successfully sent reset password code to email " + email)
+                    .build();
+        } catch (Exception e) {
+            throw new GeneralException("Failed to send Reset email."+ e);
+            
+        }
+
+
+    }
+
+    @Override
+    public MessageResponse resetPasswordFinish(PasswordResetDto request) {
+
+        Optional<AuthUser> optionalUser = authUserRepo.findByResetPasswordCode(request.getResetPasswordCode());
+        if (optionalUser.isEmpty()) {
+            throw new BadRequestException("Invalid reset code.");
+        }
+
+        var user = optionalUser.get();
+
+        if (LocalDateTime.now().isAfter(user.getResetPasswordCodeExpire())) {
+            throw new BadRequestException("Reset code already expired.");
+        }
+
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        user.setResetPasswordCode(null);
+        user.setResetPasswordCodeExpire(null);
+        authUserRepo.save(user);
+
+        return MessageResponse.builder()
+                .message("successfully reset password")
+                .build();
+
+    }
+
+
     
 }

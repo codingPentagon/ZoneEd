@@ -82,7 +82,11 @@ public class SecurityConfiguration  {
                         "/api/auth/reg/**",
 //                        "/api/auth/tch/reg",
                         "/api/auth/account",
-                        "/api/auth/signIn").permitAll()
+                        "/api/auth/signIn",
+                         "/api/auth/reset_password-init",
+                        "/api/auth/reset_password-finish"
+                        
+                        ).permitAll()
                 .anyRequest().authenticated();       // Configure the HTTP security settings, including CORS, CSRF, session management, and authorization rules.
 
         http.authenticationProvider(authenticationProvider);  // Set the authenticationProvider for the HTTP security.

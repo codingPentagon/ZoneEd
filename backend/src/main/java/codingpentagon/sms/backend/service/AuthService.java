@@ -6,7 +6,9 @@ package codingpentagon.sms.backend.service;
 import RoleModel.AuthUser;
 import RoleModel.StudentReg;
 import RoleModel.TeacherReg;
+import RoleModel.dto.request.PasswordResetDto;
 import RoleModel.dto.request.SignInReqDto;
+import RoleModel.dto.response.MessageResponse;
 import RoleModel.dto.response.SignInResponse;
 import RoleModel.dto.response.StudentRegDto;
 import RoleModel.dto.response.TeacherRegDto;
@@ -22,4 +24,7 @@ public interface AuthService {
   SignInResponse signIn(SignInReqDto dto);
 
    AuthUser getCurrentUser();
+    MessageResponse resetPasswordInit(String email);
+
+    MessageResponse resetPasswordFinish(PasswordResetDto request);
 }

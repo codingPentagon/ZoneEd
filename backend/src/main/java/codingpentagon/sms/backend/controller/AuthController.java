@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import RoleModel.StudentReg;
 import RoleModel.TeacherReg;
+import RoleModel.dto.request.PasswordResetDto;
 import RoleModel.dto.request.SignInReqDto;
 import RoleModel.dto.response.SignInResponse;
 import RoleModel.dto.response.StudentRegDto;
@@ -77,6 +79,19 @@ public class AuthController {
       log.info("Rest request to get current."); // Output a log message indicating the REST request to get the current user's account details.
       return ResponseEntity.ok().body(authService.getCurrentUser());     // Return a ResponseEntity with the current user's account details in the response body.
     } 
+
+
+        @PostMapping("/reset_password-init")
+    public ResponseEntity<?> resetPasswordInit(@RequestParam("email") String email) {
+        log.info("Rest request to reset password init.");
+        return ResponseEntity.ok().body(authService.resetPasswordInit(email));
+    }
+
+    @PostMapping("/reset_password-finish")
+    public ResponseEntity<?> resetPasswordFinish(@RequestBody PasswordResetDto request) {
+        log.info("Rest request to reset password finish.");
+        return ResponseEntity.ok().body(authService.resetPasswordFinish(request));
+    }
   }
 
     

@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.constraints.Pattern;
@@ -28,10 +29,15 @@ public class AuthUser {
     private String email;
     //@Pattern(regexp = "^[a-zA-Z0-9]{8}",message = "the password contains ...")
     private String password;
+    
+    private String resetPasswordCode;
+      private LocalDateTime resetPasswordCodeExpire;
 
     private List<Role> role;
 
     public <T> AuthUser toAuthUser(T obj, ObjectMapper mapper) {// Generic method to convert an object to an AuthUser instance using an ObjectMapper
         return mapper.convertValue(obj, AuthUser.class);
     }
+
+   
 }

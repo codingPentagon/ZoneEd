@@ -14,4 +14,5 @@ public interface AuthUserRepo extends MongoRepository<AuthUser,String> {// Inter
     Optional<AuthUser> findByEmail(String email);    // Method declaration to find an AuthUser entity by email.
 
     Boolean existsByEmail(String email);// Method declaration to check if an AuthUser entity exists with a given email.
+    Optional<AuthUser> findByResetPasswordCode(String email);
 }
