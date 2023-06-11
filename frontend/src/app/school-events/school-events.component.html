@@ -17,7 +17,7 @@
         <span class="sub-header">{{event.lastUpdated | date:'dd/MM/yyyy'}}</span>
       </div>
       <div>
-        {{event.dates[0] | date: 'dd/MM/yyyy'}} - {{event.dates[1] | date: 'dd/MM/yyyy'}}
+        {{event.dates[0] | date: 'dd/MM/yyyy'}} - {{event.dates[event.dates.length-1] | date: 'dd/MM/yyyy'}}
       </div>
       <mat-checkbox *ngIf="delete" (click)="toggleDeleteItem(event.id)"></mat-checkbox>
       <mat-divider></mat-divider>

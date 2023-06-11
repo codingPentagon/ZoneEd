@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface SchoolEventRepository extends MongoRepository<SchoolEvent, Integer> {
-    List<SchoolEvent> findByCalendarIDAndDatesContaining(int calendarID, Date date);
+    List<SchoolEvent> findByCalendarIDAndDatesContaining(int calendarID, Date[] dates);
 }
