@@ -9,6 +9,7 @@ export class NavComponent {
 
   links = [
     {path: '', value:'Dashboard', icon:'space_dashboard'},
-    {path:'/notice', value:'Notice', icon:'notice'}
+    {path:'/notice', value:'Notice', icon:'notice'},
+    {path:'/mail', value:'mail', icon:'mail'},
   ];
 }

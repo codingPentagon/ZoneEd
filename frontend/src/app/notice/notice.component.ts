@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Notice} from "../models/notice.model";
 import {NoticeService} from "../services/notice.service";
+import {Mail} from "../models/mail.model";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-notice',
@@ -9,7 +11,7 @@ import {NoticeService} from "../services/notice.service";
   styleUrls: ['./notice.component.css']
 })
 export class NoticeComponent {
-  userID:number=33;
+  userID:number=1888;
   userRole :string='principal';
   sclID:number=555;
   noticesToDelete : number[]=[];
@@ -17,7 +19,7 @@ export class NoticeComponent {
   subject:string = '';
   content:string = '';
 
-  constructor(private noticeService:NoticeService) {
+  constructor(private noticeService:NoticeService, private userService:UserService) {
     this.userRole == 'zonal' ? this.sclID = 0 : null;
   }
 
@@ -32,6 +34,9 @@ export class NoticeComponent {
     this.noticeService.getNotices(this.userRole,this.sclID).subscribe({
       next:res=>{
         this.notices=res;
+      },
+      complete:()=>{
+     this.getNoticeUsers()
       }
     })
   }
@@ -61,6 +66,9 @@ export class NoticeComponent {
     this.noticeService.getPostedNotices(this.userID).subscribe({
       next:res=>{
         this.notices=res;
+      },
+      complete:()=>{
+        this.getNoticeUsers()
       }
     })
   }
@@ -98,7 +106,7 @@ export class NoticeComponent {
   deleteNotices(){
     this.noticeService.removeMails(this.noticesToDelete).subscribe({
       complete : () => {
-        this.getPostedNotices();
+        this.getNoticeUsers();
       }
     });
   }
@@ -120,4 +128,15 @@ export class NoticeComponent {
     this.content = notice.content;
     this.createToggle();
   }
+
+  getNoticeUsers(){
+    this.notices.forEach((notice:Notice)=>{
+      this.userService.fetchUser(notice.senderID).subscribe({
+        next:res=>{
+          notice.sender=res;
+        }
+      })
+    })
+  }
+
 }

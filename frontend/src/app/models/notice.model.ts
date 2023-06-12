@@ -1,3 +1,4 @@
+import {User} from "./user.model";
 
 export interface Notice{
   id : number;
@@ -9,5 +10,5 @@ export interface Notice{
   content : string;
   sclID : number;
 
-  // sender?:User;
+  sender?:User;
 }

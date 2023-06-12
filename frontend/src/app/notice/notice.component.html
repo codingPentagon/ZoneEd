@@ -55,7 +55,7 @@
           <mat-expansion-panel *ngFor="let notice of notices">
             <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
               <mat-panel-title >
-                {{notice.senderID}}
+                {{notice.sender?.name}}
                 <br>
                 {{notice.subject}}
               </mat-panel-title>
