@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Stu } from './stu';
 import { Tchr } from './tchr';
 import { Prin } from './prin';
+import { Reset } from './reset';
 
 
 @Injectable({
@@ -37,6 +38,11 @@ export class UserRegService {
     return this.httpClient.post("http://localhost:8080/api/auth/reg/prin",prin);//rest api for reg teacher
   }
 
+
+  sendPassResetData(param: string){
+ const url = 'http://localhost:8080/api/auth/reset_password-init?param=' + param;
+    return this.httpClient.post(url,param);
+  }
 
 
   apiurl='http://localhost:8080/api/v1/stu"';

@@ -3,9 +3,12 @@
     <h1>Reset Your Password</h1>
 <p>To reset your password Please enter your email address,after click the send button and get the link from mail and reset</p>
 <div>
-   
-    <input placeholder="Enter Your Email Address" type="text"><br>
-    <button routerLink="/putNewpassword">Reset Password</button>
+
+    <form class="form_container" [formGroup]="passResetform"  (ngSubmit)="sendPassResetData()">   
+        <input placeholder="Enter Your Email Address" type="text" formControlName="email"  [(ngModel)]="reset.email" required ><br>
+        <button  type="submit">Reset Password</button>
+    </form>
+
 </div>
 
 </div>
