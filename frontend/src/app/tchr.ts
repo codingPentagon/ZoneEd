@@ -12,4 +12,5 @@ export class Tchr {
     tchId!:String;
     tchGender!:String;
     subDetails!:String;
+  //  role!:String;
 }

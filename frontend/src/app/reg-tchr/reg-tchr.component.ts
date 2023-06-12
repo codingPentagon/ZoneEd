@@ -34,12 +34,13 @@ export class RegTchrComponent {
     password:this.builder.control('asAS23@#dd'),//Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
    email:this.builder.control('',Validators.compose([Validators.required,Validators.email])),
     tchGender:this.builder.control('male'),
-   // role:this.builder.control('teacher'),
+ //  role:this.builder.control('teacher'),
    // isactive:this.builder.control(true)
   });
 
   sendTchData() { //invoke this method when click submit teacher reg data
     if (this.tchregisterform.valid) {
+   
       this.UserRegService.sendTchData(this.tch).subscribe(response => { //cordinate backend and frontend data
         console.log('Data sent successfully!');
         console.log(this.tchregisterform.value);
