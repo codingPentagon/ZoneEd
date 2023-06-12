@@ -4,7 +4,7 @@ export class Stu {
     initName!: String;
     address1!:String;
     address2!:String;
-    password!:String;
+    password:String="stufsdfdent";
     email!:String;
     gender!:String;
   //  dob!:Date;

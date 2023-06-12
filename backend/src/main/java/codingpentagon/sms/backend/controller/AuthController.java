@@ -40,6 +40,7 @@ public class AuthController {
     // Endpoint to register a student.
     // It takes a valid StudentRegDto object in the request body.
 
+
     log.info("Rest request to create student. request {}", dto);     // Output a log message indicating the REST request to create a student.
 
     var res=authService.createUser(dto);   // Call the authService to create a user (student) based on the provided StudentRegDto.
@@ -64,6 +65,8 @@ public class AuthController {
 
   @PostMapping("/signIn")
   public ResponseEntity<SignInResponse> signIn(@Valid @RequestBody SignInReqDto dto) {
+    
+    System.out.println("hello");
 
     // Endpoint for user sign-in.
     // It takes a valid SignInReqDto object in the request body.

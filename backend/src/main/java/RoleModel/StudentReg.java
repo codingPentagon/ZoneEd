@@ -20,6 +20,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Stu")
 public class StudentReg extends BaseUser {
+    
 
     @Id
     
