@@ -1,0 +1,62 @@
+:host{
+  display: flex;
+}
+.content{
+  flex: 1;
+}
+
+mat-card{
+  margin: 15px;
+  width: 50%;
+  height: 60%;
+
+}
+#Head{
+  text-align: right;
+
+}
+.spacer{
+  flex: 1 1 auto;
+}
+mat-button-toggle-group{
+  margin-right: 10px;
+}
+
+mat-form-field{
+  display: block;
+
+}
+textarea{
+  resize: none;
+  height: 60px;
+}
+button{
+  margin: 5px;
+  float: right;
+}
+mat-panel-description{
+  justify-content: right;
+  text-align: right;
+}
+
+mat-panel-title {
+  white-space: nowrap;
+}
+
+mat-card-header{
+  border-bottom: 1.5px solid gray;
+
+}
+mat-chip-option{
+  display: inline;
+}
+mat-card-content{
+  padding-top: 10px;
+  height: 100%;
+  overflow: auto;
+
+}
+.mat-button-toggle-group {
+  height: 30px;
+  align-items: center;
+}

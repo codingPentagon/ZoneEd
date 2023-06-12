@@ -1,9 +1,16 @@
-mat-sidenav-container{
+.mat-sidenav-container{
   height: 100vh;
-  width: 300px;
 }
 
-mat-sidenav{
+.mat-sidenav{
   background-color: darkblue;
-  width: 300px;
+  width: 275px;
+}
+
+.mat-icon{
+  color: white;
+}
+
+a{
+  color: white;
 }

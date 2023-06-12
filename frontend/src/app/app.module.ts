@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
@@ -32,35 +31,41 @@ const firebaseConfig = {
   messagingSenderId: "896598316718",
   appId: "1:896598316718:web:274c66582a3baa5aeabf3f"
 };
+import { NoticeComponent } from './notice/notice.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MailComponent
+    MailComponent,
+    NoticeComponent,
   ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        AngularFireModule.initializeApp(firebaseConfig),
-        MatInputModule,
-        MatCardModule,
-        MatSelectModule,
-        MatChipsModule,
-        MatIconModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatDividerModule,
-        MatExpansionModule,
-        MatCheckboxModule,
-        MatButtonToggleModule,
-        FormsModule,
-        ServicesModule,
-        NgxFileDropModule
-    ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    MatInputModule,
+    MatCardModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    NgxFileDropModule,
+    ServicesModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

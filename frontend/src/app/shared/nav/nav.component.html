@@ -11,6 +11,10 @@
         <a matListItemTitle routerLink="/mail">Mail</a>
         <button mat-icon-button matListItemMeta>
           <mat-icon>mail</mat-icon>
+      <mat-list-item *ngFor="let link of links" [routerLink]="link.path">
+        <a matListItemTitle>{{link.value}}</a>
+        <button matListItemMeta mat-icon-button>
+          <mat-icon>{{link.icon}}</mat-icon>
         </button>
       </mat-list-item>
     </mat-nav-list>

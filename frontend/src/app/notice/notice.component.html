@@ -1,0 +1,83 @@
+<app-nav></app-nav>
+<div class="content">
+  <app-header></app-header>
+  <mat-card>
+    <mat-card-header *ngIf="!(userRole=='parent'|| userRole=='student' )">
+      {{create? 'New Notice': 'Notice Board'}}
+      <span class="spacer"></span>
+          <mat-button-toggle-group *ngIf="userRole!='admin' && !create" [(value)]="noticeBox">
+            <mat-button-toggle value="all" (click)="getNotices(); delete?deleteToggle():null">All</mat-button-toggle>
+            <mat-button-toggle value="post" (click)="getPostedNotices()">Post</mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-chip-listbox>
+            <mat-chip [ngStyle]="{'background-color':create ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="createToggle()">
+              <mat-icon [ngStyle]="{'color':create ? 'white' : 'black'}">post_add</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!create  && (noticeBox=='post' || userRole=='admin')" [ngStyle]="{'background-color':delete ? '#3f51b5' : 'lightgrey','transition':'150ms ease-out'}" (click)="deleteToggle()">
+              <mat-icon [ngStyle]="{'color':delete ? 'white' : 'black'}">delete</mat-icon>
+            </mat-chip>
+          </mat-chip-listbox>
+    </mat-card-header>
+    <mat-card-header *ngIf="userRole=='parent'|| userRole=='student'">
+      Notice Board
+    </mat-card-header>
+    <mat-card-content *ngIf="create">
+      <form #newNotice="ngForm" (ngSubmit)="createNotice(newNotice);createToggle()" id="newNotice">
+        <mat-form-field appearance="outline" *ngIf="userRole!='admin'">
+          <mat-label>Select category</mat-label>
+          <mat-select multiple ngModel name="categories">
+            <mat-option *ngFor="let category of categories" [value]="category.value">
+              {{category.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label >
+           Subject
+          </mat-label>
+          <input matInput [(ngModel)]="subject" name="subject" >
+        </mat-form-field>
+        <mat-form-field class="body" appearance="outline">
+          <mat-label>
+            Content
+          </mat-label>
+          <textarea matInput [(ngModel)]="content" name="content"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions *ngIf="create" align="end">
+      <button mat-raised-button (click)="createToggle()">Discard</button>
+      <button mat-raised-button type="submit" form="newNotice" >Post</button>
+    </mat-card-actions>
+
+      <mat-card-content class="notices" *ngIf="!create">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let notice of notices">
+            <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+              <mat-panel-title >
+                {{notice.senderID}}
+                <br>
+                {{notice.subject}}
+              </mat-panel-title>
+              <mat-panel-description>
+               {{notice.date | date:'dd/MM/yyyy'}}
+                <br>
+                {{notice.date | date: 'HH:mm'}}
+                  <mat-checkbox *ngIf="delete" (change)="toggleDeleteItems(notice.id)"></mat-checkbox>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{notice.content}}</p>
+            <button mat-icon-button *ngIf="(userRole=='principal' || userRole=='teacher') && noticeBox=='all'" (click)="forward(notice)">
+              <mat-icon>reply</mat-icon>
+            </button>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+    <mat-card-actions *ngIf="delete" align="end">
+      <button mat-raised-button (click)="deleteNotices(); deleteToggle()" >Delete</button>
+      <button mat-raised-button (click)="deleteToggle()">Discard</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+

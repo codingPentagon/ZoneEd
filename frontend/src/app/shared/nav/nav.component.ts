@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavComponent {
 
+  links = [
+    {path: '', value:'Dashboard', icon:'space_dashboard'},
+    {path:'/notice', value:'Notice', icon:'notice'}
+  ];
 }
