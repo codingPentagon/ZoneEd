@@ -23,7 +23,7 @@ export class UserRegService {
 
 
   sendStuData(stu:Stu) {//when reg student this method will invoke and send post request to backend
-    console.log(stu);
+   
     return this.httpClient.post("http://localhost:8080/api/auth/reg/stu",stu); //rest api for reg student
   }
   

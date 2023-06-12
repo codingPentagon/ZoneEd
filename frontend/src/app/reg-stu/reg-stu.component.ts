@@ -40,14 +40,17 @@ export class RegStuComponent {
     faOccupation:this.builder.control('',Validators.required),
     faContNo:this.builder.control('',Validators.required),
     role:this.builder.control('student'),
-    isactive:this.builder.control(true)
+    isactive:this.builder.control(true),
+    
   });
  
 
 
 
   sendStuData() { //after click submit to reg details implenment this method
+   
     if (this.sturegisterform.valid) {
+      console.log("ok");
       this.UserRegService.sendStuData(this.stu).subscribe(response => {
         console.log('Data sent successfully!');
         console.log(this.sturegisterform.value);
