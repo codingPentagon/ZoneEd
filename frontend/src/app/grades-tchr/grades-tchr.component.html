@@ -25,7 +25,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-raised-button  (click)="rankStudents()">Rank Students</button>
+          <button mat-raised-button [disabled]="!checkAllCompleted"  (click)="rankStudents()">Rank Students</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

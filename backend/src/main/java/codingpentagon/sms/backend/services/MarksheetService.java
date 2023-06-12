@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -27,9 +26,11 @@ public class MarksheetService {
         if (marksheet.getId() == 0) {
             marksheet.setId(new Random().nextInt(10000));
         }
-        Arrays.stream(marksheet.getMarks()).forEach(subjectMark -> {
-            marksheet.setTotalMarks(marksheet.getTotalMarks() + subjectMark.getMark());
-        });
+        int total = 0;
+        for (int i = 0; i < marksheet.getMarks().length; i++) {
+            total += marksheet.getMarks()[i].getMark()==null?0:marksheet.getMarks()[i].getMark();
+        }
+        marksheet.setTotalMarks(total);
         this.marksheetRepository.save(marksheet);
     }
 

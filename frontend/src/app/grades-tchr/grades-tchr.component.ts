@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Student} from "../models/student.model";
 import {StudentsService} from "../services/students.service";
 import {MarksheetService} from "../services/marksheet.service";
 import {Marksheet} from "../models/marksheet.model";
 import {Subject} from "../models/subject.model";
-import { SubjectService } from '../services/subject.service';
+import {SubjectService} from '../services/subject.service';
 
 @Component({
   selector: 'app-grades-tchr',
@@ -13,151 +13,168 @@ import { SubjectService } from '../services/subject.service';
 })
 export class GradesTchrComponent {
 
-  students:Student[] = [];
-  clsID:number=555;
-  marksheets:Marksheet[]=[];
-  term:number=1;
-  year:number=new Date().getFullYear();
-  selectedStudent:number=0;
-  subjects:Subject[] = [];
-  totalMarks:number = 0;
-  currentMarksheet!:Marksheet;
-  incompleteStudentIDs:number[] = [];
+  students: Student[] = [];
+  clsID: number = 555;
+  marksheets: Marksheet[] = [];
+  term: number = 1;
+  year: number = new Date().getFullYear();
+  selectedStudent: number = 0;
+  subjects: Subject[] = [];
+  totalMarks: number = 0;
+  currentMarksheet!: Marksheet;
+  incompleteStudentIDs: number[] = [];
 
-  constructor(private studentService:StudentsService, private marksheetService:MarksheetService,private subjectService:SubjectService) {
+  constructor(private studentService: StudentsService, private marksheetService: MarksheetService, private subjectService: SubjectService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getStudents();
     this.getMarksheets();
   }
 
-  getStudents(){
+  getStudents() {
     this.studentService.fetchStudents(this.clsID).subscribe({
-      next:res=>{
-        this.students=res;
+      next: res => {
+        this.students = res;
       },
-      complete:()=>{
+      complete: () => {
         this.getSubjects();
       }
     })
   }
 
-  getMarksheets(){
-    this.marksheetService.fetchMarksheets(this.clsID,this.year,this.term).subscribe({
-      next:res=>{
-        this.marksheets=res;
+  getMarksheets() {
+    this.marksheetService.fetchMarksheets(this.clsID, this.year, this.term).subscribe({
+      next: res => {
+        this.marksheets = res;
       },
-      complete:()=>{
+      complete: () => {
         this.getSubjects();
         this.getIncompleteStudentIDs();
       }
     })
   }
 
-  getSubjects(){
+  getSubjects() {
     this.modify && this.modifyToggle();
-    const subjectIDs:number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
+    const subjectIDs: number[] = this.students[this.selectedStudent]?.takenSubjectIDs;
 
-    if(subjectIDs?.length){
+    if (subjectIDs?.length) {
       this.subjectService.fetchSubjects(subjectIDs).subscribe({
-        next:res=>{
-          this.subjects=res;
+        next: res => {
+          this.subjects = res;
         },
-        complete:()=>{
+        complete: () => {
           this.getCurrentMarksheet();
         }
       });
-    }
-    else{
+    } else {
       this.subjects = [];
       this.getCurrentMarksheet();
     }
   }
 
-  getCurrentMarksheet(){
-    this.currentMarksheet = this.marksheets.find((marksheet)=>{
+  getCurrentMarksheet() {
+    this.currentMarksheet = this.marksheets.find((marksheet) => {
       return marksheet.studentID == this.students[this.selectedStudent]?.id;
     })!;
 
-    if(this.currentMarksheet == undefined){
+    if (this.currentMarksheet == undefined) {
       this.currentMarksheet = {
-        id:0,
-        studentID:this.students[this.selectedStudent]?.id,
-        marks:[],
-        year:this.year,
-        term:this.term,
-        classID:this.clsID,
-        totalMarks:0,
-        rank:0,
-        isCompleted:false
+        id: 0,
+        studentID: this.students[this.selectedStudent]?.id,
+        marks: [],
+        year: this.year,
+        term: this.term,
+        classID: this.clsID,
+        totalMarks: 0,
+        rank: 0,
+        isCompleted: false
       }
-      this.subjects.forEach(subject=>{
+      this.subjects.forEach(subject => {
         this.currentMarksheet.marks.push({
-          subjectID:subject.id,
-          mark:null
+          subjectID: subject.id,
+          mark: null
         })
       })
     }
   }
 
-  saveMarksheet(marksheet?:Marksheet){
-    if(!marksheet){
+  saveMarksheet(marksheet?: Marksheet) {
+    if (!marksheet) {
       this.currentMarksheet.totalMarks = this.totalMarks;
-      this.currentMarksheet.isCompleted = !this.currentMarksheet.marks.some(mark=>{
+      this.currentMarksheet.isCompleted = !this.currentMarksheet.marks.some(mark => {
         return mark.mark == null;
       })
     }
     this.marksheetService.addMarksheet(this.currentMarksheet).subscribe({
-      complete:()=>{
+      complete: () => {
         this.getMarksheets();
       }
     })
   }
 
-  getSubjectName(subjectID:number){
-    return this.subjects.find((sub)=>{
-      return sub.id==subjectID;
+  getSubjectName(subjectID: number) {
+    return this.subjects.find((sub) => {
+      return sub.id == subjectID;
     })?.name
   }
 
-  getIncompleteStudentIDs(){
-    const completeStudentIDs = this.marksheets.filter((marksheet)=>{
+  getIncompleteStudentIDs() {
+    const completeStudentIDs = this.marksheets.filter((marksheet) => {
       return marksheet.isCompleted;
-    }).map((marksheet)=>{
+    }).map((marksheet) => {
       return marksheet.studentID;
     });
 
     //to avoid getting students without marksheets as complete
-    this.incompleteStudentIDs = this.students.filter((student)=>{
+    this.incompleteStudentIDs = this.students.filter((student) => {
       return !completeStudentIDs.includes(student.id);
-    }).map((student)=>{
+    }).map((student) => {
       return student.id;
     })
   }
 
-  rankStudents(){
+  rankStudents() {
     //rank marksheets according to total marks
-    this.marksheetService.rankMarksheets(this.clsID,this.year,this.term).subscribe({
-      complete:()=>{
+    this.marksheetService.rankMarksheets(this.clsID, this.year, this.term).subscribe({
+      complete: () => {
         this.getMarksheets();
       }
     });
   }
 
-  modify:boolean = false;
+  get checkAllCompleted() {
+    let check = false;
+    for (const student of this.students) {
+      check = this.marksheets.some(marksheet => {
+        return student.id == marksheet.studentID
+      })
+      if (!check) {
+        return false;
+      }
+    }
 
-  modifyToggle(){
+    for (const marksheet of this.marksheets) {
+      if (!marksheet.isCompleted) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  modify: boolean = false;
+
+  modifyToggle() {
     this.modify = !this.modify;
   }
 
-  selectedOption='all'
+  selectedOption = 'all'
 
   terms: any[] = [
     {value: 1, viewValue: '1st Term'},
     {value: 2, viewValue: '2nd Term'},
     {value: 3, viewValue: '3rd Term'},
   ];
-
 }
 

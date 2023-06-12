@@ -99,7 +99,7 @@ mat-select{
 
 mat-card-content{
   padding: 0;
-  height: 70%;
+  height: 80%;
 }
 
 button:not([disabled]){
