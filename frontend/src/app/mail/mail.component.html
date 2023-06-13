@@ -93,7 +93,7 @@
         <form class="left" #newMail="ngForm" (ngSubmit)="createMail(newMail); createToggle()" id="newMail">
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
-            <mat-select [(value)]="selectedType" (valueChange)="getUsersByTypeOnRole()">
+            <mat-select [(value)]="selectedType" (valueChange)="getUsersByTypeOnRole()" required>
               <mat-option *ngFor="let type of userTypes" [value]="type.toLowerCase()">{{type}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -113,14 +113,14 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Recipient</mat-label>
-            <mat-select multiple [disabled]="users.length==0" name="recipients" [(ngModel)]="recepientIDs">
+            <mat-select multiple [disabled]="users.length==0" name="recipients" [(ngModel)]="recepientIDs" required>
               <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Subject</mat-label>
-            <input matInput placeholder="" name="subject" [(ngModel)]="subject">
+            <input matInput placeholder="" name="subject" [(ngModel)]="subject" required>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="mailbody">
@@ -152,7 +152,7 @@
       </mat-card-content>
       <mat-card-actions align="end" *ngIf="create">
         <div id="send">
-          <button mat-raised-button type="submit" form="newMail">Send</button>
+          <button mat-raised-button type="submit" form="newMail" [disabled]="mailForm?.invalid">Send</button>
           <span></span>
           <button mat-raised-button (click)="deleteAllAttachments();createToggle()">Discard</button>
         </div>

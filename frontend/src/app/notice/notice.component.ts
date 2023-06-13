@@ -36,7 +36,7 @@ export class NoticeComponent {
         this.notices=res;
       },
       complete:()=>{
-     this.getNoticeUsers()
+        this.getNoticeUsers()
       }
     })
   }
@@ -124,7 +124,7 @@ export class NoticeComponent {
   }
 
   forward(notice: Notice) {
-    this.subject = 'Fwd from '+notice.senderID+': '+notice.subject;
+    this.subject = 'Fwd from '+notice.sender?.name+': '+notice.subject;
     this.content = notice.content;
     this.createToggle();
   }

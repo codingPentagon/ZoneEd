@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component,ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {NgxFileDropEntry} from "ngx-file-drop";
 
@@ -22,6 +22,7 @@ export class MailComponent {
   users:User[] = [];
   recepientIDs :number[] = [];
   subject :string='';
+  @ViewChild(NgForm) mailForm!:NgForm
 
   fileDir = '/mail/attachments/';
   attachments : FileMetadata[]=this.filesService.filesMetadata;
