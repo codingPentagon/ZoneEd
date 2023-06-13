@@ -58,7 +58,7 @@ public class MarksService {
     JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
     JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(marksheet);
     Map<String, Object> parameters = new HashMap<>();
-    parameters.put("createdBy", "Java Techie");
+    parameters.put("createdBy", "zone Ed");
     parameters.put("year","2023");
     parameters.put("term", 2);
     parameters.put("stuId", "204095D");

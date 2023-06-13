@@ -13,13 +13,13 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 
 public class ThymeleafTemplateConfig {
-    
-       @Bean
+           @Bean  //configure and manage the SpringTemplateEngine,Spring application, enabling Spring's dependency injection and other features.
     public SpringTemplateEngine springTemplateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.addTemplateResolver(htmlTemplateResolver());
         return templateEngine;
     }
+
 
     @Bean
     public SpringResourceTemplateResolver htmlTemplateResolver() {
