@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { Chart,registerables } from 'node_modules/chart.js';
+import {Marksheet} from "../../models/marksheet.model";
 Chart.register(...registerables);
 
 @Component({
@@ -8,8 +9,18 @@ Chart.register(...registerables);
   styleUrls: ['./stu-grades-overview.component.css']
 })
 export class StuGradesOverviewComponent implements OnInit{
+  @Input() marksheet!:Marksheet;
+  labels: string[] = [];
+
   ngOnInit(): void {
    this.renderStuGradeOverview();
+  }
+
+  ngOnChanges(changes:SimpleChanges): void {
+    console.log(changes);
+    if (changes['marksheet']){
+      this.renderStuGradeOverview();
+    }
   }
 
   renderStuGradeOverview(){
@@ -19,15 +30,15 @@ export class StuGradesOverviewComponent implements OnInit{
     new Chart("piechart", {
       type: 'bar',
       data: {
-        labels: ['Sc', 'Mat', 'Eng', 'Sin', 'His', 'Rel','Com','Art','ICT'],
+        labels:this.marksheet.marks.map(mark=>mark.subjectID),
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3,5,6,12],
+          label: 'Subject Marks',
+          data: this.marksheet.marks.map(mark=>mark.mark),
          // backgroundColor :[
 
           //  'rgba(255,235,255,0.2)'
          // ],
-        
+
         borderWidth: 1
         }]
       },

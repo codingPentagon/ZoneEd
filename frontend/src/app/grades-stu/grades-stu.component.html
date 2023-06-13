@@ -8,22 +8,22 @@
           Grades
           <span class="spacer"></span>
           <mat-form-field appearance="outline" subscriptSizing="dynamic">
-            <mat-select placeholder="Select Class">
-              <mat-option *ngFor="let cls of classes" [value]="cls.value">{{cls.viewValue}}</mat-option>
+            <mat-select placeholder="Select Class" [(value)]="selectedYear">
+              <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" subscriptSizing="dynamic">
-            <mat-select placeholder="Select Term">
+            <mat-select placeholder="Select Term" [(value)]="selectedTerm">
               <mat-option *ngFor="let term of terms" [value]="term.value">{{term.viewValue}}</mat-option>
             </mat-select>
           </mat-form-field>
         </mat-card-header>
         <mat-card-content class="grades-names">
-          <div *ngFor="let grade of grades">
+          <div *ngFor="let mark of currentMarksheet?.marks">
             <div class="grades-entry">
-              {{ grade.subject }}
+              {{ mark.subjectName }}
               <span class="spacer"></span>
-              {{ grade.grade }}
+              {{ mark.mark }}
             </div>
             <mat-divider></mat-divider>
           </div>
@@ -40,12 +40,12 @@
           <mat-card-content class="grades-sum">
             <div class="box">
               <div class="inline-block">
-                <p class="big-text">751</p>
+                <p class="big-text">{{currentMarksheet?.totalMarks}}</p>
                 <p>Total Marks</p>
               </div>
               <mat-divider class="inline-block" [vertical]="true"></mat-divider>
               <div class="inline-block">
-                <p class="big-text">02</p>
+                <p class="big-text">{{currentMarksheet?.rank}}</p>
                 <p>Rank</p>
               </div>
             </div>
@@ -54,9 +54,9 @@
         <mat-card class="grades-overview">
           <mat-card-header>
             Grades Overview
-            
+
           </mat-card-header>
-          <app-stu-grades-overview></app-stu-grades-overview>
+          <app-stu-grades-overview [marksheet]="currentMarksheet"></app-stu-grades-overview>
           <mat-card-content>
           </mat-card-content>
         </mat-card>

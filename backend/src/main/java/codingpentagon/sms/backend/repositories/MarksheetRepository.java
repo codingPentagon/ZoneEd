@@ -16,5 +16,5 @@ public interface MarksheetRepository extends MongoRepository<Marksheet,Integer> 
             "{$project: {classID: '$_id',_id: 0}}"
     })
     List<Integer> findDistinctClassIDsByStudentID(int studentID);
-
+    List<Marksheet> findByStudentID(int studentID);
 }

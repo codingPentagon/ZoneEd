@@ -53,4 +53,8 @@ public class MarksheetService {
         }
         this.marksheetRepository.saveAll(marksheetList);
     }
+
+    public List<Marksheet> findStudentMarksheets(int studentID) {
+        return this.marksheetRepository.findByStudentID(studentID);
+    }
 }

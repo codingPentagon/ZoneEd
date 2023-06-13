@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -25,5 +26,9 @@ public class SubjectService {
     public void saveSubject(Subject subject) {
         subject.setId(new Random().nextInt(50));
         this.subjectRepository.save(subject);
+    }
+
+    public Optional<Subject> findSubject(int subjectID) {
+        return this.subjectRepository.findById(subjectID);
     }
 }

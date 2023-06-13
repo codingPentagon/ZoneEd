@@ -22,6 +22,11 @@ public class SubjectController {
         return this.subjectService.findSubjects(subjectID);
     }
 
+    @GetMapping("subjects/byID/{subjectID}")
+    public Optional<Subject> fetchSubject(@PathVariable int subjectID){
+        return this.subjectService.findSubject(subjectID);
+    }
+
     @PostMapping("subjects/")
     public void addSubject(@RequestBody Subject subject){
         this.subjectService.saveSubject(subject);

@@ -33,4 +33,9 @@ public class MarksheetController{
     public void rankMarksheets(@PathVariable int classID, @PathVariable int year, @PathVariable int term){
         this.marksheetService.rankMarksheets(classID,year,term);
     }
+
+    @GetMapping("marksheets/student/{studentID}")
+    public List<Marksheet> fetchStudentMarksheets(@PathVariable int studentID){
+        return this.marksheetService.findStudentMarksheets(studentID);
+    }
 }

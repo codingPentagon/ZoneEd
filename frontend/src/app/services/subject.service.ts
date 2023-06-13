@@ -16,6 +16,10 @@ export class SubjectService {
   }
 
   fetchSubjects(subjectIDs: number[]){
-    return this.http.get<Subject[]>(url+subjectIDs?.toString())
+    return this.http.get<Subject[]>(url+subjectIDs)
+  }
+
+  fetchSubject(subjectID: number){
+    return this.http.get<Subject>(url+'byID/'+subjectID)
   }
 }

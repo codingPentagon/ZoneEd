@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Marksheet} from "../models/marksheet.model";
+import {MarksheetService} from "../services/marksheet.service";
+import {SubjectService} from "../services/subject.service";
 
 @Component({
   selector: 'app-grades-stu',
@@ -6,39 +9,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./grades-stu.component.css']
 })
 export class GradesStuComponent {
-  grades:{subject:any,grade:number}[]=[
-    {subject: 'Sinhala', grade: 80},
-    {subject: 'Buddhism', grade: 90},
-    {subject: 'Science', grade: 92},
-    {subject: 'Mathematics', grade: 75},
-    {subject: 'English', grade: 82},
-    {subject: 'History', grade: 76},
-    {subject: 'Dancing', grade: 81},
-    {subject: 'Geography', grade: 85},
-    {subject: 'Mathematics', grade: 75},
-    {subject: 'English', grade: 82},
-    {subject: 'History', grade: 76},
-    {subject: 'Dancing', grade: 81},
-    {subject: 'Geography', grade: 85},
-    {subject: 'ICT', grade: 90}
-  ];
+  years:number[]=[]
+  marksheets:Marksheet[]=[]
+  userID:number=4939
+  selectedYear!:number;
+  selectedTerm:number=1;
+  currentMarksheet!:Marksheet;
 
-  classes: any[] = [
-    {value: '6A', viewValue: '6 A'},
-    {value: '6B', viewValue: '6 B'},
-    {value: '7A', viewValue: '7 A'},
-    {value: '7B', viewValue: '7 B'},
-    {value: '8A', viewValue: '8 A'},
-    {value: '8B', viewValue: '8 B'},
-    {value: '9A', viewValue: '9 A'},
-    {value: '9B', viewValue: '9 B'},
-    {value: '10A', viewValue: '10 A'},
-    {value: '10B', viewValue: '10 B'},
-    {value: '11A', viewValue: '11 A'},
-    {value: '11B', viewValue: '11 B'},
-    {value: '12A', viewValue: '12 A'},
-    {value: '12B', viewValue: '12 B'}
-  ];
+  constructor(private marksheetService:MarksheetService,private subjectService:SubjectService) {
+  }
+
+  ngOnInit(): void {
+    this.getMarksheet();
+  }
+
+  getMarksheet(){
+    this.marksheetService.fetchStudentMarksheets(this.userID).subscribe({
+      next: res=>{
+        this.marksheets=res
+        this.marksheets.forEach(marksheet=>{
+          this.years.push(marksheet.year)
+        })
+        this.selectedYear=this.years[this.years.length-1];
+      },
+      complete: ()=>{
+        this.getCurrentMarksheet()
+      }
+    })
+  }
+
+  getCurrentMarksheet(){
+    this.currentMarksheet =  this.marksheets.find(marksheet=>marksheet.year==this.selectedYear && marksheet.term==this.selectedTerm)!;
+    this.getSubjectNames();
+  }
+
+  getSubjectNames(){
+    this.currentMarksheet?.marks.forEach(mark=>{
+      this.subjectService.fetchSubject(mark.subjectID).subscribe({
+        next: res=>{
+          mark.subjectName=res.name
+        }
+      })
+    })
+  }
+
 
   terms: any[] = [
     {value: 1, viewValue: '1st Term'},

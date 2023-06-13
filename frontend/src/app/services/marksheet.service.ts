@@ -21,4 +21,8 @@ export class MarksheetService {
   rankMarksheets(clsID: number, year: number, term: number) {
     return this.http.get(url+'rank/'+clsID.toString()+'/'+year.toString()+'/'+term.toString());
   }
+
+  fetchStudentMarksheets(userID: number) {
+    return this.http.get<Marksheet[]>(url+'student/'+userID)
+  }
 }
