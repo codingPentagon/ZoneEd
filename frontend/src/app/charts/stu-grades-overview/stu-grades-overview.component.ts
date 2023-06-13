@@ -18,9 +18,7 @@ export class StuGradesOverviewComponent implements OnInit{
 
   ngOnChanges(changes:SimpleChanges): void {
     console.log(changes);
-    if (changes['marksheet']){
-      this.renderStuGradeOverview();
-    }
+    this.renderStuGradeOverview();
   }
 
   renderStuGradeOverview(){

@@ -8,12 +8,12 @@
           Grades
           <span class="spacer"></span>
           <mat-form-field appearance="outline" subscriptSizing="dynamic">
-            <mat-select placeholder="Select Class" [(value)]="selectedYear">
+            <mat-select placeholder="Select Class" [(value)]="selectedYear" (valueChange)="getCurrentMarksheet()">
               <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" subscriptSizing="dynamic">
-            <mat-select placeholder="Select Term" [(value)]="selectedTerm">
+            <mat-select placeholder="Select Term" [(value)]="selectedTerm" (valueChange)="getCurrentMarksheet()">
               <mat-option *ngFor="let term of terms" [value]="term.value">{{term.viewValue}}</mat-option>
             </mat-select>
           </mat-form-field>

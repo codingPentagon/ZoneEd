@@ -39,6 +39,7 @@ export class GradesStuComponent {
   }
 
   getCurrentMarksheet(){
+    console.log(1)
     this.currentMarksheet =  this.marksheets.find(marksheet=>marksheet.year==this.selectedYear && marksheet.term==this.selectedTerm)!;
     this.getSubjectNames();
   }
