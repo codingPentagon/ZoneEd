@@ -8,7 +8,7 @@ import {AcsGrantRequest} from "../models/acs-grant.model";
   styleUrls: ['./acs-grant-tchr.component.css']
 })
 export class AcsGrantTchrComponent {
-  userID:number=1;
+  userID:number=2;
   acsGrantRequest!:AcsGrantRequest;
   comment!: string;
 
