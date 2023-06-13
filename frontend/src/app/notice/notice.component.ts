@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Notice} from "../models/notice.model";
 import {NoticeService} from "../services/notice.service";
@@ -18,6 +18,7 @@ export class NoticeComponent {
   categories:any[] = [];
   subject:string = '';
   content:string = '';
+  @ViewChild(NgForm) noticeForm!:NgForm
 
   constructor(private noticeService:NoticeService, private userService:UserService) {
     this.userRole == 'zonal' ? this.sclID = 0 : null;
