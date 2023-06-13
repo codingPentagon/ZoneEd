@@ -11,6 +11,8 @@ export class NotificationComponent {
 
   userID = 3333;
   isOpen:boolean = false;
+  notifs: Notification[] = [];
+  notifCount: number = 0;
 
   constructor(private notifService : NotificationService) {
     this.getNotifications();
@@ -57,12 +59,13 @@ export class NotificationComponent {
         console.log(token)
       }
     });
-    this.notifService.listen();
+    this.notifService.listen().subscribe({
+      next:res=>{
+        console.log(res)
+      }
+    });
   }
 
-  notifs: Notification[] = [];
-
-  notifCount: number = 0;
 
   getUnreadNotifCount() {
     this.notifCount = this.notifs.filter(notif => !notif.isRead).length;
