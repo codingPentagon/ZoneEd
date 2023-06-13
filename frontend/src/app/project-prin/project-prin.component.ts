@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-prin.component.css']
 })
 export class ProjectPrinComponent {
-  sclID:number=1;
+  sclID:number=5555;
   userID:number=222;
 
 }
