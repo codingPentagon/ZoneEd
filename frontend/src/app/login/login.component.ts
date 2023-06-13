@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('accessToken',this.responsedata.jwtToken);//store jwt token values in local storage
           alert("login successfully");
           this.router.navigate(['']) //after login success,navigate to home
+        }else{
+          alert("invalid credientials");
         }
 
        
